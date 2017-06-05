@@ -11,15 +11,15 @@
 		75C1E6C5D93C444FBB170ED7 /* Pods_The_Dog_WalkerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */; };
 		9D70D9A70E9E8ADBE05ACE6D /* Pods_The_Dog_WalkerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC72B7D6AEA19ACDFE2BD3D /* Pods_The_Dog_WalkerTests.framework */; };
 		D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */; };
-		D28A93BF1EE4F03D00CF80B6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93BE1EE4F03D00CF80B6 /* FirstViewController.swift */; };
-		D28A93C11EE4F03D00CF80B6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93C01EE4F03D00CF80B6 /* SecondViewController.swift */; };
 		D28A93C41EE4F03D00CF80B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A93C21EE4F03D00CF80B6 /* Main.storyboard */; };
 		D28A93C61EE4F03D00CF80B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D28A93C51EE4F03D00CF80B6 /* Assets.xcassets */; };
 		D28A93C91EE4F03D00CF80B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A93C71EE4F03D00CF80B6 /* LaunchScreen.storyboard */; };
 		D28A93D41EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93D31EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift */; };
 		D28A93DF1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */; };
 		D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */; };
-		D2C8F1961EE5809100F7AC65 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F1941EE5809100F7AC65 /* Home.storyboard */; };
+		D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */; };
+		D2C8F19B1EE5A63600F7AC65 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F19A1EE5A63600F7AC65 /* Home.storyboard */; };
+		D2C8F19E1EE5A7A500F7AC65 /* ClientSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F19C1EE5A7A500F7AC65 /* ClientSignUp.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +50,6 @@
 		BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Dog_WalkerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A93B91EE4F03D00CF80B6 /* The Dog Walker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dog Walker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D28A93BE1EE4F03D00CF80B6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		D28A93C01EE4F03D00CF80B6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D28A93C31EE4F03D00CF80B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D28A93C51EE4F03D00CF80B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D28A93C81EE4F03D00CF80B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,7 +61,9 @@
 		D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Dog_WalkerUITests.swift; sourceTree = "<group>"; };
 		D28A93E01EE4F03D00CF80B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D2C8F1951EE5809100F7AC65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D2C8F19A1EE5A63600F7AC65 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		D2C8F19D1EE5A7A500F7AC65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ClientSignUp.storyboard; sourceTree = "<group>"; };
 		F0C9348669850476B9913E50 /* Pods-The Dog WalkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerTests/Pods-The Dog WalkerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,10 +145,10 @@
 			children = (
 				D28A93C51EE4F03D00CF80B6 /* Assets.xcassets */,
 				D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */,
-				D28A93BE1EE4F03D00CF80B6 /* FirstViewController.swift */,
-				D28A93C01EE4F03D00CF80B6 /* SecondViewController.swift */,
+				D2C8F1971EE5848E00F7AC65 /* Login */,
 				D28A93C21EE4F03D00CF80B6 /* Main.storyboard */,
-				D2C8F1941EE5809100F7AC65 /* Home.storyboard */,
+				D2C8F19C1EE5A7A500F7AC65 /* ClientSignUp.storyboard */,
+				D2C8F19A1EE5A63600F7AC65 /* Home.storyboard */,
 				D28A93C71EE4F03D00CF80B6 /* LaunchScreen.storyboard */,
 				D2C8F1931EE57FC500F7AC65 /* Info.plist */,
 			);
@@ -180,6 +180,14 @@
 				D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */,
 			);
 			name = Info.plist;
+			sourceTree = "<group>";
+		};
+		D2C8F1971EE5848E00F7AC65 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +310,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D28A93C91EE4F03D00CF80B6 /* LaunchScreen.storyboard in Resources */,
-				D2C8F1961EE5809100F7AC65 /* Home.storyboard in Resources */,
+				D2C8F19E1EE5A7A500F7AC65 /* ClientSignUp.storyboard in Resources */,
+				D2C8F19B1EE5A63600F7AC65 /* Home.storyboard in Resources */,
 				D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */,
 				D28A93C61EE4F03D00CF80B6 /* Assets.xcassets in Resources */,
 				D28A93C41EE4F03D00CF80B6 /* Main.storyboard in Resources */,
@@ -468,9 +477,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D28A93C11EE4F03D00CF80B6 /* SecondViewController.swift in Sources */,
+				D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
-				D28A93BF1EE4F03D00CF80B6 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,12 +530,12 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		D2C8F1941EE5809100F7AC65 /* Home.storyboard */ = {
+		D2C8F19C1EE5A7A500F7AC65 /* ClientSignUp.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D2C8F1951EE5809100F7AC65 /* Base */,
+				D2C8F19D1EE5A7A500F7AC65 /* Base */,
 			);
-			name = Home.storyboard;
+			name = ClientSignUp.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
