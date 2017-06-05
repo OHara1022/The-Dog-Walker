@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AA18333D5948C691D4DEB3B /* Pods_The_Dog_Walker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EABD0474B655656272A14A8 /* Pods_The_Dog_Walker.framework */; };
+		75C1E6C5D93C444FBB170ED7 /* Pods_The_Dog_WalkerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */; };
+		9D70D9A70E9E8ADBE05ACE6D /* Pods_The_Dog_WalkerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC72B7D6AEA19ACDFE2BD3D /* Pods_The_Dog_WalkerTests.framework */; };
 		D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */; };
 		D28A93BF1EE4F03D00CF80B6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93BE1EE4F03D00CF80B6 /* FirstViewController.swift */; };
 		D28A93C11EE4F03D00CF80B6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93C01EE4F03D00CF80B6 /* SecondViewController.swift */; };
@@ -15,6 +18,8 @@
 		D28A93C91EE4F03D00CF80B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A93C71EE4F03D00CF80B6 /* LaunchScreen.storyboard */; };
 		D28A93D41EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93D31EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift */; };
 		D28A93DF1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */; };
+		D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */; };
+		D2C8F1961EE5809100F7AC65 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F1941EE5809100F7AC65 /* Home.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1EABD0474B655656272A14A8 /* Pods_The_Dog_Walker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Dog_Walker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E8ACEA42328741DF66CE40F /* Pods-The Dog Walker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog Walker.release.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog Walker/Pods-The Dog Walker.release.xcconfig"; sourceTree = "<group>"; };
+		6B3BA7C8AA72F12D683E3AFA /* Pods-The Dog WalkerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerUITests/Pods-The Dog WalkerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		89BEECA7D67CACE5DBAD6596 /* Pods-The Dog WalkerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerTests/Pods-The Dog WalkerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8CC72B7D6AEA19ACDFE2BD3D /* Pods_The_Dog_WalkerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Dog_WalkerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E4B4B925FA6CEFEEB937A1A /* Pods-The Dog Walker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog Walker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog Walker/Pods-The Dog Walker.debug.xcconfig"; sourceTree = "<group>"; };
+		B990290895BC53A9E6AB6124 /* Pods-The Dog WalkerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerUITests/Pods-The Dog WalkerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Dog_WalkerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A93B91EE4F03D00CF80B6 /* The Dog Walker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dog Walker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D28A93BE1EE4F03D00CF80B6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +62,9 @@
 		D28A93DA1EE4F03D00CF80B6 /* The Dog WalkerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The Dog WalkerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Dog_WalkerUITests.swift; sourceTree = "<group>"; };
 		D28A93E01EE4F03D00CF80B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D2C8F1951EE5809100F7AC65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		F0C9348669850476B9913E50 /* Pods-The Dog WalkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerTests/Pods-The Dog WalkerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA18333D5948C691D4DEB3B /* Pods_The_Dog_Walker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D70D9A70E9E8ADBE05ACE6D /* Pods_The_Dog_WalkerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +88,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75C1E6C5D93C444FBB170ED7 /* Pods_The_Dog_WalkerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B319BF6BAA038CFDB91CB58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EABD0474B655656272A14A8 /* Pods_The_Dog_Walker.framework */,
+				8CC72B7D6AEA19ACDFE2BD3D /* Pods_The_Dog_WalkerTests.framework */,
+				BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C38315BC1B92ED90E8C7C6CD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E4B4B925FA6CEFEEB937A1A /* Pods-The Dog Walker.debug.xcconfig */,
+				4E8ACEA42328741DF66CE40F /* Pods-The Dog Walker.release.xcconfig */,
+				89BEECA7D67CACE5DBAD6596 /* Pods-The Dog WalkerTests.debug.xcconfig */,
+				F0C9348669850476B9913E50 /* Pods-The Dog WalkerTests.release.xcconfig */,
+				B990290895BC53A9E6AB6124 /* Pods-The Dog WalkerUITests.debug.xcconfig */,
+				6B3BA7C8AA72F12D683E3AFA /* Pods-The Dog WalkerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D28A93B01EE4F03D00CF80B6 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +125,8 @@
 				D28A93D21EE4F03D00CF80B6 /* The Dog WalkerTests */,
 				D28A93DD1EE4F03D00CF80B6 /* The Dog WalkerUITests */,
 				D28A93BA1EE4F03D00CF80B6 /* Products */,
+				C38315BC1B92ED90E8C7C6CD /* Pods */,
+				9B319BF6BAA038CFDB91CB58 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +143,14 @@
 		D28A93BB1EE4F03D00CF80B6 /* The Dog Walker */ = {
 			isa = PBXGroup;
 			children = (
+				D28A93C51EE4F03D00CF80B6 /* Assets.xcassets */,
 				D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */,
 				D28A93BE1EE4F03D00CF80B6 /* FirstViewController.swift */,
 				D28A93C01EE4F03D00CF80B6 /* SecondViewController.swift */,
 				D28A93C21EE4F03D00CF80B6 /* Main.storyboard */,
-				D28A93C51EE4F03D00CF80B6 /* Assets.xcassets */,
+				D2C8F1941EE5809100F7AC65 /* Home.storyboard */,
 				D28A93C71EE4F03D00CF80B6 /* LaunchScreen.storyboard */,
-				D28A93CA1EE4F03D00CF80B6 /* Info.plist */,
+				D2C8F1931EE57FC500F7AC65 /* Info.plist */,
 			);
 			path = "The Dog Walker";
 			sourceTree = "<group>";
@@ -128,6 +173,15 @@
 			path = "The Dog WalkerUITests";
 			sourceTree = "<group>";
 		};
+		D2C8F1931EE57FC500F7AC65 /* Info.plist */ = {
+			isa = PBXGroup;
+			children = (
+				D28A93CA1EE4F03D00CF80B6 /* Info.plist */,
+				D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D28A93E31EE4F03D00CF80B6 /* Build configuration list for PBXNativeTarget "The Dog Walker" */;
 			buildPhases = (
+				82B939DABFF5ECEF6DC15AC4 /* [CP] Check Pods Manifest.lock */,
 				D28A93B51EE4F03D00CF80B6 /* Sources */,
 				D28A93B61EE4F03D00CF80B6 /* Frameworks */,
 				D28A93B71EE4F03D00CF80B6 /* Resources */,
+				219F078FCFB16DC53FC4D4D9 /* [CP] Embed Pods Frameworks */,
+				D52B9ED139CC8B4B5E352F18 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D28A93E61EE4F03D00CF80B6 /* Build configuration list for PBXNativeTarget "The Dog WalkerTests" */;
 			buildPhases = (
+				5C825723C98D3447CA20DAAC /* [CP] Check Pods Manifest.lock */,
 				D28A93CB1EE4F03D00CF80B6 /* Sources */,
 				D28A93CC1EE4F03D00CF80B6 /* Frameworks */,
 				D28A93CD1EE4F03D00CF80B6 /* Resources */,
+				F5EC3F8697F681B113C99D0C /* [CP] Embed Pods Frameworks */,
+				1E7C608CAA08352D08F20AC3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +230,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D28A93E91EE4F03D00CF80B6 /* Build configuration list for PBXNativeTarget "The Dog WalkerUITests" */;
 			buildPhases = (
+				0F15CEEC93AA42549C9DBB35 /* [CP] Check Pods Manifest.lock */,
 				D28A93D61EE4F03D00CF80B6 /* Sources */,
 				D28A93D71EE4F03D00CF80B6 /* Frameworks */,
 				D28A93D81EE4F03D00CF80B6 /* Resources */,
+				32AECB51A8480655707FBF23 /* [CP] Embed Pods Frameworks */,
+				5B282BEC1A6A5E9A1A2D160A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,6 +302,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D28A93C91EE4F03D00CF80B6 /* LaunchScreen.storyboard in Resources */,
+				D2C8F1961EE5809100F7AC65 /* Home.storyboard in Resources */,
+				D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */,
 				D28A93C61EE4F03D00CF80B6 /* Assets.xcassets in Resources */,
 				D28A93C41EE4F03D00CF80B6 /* Main.storyboard in Resources */,
 			);
@@ -259,6 +324,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F15CEEC93AA42549C9DBB35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1E7C608CAA08352D08F20AC3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-The Dog WalkerTests/Pods-The Dog WalkerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		219F078FCFB16DC53FC4D4D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-The Dog Walker/Pods-The Dog Walker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32AECB51A8480655707FBF23 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-The Dog WalkerUITests/Pods-The Dog WalkerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B282BEC1A6A5E9A1A2D160A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-The Dog WalkerUITests/Pods-The Dog WalkerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C825723C98D3447CA20DAAC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		82B939DABFF5ECEF6DC15AC4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D52B9ED139CC8B4B5E352F18 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-The Dog Walker/Pods-The Dog Walker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5EC3F8697F681B113C99D0C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-The Dog WalkerTests/Pods-The Dog WalkerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D28A93B51EE4F03D00CF80B6 /* Sources */ = {
@@ -317,6 +520,14 @@
 				D28A93C81EE4F03D00CF80B6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D2C8F1941EE5809100F7AC65 /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2C8F1951EE5809100F7AC65 /* Base */,
+			);
+			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -417,10 +628,12 @@
 		};
 		D28A93E41EE4F03D00CF80B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E4B4B925FA6CEFEEB937A1A /* Pods-The Dog Walker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6VFLGS887N;
 				INFOPLIST_FILE = "The Dog Walker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.OHara.The-Dog-Walker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -430,10 +643,12 @@
 		};
 		D28A93E51EE4F03D00CF80B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E8ACEA42328741DF66CE40F /* Pods-The Dog Walker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6VFLGS887N;
 				INFOPLIST_FILE = "The Dog Walker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.OHara.The-Dog-Walker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,6 +658,7 @@
 		};
 		D28A93E71EE4F03D00CF80B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89BEECA7D67CACE5DBAD6596 /* Pods-The Dog WalkerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -458,6 +674,7 @@
 		};
 		D28A93E81EE4F03D00CF80B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0C9348669850476B9913E50 /* Pods-The Dog WalkerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -473,6 +690,7 @@
 		};
 		D28A93EA1EE4F03D00CF80B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B990290895BC53A9E6AB6124 /* Pods-The Dog WalkerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 6VFLGS887N;
@@ -487,6 +705,7 @@
 		};
 		D28A93EB1EE4F03D00CF80B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B3BA7C8AA72F12D683E3AFA /* Pods-The Dog WalkerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 6VFLGS887N;
@@ -518,6 +737,7 @@
 				D28A93E51EE4F03D00CF80B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D28A93E61EE4F03D00CF80B6 /* Build configuration list for PBXNativeTarget "The Dog WalkerTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +746,7 @@
 				D28A93E81EE4F03D00CF80B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D28A93E91EE4F03D00CF80B6 /* Build configuration list for PBXNativeTarget "The Dog WalkerUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +755,7 @@
 				D28A93EB1EE4F03D00CF80B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

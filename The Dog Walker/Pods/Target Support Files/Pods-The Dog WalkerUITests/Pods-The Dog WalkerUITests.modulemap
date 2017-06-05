@@ -1,0 +1,6 @@
+framework module Pods_The_Dog_WalkerUITests {
+  umbrella header "Pods-The Dog WalkerUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
