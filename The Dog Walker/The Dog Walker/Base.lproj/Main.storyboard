@@ -52,7 +52,7 @@
         <!--View Controller-->
         <scene sceneID="SwO-Gl-9P1">
             <objects>
-                <viewController id="EiZ-Ai-ezB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="EiZ-Ai-ezB" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VoO-eO-bPu"/>
                         <viewControllerLayoutGuide type="bottom" id="lTI-er-IJH"/>
@@ -66,7 +66,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="Ft9-WG-fBa"/>
+                                    <segue destination="49e-Tb-3d3" kind="presentation" id="Ft9-WG-fBa"/>
                                 </connections>
                             </button>
                         </subviews>
