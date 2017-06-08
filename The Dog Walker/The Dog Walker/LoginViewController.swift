@@ -17,6 +17,11 @@ class LoginViewController: UIViewController {
     }
 
     
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> origin/master
     /*
     //MARK: -- Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
