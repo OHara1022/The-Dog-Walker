@@ -15,6 +15,7 @@
 		D28A93C91EE4F03D00CF80B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A93C71EE4F03D00CF80B6 /* LaunchScreen.storyboard */; };
 		D28A93D41EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93D31EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift */; };
 		D28A93DF1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */; };
+		D28DFC971EEF5AAA001040B9 /* OwnerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */; };
 		D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */; };
 		D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */; };
 		D2D4E64E1EEF0EB000FB7A7C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */; };
@@ -59,6 +60,7 @@
 		D28A93DA1EE4F03D00CF80B6 /* The Dog WalkerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The Dog WalkerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Dog_WalkerUITests.swift; sourceTree = "<group>"; };
 		D28A93E01EE4F03D00CF80B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfile.storyboard; sourceTree = "<group>"; };
 		D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */,
 				D2C8F1971EE5848E00F7AC65 /* Login */,
 				D2ECD9A61EEF2A2C00AC75E6 /* Register */,
+				D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */,
 				D28A93C71EE4F03D00CF80B6 /* LaunchScreen.storyboard */,
 				D2C8F1931EE57FC500F7AC65 /* Info.plist */,
 			);
@@ -321,6 +324,7 @@
 				D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */,
 				D28A93C41EE4F03D00CF80B6 /* Main.storyboard in Resources */,
 				D2D4E64E1EEF0EB000FB7A7C /* Register.storyboard in Resources */,
+				D28DFC971EEF5AAA001040B9 /* OwnerProfile.storyboard in Resources */,
 				D2D4E6521EEF19B100FB7A7C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
