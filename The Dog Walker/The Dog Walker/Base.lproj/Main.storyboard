@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_final" translatesAutoresizingMaskIntoConstraints="NO" id="QnC-cp-oO9">
-                                <rect key="frame" x="16" y="28" width="343" height="183"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="167"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SRT-gl-lDl">
                                 <rect key="frame" x="42" y="258" width="292" height="30"/>
@@ -74,21 +74,21 @@
                             <constraint firstItem="P2c-KC-Z8r" firstAttribute="width" secondItem="4x4-gF-Kea" secondAttribute="width" multiplier="0.75" id="0Lg-wn-ZJs"/>
                             <constraint firstItem="GSZ-ZC-Nbf" firstAttribute="leading" secondItem="iae-87-PCa" secondAttribute="leadingMargin" constant="46" id="2HK-M2-yf2"/>
                             <constraint firstItem="GSZ-ZC-Nbf" firstAttribute="top" secondItem="P2c-KC-Z8r" secondAttribute="bottom" constant="30" id="2o2-OY-zBT"/>
-                            <constraint firstItem="QnC-cp-oO9" firstAttribute="leading" secondItem="iae-87-PCa" secondAttribute="leading" constant="16" id="4hJ-i7-Mqy"/>
+                            <constraint firstItem="QnC-cp-oO9" firstAttribute="leading" secondItem="iae-87-PCa" secondAttribute="leading" id="4hJ-i7-Mqy"/>
                             <constraint firstItem="4x4-gF-Kea" firstAttribute="centerY" secondItem="iae-87-PCa" secondAttribute="centerY" id="BBx-Am-YON"/>
                             <constraint firstItem="SRT-gl-lDl" firstAttribute="leading" secondItem="4x4-gF-Kea" secondAttribute="leading" id="JZf-0F-kaC"/>
-                            <constraint firstAttribute="trailing" secondItem="QnC-cp-oO9" secondAttribute="trailing" constant="16" id="Peg-bN-JyO"/>
+                            <constraint firstAttribute="trailing" secondItem="QnC-cp-oO9" secondAttribute="trailing" id="Peg-bN-JyO"/>
                             <constraint firstItem="deI-FM-fyQ" firstAttribute="width" secondItem="iae-87-PCa" secondAttribute="width" multiplier="0.5" id="T6c-xN-3zx"/>
                             <constraint firstItem="SRT-gl-lDl" firstAttribute="width" secondItem="4x4-gF-Kea" secondAttribute="width" id="W4g-Dw-WYS"/>
                             <constraint firstItem="KOO-Hc-Mv6" firstAttribute="top" secondItem="deI-FM-fyQ" secondAttribute="bottom" constant="66" id="Wfd-mV-mJx"/>
                             <constraint firstItem="P2c-KC-Z8r" firstAttribute="trailing" secondItem="4x4-gF-Kea" secondAttribute="trailing" id="aay-nR-D2L"/>
                             <constraint firstItem="deI-FM-fyQ" firstAttribute="centerX" secondItem="4x4-gF-Kea" secondAttribute="centerX" id="gci-eK-vkr"/>
-                            <constraint firstItem="QnC-cp-oO9" firstAttribute="height" secondItem="iae-87-PCa" secondAttribute="height" multiplier="0.25" constant="16.25" id="neC-nL-X62"/>
+                            <constraint firstItem="QnC-cp-oO9" firstAttribute="height" secondItem="iae-87-PCa" secondAttribute="height" multiplier="0.25" id="neC-nL-X62"/>
                             <constraint firstItem="4x4-gF-Kea" firstAttribute="top" secondItem="SRT-gl-lDl" secondAttribute="bottom" constant="30" id="nh9-f9-Zza"/>
                             <constraint firstItem="deI-FM-fyQ" firstAttribute="centerX" secondItem="GSZ-ZC-Nbf" secondAttribute="centerX" constant="1" id="ofH-YK-9dZ"/>
                             <constraint firstItem="4x4-gF-Kea" firstAttribute="width" secondItem="iae-87-PCa" secondAttribute="width" multiplier="0.75" constant="10.75" id="qMf-A5-6yj"/>
                             <constraint firstItem="deI-FM-fyQ" firstAttribute="centerX" secondItem="QnC-cp-oO9" secondAttribute="centerX" id="v8e-1e-TRl"/>
-                            <constraint firstItem="QnC-cp-oO9" firstAttribute="top" secondItem="p2h-Cs-x77" secondAttribute="bottom" constant="8" id="xO2-lJ-h07"/>
+                            <constraint firstItem="QnC-cp-oO9" firstAttribute="top" secondItem="p2h-Cs-x77" secondAttribute="bottom" id="xO2-lJ-h07"/>
                             <constraint firstItem="P2c-KC-Z8r" firstAttribute="top" secondItem="4x4-gF-Kea" secondAttribute="bottom" constant="5" id="xkF-Cc-XRD"/>
                         </constraints>
                         <variation key="heightClass=regular-widthClass=compact">

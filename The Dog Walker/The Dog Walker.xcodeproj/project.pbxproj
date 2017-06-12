@@ -12,13 +12,14 @@
 		9D70D9A70E9E8ADBE05ACE6D /* Pods_The_Dog_WalkerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC72B7D6AEA19ACDFE2BD3D /* Pods_The_Dog_WalkerTests.framework */; };
 		D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */; };
 		D28A93C41EE4F03D00CF80B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A93C21EE4F03D00CF80B6 /* Main.storyboard */; };
-		D28A93C61EE4F03D00CF80B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D28A93C51EE4F03D00CF80B6 /* Assets.xcassets */; };
 		D28A93C91EE4F03D00CF80B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A93C71EE4F03D00CF80B6 /* LaunchScreen.storyboard */; };
 		D28A93D41EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93D31EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift */; };
 		D28A93DF1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */; };
 		D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */; };
 		D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */; };
 		D2D4E64E1EEF0EB000FB7A7C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */; };
+		D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */; };
+		D2D4E6521EEF19B100FB7A7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2D4E6511EEF19B100FB7A7C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,6 @@
 		D28A93B91EE4F03D00CF80B6 /* The Dog Walker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dog Walker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D28A93C31EE4F03D00CF80B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D28A93C51EE4F03D00CF80B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D28A93C81EE4F03D00CF80B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D28A93CA1EE4F03D00CF80B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D28A93CF1EE4F03D00CF80B6 /* The Dog WalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The Dog WalkerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +62,8 @@
 		D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetRegisterViewController.swift; path = "The Dog Walker/PetRegisterViewController.swift"; sourceTree = "<group>"; };
+		D2D4E6511EEF19B100FB7A7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0C9348669850476B9913E50 /* Pods-The Dog WalkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerTests/Pods-The Dog WalkerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 		D28A93B01EE4F03D00CF80B6 = {
 			isa = PBXGroup;
 			children = (
+				D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */,
 				D28A93BB1EE4F03D00CF80B6 /* The Dog Walker */,
 				D28A93D21EE4F03D00CF80B6 /* The Dog WalkerTests */,
 				D28A93DD1EE4F03D00CF80B6 /* The Dog WalkerUITests */,
@@ -141,7 +144,7 @@
 		D28A93BB1EE4F03D00CF80B6 /* The Dog Walker */ = {
 			isa = PBXGroup;
 			children = (
-				D28A93C51EE4F03D00CF80B6 /* Assets.xcassets */,
+				D2D4E6511EEF19B100FB7A7C /* Assets.xcassets */,
 				D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */,
 				D2C8F1971EE5848E00F7AC65 /* Login */,
 				D28A93C21EE4F03D00CF80B6 /* Main.storyboard */,
@@ -308,9 +311,9 @@
 			files = (
 				D28A93C91EE4F03D00CF80B6 /* LaunchScreen.storyboard in Resources */,
 				D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */,
-				D28A93C61EE4F03D00CF80B6 /* Assets.xcassets in Resources */,
 				D28A93C41EE4F03D00CF80B6 /* Main.storyboard in Resources */,
 				D2D4E64E1EEF0EB000FB7A7C /* Register.storyboard in Resources */,
+				D2D4E6521EEF19B100FB7A7C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +478,7 @@
 			files = (
 				D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
+				D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
