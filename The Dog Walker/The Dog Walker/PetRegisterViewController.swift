@@ -13,7 +13,7 @@ class PetRegisterViewController: UIViewController {
     
     @IBAction func addImage(_ sender: UIButton) {
     
-        let alert = UIAlertController(title: title, message: "HELLO", preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: "ADD IMAGE", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(alertAction)
         present(alert, animated: true)
