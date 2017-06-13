@@ -244,7 +244,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.6705882353" green="0.87843137250000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="npx-1Y-eS4" firstAttribute="height" secondItem="GtW-kF-Abi" secondAttribute="height" multiplier="0.25" id="8CU-pY-pUM"/>
                             <constraint firstItem="npx-1Y-eS4" firstAttribute="top" secondItem="pb7-VZ-pyb" secondAttribute="bottom" id="8N8-1o-NP8"/>
@@ -404,7 +404,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.87058823529999996" green="0.90980392160000001" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="5mZ-LI-rwv" firstAttribute="top" secondItem="GLi-TT-CAQ" secondAttribute="bottom" constant="15" id="0gQ-jy-BKf"/>
                                             <constraint firstItem="yy9-3w-kOB" firstAttribute="width" secondItem="B5B-bl-ehO" secondAttribute="width" id="0uK-nT-TWr"/>

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Schedules-->
         <scene sceneID="oIg-x0-cvK">
             <objects>
                 <viewController id="rQ8-dL-V1V" sceneMemberID="viewController">
@@ -22,13 +22,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="KlJ-AC-fTm"/>
+                    <tabBarItem key="tabBarItem" title="Schedules" id="KlJ-AC-fTm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Liw-ac-Rrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6087" y="1487"/>
         </scene>
-        <!--Item-->
+        <!--Payment-->
         <scene sceneID="gLH-hd-YIj">
             <objects>
                 <viewController id="1iF-Ni-lez" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="9dz-Lq-ek0"/>
+                    <tabBarItem key="tabBarItem" title="Payment" id="9dz-Lq-ek0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oby-TW-qxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -85,11 +85,11 @@
             </objects>
             <point key="canvasLocation" x="4420" y="646"/>
         </scene>
-        <!--Item 1-->
+        <!--Profile-->
         <scene sceneID="QUo-Jg-Dzm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fhE-eU-baH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="6tf-1r-ubI"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="6tf-1r-ubI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UqJ-0F-6SW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
