@@ -187,7 +187,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="LFA-rW-KG8">
                             <connections>
-                                <segue destination="JL8-uj-BdK" kind="presentation" id="J9j-bz-uGT"/>
+                                <segue destination="7cx-9M-tqu" kind="show" id="F20-Pa-dDK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -197,15 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kk2-r7-Xzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="-123"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="6h6-D2-bW7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="766-fC-t4E" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oS8-Jo-r1E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3034" y="-249"/>
+            <point key="canvasLocation" x="838" y="-124"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="etq-CA-Nex">
@@ -230,7 +222,7 @@
                                     <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8NN-oS-0cz" kind="presentation" id="3aU-GV-Aj7"/>
+                                    <segue destination="Zix-lQ-cDh" kind="show" id="zh3-yB-nzf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GW-yX-aiP">
@@ -264,17 +256,11 @@
                             <constraint firstAttribute="trailing" secondItem="npx-1Y-eS4" secondAttribute="trailing" id="rPt-XF-9B2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="Sjv-rJ-rE3">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Lq3-61-8AZ">
-                            <connections>
-                                <segue destination="766-fC-t4E" kind="presentation" modalTransitionStyle="flipHorizontal" id="RYu-GA-vy5"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Welcome" id="Sjv-rJ-rE3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kiz-eg-HRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="-90.404797601199405"/>
+            <point key="canvasLocation" x="1742" y="-125"/>
         </scene>
         <!--Main-->
         <scene sceneID="kwZ-sj-9fO">
@@ -282,7 +268,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="loginID" storyboardName="Main" id="PGr-oF-S68" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5M-S5-vOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="429"/>
+            <point key="canvasLocation" x="838" y="423"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="z5u-mF-dex">
@@ -301,24 +287,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vI-2U-HQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="79" y="-124"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="U5z-wU-fui">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JL8-uj-BdK" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zJA-IC-mvA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="7cx-9M-tqu" kind="relationship" relationship="rootViewController" id="1bb-bK-FWS"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ALb-m8-gRm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1681" y="-90"/>
         </scene>
         <!--Pet Registration-->
         <scene sceneID="OjG-Sp-mLT">
@@ -477,11 +445,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pet Registration" id="BGv-bC-h71">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="qU9-ha-rr4">
-                            <connections>
-                                <action selector="backTest:" destination="Zix-lQ-cDh" id="Vk1-wY-6e0"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="PJ2-As-0U3">
                             <connections>
                                 <segue destination="tjG-Iq-BuY" kind="presentation" id="slT-r8-GlL"/>
@@ -491,25 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7c-wA-US7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4420" y="-90"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ScO-MU-bvt">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8NN-oS-0cz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nfQ-L3-Js3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Zix-lQ-cDh" kind="relationship" relationship="rootViewController" id="Kau-Mq-frB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x4V-yA-QNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3471" y="-90"/>
+            <point key="canvasLocation" x="2652" y="-125"/>
         </scene>
         <!--OwnerProfile-->
         <scene sceneID="VbK-eh-jB0">
@@ -517,7 +462,7 @@
                 <viewControllerPlaceholder storyboardName="OwnerProfile" id="tjG-Iq-BuY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnF-Lu-6XK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4419" y="365"/>
+            <point key="canvasLocation" x="3447" y="-124"/>
         </scene>
     </scenes>
     <resources>
