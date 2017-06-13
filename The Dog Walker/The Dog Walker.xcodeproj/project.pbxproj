@@ -16,6 +16,7 @@
 		D28A93D41EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93D31EE4F03D00CF80B6 /* The_Dog_WalkerTests.swift */; };
 		D28A93DF1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */; };
 		D28DFC971EEF5AAA001040B9 /* OwnerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */; };
+		D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */; };
 		D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */; };
 		D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */; };
 		D2D4E64E1EEF0EB000FB7A7C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */; };
@@ -61,6 +62,7 @@
 		D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Dog_WalkerUITests.swift; sourceTree = "<group>"; };
 		D28A93E01EE4F03D00CF80B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfile.storyboard; sourceTree = "<group>"; };
+		D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		D2ECD9A61EEF2A2C00AC75E6 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */,
 				D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */,
 				D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */,
 			);
@@ -491,6 +494,7 @@
 				D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
 				D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */,
+				D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
