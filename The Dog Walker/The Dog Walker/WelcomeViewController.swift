@@ -1,35 +1,21 @@
 //
-//  PetRegisterViewController.swift
+//  WelcomeViewController.swift
 //  The Dog Walker
 //
-//  Created by Scott O'Hara on 6/12/17.
+//  Created by Scott O'Hara on 6/14/17.
 //  Copyright © 2017 Scott O'Hara. All rights reserved.
 //
 
 import UIKit
 
-class PetRegisterViewController: UIViewController {
-    
-    
-    @IBAction func addImage(_ sender: UIButton) {
-    
-        let alert = UIAlertController(title: title, message: "ADD IMAGE", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
-    }
-    
-    @IBAction func backTest(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+class WelcomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+
 
     /*
     // MARK: - Navigation

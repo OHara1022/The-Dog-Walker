@@ -185,7 +185,7 @@
                                 <segue destination="PGr-oF-S68" kind="presentation" modalTransitionStyle="flipHorizontal" id="0Rg-53-91k"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="LFA-rW-KG8">
+                        <barButtonItem key="rightBarButtonItem" image="sm_save" id="LFA-rW-KG8">
                             <connections>
                                 <segue destination="7cx-9M-tqu" kind="show" id="F20-Pa-dDK"/>
                             </connections>
@@ -202,7 +202,7 @@
         <!--Welcome-->
         <scene sceneID="etq-CA-Nex">
             <objects>
-                <viewController storyboardIdentifier="welcomeID" id="7cx-9M-tqu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeID" id="7cx-9M-tqu" customClass="WelcomeViewController" customModule="The_Dog_Walker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pb7-VZ-pyb"/>
                         <viewControllerLayoutGuide type="bottom" id="lgP-ZP-9yD"/>
@@ -211,7 +211,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_final" translatesAutoresizingMaskIntoConstraints="NO" id="npx-1Y-eS4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="display_icon" translatesAutoresizingMaskIntoConstraints="NO" id="npx-1Y-eS4">
                                 <rect key="frame" x="0.0" y="64" width="375" height="167"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZt-7f-A51">
@@ -260,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kiz-eg-HRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1742" y="-125"/>
+            <point key="canvasLocation" x="1510" y="-125"/>
         </scene>
         <!--Main-->
         <scene sceneID="kwZ-sj-9fO">
@@ -306,22 +306,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0di-ag-vHS">
                                         <rect key="frame" x="0.0" y="-50" width="375" height="667"/>
                                         <subviews>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tpo-Rz-zto">
-                                                <rect key="frame" x="47" y="10" width="281" height="29"/>
-                                                <segments>
-                                                    <segment title="Pet Owner"/>
-                                                    <segment title="Dog Walker"/>
-                                                </segments>
-                                            </segmentedControl>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="DEB-to-RBA">
-                                                <rect key="frame" x="140" y="53" width="95" height="82"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog" translatesAutoresizingMaskIntoConstraints="NO" id="DEB-to-RBA">
+                                                <rect key="frame" x="140" y="15" width="95" height="82"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="95" id="TD5-uy-gpk"/>
                                                     <constraint firstAttribute="height" constant="82" id="rRO-Mo-qz7"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJO-Lf-xtt">
-                                                <rect key="frame" x="139.5" y="133" width="95" height="27"/>
+                                                <rect key="frame" x="140" y="97" width="95" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="Add Pet Image"/>
                                                 <connections>
@@ -329,56 +322,56 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pet Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-bl-ehO">
-                                                <rect key="frame" x="47" y="175" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="139" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthday" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yy9-3w-kOB">
-                                                <rect key="frame" x="47" y="220" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="184" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Breed" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Iyq-n5-iCj">
-                                                <rect key="frame" x="47" y="265" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="229" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="gxU-Dh-nFo">
-                                                <rect key="frame" x="47" y="310" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="274" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vaccines?" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="mGb-ZW-L6J">
-                                                <rect key="frame" x="47" y="355" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="319" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" text="Special Instructions" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GLi-TT-CAQ">
-                                                <rect key="frame" x="47" y="400" width="281" height="66.5"/>
+                                                <rect key="frame" x="47" y="364" width="281" height="67"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
                                             </textView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Emergency Contact Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="5mZ-LI-rwv">
-                                                <rect key="frame" x="47" y="481.5" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="446" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Emergency Contact Phone Number" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lNm-nI-ir8">
-                                                <rect key="frame" x="47" y="526" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="491" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vet Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="3wg-Du-y3A">
-                                                <rect key="frame" x="47" y="571" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="536" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -389,9 +382,6 @@
                                             <constraint firstItem="5mZ-LI-rwv" firstAttribute="top" secondItem="GLi-TT-CAQ" secondAttribute="bottom" constant="15" id="0gQ-jy-BKf"/>
                                             <constraint firstItem="yy9-3w-kOB" firstAttribute="width" secondItem="B5B-bl-ehO" secondAttribute="width" id="0uK-nT-TWr"/>
                                             <constraint firstItem="GLi-TT-CAQ" firstAttribute="centerX" secondItem="mGb-ZW-L6J" secondAttribute="centerX" id="1Qz-C5-0EE"/>
-                                            <constraint firstItem="tpo-Rz-zto" firstAttribute="width" secondItem="0di-ag-vHS" secondAttribute="width" multiplier="0.75" id="4wI-Dt-XSJ"/>
-                                            <constraint firstItem="DEB-to-RBA" firstAttribute="top" secondItem="tpo-Rz-zto" secondAttribute="bottom" constant="15" id="5S9-Fl-cKW"/>
-                                            <constraint firstItem="B5B-bl-ehO" firstAttribute="width" secondItem="tpo-Rz-zto" secondAttribute="width" id="AvX-fC-Mqx"/>
                                             <constraint firstItem="eJO-Lf-xtt" firstAttribute="centerX" secondItem="DEB-to-RBA" secondAttribute="centerX" id="B6J-cg-qJB"/>
                                             <constraint firstItem="Iyq-n5-iCj" firstAttribute="width" secondItem="yy9-3w-kOB" secondAttribute="width" id="GEz-Yj-xa7"/>
                                             <constraint firstItem="gxU-Dh-nFo" firstAttribute="top" secondItem="Iyq-n5-iCj" secondAttribute="bottom" constant="15" id="Gdc-gD-UxY"/>
@@ -400,25 +390,25 @@
                                             <constraint firstItem="mGb-ZW-L6J" firstAttribute="centerX" secondItem="gxU-Dh-nFo" secondAttribute="centerX" id="MlO-oj-hTz"/>
                                             <constraint firstItem="B5B-bl-ehO" firstAttribute="top" secondItem="eJO-Lf-xtt" secondAttribute="bottom" constant="15" id="N90-5A-9cV"/>
                                             <constraint firstItem="GLi-TT-CAQ" firstAttribute="width" secondItem="mGb-ZW-L6J" secondAttribute="width" id="NEl-oy-Wwl"/>
-                                            <constraint firstItem="DEB-to-RBA" firstAttribute="centerX" secondItem="tpo-Rz-zto" secondAttribute="centerX" id="OsD-VV-QGN"/>
                                             <constraint firstItem="3wg-Du-y3A" firstAttribute="width" secondItem="lNm-nI-ir8" secondAttribute="width" id="Rgx-ND-bUU"/>
                                             <constraint firstItem="gxU-Dh-nFo" firstAttribute="width" secondItem="Iyq-n5-iCj" secondAttribute="width" id="Ttf-Rp-Zj4"/>
                                             <constraint firstItem="lNm-nI-ir8" firstAttribute="top" secondItem="5mZ-LI-rwv" secondAttribute="bottom" constant="15" id="XVI-3E-7Db"/>
                                             <constraint firstItem="3wg-Du-y3A" firstAttribute="centerX" secondItem="lNm-nI-ir8" secondAttribute="centerX" id="YYc-hJ-Svx"/>
+                                            <constraint firstItem="B5B-bl-ehO" firstAttribute="leading" secondItem="0di-ag-vHS" secondAttribute="leading" constant="47" id="cHQ-vt-GS3"/>
                                             <constraint firstItem="Iyq-n5-iCj" firstAttribute="top" secondItem="yy9-3w-kOB" secondAttribute="bottom" constant="15" id="eEg-te-boX"/>
                                             <constraint firstItem="GLi-TT-CAQ" firstAttribute="top" secondItem="mGb-ZW-L6J" secondAttribute="bottom" constant="15" id="enU-Ei-1v1"/>
+                                            <constraint firstItem="DEB-to-RBA" firstAttribute="top" secondItem="0di-ag-vHS" secondAttribute="top" constant="15" id="hmI-Te-MvQ"/>
                                             <constraint firstItem="mGb-ZW-L6J" firstAttribute="width" secondItem="gxU-Dh-nFo" secondAttribute="width" id="ipf-4W-KRz"/>
                                             <constraint firstItem="Iyq-n5-iCj" firstAttribute="centerX" secondItem="yy9-3w-kOB" secondAttribute="centerX" id="iyN-Pj-vuZ"/>
-                                            <constraint firstItem="tpo-Rz-zto" firstAttribute="centerX" secondItem="0di-ag-vHS" secondAttribute="centerX" id="jle-vf-bgp"/>
                                             <constraint firstItem="3wg-Du-y3A" firstAttribute="top" secondItem="lNm-nI-ir8" secondAttribute="bottom" constant="15" id="lC6-6F-oaK"/>
                                             <constraint firstItem="gxU-Dh-nFo" firstAttribute="centerX" secondItem="Iyq-n5-iCj" secondAttribute="centerX" id="mMS-fr-oBH"/>
+                                            <constraint firstItem="DEB-to-RBA" firstAttribute="centerX" secondItem="0di-ag-vHS" secondAttribute="centerX" id="oJz-H1-BdH"/>
                                             <constraint firstItem="yy9-3w-kOB" firstAttribute="top" secondItem="B5B-bl-ehO" secondAttribute="bottom" constant="15" id="oaN-2U-cz6"/>
                                             <constraint firstItem="GLi-TT-CAQ" firstAttribute="height" secondItem="0di-ag-vHS" secondAttribute="height" multiplier="0.1" id="q85-6A-6GO"/>
                                             <constraint firstItem="mGb-ZW-L6J" firstAttribute="top" secondItem="gxU-Dh-nFo" secondAttribute="bottom" constant="15" id="qVO-sc-dyb"/>
                                             <constraint firstItem="lNm-nI-ir8" firstAttribute="width" secondItem="5mZ-LI-rwv" secondAttribute="width" id="rLf-cb-Ich"/>
                                             <constraint firstItem="lNm-nI-ir8" firstAttribute="centerX" secondItem="5mZ-LI-rwv" secondAttribute="centerX" id="s8w-8O-Vrq"/>
-                                            <constraint firstItem="tpo-Rz-zto" firstAttribute="top" secondItem="0di-ag-vHS" secondAttribute="top" constant="10" id="smb-N3-WRh"/>
-                                            <constraint firstItem="eJO-Lf-xtt" firstAttribute="top" secondItem="DEB-to-RBA" secondAttribute="bottom" constant="-2" id="tm1-h1-axI"/>
+                                            <constraint firstItem="eJO-Lf-xtt" firstAttribute="top" secondItem="DEB-to-RBA" secondAttribute="bottom" id="tm1-h1-axI"/>
                                             <constraint firstItem="5mZ-LI-rwv" firstAttribute="width" secondItem="GLi-TT-CAQ" secondAttribute="width" id="udm-sX-rwr"/>
                                             <constraint firstItem="yy9-3w-kOB" firstAttribute="centerX" secondItem="B5B-bl-ehO" secondAttribute="centerX" id="uyS-LO-8mc"/>
                                             <constraint firstItem="B5B-bl-ehO" firstAttribute="centerX" secondItem="DEB-to-RBA" secondAttribute="centerX" id="x14-KP-ffz"/>
@@ -445,7 +435,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pet Registration" id="BGv-bC-h71">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="PJ2-As-0U3">
+                        <barButtonItem key="rightBarButtonItem" image="sm_save" id="PJ2-As-0U3">
                             <connections>
                                 <segue destination="tjG-Iq-BuY" kind="presentation" id="slT-r8-GlL"/>
                             </connections>
@@ -454,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7c-wA-US7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2652" y="-125"/>
+            <point key="canvasLocation" x="2335" y="-114"/>
         </scene>
         <!--OwnerProfile-->
         <scene sceneID="VbK-eh-jB0">
@@ -462,11 +452,12 @@
                 <viewControllerPlaceholder storyboardName="OwnerProfile" id="tjG-Iq-BuY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnF-Lu-6XK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3447" y="-124"/>
+            <point key="canvasLocation" x="3072" y="-125"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="50" height="50"/>
-        <image name="icon_final" width="1024" height="625"/>
+        <image name="display_icon" width="1024" height="625"/>
+        <image name="dog" width="50" height="50"/>
+        <image name="sm_save" width="24" height="24"/>
     </resources>
 </document>
