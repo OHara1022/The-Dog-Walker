@@ -10,39 +10,41 @@ import UIKit
 
 class PetProfileViewController: UIViewController {
     
-    //MARK: -- outlets
-    @IBOutlet weak var segmentedController: UISegmentedControl!
-    @IBOutlet weak var profileView: UIView!
-    
     //enum for tab index
     enum SegmentIndex: Int {
         case petIndex = 0
         case ownerIndex = 1
     }
     
+    //MARK: -- outlets
+    @IBOutlet weak var segmentedController: UISegmentedControl!
+    @IBOutlet weak var profileView: UIView!
+
     //MARK: -- actions
     @IBAction func switchProfile(_ sender: UISegmentedControl) {
-        
+        //remove current vc from view on selection change
         self.currentVC!.view.removeFromSuperview()
         self.currentVC!.removeFromParentViewController()
-        
-        displayCurrentTab(sender.selectedSegmentIndex)
+        //display selected tab
+        displaySelectedTab(sender.selectedSegmentIndex)
     }
     
-    //TODO: --transition to edit profile
+    //transition to edit screen
     @IBAction func editProfile(_ sender: UIBarButtonItem) {
         //dev
         print("EDIT")
         
+        //chekc selected VC
         if (selectedIndex(0) == currentVC){
             
-            present(editVC!, animated: true, completion: nil)
+            //present pet profile editVC
+            show(editVC!, sender: nil)
             
         }else if selectedIndex(1) == currentVC{
             
+              //present owner profile editVC
             present(editVC2!, animated: true, completion: nil)
         }
-        
     }
     
     //MARK: -- stored properties
@@ -67,7 +69,7 @@ class PetProfileViewController: UIViewController {
     
     lazy var editVC: UIViewController? = {
         
-        let editVC = self.storyboard?.instantiateViewController(withIdentifier: "tableTest")
+        let editVC = self.storyboard?.instantiateViewController(withIdentifier: "editPet")
         return editVC
     }()
     
@@ -82,21 +84,24 @@ class PetProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //set inital index for segmentController
         segmentedController.selectedSegmentIndex = SegmentIndex.petIndex.rawValue
-        displayCurrentTab(SegmentIndex.petIndex.rawValue)
+        //display tab 1
+        displaySelectedTab(SegmentIndex.petIndex.rawValue)
         
     }
     
     //MARK: --viewWillDisappear
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if let currentVC = currentVC{
-            currentVC.viewWillDisappear(animated)
-        }
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        
+//        if let currentVC = currentVC{
+//            currentVC.viewWillDisappear(animated)
+//        }
+//    }
     
     //func to display current tab
-    func displayCurrentTab(_ tabIndex: Int){
+    func displaySelectedTab(_ tabIndex: Int){
         
         //optional bind selectedVC
         if let selectedVC = selectedIndex(tabIndex){

@@ -11,6 +11,9 @@
 		75C1E6C5D93C444FBB170ED7 /* Pods_The_Dog_WalkerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */; };
 		9D70D9A70E9E8ADBE05ACE6D /* Pods_The_Dog_WalkerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC72B7D6AEA19ACDFE2BD3D /* Pods_The_Dog_WalkerTests.framework */; };
 		D2149B971EF2139700EFFBB0 /* PetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2149B961EF2139700EFFBB0 /* PetDetailsViewController.swift */; };
+		D21CEF5F1EF3012E00DF8602 /* OwnerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF5E1EF3012E00DF8602 /* OwnerProfileViewController.swift */; };
+		D21CEF611EF3014200DF8602 /* EditPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF601EF3014200DF8602 /* EditPetViewController.swift */; };
+		D21CEF631EF3015800DF8602 /* EditOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */; };
 		D27072331EF0ED720073501E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27072321EF0ED720073501E /* WelcomeViewController.swift */; };
 		D27072351EF0F6410073501E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27072341EF0F6410073501E /* Assets.xcassets */; };
 		D27F61F51EF1A7E4006258AA /* PetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F61F41EF1A7E4006258AA /* PetProfileViewController.swift */; };
@@ -54,6 +57,9 @@
 		B990290895BC53A9E6AB6124 /* Pods-The Dog WalkerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerUITests/Pods-The Dog WalkerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Dog_WalkerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2149B961EF2139700EFFBB0 /* PetDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDetailsViewController.swift; sourceTree = "<group>"; };
+		D21CEF5E1EF3012E00DF8602 /* OwnerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProfileViewController.swift; sourceTree = "<group>"; };
+		D21CEF601EF3014200DF8602 /* EditPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPetViewController.swift; sourceTree = "<group>"; };
+		D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOwnerViewController.swift; sourceTree = "<group>"; };
 		D27072321EF0ED720073501E /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D27072341EF0F6410073501E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D27F61F41EF1A7E4006258AA /* PetProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetProfileViewController.swift; sourceTree = "<group>"; };
@@ -132,8 +138,11 @@
 			isa = PBXGroup;
 			children = (
 				D27F61F41EF1A7E4006258AA /* PetProfileViewController.swift */,
-				D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */,
 				D2149B961EF2139700EFFBB0 /* PetDetailsViewController.swift */,
+				D21CEF5E1EF3012E00DF8602 /* OwnerProfileViewController.swift */,
+				D21CEF601EF3014200DF8602 /* EditPetViewController.swift */,
+				D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */,
+				D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */,
 			);
 			name = OwnerProfile;
 			sourceTree = "<group>";
@@ -214,8 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */,
-				D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */,
 				D27072321EF0ED720073501E /* WelcomeViewController.swift */,
+				D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */,
 				D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */,
 			);
 			name = Register;
@@ -510,10 +519,13 @@
 			files = (
 				D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */,
 				D2149B971EF2139700EFFBB0 /* PetDetailsViewController.swift in Sources */,
+				D21CEF631EF3015800DF8602 /* EditOwnerViewController.swift in Sources */,
 				D27072331EF0ED720073501E /* WelcomeViewController.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
+				D21CEF5F1EF3012E00DF8602 /* OwnerProfileViewController.swift in Sources */,
 				D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */,
 				D27F61F51EF1A7E4006258AA /* PetProfileViewController.swift in Sources */,
+				D21CEF611EF3014200DF8602 /* EditPetViewController.swift in Sources */,
 				D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

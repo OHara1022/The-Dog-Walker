@@ -10,15 +10,11 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
-    
-    //TODO: Optimize onboarding to register for Alpha
-    @IBOutlet weak var walkerOrOwner: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        walkerOrOwner.isHidden = true
+       
     }
 
    
