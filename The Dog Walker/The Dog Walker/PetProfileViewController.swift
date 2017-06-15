@@ -45,8 +45,6 @@ class PetProfileViewController: UIViewController {
         
     }
     
-
-    
     //MARK: -- stored properties
     var currentVC: UIViewController?
     

@@ -106,19 +106,12 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Are you a dog walker or pet owner?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e8l-jO-H4V">
-                                                <rect key="frame" x="47" y="472" width="281" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="hP0-Uw-hn3" firstAttribute="top" secondItem="xng-ZN-r2B" secondAttribute="bottom" constant="15" id="02R-FZ-gdr"/>
                                             <constraint firstItem="7g1-zL-1Bx" firstAttribute="centerX" secondItem="ZPI-0k-8DL" secondAttribute="centerX" id="1CG-P8-rhm"/>
                                             <constraint firstItem="YQQ-nj-nep" firstAttribute="width" secondItem="Cdb-WF-iLJ" secondAttribute="width" id="1VM-56-FpQ"/>
-                                            <constraint firstItem="e8l-jO-H4V" firstAttribute="top" secondItem="7g1-zL-1Bx" secondAttribute="bottom" constant="15" id="1uU-3x-YXX"/>
                                             <constraint firstItem="h5n-Nk-jxo" firstAttribute="top" secondItem="YQQ-nj-nep" secondAttribute="bottom" constant="15" id="2FG-E2-vUk"/>
                                             <constraint firstItem="Cdb-WF-iLJ" firstAttribute="top" secondItem="XQL-xE-cgC" secondAttribute="bottom" constant="5" id="37i-u4-Xzz"/>
                                             <constraint firstItem="A5m-Ht-Je5" firstAttribute="top" secondItem="d0a-Ua-7M6" secondAttribute="bottom" constant="15" id="3Uq-9F-U7r"/>
@@ -129,7 +122,6 @@
                                             <constraint firstItem="YQQ-nj-nep" firstAttribute="centerX" secondItem="Cdb-WF-iLJ" secondAttribute="centerX" id="8dc-er-qLy"/>
                                             <constraint firstItem="kiZ-6V-gDN" firstAttribute="width" secondItem="A5m-Ht-Je5" secondAttribute="width" id="8mD-Sq-Y1P"/>
                                             <constraint firstItem="ZPI-0k-8DL" firstAttribute="centerX" secondItem="YQQ-nj-nep" secondAttribute="centerX" id="9c6-ob-Jc2"/>
-                                            <constraint firstItem="e8l-jO-H4V" firstAttribute="width" secondItem="7g1-zL-1Bx" secondAttribute="width" id="AII-p2-Imr"/>
                                             <constraint firstItem="hP0-Uw-hn3" firstAttribute="centerX" secondItem="xng-ZN-r2B" secondAttribute="centerX" id="B43-Ac-acC"/>
                                             <constraint firstItem="A5m-Ht-Je5" firstAttribute="centerX" secondItem="d0a-Ua-7M6" secondAttribute="centerX" id="DcP-z4-YTT"/>
                                             <constraint firstItem="xng-ZN-r2B" firstAttribute="width" secondItem="2z9-Ry-I3x" secondAttribute="width" id="E8c-1m-Xmq"/>
@@ -154,7 +146,6 @@
                                             <constraint firstItem="XQL-xE-cgC" firstAttribute="centerX" secondItem="hP0-Uw-hn3" secondAttribute="centerX" id="lcd-Q8-zfo"/>
                                             <constraint firstItem="ZPI-0k-8DL" firstAttribute="width" secondItem="ltM-nJ-vJc" secondAttribute="width" multiplier="0.75" id="rVt-Mn-og9"/>
                                             <constraint firstItem="2z9-Ry-I3x" firstAttribute="centerX" secondItem="ltM-nJ-vJc" secondAttribute="centerX" id="thN-hs-3sf"/>
-                                            <constraint firstItem="e8l-jO-H4V" firstAttribute="centerX" secondItem="7g1-zL-1Bx" secondAttribute="centerX" id="vGQ-x6-xaX"/>
                                             <constraint firstItem="Cdb-WF-iLJ" firstAttribute="width" secondItem="XQL-xE-cgC" secondAttribute="width" id="x2h-Ip-TfC"/>
                                             <constraint firstItem="Cdb-WF-iLJ" firstAttribute="centerX" secondItem="XQL-xE-cgC" secondAttribute="centerX" id="yd6-fN-ZPh"/>
                                         </constraints>
@@ -191,9 +182,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="walkerOrOwner" destination="e8l-jO-H4V" id="N0N-mV-Jyh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kk2-r7-Xzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -260,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kiz-eg-HRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1510" y="-125"/>
+            <point key="canvasLocation" x="1591" y="-125"/>
         </scene>
         <!--Main-->
         <scene sceneID="kwZ-sj-9fO">
