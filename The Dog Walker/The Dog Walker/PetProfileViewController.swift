@@ -53,7 +53,7 @@ class PetProfileViewController: UIViewController {
     //refenerce to pet profile VC - instantiant petProfilr VC
     lazy var petVC: UIViewController? = {
         //init petVC w/ identifier
-        let petVC = self.storyboard?.instantiateViewController(withIdentifier: "petTest")
+        let petVC = self.storyboard?.instantiateViewController(withIdentifier: "petProfile")
         //return vc
         return petVC
     }()
