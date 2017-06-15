@@ -10,7 +10,7 @@ import UIKit
 
 class PetProfileViewController: UIViewController {
     
-    //MARK: -- 0utlets
+    //MARK: -- outlets
     @IBOutlet weak var segmentedController: UISegmentedControl!
     @IBOutlet weak var profileView: UIView!
     
@@ -20,6 +20,33 @@ class PetProfileViewController: UIViewController {
         case ownerIndex = 1
     }
     
+    //MARK: -- actions
+    @IBAction func switchProfile(_ sender: UISegmentedControl) {
+        
+        self.currentVC!.view.removeFromSuperview()
+        self.currentVC!.removeFromParentViewController()
+        
+        displayCurrentTab(sender.selectedSegmentIndex)
+    }
+    
+    //TODO: --transition to edit profile
+    @IBAction func editProfile(_ sender: UIBarButtonItem) {
+        //dev
+        print("EDIT")
+        
+        if (selectedIndex(0) == currentVC){
+            
+            present(editVC!, animated: true, completion: nil)
+            
+        }else if selectedIndex(1) == currentVC{
+            
+            present(editVC2!, animated: true, completion: nil)
+        }
+        
+    }
+    
+
+    
     //MARK: -- stored properties
     var currentVC: UIViewController?
     
@@ -27,7 +54,7 @@ class PetProfileViewController: UIViewController {
     lazy var petVC: UIViewController? = {
         //init petVC w/ identifier
         let petVC = self.storyboard?.instantiateViewController(withIdentifier: "petProfile")
-        //return vc 
+        //return vc
         return petVC
     }()
     
@@ -40,20 +67,40 @@ class PetProfileViewController: UIViewController {
         return ownerVC
     }()
     
+    lazy var editVC: UIViewController? = {
+        
+        let editVC = self.storyboard?.instantiateViewController(withIdentifier: "tableTest")
+        return editVC
+    }()
+    
+    lazy var editVC2: UIViewController? = {
+        
+        let editVC = self.storyboard?.instantiateViewController(withIdentifier: "tableTest2")
+        return editVC
+    }()
+    
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         segmentedController.selectedSegmentIndex = SegmentIndex.petIndex.rawValue
         displayCurrentTab(SegmentIndex.petIndex.rawValue)
+        
     }
-  
     
+    //MARK: --viewWillDisappear
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let currentVC = currentVC{
+            currentVC.viewWillDisappear(animated)
+        }
+    }
     
+    //func to display current tab
     func displayCurrentTab(_ tabIndex: Int){
         
-        //optional bind
+        //optional bind selectedVC
         if let selectedVC = selectedIndex(tabIndex){
             
             //add selected VC as childVC
@@ -67,23 +114,32 @@ class PetProfileViewController: UIViewController {
         }
     }
     
-    
+    //func for selectedIndex
     func selectedIndex(_ index: Int) -> UIViewController? {
         
         var selectedVC: UIViewController?
         
+        //switch index
         switch index {
-            
+        //pet index
         case SegmentIndex.petIndex.rawValue:
+            //set pet vc to selectedVC
             selectedVC = petVC
+            
+        //owner index
+        case SegmentIndex.ownerIndex.rawValue:
+            //set owner vc to selectedVC
+            selectedVC = ownerVC
             
         default:
             break
         }
+        
+        //return selectedVC
         return selectedVC
     }
     
-
+    
 }
 
 /*
