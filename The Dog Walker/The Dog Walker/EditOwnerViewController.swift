@@ -9,6 +9,13 @@
 import UIKit
 
 class EditOwnerViewController: UIViewController {
+    
+    
+    @IBAction func saveProfile(_ sender: UIBarButtonItem) {
+        
+        print("SAVE PROFILE")
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

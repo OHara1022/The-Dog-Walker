@@ -38,12 +38,12 @@ class PetProfileViewController: UIViewController {
         if (selectedIndex(0) == currentVC){
             
             //present pet profile editVC
-            show(editVC!, sender: nil)
+            show(editPetVC!, sender: nil)
             
         }else if selectedIndex(1) == currentVC{
             
               //present owner profile editVC
-            present(editVC2!, animated: true, completion: nil)
+             show(editOwnerVC!, sender: nil)
         }
     }
     
@@ -53,7 +53,7 @@ class PetProfileViewController: UIViewController {
     //refenerce to pet profile VC - instantiant petProfilr VC
     lazy var petVC: UIViewController? = {
         //init petVC w/ identifier
-        let petVC = self.storyboard?.instantiateViewController(withIdentifier: "petProfile")
+        let petVC = self.storyboard?.instantiateViewController(withIdentifier: "petTest")
         //return vc
         return petVC
     }()
@@ -67,16 +67,16 @@ class PetProfileViewController: UIViewController {
         return ownerVC
     }()
     
-    lazy var editVC: UIViewController? = {
+    lazy var editPetVC: UIViewController? = {
         
-        let editVC = self.storyboard?.instantiateViewController(withIdentifier: "editPet")
-        return editVC
+        let editPetVC = self.storyboard?.instantiateViewController(withIdentifier: "editPet")
+        return editPetVC
     }()
     
-    lazy var editVC2: UIViewController? = {
+    lazy var editOwnerVC: UIViewController? = {
         
-        let editVC = self.storyboard?.instantiateViewController(withIdentifier: "tableTest2")
-        return editVC
+        let editOwnerVC = self.storyboard?.instantiateViewController(withIdentifier: "editOwner")
+        return editOwnerVC
     }()
     
     
