@@ -232,6 +232,9 @@
                                 <state key="normal" title="Are you a dog walker?">
                                     <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="spP-TP-bV9" kind="presentation" id="3kH-QZ-HhU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -460,6 +463,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnF-Lu-6XK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3072" y="-125"/>
+        </scene>
+        <!--WalkerHome-->
+        <scene sceneID="WBE-F1-7Jk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WalkerHome" id="spP-TP-bV9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aut-iz-aHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1590" y="423"/>
         </scene>
     </scenes>
     <resources>

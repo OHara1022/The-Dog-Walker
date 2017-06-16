@@ -21,7 +21,7 @@
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduleCell" id="pFG-W4-e2T">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerScheduleCell" id="pFG-W4-e2T">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pFG-W4-e2T" id="VBm-B1-pAD">
@@ -172,7 +172,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4/13/2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-do-HZR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ohara@me.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-do-HZR">
                                 <rect key="frame" x="30" y="223" width="281.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -245,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKR-QZ-nW5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5300" y="2235"/>
+            <point key="canvasLocation" x="4890" y="2206"/>
         </scene>
         <!--Pet Details Table View Controller-->
         <scene sceneID="JzB-fh-bVU">
@@ -547,7 +547,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgU-PR-R6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4466" y="2235"/>
+            <point key="canvasLocation" x="4015" y="2194"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IGs-R2-RXY">
@@ -777,7 +777,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJu-aS-SZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4069" y="3026"/>
+            <point key="canvasLocation" x="4306" y="2946"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="66c-CD-8i9">
@@ -954,12 +954,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oj1-iY-Iut" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5985" y="2875"/>
+            <point key="canvasLocation" x="5862" y="2946"/>
         </scene>
         <!--Pet Details View Controller-->
         <scene sceneID="6Ee-Vo-7co">
             <objects>
-                <viewController storyboardIdentifier="test" id="Kvu-WA-2Nu" customClass="PetDetailsViewController" customModule="The_Dog_Walker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailTest" id="Kvu-WA-2Nu" customClass="PetDetailsViewController" customModule="The_Dog_Walker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Enn-fD-TXd"/>
                         <viewControllerLayoutGuide type="bottom" id="4Jf-y6-Los"/>
@@ -1156,7 +1156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ge2-kC-q8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692" y="1960"/>
+            <point key="canvasLocation" x="2586" y="2236"/>
         </scene>
         <!--Create Schedule-->
         <scene sceneID="lCI-sH-Vm8">
@@ -1334,7 +1334,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mz-iF-coa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5110" y="2932"/>
+            <point key="canvasLocation" x="5060" y="2946"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tI6-F6-bun">
