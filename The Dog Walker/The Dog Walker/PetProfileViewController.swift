@@ -11,7 +11,7 @@ import UIKit
 class PetProfileViewController: UIViewController {
     
     //enum for tab index
-    enum SegmentIndex: Int {
+    enum SegmentIndexTab: Int {
         case petIndex = 0
         case ownerIndex = 1
     }
@@ -50,7 +50,7 @@ class PetProfileViewController: UIViewController {
     //MARK: -- stored properties
     var currentVC: UIViewController?
     
-    //refenerce to pet profile VC - instantiant petProfilr VC
+    //refenerce to pet profile VC - instantiant petProfile VC
     lazy var petVC: UIViewController? = {
         //init petVC w/ identifier
         let petVC = self.storyboard?.instantiateViewController(withIdentifier: "petProfile")
@@ -85,9 +85,9 @@ class PetProfileViewController: UIViewController {
         super.viewDidLoad()
         
         //set inital index for segmentController
-        segmentedController.selectedSegmentIndex = SegmentIndex.petIndex.rawValue
+        segmentedController.selectedSegmentIndex = SegmentIndexTab.petIndex.rawValue
         //display tab 1
-        displaySelectedTab(SegmentIndex.petIndex.rawValue)
+        displaySelectedTab(SegmentIndexTab.petIndex.rawValue)
         
     }
     
@@ -102,7 +102,7 @@ class PetProfileViewController: UIViewController {
             self.addChildViewController(selectedVC)
             //move selectedVC to partentVC
             selectedVC.didMove(toParentViewController: self)
-            //add selectedVC as subView of parentVC
+            //add selectedVC as subView of container view
             self.profileView.addSubview(selectedVC.view)
             //add selected VC to currentVC
             self.currentVC = selectedVC
@@ -117,12 +117,12 @@ class PetProfileViewController: UIViewController {
         //switch index
         switch index {
         //pet index
-        case SegmentIndex.petIndex.rawValue:
+        case SegmentIndexTab.petIndex.rawValue:
             //set pet vc to selectedVC
             selectedVC = petVC
             
         //owner index
-        case SegmentIndex.ownerIndex.rawValue:
+        case SegmentIndexTab.ownerIndex.rawValue:
             //set owner vc to selectedVC
             selectedVC = ownerVC
             
