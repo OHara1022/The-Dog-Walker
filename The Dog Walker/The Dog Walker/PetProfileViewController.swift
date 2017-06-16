@@ -38,13 +38,11 @@ class PetProfileViewController: UIViewController {
         if (selectedIndex(0) == currentVC){
             
             //present pet profile editVC
-//            show(editPetVC!, sender: nil)
             present(editPetVC!, animated: true, completion: nil)
             
         }else if selectedIndex(1) == currentVC{
             
               //present owner profile editVC
-//             show(editOwnerVC!, sender: nil)
             present(editOwnerVC!, animated: true, completion: nil)
         }
     }
