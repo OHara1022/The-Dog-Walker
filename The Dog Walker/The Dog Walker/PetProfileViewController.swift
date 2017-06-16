@@ -91,14 +91,6 @@ class PetProfileViewController: UIViewController {
         
     }
     
-    //MARK: --viewWillDisappear
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        
-//        if let currentVC = currentVC{
-//            currentVC.viewWillDisappear(animated)
-//        }
-//    }
     
     //func to display current tab
     func displaySelectedTab(_ tabIndex: Int){

@@ -10,6 +10,9 @@ import UIKit
 
 class PetDetailsTableViewController: UITableViewController {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +21,8 @@ class PetDetailsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +39,7 @@ class PetDetailsTableViewController: UITableViewController {
 
 //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        // #warning Incomplete implementation, return the number of rows
-//        return 9
+//        return 1
 //    }
 
     /*
