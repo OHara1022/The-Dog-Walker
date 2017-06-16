@@ -12,6 +12,8 @@
 		9D70D9A70E9E8ADBE05ACE6D /* Pods_The_Dog_WalkerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC72B7D6AEA19ACDFE2BD3D /* Pods_The_Dog_WalkerTests.framework */; };
 		D2149B971EF2139700EFFBB0 /* PetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2149B961EF2139700EFFBB0 /* PetDetailsViewController.swift */; };
 		D217B31D1EF3453500785F88 /* PetDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B31C1EF3453500785F88 /* PetDetailsTableViewController.swift */; };
+		D217B3231EF36F7400785F88 /* OwnerScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B3221EF36F7400785F88 /* OwnerScheduleTableViewController.swift */; };
+		D217B3251EF36FBD00785F88 /* CreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B3241EF36FBD00785F88 /* CreateScheduleViewController.swift */; };
 		D21CEF5F1EF3012E00DF8602 /* OwnerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF5E1EF3012E00DF8602 /* OwnerProfileViewController.swift */; };
 		D21CEF611EF3014200DF8602 /* EditPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF601EF3014200DF8602 /* EditPetViewController.swift */; };
 		D21CEF631EF3015800DF8602 /* EditOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */; };
@@ -59,6 +61,8 @@
 		BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Dog_WalkerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2149B961EF2139700EFFBB0 /* PetDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDetailsViewController.swift; sourceTree = "<group>"; };
 		D217B31C1EF3453500785F88 /* PetDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDetailsTableViewController.swift; sourceTree = "<group>"; };
+		D217B3221EF36F7400785F88 /* OwnerScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerScheduleTableViewController.swift; sourceTree = "<group>"; };
+		D217B3241EF36FBD00785F88 /* CreateScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateScheduleViewController.swift; sourceTree = "<group>"; };
 		D21CEF5E1EF3012E00DF8602 /* OwnerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProfileViewController.swift; sourceTree = "<group>"; };
 		D21CEF601EF3014200DF8602 /* EditPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPetViewController.swift; sourceTree = "<group>"; };
 		D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOwnerViewController.swift; sourceTree = "<group>"; };
@@ -136,7 +140,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D27F61F71EF1B251006258AA /* OwnerProfile */ = {
+		D217B3201EF36DF100785F88 /* Owner */ = {
 			isa = PBXGroup;
 			children = (
 				D27F61F41EF1A7E4006258AA /* PetProfileViewController.swift */,
@@ -145,6 +149,24 @@
 				D21CEF601EF3014200DF8602 /* EditPetViewController.swift */,
 				D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */,
 				D2149B961EF2139700EFFBB0 /* PetDetailsViewController.swift */,
+			);
+			name = Owner;
+			sourceTree = "<group>";
+		};
+		D217B3211EF36F5100785F88 /* OwnerSchedules */ = {
+			isa = PBXGroup;
+			children = (
+				D217B3221EF36F7400785F88 /* OwnerScheduleTableViewController.swift */,
+				D217B3241EF36FBD00785F88 /* CreateScheduleViewController.swift */,
+			);
+			name = OwnerSchedules;
+			sourceTree = "<group>";
+		};
+		D27F61F71EF1B251006258AA /* OwnerProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D217B3201EF36DF100785F88 /* Owner */,
+				D217B3211EF36F5100785F88 /* OwnerSchedules */,
 				D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */,
 			);
 			name = OwnerProfile;
@@ -524,8 +546,10 @@
 				D2149B971EF2139700EFFBB0 /* PetDetailsViewController.swift in Sources */,
 				D21CEF631EF3015800DF8602 /* EditOwnerViewController.swift in Sources */,
 				D27072331EF0ED720073501E /* WelcomeViewController.swift in Sources */,
+				D217B3231EF36F7400785F88 /* OwnerScheduleTableViewController.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
 				D21CEF5F1EF3012E00DF8602 /* OwnerProfileViewController.swift in Sources */,
+				D217B3251EF36FBD00785F88 /* CreateScheduleViewController.swift in Sources */,
 				D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */,
 				D27F61F51EF1A7E4006258AA /* PetProfileViewController.swift in Sources */,
 				D217B31D1EF3453500785F88 /* PetDetailsTableViewController.swift in Sources */,

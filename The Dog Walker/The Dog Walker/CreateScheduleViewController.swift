@@ -1,5 +1,5 @@
 //
-//  EditPetViewController.swift
+//  CreateScheduleViewController.swift
 //  The Dog Walker
 //
 //  Created by Scott O'Hara on 6/15/17.
@@ -8,34 +8,24 @@
 
 import UIKit
 
-class EditPetViewController: UIViewController {
+class CreateScheduleViewController: UIViewController {
     
-    
-    @IBAction func savePetChanges(_ sender: Any) {
+    @IBAction func saveSchedule(_ sender: Any) {
         
         //dev
-        print("save pet changes")
+        print("save schedule")
         dismiss(animated: true, completion: nil)
+      
     }
     
-    @IBAction func cancelPetEdit(_ sender: Any) {
+    @IBAction func cancelSchedule(_ sender: Any) {
         //dev
-        print("canceil pet changes")
-        dismiss(animated: true, completion: nil)
+        print("cancel schedule")
+          dismiss(animated: true, completion: nil)
     }
+   
     
     
-    
-    @IBAction func changeImage(_ sender: UIButton) {
-        
-        let alert = UIAlertController(title: title, message: "OPEN CAMERA", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
-        
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

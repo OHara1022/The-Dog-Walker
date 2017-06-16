@@ -10,13 +10,21 @@ import UIKit
 
 class EditOwnerViewController: UIViewController {
     
-    
-    @IBAction func saveProfile(_ sender: UIBarButtonItem) {
+    @IBAction func saveOwnerChanges(_ sender: Any) {
         
-        print("SAVE PROFILE")
+        //dev
+        print("save owner changes")
+        dismiss(animated: true, completion: nil)
+        
     }
-    
 
+    @IBAction func cancelEditOwner(_ sender: Any) {
+        
+        //dev
+        print("cancel owner changes")
+        dismiss(animated: true, completion: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

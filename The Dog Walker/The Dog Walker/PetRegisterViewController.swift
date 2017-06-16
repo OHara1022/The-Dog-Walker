@@ -19,9 +19,9 @@ class PetRegisterViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    @IBAction func backTest(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func backTest(_ sender: Any) {
+//        dismiss(animated: true, completion: nil)
+//    }
     
 
     override func viewDidLoad() {

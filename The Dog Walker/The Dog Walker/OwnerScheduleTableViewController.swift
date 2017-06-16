@@ -1,5 +1,5 @@
 //
-//  PetDetailsTableViewController.swift
+//  OwnerScheduleTableViewController.swift
 //  The Dog Walker
 //
 //  Created by Scott O'Hara on 6/15/17.
@@ -8,21 +8,8 @@
 
 import UIKit
 
-class PetDetailsTableViewController: UITableViewController {
+class OwnerScheduleTableViewController: UITableViewController {
 
-    @IBOutlet weak var dateLabel: UILabel!
-    
-    @IBAction func addPet(_ sender: UIButton) {
-        
-        let alert = UIAlertController(title: title, message: "Add Pet will be in future release", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
-        
-    }
-
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,8 +18,6 @@ class PetDetailsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,16 +26,16 @@ class PetDetailsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
 
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 1
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
