@@ -10,13 +10,12 @@
 		3AA18333D5948C691D4DEB3B /* Pods_The_Dog_Walker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EABD0474B655656272A14A8 /* Pods_The_Dog_Walker.framework */; };
 		75C1E6C5D93C444FBB170ED7 /* Pods_The_Dog_WalkerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */; };
 		9D70D9A70E9E8ADBE05ACE6D /* Pods_The_Dog_WalkerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC72B7D6AEA19ACDFE2BD3D /* Pods_The_Dog_WalkerTests.framework */; };
-		D2149B971EF2139700EFFBB0 /* PetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2149B961EF2139700EFFBB0 /* PetDetailsViewController.swift */; };
 		D217B31D1EF3453500785F88 /* PetDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B31C1EF3453500785F88 /* PetDetailsTableViewController.swift */; };
 		D217B3231EF36F7400785F88 /* OwnerScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B3221EF36F7400785F88 /* OwnerScheduleTableViewController.swift */; };
 		D217B3251EF36FBD00785F88 /* CreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B3241EF36FBD00785F88 /* CreateScheduleViewController.swift */; };
-		D21CEF5F1EF3012E00DF8602 /* OwnerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF5E1EF3012E00DF8602 /* OwnerProfileViewController.swift */; };
 		D21CEF611EF3014200DF8602 /* EditPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF601EF3014200DF8602 /* EditPetViewController.swift */; };
 		D21CEF631EF3015800DF8602 /* EditOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */; };
+		D23FE2211EF4472700636F8F /* ClientPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23FE2201EF4472700636F8F /* ClientPetTableViewController.swift */; };
 		D27072331EF0ED720073501E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27072321EF0ED720073501E /* WelcomeViewController.swift */; };
 		D27072351EF0F6410073501E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27072341EF0F6410073501E /* Assets.xcassets */; };
 		D27E9CB01EF3884900377A72 /* WalkerHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27E9CAF1EF3884900377A72 /* WalkerHome.storyboard */; };
@@ -34,6 +33,8 @@
 		D28A93DF1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */; };
 		D28DFC971EEF5AAA001040B9 /* OwnerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */; };
 		D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */; };
+		D2AB901F1EF4565900A05FEE /* OwnerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */; };
+		D2AB90211EF4584A00A05FEE /* WalkerSchedules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AB90201EF4584A00A05FEE /* WalkerSchedules.storyboard */; };
 		D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */; };
 		D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */; };
 		D2D4E64E1EEF0EB000FB7A7C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */; };
@@ -66,13 +67,12 @@
 		8E4B4B925FA6CEFEEB937A1A /* Pods-The Dog Walker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog Walker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog Walker/Pods-The Dog Walker.debug.xcconfig"; sourceTree = "<group>"; };
 		B990290895BC53A9E6AB6124 /* Pods-The Dog WalkerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerUITests/Pods-The Dog WalkerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Dog_WalkerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2149B961EF2139700EFFBB0 /* PetDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDetailsViewController.swift; sourceTree = "<group>"; };
 		D217B31C1EF3453500785F88 /* PetDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDetailsTableViewController.swift; sourceTree = "<group>"; };
 		D217B3221EF36F7400785F88 /* OwnerScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerScheduleTableViewController.swift; sourceTree = "<group>"; };
 		D217B3241EF36FBD00785F88 /* CreateScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateScheduleViewController.swift; sourceTree = "<group>"; };
-		D21CEF5E1EF3012E00DF8602 /* OwnerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProfileViewController.swift; sourceTree = "<group>"; };
 		D21CEF601EF3014200DF8602 /* EditPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPetViewController.swift; sourceTree = "<group>"; };
 		D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOwnerViewController.swift; sourceTree = "<group>"; };
+		D23FE2201EF4472700636F8F /* ClientPetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientPetTableViewController.swift; sourceTree = "<group>"; };
 		D27072321EF0ED720073501E /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D27072341EF0F6410073501E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D27E9CAF1EF3884900377A72 /* WalkerHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalkerHome.storyboard; sourceTree = "<group>"; };
@@ -96,6 +96,8 @@
 		D28A93E01EE4F03D00CF80B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfile.storyboard; sourceTree = "<group>"; };
 		D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProfileTableViewController.swift; sourceTree = "<group>"; };
+		D2AB90201EF4584A00A05FEE /* WalkerSchedules.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalkerSchedules.storyboard; sourceTree = "<group>"; };
 		D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -159,7 +161,7 @@
 			children = (
 				D27F61F41EF1A7E4006258AA /* PetProfileViewController.swift */,
 				D217B31C1EF3453500785F88 /* PetDetailsTableViewController.swift */,
-				D21CEF5E1EF3012E00DF8602 /* OwnerProfileViewController.swift */,
+				D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */,
 				D21CEF601EF3014200DF8602 /* EditPetViewController.swift */,
 				D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */,
 			);
@@ -191,6 +193,7 @@
 				D27E9CBD1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift */,
 				D27E9CBB1EF39EFA00377A72 /* WalkerScheduleDetailsTableViewController.swift */,
 				D27E9CB91EF3984B00377A72 /* WalkerEditScheduleViewController.swift */,
+				D2AB90201EF4584A00A05FEE /* WalkerSchedules.storyboard */,
 			);
 			name = WalkerSchedules;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				D27E9CC01EF39FBA00377A72 /* ClientsTableViewController.swift */,
 				D27E9CC21EF39FEE00377A72 /* ClientDetailsViewController.swift */,
 				D27E9CC41EF3A0D900377A72 /* ClientProfileTableViewController.swift */,
+				D23FE2201EF4472700636F8F /* ClientPetTableViewController.swift */,
 			);
 			name = WalkerClients;
 			sourceTree = "<group>";
@@ -210,7 +214,6 @@
 			children = (
 				D217B3201EF36DF100785F88 /* Owner */,
 				D217B3211EF36F5100785F88 /* OwnerSchedules */,
-				D2149B961EF2139700EFFBB0 /* PetDetailsViewController.swift */,
 				D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */,
 			);
 			name = OwnerProfile;
@@ -426,6 +429,7 @@
 				D2D4E64E1EEF0EB000FB7A7C /* Register.storyboard in Resources */,
 				D27072351EF0F6410073501E /* Assets.xcassets in Resources */,
 				D28DFC971EEF5AAA001040B9 /* OwnerProfile.storyboard in Resources */,
+				D2AB90211EF4584A00A05FEE /* WalkerSchedules.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,17 +595,17 @@
 				D27E9CBE1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift in Sources */,
 				D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */,
 				D27E9CBC1EF39EFA00377A72 /* WalkerScheduleDetailsTableViewController.swift in Sources */,
-				D2149B971EF2139700EFFBB0 /* PetDetailsViewController.swift in Sources */,
 				D27E9CC51EF3A0D900377A72 /* ClientProfileTableViewController.swift in Sources */,
 				D21CEF631EF3015800DF8602 /* EditOwnerViewController.swift in Sources */,
 				D27072331EF0ED720073501E /* WelcomeViewController.swift in Sources */,
 				D217B3231EF36F7400785F88 /* OwnerScheduleTableViewController.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
-				D21CEF5F1EF3012E00DF8602 /* OwnerProfileViewController.swift in Sources */,
 				D217B3251EF36FBD00785F88 /* CreateScheduleViewController.swift in Sources */,
 				D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */,
+				D23FE2211EF4472700636F8F /* ClientPetTableViewController.swift in Sources */,
 				D27F61F51EF1A7E4006258AA /* PetProfileViewController.swift in Sources */,
 				D217B31D1EF3453500785F88 /* PetDetailsTableViewController.swift in Sources */,
+				D2AB901F1EF4565900A05FEE /* OwnerProfileTableViewController.swift in Sources */,
 				D21CEF611EF3014200DF8602 /* EditPetViewController.swift in Sources */,
 				D27E9CC31EF39FEE00377A72 /* ClientDetailsViewController.swift in Sources */,
 				D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */,
