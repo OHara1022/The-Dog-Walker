@@ -9,6 +9,8 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
+    
+    //TODO: ALERT w/ textField to enter code to relate walker & client
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -489,6 +489,18 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bdayTF" destination="yy9-3w-kOB" id="XIz-qh-pvC"/>
+                        <outlet property="breedTF" destination="Iyq-n5-iCj" id="JgB-AW-9bF"/>
+                        <outlet property="emergenctContactTF" destination="5mZ-LI-rwv" id="s7w-oX-eKn"/>
+                        <outlet property="emergencyPhoneTF" destination="lNm-nI-ir8" id="Au4-Qt-Rb8"/>
+                        <outlet property="medsTF" destination="gxU-Dh-nFo" id="aQ7-ki-ubl"/>
+                        <outlet property="petNameTF" destination="B5B-bl-ehO" id="57H-2r-s6J"/>
+                        <outlet property="specialInstructionTF" destination="ZQn-kq-sGz" id="T6Z-UY-FYw"/>
+                        <outlet property="vaccineTF" destination="mGb-ZW-L6J" id="iHU-9d-lhg"/>
+                        <outlet property="vetPhoneTF" destination="MGh-ou-inj" id="7DG-hj-MSR"/>
+                        <outlet property="vetTF" destination="3wg-Du-y3A" id="zH8-Nt-pgY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7c-wA-US7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

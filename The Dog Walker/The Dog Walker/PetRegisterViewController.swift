@@ -10,6 +10,16 @@ import UIKit
 
 class PetRegisterViewController: UIViewController {
     
+    @IBOutlet weak var petNameTF: UITextField!
+    @IBOutlet weak var bdayTF: UITextField!
+    @IBOutlet weak var breedTF: UITextField!
+    @IBOutlet weak var medsTF: UITextField!
+    @IBOutlet weak var vaccineTF: UITextField!
+    @IBOutlet weak var specialInstructionTF: UITextField!
+    @IBOutlet weak var emergenctContactTF: UITextField!
+    @IBOutlet weak var emergencyPhoneTF: UITextField!
+    @IBOutlet weak var vetTF: UITextField!
+    @IBOutlet weak var vetPhoneTF: UITextField!
     
     @IBAction func addImage(_ sender: UIButton) {
     
@@ -19,10 +29,6 @@ class PetRegisterViewController: UIViewController {
         present(alert, animated: true)
     }
     
-//    @IBAction func backTest(_ sender: Any) {
-//        dismiss(animated: true, completion: nil)
-//    }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +36,5 @@ class PetRegisterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

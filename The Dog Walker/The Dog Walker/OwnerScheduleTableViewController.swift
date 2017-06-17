@@ -9,6 +9,8 @@
 import UIKit
 
 class OwnerScheduleTableViewController: UITableViewController {
+    
+    var holderTest: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +36,23 @@ class OwnerScheduleTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
-    /*
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ownerScheduleCell", for: indexPath) as! OwnerScheudlesTableViewCell
 
         // Configure the cell...
+        
+        cell.dateLabel.text = "06/22/2017"
+        cell.paidLabel.text = "Paid"
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

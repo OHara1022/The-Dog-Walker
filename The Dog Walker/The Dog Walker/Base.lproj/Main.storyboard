@@ -44,6 +44,9 @@
                                 <state key="normal" title="Forget Password?">
                                     <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="forgotPassword:" destination="glF-rR-Ale" eventType="touchUpInside" id="iFo-qT-83U"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deI-FM-fyQ">
                                 <rect key="frame" x="94.5" y="567" width="187.5" height="34"/>

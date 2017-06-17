@@ -10,6 +10,17 @@ import UIKit
 
 class CreateScheduleViewController: UIViewController {
     
+    //MARK: -- outles
+    @IBOutlet weak var dateTF: UITextField!
+    @IBOutlet weak var timeTF: UITextField!
+    @IBOutlet weak var durationTF: UITextField!
+    @IBOutlet weak var priceLbl: UILabel!
+    @IBOutlet weak var petNameTF: UITextField!
+    @IBOutlet weak var instructionTF: UITextField!
+    @IBOutlet weak var medTF: UITextField!
+    
+    
+    //MARK: -- actions
     @IBAction func saveSchedule(_ sender: Any) {
         
         //dev
@@ -25,16 +36,10 @@ class CreateScheduleViewController: UIViewController {
     }
    
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
