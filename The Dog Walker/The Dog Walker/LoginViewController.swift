@@ -19,17 +19,17 @@ class LoginViewController: UIViewController {
         
     }
     
-    //refenerce to pet profile VC - instantiant petProfile VC
+    //refenerce to walker home VC - instantiant walkerHome VC
     lazy var walkerhomeVC: UIViewController? = {
-        //init petVC w/ identifier
+        //init walkerHomeVC w/ identifier
         let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "walkerHome")
         //return vc
         return homeVC
     }()
     
-    //refenerce to pet profile VC - instantiant petProfile VC
+    //refenerce to ownerhomeVC - instantiant ownerhomeVC
     lazy var ownerhomeVC: UIViewController? = {
-        //init petVC w/ identifier
+        //init ownerhomeVC w/ identifier
         let ownerhomeVC = self.storyboard?.instantiateViewController(withIdentifier: "ownerHome")
         //return vc
         return ownerhomeVC
