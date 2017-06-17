@@ -35,6 +35,10 @@
 		D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */; };
 		D2AB901F1EF4565900A05FEE /* OwnerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */; };
 		D2AB90211EF4584A00A05FEE /* WalkerSchedules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AB90201EF4584A00A05FEE /* WalkerSchedules.storyboard */; };
+		D2C5FABB1EF4C83D006BB572 /* WalkerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5FABA1EF4C83D006BB572 /* WalkerProfileTableViewController.swift */; };
+		D2C5FABD1EF4C859006BB572 /* WalkerEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5FABC1EF4C859006BB572 /* WalkerEditProfileViewController.swift */; };
+		D2C5FABF1EF4CB09006BB572 /* OwnerScheudleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5FABE1EF4CB09006BB572 /* OwnerScheudleDetailsTableViewController.swift */; };
+		D2C5FAC31EF4CFE3006BB572 /* OwnerEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5FAC21EF4CFE3006BB572 /* OwnerEditScheduleViewController.swift */; };
 		D2C8F1921EE57E7700F7AC65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */; };
 		D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */; };
 		D2D4E64E1EEF0EB000FB7A7C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */; };
@@ -98,6 +102,10 @@
 		D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProfileTableViewController.swift; sourceTree = "<group>"; };
 		D2AB90201EF4584A00A05FEE /* WalkerSchedules.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalkerSchedules.storyboard; sourceTree = "<group>"; };
+		D2C5FABA1EF4C83D006BB572 /* WalkerProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerProfileTableViewController.swift; sourceTree = "<group>"; };
+		D2C5FABC1EF4C859006BB572 /* WalkerEditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerEditProfileViewController.swift; sourceTree = "<group>"; };
+		D2C5FABE1EF4CB09006BB572 /* OwnerScheudleDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerScheudleDetailsTableViewController.swift; sourceTree = "<group>"; };
+		D2C5FAC21EF4CFE3006BB572 /* OwnerEditScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D2C8F1911EE57E7700F7AC65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -173,6 +181,8 @@
 			children = (
 				D217B3221EF36F7400785F88 /* OwnerScheduleTableViewController.swift */,
 				D217B3241EF36FBD00785F88 /* CreateScheduleViewController.swift */,
+				D2C5FABE1EF4CB09006BB572 /* OwnerScheudleDetailsTableViewController.swift */,
+				D2C5FAC21EF4CFE3006BB572 /* OwnerEditScheduleViewController.swift */,
 			);
 			name = OwnerSchedules;
 			sourceTree = "<group>";
@@ -182,6 +192,7 @@
 			children = (
 				D27E9CB41EF391FF00377A72 /* WalkerSchedules */,
 				D27E9CBF1EF39F9900377A72 /* WalkerClients */,
+				D2C5FAB91EF4C821006BB572 /* WalkerProfile */,
 				D27E9CAF1EF3884900377A72 /* WalkerHome.storyboard */,
 			);
 			name = WalkerHome;
@@ -272,6 +283,15 @@
 				D28A93E01EE4F03D00CF80B6 /* Info.plist */,
 			);
 			path = "The Dog WalkerUITests";
+			sourceTree = "<group>";
+		};
+		D2C5FAB91EF4C821006BB572 /* WalkerProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D2C5FABA1EF4C83D006BB572 /* WalkerProfileTableViewController.swift */,
+				D2C5FABC1EF4C859006BB572 /* WalkerEditProfileViewController.swift */,
+			);
+			name = WalkerProfile;
 			sourceTree = "<group>";
 		};
 		D2C8F1931EE57FC500F7AC65 /* Info.plist */ = {
@@ -600,6 +620,7 @@
 				D27072331EF0ED720073501E /* WelcomeViewController.swift in Sources */,
 				D217B3231EF36F7400785F88 /* OwnerScheduleTableViewController.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
+				D2C5FABD1EF4C859006BB572 /* WalkerEditProfileViewController.swift in Sources */,
 				D217B3251EF36FBD00785F88 /* CreateScheduleViewController.swift in Sources */,
 				D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */,
 				D23FE2211EF4472700636F8F /* ClientPetTableViewController.swift in Sources */,
@@ -607,10 +628,13 @@
 				D217B31D1EF3453500785F88 /* PetDetailsTableViewController.swift in Sources */,
 				D2AB901F1EF4565900A05FEE /* OwnerProfileTableViewController.swift in Sources */,
 				D21CEF611EF3014200DF8602 /* EditPetViewController.swift in Sources */,
+				D2C5FABB1EF4C83D006BB572 /* WalkerProfileTableViewController.swift in Sources */,
 				D27E9CC31EF39FEE00377A72 /* ClientDetailsViewController.swift in Sources */,
 				D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */,
+				D2C5FABF1EF4CB09006BB572 /* OwnerScheudleDetailsTableViewController.swift in Sources */,
 				D27E9CBA1EF3984B00377A72 /* WalkerEditScheduleViewController.swift in Sources */,
 				D27E9CC11EF39FBA00377A72 /* ClientsTableViewController.swift in Sources */,
+				D2C5FAC31EF4CFE3006BB572 /* OwnerEditScheduleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
