@@ -11,6 +11,30 @@ import UIKit
 
 
 class LoginViewController: UIViewController {
+    
+    @IBAction func loginTest(_ sender: UIButton) {
+        
+        //TESTING
+        present(walkerhomeVC!, animated: true, completion: nil)
+        
+    }
+    
+    //refenerce to pet profile VC - instantiant petProfile VC
+    lazy var walkerhomeVC: UIViewController? = {
+        //init petVC w/ identifier
+        let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "walkerHome")
+        //return vc
+        return homeVC
+    }()
+    
+    //refenerce to pet profile VC - instantiant petProfile VC
+    lazy var ownerhomeVC: UIViewController? = {
+        //init petVC w/ identifier
+        let ownerhomeVC = self.storyboard?.instantiateViewController(withIdentifier: "ownerHome")
+        //return vc
+        return ownerhomeVC
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +42,6 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*
-    //MARK: -- Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+
 
 }

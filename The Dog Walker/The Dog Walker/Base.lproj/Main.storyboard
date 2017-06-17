@@ -68,6 +68,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginTest:" destination="glF-rR-Ale" eventType="touchUpInside" id="uQJ-JT-vAC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -107,6 +110,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4o-e7-cP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="420" y="-46"/>
+        </scene>
+        <!--WalkerHome-->
+        <scene sceneID="4Ax-CZ-qr4">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="walkerHome" storyboardName="WalkerHome" id="tr5-5B-p3O" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3iL-BP-6Kl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="420" y="18"/>
+        </scene>
+        <!--OwnerProfile-->
+        <scene sceneID="vik-vv-KpP">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ownerHome" storyboardName="OwnerProfile" id="ikt-6c-iDn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="at3-P4-9JS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="422" y="77"/>
         </scene>
     </scenes>
     <resources>

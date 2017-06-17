@@ -10,6 +10,15 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
+    @IBAction func addProfileImage(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: title, message: "OPEN CAMERA", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(alertAction)
+        present(alert, animated: true)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
