@@ -12,9 +12,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     
     
     
-    
-    
-    
     //MARK: -- actions
     @IBAction func checkIn(_ sender: UIButton) {
         

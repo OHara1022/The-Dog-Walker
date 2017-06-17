@@ -52,8 +52,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func cancel(_ sender: Any) {
         
-        //return to login
-        dismiss(animated: true, completion: nil)
+       
     }
     
     
@@ -70,13 +69,20 @@ class RegisterViewController: UIViewController {
             print("register segue")
             
             //check textFields are not empty
-            if (!FieldValidation.isEmpty(firstNameTF, presenter: self) && !FieldValidation.isEmpty(lastNameTF, presenter: self) && !FieldValidation.isEmpty(emailTF, presenter: self) && !FieldValidation.isEmpty(passwordTF, presenter: self) && !FieldValidation.isEmpty(confirmPasswordTF, presenter: self) && !FieldValidation.isEmpty(addressTF, presenter: self) && !FieldValidation.isEmpty(cityTF, presenter: self) && !FieldValidation.isEmpty(stateTF, presenter: self) && !FieldValidation.isEmpty(zipCodeTF, presenter: self) && !FieldValidation.isEmpty(phoneTF, presenter: self)){
-                
+//            if (!FieldValidation.isEmpty(firstNameTF, presenter: self) && !FieldValidation.isEmpty(lastNameTF, presenter: self) && !FieldValidation.isEmpty(emailTF, presenter: self) && !FieldValidation.isEmpty(passwordTF, presenter: self) && !FieldValidation.isEmpty(confirmPasswordTF, presenter: self) && !FieldValidation.isEmpty(addressTF, presenter: self) && !FieldValidation.isEmpty(cityTF, presenter: self) && !FieldValidation.isEmpty(stateTF, presenter: self) && !FieldValidation.isEmpty(zipCodeTF, presenter: self) && !FieldValidation.isEmpty(phoneTF, presenter: self)){
+            
                 loginFlag = true
                 return loginFlag                
                 
-            }//end of empty check
+//            }//end of empty check
           
+        }
+        
+        //check if canceled
+        if identifier == "cancel"{
+            //return to login
+            loginFlag = true
+            return loginFlag
         }
         
         return loginFlag

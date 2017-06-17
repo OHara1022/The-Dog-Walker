@@ -196,8 +196,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="17g-zP-7mS">
                             <color key="tintColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="cancel:" destination="1Pw-am-H6e" id="WYT-Na-cVR"/>
-                                <segue destination="PGr-oF-S68" kind="presentation" modalTransitionStyle="flipHorizontal" id="0Rg-53-91k"/>
+                                <segue destination="PGr-oF-S68" kind="presentation" identifier="cancel" modalTransitionStyle="flipHorizontal" id="0Rg-53-91k"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="sm_save" id="LFA-rW-KG8">
