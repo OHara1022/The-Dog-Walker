@@ -9,6 +9,30 @@
 import UIKit
 
 class WalkerScheduleDetailsTableViewController: UITableViewController {
+    
+    
+    
+    
+    
+    
+    //MARK: -- actions
+    @IBAction func checkIn(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Check In", message: "Alert client walk started will be in future release", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(alertAction)
+        present(alert, animated: true)
+        
+    }
+    
+    @IBAction func checkOut(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Check Out", message: "Alert client walk ended will be in future release", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(alertAction)
+        present(alert, animated: true)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

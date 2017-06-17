@@ -101,6 +101,10 @@
                             <color key="backgroundColor" red="0.98039215686274506" green="0.9882352941176471" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="emailLoginTF" destination="SRT-gl-lDl" id="2w4-ih-dSC"/>
+                        <outlet property="passwordLoginTF" destination="4x4-gF-Kea" id="1ed-wm-byr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9S-qX-M9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

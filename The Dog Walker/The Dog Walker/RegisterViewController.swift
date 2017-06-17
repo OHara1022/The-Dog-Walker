@@ -13,8 +13,6 @@ import FirebaseDatabase
 
 class RegisterViewController: UIViewController {
     
-    //MARK: -- stored properties 
-    var ref: DatabaseReference!
     
     //MARK: -- outlets
     @IBOutlet weak var profileImage: UIImageView!
@@ -31,6 +29,18 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var companyTV: UITextField!
     
+    //MARK: -- stored properties
+    var ref: DatabaseReference!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        //create reference to database
+        ref = Database.database().reference()
+    }
+    
+    
     //MARK: -- actions
     @IBAction func addProfileImage(_ sender: UIButton) {
         
@@ -39,19 +49,66 @@ class RegisterViewController: UIViewController {
         alert.addAction(alertAction)
         present(alert, animated: true)
     }
-
+    
     @IBAction func cancel(_ sender: Any) {
         
         //return to login
         dismiss(animated: true, completion: nil)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        //create reference to database
-        ref = Database.database().reference()
+    
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        
+        //auth register flag
+        var loginFlag: Bool = false
+        
+        //check identifier
+        if identifier == "register"{
+            
+            //dev
+            print("register segue")
+            
+            //check textFields are not empty
+            if (!FieldValidation.isEmpty(firstNameTF, presenter: self) && !FieldValidation.isEmpty(lastNameTF, presenter: self) && !FieldValidation.isEmpty(emailTF, presenter: self) && !FieldValidation.isEmpty(passwordTF, presenter: self) && !FieldValidation.isEmpty(confirmPasswordTF, presenter: self) && !FieldValidation.isEmpty(addressTF, presenter: self) && !FieldValidation.isEmpty(cityTF, presenter: self) && !FieldValidation.isEmpty(stateTF, presenter: self) && !FieldValidation.isEmpty(zipCodeTF, presenter: self) && !FieldValidation.isEmpty(phoneTF, presenter: self)){
+                
+                loginFlag = true
+                return loginFlag                
+                
+            }//end of empty check
+          
+        }
+        
+        return loginFlag
     }
-
-   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

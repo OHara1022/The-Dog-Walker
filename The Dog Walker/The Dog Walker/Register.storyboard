@@ -203,7 +203,7 @@
                         <barButtonItem key="rightBarButtonItem" image="sm_save" id="LFA-rW-KG8">
                             <color key="tintColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="7cx-9M-tqu" kind="show" id="F20-Pa-dDK"/>
+                                <segue destination="QjJ-y6-TB7" kind="presentation" identifier="register" id="F20-Pa-dDK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -271,6 +271,7 @@
                                     <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="dogWalkerBTN:" destination="7cx-9M-tqu" eventType="touchUpInside" id="UmR-j8-dKF"/>
                                     <segue destination="spP-TP-bV9" kind="presentation" id="3kH-QZ-HhU"/>
                                 </connections>
                             </button>
@@ -298,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kiz-eg-HRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1591" y="-125"/>
+            <point key="canvasLocation" x="2528.8000000000002" y="-125.4872563718141"/>
         </scene>
         <!--Main-->
         <scene sceneID="kwZ-sj-9fO">
@@ -504,7 +505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7c-wA-US7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2519" y="-116"/>
+            <point key="canvasLocation" x="3456.8000000000002" y="-116.49175412293854"/>
         </scene>
         <!--OwnerProfile-->
         <scene sceneID="VbK-eh-jB0">
@@ -512,7 +513,7 @@
                 <viewControllerPlaceholder storyboardName="OwnerProfile" id="tjG-Iq-BuY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnF-Lu-6XK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3133" y="-117"/>
+            <point key="canvasLocation" x="4072" y="-117.84107946026987"/>
         </scene>
         <!--WalkerHome-->
         <scene sceneID="WBE-F1-7Jk">
@@ -520,7 +521,25 @@
                 <viewControllerPlaceholder storyboardIdentifier="walkerID" storyboardName="WalkerHome" id="spP-TP-bV9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aut-iz-aHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1590" y="423"/>
+            <point key="canvasLocation" x="2481" y="399"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gbv-pU-voE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QjJ-y6-TB7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Yo-YC-2pS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7cx-9M-tqu" kind="relationship" relationship="rootViewController" id="bXQ-2Y-jTf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j6q-6x-VWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1589.5999999999999" y="-125.4872563718141"/>
         </scene>
     </scenes>
     <resources>

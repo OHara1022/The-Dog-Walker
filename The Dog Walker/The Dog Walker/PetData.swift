@@ -1,0 +1,43 @@
+//
+//  PetData.swift
+//  The Dog Walker
+//
+//  Created by Scott O'Hara on 6/17/17.
+//  Copyright © 2017 Scott O'Hara. All rights reserved.
+//
+
+import Foundation
+
+
+class PetData{
+    
+    var petName: String
+    var birthday: String
+    var breed: String
+    var meds: String
+    var vaccine: String
+    var specialInstructions: String
+    var emergencyContact: String
+    var emergencyPhone: String
+    var vetName: String
+    var vetPhone: String
+    var petImage: String?
+    var uid: String?
+    var petKey: String?
+    
+    init(petName: String, birthday: String, breed: String, meds: String, vaccine: String, specialInstructions: String, emergencyContact: String, emergencyPhone: String, vetName: String, vetPhone: String) {
+        
+        self.petName = petName
+        self.birthday = birthday
+        self.breed = breed
+        self.meds = meds
+        self.vaccine = vaccine
+        self.specialInstructions = specialInstructions
+        self.emergencyContact = emergencyContact
+        self.emergencyPhone = emergencyPhone
+        self.vetName = vetName
+        self.vetPhone = vetPhone
+    }
+    
+    
+}
