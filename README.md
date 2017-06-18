@@ -3,7 +3,7 @@ Final Project
 
 Information to test Proof of Concept
 
-Github Link:
+Github Link: https://github.com/OHara1022/The-Dog-Walker.git
 
 Login: enter walker into email field then select login - this will log you in as walker
 enter owner into email field then select login - this will log you is as an pet owner
