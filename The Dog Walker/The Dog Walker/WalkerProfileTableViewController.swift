@@ -9,6 +9,22 @@
 import UIKit
 
 class WalkerProfileTableViewController: UITableViewController {
+    
+    
+    //refenerce to walker home VC - instantiant walkerHome VC
+    lazy var homeVC: UIViewController? = {
+        //init walkerHomeVC w/ identifier
+        let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "homeID")
+        //return vc
+        return homeVC
+    }()
+    
+    @IBAction func signOut(_ sender: Any) {
+        
+        //present walkerHomeVC
+        present(homeVC!, animated: true, completion: nil)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

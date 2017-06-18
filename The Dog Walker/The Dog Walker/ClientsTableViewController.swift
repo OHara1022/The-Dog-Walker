@@ -9,6 +9,8 @@
 import UIKit
 
 class ClientsTableViewController: UITableViewController {
+    
+    let nameArray: [String] = ["Scott O'Hara", "Bill Davis", "Jim Jones", "Brittney Gault", "Nicole Deihl"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,7 @@ class ClientsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return nameArray.count
     }
 
     
@@ -43,9 +45,13 @@ class ClientsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "clientCell", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = "Scott O'Hara"
+        cell.textLabel?.text = nameArray[indexPath.row]
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
     }
     
 
@@ -69,22 +75,9 @@ class ClientsTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-    }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+   
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -92,6 +85,6 @@ class ClientsTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+ 
 
 }

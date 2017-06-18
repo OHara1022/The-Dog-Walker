@@ -10,7 +10,9 @@ import UIKit
 
 class OwnerScheduleTableViewController: UITableViewController {
     
-    var holderTest: String = ""
+    
+    let dateArray: [String] = ["06/22/2017", "06/23/2017","06/24/2017", "06/25/2017", "06/25/2017"]
+    var holderTest: [String] = ["Paid", "Paid","Paid","Paid","Paid"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,8 @@ class OwnerScheduleTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,9 +40,12 @@ class OwnerScheduleTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return dateArray.count
     }
 
+    var hLabel: [String] = ["Paid", "Paid","Paid","Paid","Paid"]
+    
+    var test: UILabel?
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -47,12 +54,24 @@ class OwnerScheduleTableViewController: UITableViewController {
 
         // Configure the cell...
         
-        cell.dateLabel.text = "06/22/2017"
-        cell.paidLabel.text = "Paid"
+        cell.dateLabel.text = dateArray[indexPath.row]
+        cell.paidLabel.text = holderTest[indexPath.row]
+        test = cell.paidLabel
+        
+        
+//        cell.paidLabel.textColor = UIColor.green
 
         return cell
     }
  
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        test?.textColor = UIColor.green
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -75,7 +94,7 @@ class OwnerScheduleTableViewController: UITableViewController {
     */
 
 
-    /*
+  
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -83,6 +102,6 @@ class OwnerScheduleTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

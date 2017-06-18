@@ -43,6 +43,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="7ya-Qj-0aP" kind="show" identifier="details" id="kdI-FE-59Y"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -50,13 +53,7 @@
                             <outlet property="delegate" destination="jgl-2g-2At" id="xea-h1-Hcq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Schedules" id="jeE-yI-icc">
-                        <barButtonItem key="rightBarButtonItem" title="test" id="8J1-bh-OiU">
-                            <connections>
-                                <segue destination="7ya-Qj-0aP" kind="show" id="uwu-CL-hVV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Schedules" id="jeE-yI-icc"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUh-t8-Myq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -424,7 +421,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb1-Xw-6Gs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4047.1999999999998" y="488.90554722638683"/>
+            <point key="canvasLocation" x="4119" y="484"/>
         </scene>
         <!--Schedules-->
         <scene sceneID="Ky2-OF-9lx">
@@ -559,7 +556,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDW-Um-XOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5879" y="490"/>
+            <point key="canvasLocation" x="6031" y="475"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oak-pa-jbd">
@@ -577,7 +574,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bp-UD-1uQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4986" y="484"/>
+            <point key="canvasLocation" x="5023" y="475"/>
         </scene>
     </scenes>
     <resources>
