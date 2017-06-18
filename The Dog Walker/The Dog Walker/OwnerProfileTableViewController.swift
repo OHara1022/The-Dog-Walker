@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class OwnerProfileTableViewController: UITableViewController {
     
@@ -20,6 +21,9 @@ class OwnerProfileTableViewController: UITableViewController {
     }()
   
     @IBAction func signOutBtn(_ sender: Any) {
+        
+        //sign user out w/ firebase auth
+        try! Auth.auth().signOut()
         
         //present walkerHomeVC
         present(homeVC!, animated: true, completion: nil)

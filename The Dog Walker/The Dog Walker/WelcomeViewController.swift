@@ -22,23 +22,39 @@ class WelcomeViewController: UIViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var roleHolder: String?
-    let userID = Auth.auth().currentUser?.uid
+    var userID: String?
 
     
     //MARK: -- actions
     @IBAction func dogWalkerBTN(_ sender: UIButton) {
         
-//        ref.child("roleID").setValue(["roleID": "Walker"])
+        ref.child("roleID").setValue("Walker")
         
     }
     
+    @IBAction func petOwnerBTN(_ sender: UIButton) {
+        
+        ref.child("roldID").setValue("Owner")
+    }
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        print(userID! as String)
+        Auth.auth().addStateDidChangeListener{ auth, user in
+            
+            //check if user is signed in
+            if let user = user {
+                //dev
+                print("logged in?" + " " +  user.uid)
+               
+                 self.ref = Database.database().reference().child("users").child(user.uid)
+            }
+        }//end of listener
 
         // Do any additional setup after loading the view.
-//        ref = Database.database().reference().child("Users").child(userID!)
+       
     }
 
 

@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class PetRegisterViewController: UIViewController {
+    
+    
+    //test
+    let userID = Auth.auth().currentUser?.uid
     
     @IBOutlet weak var petNameTF: UITextField!
     @IBOutlet weak var bdayTF: UITextField!
@@ -21,6 +26,8 @@ class PetRegisterViewController: UIViewController {
     @IBOutlet weak var vetTF: UITextField!
     @IBOutlet weak var vetPhoneTF: UITextField!
     
+    
+    
     @IBAction func addImage(_ sender: UIButton) {
     
         let alert = UIAlertController(title: title, message: "OPEN CAMERA", preferredStyle: .alert)
@@ -32,8 +39,17 @@ class PetRegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Auth.auth().addStateDidChangeListener{ auth, user in
+            
+            //check if user is signed in
+            if let user = user {
+                //dev
+                print("petListener" + " " +  user.uid)
+                
+                           }
+        }//end of listener
 
-        // Do any additional setup after loading the view.
     }
     
 
