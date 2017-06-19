@@ -33,21 +33,23 @@ class RegisterViewController: UIViewController {
     var ref: DatabaseReference!
     let users: String = "users"
     
-    //refenerce to walker home VC - instantiant walkerHome VC
-    lazy var ownerVC: UIViewController? = {
-        //init walkerHomeVC w/ identifier
-        let ownerVC = self.storyboard?.instantiateViewController(withIdentifier: "petReg")
-        //return vc
-        return ownerVC
-    }()
     
+    //TESTING
     //refenerce to walker home VC - instantiant walkerHome VC
-    lazy var homeVC: UIViewController? = {
-        //init walkerHomeVC w/ identifier
-        let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "walker")
-        //return vc
-        return homeVC
-    }()
+//    lazy var ownerVC: UIViewController? = {
+//        //init walkerHomeVC w/ identifier
+//        let ownerVC = self.storyboard?.instantiateViewController(withIdentifier: "petReg")
+//        //return vc
+//        return ownerVC
+//    }()
+//    
+//    //refenerce to walker home VC - instantiant walkerHome VC
+//    lazy var homeVC: UIViewController? = {
+//        //init walkerHomeVC w/ identifier
+//        let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "walker")
+//        //return vc
+//        return homeVC
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,19 +148,8 @@ class RegisterViewController: UIViewController {
                 self.createUser(user!)
             })
             
-//            if companyTV.text == "walker"{
-            
                 loginFlag = true
                 return loginFlag
-//            }
-            
-//            if companyTV.text == "owner"{
-//                
-//                loginFlag = true
-//                
-//                present(ownerVC!, animated: true, completion: nil)
-//                return loginFlag
-//            }
             
             
             //            }//end of empty check

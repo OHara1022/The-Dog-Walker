@@ -13,7 +13,7 @@ class PetRegisterViewController: UIViewController {
     
     
     //test
-    let userID = Auth.auth().currentUser?.uid
+    var userID: String?
     
     @IBOutlet weak var petNameTF: UITextField!
     @IBOutlet weak var bdayTF: UITextField!
@@ -25,6 +25,7 @@ class PetRegisterViewController: UIViewController {
     @IBOutlet weak var emergencyPhoneTF: UITextField!
     @IBOutlet weak var vetTF: UITextField!
     @IBOutlet weak var vetPhoneTF: UITextField!
+    
     
     
     
@@ -46,6 +47,8 @@ class PetRegisterViewController: UIViewController {
             if let user = user {
                 //dev
                 print("petListener" + " " +  user.uid)
+                self.userID = user.uid
+                print("UID" + " " + self.userID!)
                 
                            }
         }//end of listener

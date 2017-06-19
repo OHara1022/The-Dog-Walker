@@ -7,15 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
-    
-    @IBOutlet weak var emailLoginTF: UITextField!
-    @IBOutlet weak var passwordLoginTF: UITextField!
-    
-    
     //MARK: -- stored properties
+    var ref: DatabaseReference!
+    var roleID: String?
     //refenerce to walker home VC - instantiant walkerHome VC
     lazy var walkerhomeVC: UIViewController? = {
         //init walkerHomeVC w/ identifier
@@ -32,25 +30,82 @@ class LoginViewController: UIViewController {
         return ownerhomeVC
     }()
     
+    //MARK: -- outlets
+    @IBOutlet weak var emailLoginTF: UITextField!
+    @IBOutlet weak var passwordLoginTF: UITextField!
+    
+    
+    //MARK: -- viewDidLoad
+    //TODO: get snapshot of users, check role (walker/owner) - transition to proper homeVC
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if let user = user{
+                
+                //dev
+                print("LOGGED IN" + " " + user.email!)
+                
+//                self.ref = Database.database().reference().child("users").child(user.uid)
+//                self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
+//                    
+//                    let dic = snapshot.value as? NSDictionary
+//                    
+//                    let id = dic?.value(forKey: "roleID") as? String
+//                
+//                    print("STATE CHANGE" + " " + id!)
+//                    self.roleID = id
+//                
+//                    if self.roleID == "Walker"{
+//                        
+//                        self.present(self.walkerhomeVC!, animated: true, completion: nil)
+//                        
+//                    }else if self.roleID == "Owner"{
+//                        
+//                        self.present(self.ownerhomeVC!, animated: true, completion: nil)
+//                        
+//                    }
+//                })
+            }
+        }
+  
+    }
     
     //MARK: -- actions
     @IBAction func loginTest(_ sender: UIButton) {
         
-        if emailLoginTF.text == "walker"{
-        
-        //present walkerHomeVC
-        present(walkerhomeVC!, animated: true, completion: nil)
+        Auth.auth().signIn(withEmail: emailLoginTF.text!, password: passwordLoginTF.text!) { (user, error) in
             
-        }else if emailLoginTF.text == "owner"{
+            if let error = error{
+                //dev
+                print(error.localizedDescription)
+                FieldValidation.textFieldAlert("Invalid Information", message: error.localizedDescription, presenter: self)
+                return
+            }
+            self.ref = Database.database().reference().child("users").child((user?.uid)!)
+            self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                let dic = snapshot.value as? NSDictionary
+                
+                let id = dic?.value(forKey: "roleID") as? String
+                
+                print(id!)
+                self.roleID = id
+                
+                if self.roleID == "Walker"{
+                    
+                    self.present(self.walkerhomeVC!, animated: true, completion: nil)
+                    
+                }else if self.roleID == "Owner"{
+                    
+                    self.present(self.ownerhomeVC!, animated: true, completion: nil)
+                    
+                }
+            })
             
-            //present walkerHomeVC
-            present(ownerhomeVC!, animated: true, completion: nil)
-        }else{
-            let alert = UIAlertController(title: "Enter Email", message: "Enter walker or owner in email field", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(alertAction)
-            present(alert, animated: true)
         }
+        
     }
     
     @IBAction func forgotPassword(_ sender: UIButton) {
@@ -61,15 +116,8 @@ class LoginViewController: UIViewController {
         present(alert, animated: true)
     }
     
-  
     
-    //TODO: get snapshot of users, check role (walker/owner) - transition to proper homeVC
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-
-
+    
+    
+    
 }

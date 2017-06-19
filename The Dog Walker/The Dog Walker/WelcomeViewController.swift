@@ -34,7 +34,7 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func petOwnerBTN(_ sender: UIButton) {
         
-        ref.child("roldID").setValue("Owner")
+        ref.child("roleID").setValue("Owner")
     }
     
     //MARK: -- viewDidLoad
