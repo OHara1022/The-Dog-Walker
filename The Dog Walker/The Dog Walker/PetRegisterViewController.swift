@@ -14,6 +14,7 @@ class PetRegisterViewController: UIViewController {
     //MARK: -- stored properties
     let userID = Auth.auth().currentUser?.uid
     var ref: DatabaseReference!
+    
     //refenerce to ownerhomeVC - instantiant ownerhomeVC
     lazy var ownerhomeVC: UIViewController? = {
         //init ownerhomeVC w/ identifier
