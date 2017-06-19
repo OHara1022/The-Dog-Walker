@@ -47,29 +47,29 @@ class LoginViewController: UIViewController {
                 //dev
                 print("LOGGED IN" + " " + user.email!)
                 
-//                self.ref = Database.database().reference().child("users").child(user.uid)
-//                self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
-//                    
-//                    let dic = snapshot.value as? NSDictionary
-//                    
-//                    let id = dic?.value(forKey: "roleID") as? String
+                //                self.ref = Database.database().reference().child("users").child(user.uid)
+                //                self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                //
+                //                    let dic = snapshot.value as? NSDictionary
+                //
+                //                    let id = dic?.value(forKey: "roleID") as? String
+                //
+                //                    print("STATE CHANGE" + " " + id!)
+                //                    self.roleID = id
+                //
+//                                    if self.roleID == "Walker"{
 //                
-//                    print("STATE CHANGE" + " " + id!)
-//                    self.roleID = id
+//                                        self.present(self.walkerhomeVC!, animated: true, completion: nil)
 //                
-//                    if self.roleID == "Walker"{
-//                        
-//                        self.present(self.walkerhomeVC!, animated: true, completion: nil)
-//                        
-//                    }else if self.roleID == "Owner"{
-//                        
-//                        self.present(self.ownerhomeVC!, animated: true, completion: nil)
-//                        
-//                    }
-//                })
+//                                    }else if self.roleID == "Owner"{
+//                
+//                                        self.present(self.ownerhomeVC!, animated: true, completion: nil)
+//                
+//                                    }
+//                                })
             }
         }
-  
+        
     }
     
     //MARK: -- actions
@@ -83,27 +83,29 @@ class LoginViewController: UIViewController {
                 FieldValidation.textFieldAlert("Invalid Information", message: error.localizedDescription, presenter: self)
                 return
             }
-            self.ref = Database.database().reference().child("users").child((user?.uid)!)
-            self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                let dic = snapshot.value as? NSDictionary
-                
-                let id = dic?.value(forKey: "roleID") as? String
-                
-                print(id!)
-                self.roleID = id
-                
-                if self.roleID == "Walker"{
+            if let user = user{
+                self.ref = Database.database().reference().child("users").child(user.uid)
+                self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
                     
-                    self.present(self.walkerhomeVC!, animated: true, completion: nil)
+                    let dic = snapshot.value as? NSDictionary
                     
-                }else if self.roleID == "Owner"{
+                    let id = dic?.value(forKey: "roleID") as? String
                     
-                    self.present(self.ownerhomeVC!, animated: true, completion: nil)
+                    print(id!)
+                    self.roleID = id
                     
-                }
-            })
-            
+                    if self.roleID == "Walker"{
+                        
+                        self.present(self.walkerhomeVC!, animated: true, completion: nil)
+                        
+                    }else if self.roleID == "Owner"{
+                        
+                        self.present(self.ownerhomeVC!, animated: true, completion: nil)
+                        
+                    }
+                })
+                
+            }
         }
         
     }

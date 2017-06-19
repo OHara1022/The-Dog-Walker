@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PetProfileViewController: UIViewController {
     
@@ -15,40 +16,13 @@ class PetProfileViewController: UIViewController {
         case petIndex = 0
         case ownerIndex = 1
     }
-    
     //MARK: -- outlets
     @IBOutlet weak var segmentedController: UISegmentedControl!
     @IBOutlet weak var profileView: UIView!
-
-    //MARK: -- actions
-    @IBAction func switchProfile(_ sender: UISegmentedControl) {
-        //remove current vc from view on selection change
-        self.currentVC!.view.removeFromSuperview()
-        self.currentVC!.removeFromParentViewController()
-        //display selected tab
-        displaySelectedTab(sender.selectedSegmentIndex)
-    }
-    
-    //transition to edit screen
-    @IBAction func editProfile(_ sender: UIBarButtonItem) {
-        //dev
-        print("EDIT")
-        
-        //chekc selected VC
-        if (selectedIndex(0) == currentVC){
-            
-            //present pet profile editVC
-            present(editPetVC!, animated: true, completion: nil)
-            
-        }else if selectedIndex(1) == currentVC{
-            
-              //present owner profile editVC
-            present(editOwnerVC!, animated: true, completion: nil)
-        }
-    }
     
     //MARK: -- stored properties
     var currentVC: UIViewController?
+    let userID = Auth.auth().currentUser?.uid
     
     //refenerce to pet profile VC - instantiant petProfile VC
     lazy var petVC: UIViewController? = {
@@ -78,11 +52,12 @@ class PetProfileViewController: UIViewController {
         let editOwnerVC = self.storyboard?.instantiateViewController(withIdentifier: "editOwner")
         return editOwnerVC
     }()
-    
-    
+
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(userID!)
         
         //set inital index for segmentController
         segmentedController.selectedSegmentIndex = SegmentIndexTab.petIndex.rawValue
@@ -91,6 +66,35 @@ class PetProfileViewController: UIViewController {
         
     }
     
+    //MARK: -- actions
+    @IBAction func switchProfile(_ sender: UISegmentedControl) {
+        //remove current vc from view on selection change
+        self.currentVC!.view.removeFromSuperview()
+        self.currentVC!.removeFromParentViewController()
+        //display selected tab
+        displaySelectedTab(sender.selectedSegmentIndex)
+    }
+    
+    //transition to edit screen
+    @IBAction func editProfile(_ sender: UIBarButtonItem) {
+        //dev
+        print("EDIT")
+        
+        //chekc selected VC
+        if (selectedIndex(0) == currentVC){
+            
+            //present pet profile editVC
+            present(editPetVC!, animated: true, completion: nil)
+            
+        }else if selectedIndex(1) == currentVC{
+            
+              //present owner profile editVC
+            present(editOwnerVC!, animated: true, completion: nil)
+        }
+    }
+
+
+
     
     //func to display current tab
     func displaySelectedTab(_ tabIndex: Int){

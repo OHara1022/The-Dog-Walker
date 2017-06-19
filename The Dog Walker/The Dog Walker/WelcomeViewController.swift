@@ -21,27 +21,24 @@ class WelcomeViewController: UIViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    var roleHolder: String?
-    var userID: String?
-
+    var roleID: String = "roleID"
     
     //MARK: -- actions
     @IBAction func dogWalkerBTN(_ sender: UIButton) {
         
-        ref.child("roleID").setValue("Walker")
+        ref.child(roleID).setValue("Walker")
         
     }
     
     @IBAction func petOwnerBTN(_ sender: UIButton) {
         
-        ref.child("roleID").setValue("Owner")
+        ref.child(roleID).setValue("Owner")
     }
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print(userID! as String)
         Auth.auth().addStateDidChangeListener{ auth, user in
             
             //check if user is signed in
@@ -52,8 +49,6 @@ class WelcomeViewController: UIViewController {
                  self.ref = Database.database().reference().child("users").child(user.uid)
             }
         }//end of listener
-
-        // Do any additional setup after loading the view.
        
     }
 
