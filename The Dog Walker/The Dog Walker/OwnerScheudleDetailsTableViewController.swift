@@ -7,33 +7,53 @@
 //
 
 import UIKit
+import PassKit
 
-class OwnerScheudleDetailsTableViewController: UITableViewController {
+
+class OwnerScheudleDetailsTableViewController: UITableViewController, PKPaymentAuthorizationViewControllerDelegate {
     
+    @IBOutlet weak var applePayBTN: UIButton!
     
+    //MARK: --stored properties
+    let supportedPayments = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard, PKPaymentNetwork.amex]
+    let applePayMerchantID = "merchant.com.ohara.walks"
     
     //MARK: -- actions
     @IBAction func payBTN(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: "Apple Pay Menu", message: "apple pay will be in future release", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
+        if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: supportedPayments){
         
+            let request = PKPaymentRequest()
+            
+            request.merchantIdentifier = applePayMerchantID
+            request.supportedNetworks = supportedPayments
+            request.merchantCapabilities = PKMerchantCapability.capability3DS
+            
+            request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Walker", amount: NSDecimalNumber(string: "15")) ,PKPaymentSummaryItem(label: "Walker", amount: NSDecimalNumber(string: "15")) ]
+            
+            request.countryCode = "US"
+            
+            request.currencyCode = "USD"
+        
+            request.requiredBillingAddressFields = PKAddressField.all
+            
+            let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
+            
+            applePayController.delegate = self
+            
+            self.present(applePayController, animated: true, completion: nil)
+        }
     }
     
-    
-    
+    //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
+        //hide applePay button if user does not have supported device
+        applePayBTN.isHidden = !PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: supportedPayments)
+        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Table view data source
     //
@@ -101,5 +121,17 @@ class OwnerScheudleDetailsTableViewController: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+        completion(PKPaymentAuthorizationStatus.success)
+        
+        print("PAID SUCCESSFUL")
+    }
+
+    
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
     
 }

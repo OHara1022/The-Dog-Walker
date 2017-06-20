@@ -16,7 +16,8 @@ class CreateScheduleViewController: UIViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
-    
+    var petRef: DatabaseReference!
+
     //MARK: -- outlets
     @IBOutlet weak var dateTF: UITextField!
     @IBOutlet weak var timeTF: UITextField!
@@ -32,8 +33,40 @@ class CreateScheduleViewController: UIViewController {
         
         ref = Database.database().reference().child("schedules").child(userID!)
         
+        petRef = Database.database().reference().child("pets").child(userID!)
+        
+        petRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            print(snapshot)
+            
+            for a in((snapshot.value as! NSDictionary).allKeys){
+                
+                print(a)
+                let key = a
+                
+                self.petRef.child(key as! String).observeSingleEvent(of: .value, with: { (snapshot) in
+                    print(snapshot)
+                    
+                    let value = snapshot.value as? NSDictionary
+                    
+                    let petName = value?.value(forKey: "petName")
+                    let instructions = value?.value(forKey: "specialIns")
+                    let meds = value?.value(forKey: "meds")
+                    
+                    //dev
+                    print(petName!)
+                    
+                    self.petNameTF.text = petName as? String
+                    self.instructionTF.text = instructions as? String
+                    self.medTF.text = meds as? String
+                
+                })
+            }
+
+        })
+     
     }
-    
+
     
     //MARK: -- actions
     @IBAction func saveSchedule(_ sender: Any) {
@@ -56,7 +89,6 @@ class CreateScheduleViewController: UIViewController {
         print("save schedule")
         //dismiss VC
         dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func cancelSchedule(_ sender: Any) {
@@ -64,9 +96,6 @@ class CreateScheduleViewController: UIViewController {
         print("cancel schedule")
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
     
     
     /*

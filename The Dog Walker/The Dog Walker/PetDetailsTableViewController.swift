@@ -7,38 +7,79 @@
 //
 
 import UIKit
+import Firebase
 
 class PetDetailsTableViewController: UITableViewController {
 
+    //MARK: -- outlets
+    @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var breedLabel: UILabel!
+    @IBOutlet weak var vaccineLabel: UILabel!
+    @IBOutlet weak var medLabel: UILabel!
+    @IBOutlet weak var specialInsLabel: UILabel!
+    @IBOutlet weak var vetNameLabel: UILabel!
+    @IBOutlet weak var vetPhoneLabel: UILabel!
+    
+    //MARK: -- stored properties
+    var ref: DatabaseReference!
+    let userID = Auth.auth().currentUser?.uid
+    
+    //MARK: --viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        ref = Database.database().reference().child("pets").child(userID!)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            print(snapshot)
+            
+            for a in((snapshot.value as! NSDictionary).allKeys){
+                
+                print(a)
+                let key = a
+                
+                self.ref.child(key as! String).observeSingleEvent(of: .value, with: { (snapshot) in
+                    print(snapshot)
+                    
+                let value = snapshot.value as? NSDictionary
+                    
+                    let petName = value?.value(forKey: "petName")
+                    let bday = value?.value(forKey: "birthday")
+                    let breed = value?.value(forKey: "breed")
+                    let vaccine = value?.value(forKey: "vaccines")
+                    let meds = value?.value(forKey: "meds")
+                    let speicalIns = value?.value(forKey: "specialIns")
+                    let vetName = value?.value(forKey: "vetName")
+                    let vetPhone = value?.value(forKey: "vetPhone")
+                    
+                    //dev
+                    print(petName!)
+                    
+                    self.petNameLabel.text = petName as? String
+                    self.dateLabel.text = bday as? String
+                    self.breedLabel.text = breed as? String
+                    self.vaccineLabel.text = vaccine as? String
+                    self.medLabel.text = meds as? String
+                    self.specialInsLabel.text = speicalIns as? String
+                    self.vetNameLabel.text = vetName as? String
+                    self.vetPhoneLabel.text = vetPhone as? String
+                    
+                })
+            }
+            
+        })
+        
+    }
     
     @IBAction func addPet(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: title, message: "Add Pet will be in future release", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
+        FieldValidation.textFieldAlert("Add Pet", message: "Add Pet will be in future release", presenter: self)
         
     }
 
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
 
     // MARK: - Table view data source
 //

@@ -29,13 +29,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06/22/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSz-pf-SUj">
-                                            <rect key="frame" x="20" y="5" width="171" height="33.5"/>
+                                            <rect key="frame" x="20" y="5" width="171.5" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMX-Ff-dZ4">
-                                            <rect key="frame" x="305" y="12.5" width="34" height="18"/>
+                                            <rect key="frame" x="305.5" y="12.5" width="34" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.6554741154" green="0.012271597550000001" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DFp-of-4hG">
                             <color key="tintColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="MeG-zP-ZwM" kind="presentation" id="fGJ-1i-cMD"/>
+                                <segue destination="MeG-zP-ZwM" kind="presentation" identifier="createSchedule" id="fGJ-1i-cMD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -150,7 +150,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9o3-2f-mVk" id="w02-vk-0Sj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog" translatesAutoresizingMaskIntoConstraints="NO" id="lyi-UR-QkZ">
@@ -181,7 +181,7 @@
                                         <rect key="frame" x="0.0" y="185" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68j-WV-X97" id="2SJ-Ac-6UZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="925-2a-qBS">
@@ -212,7 +212,7 @@
                                         <rect key="frame" x="0.0" y="252" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CDu-L5-X9r" id="bZn-1h-PSM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="2XP-Br-Hak">
@@ -243,7 +243,7 @@
                                         <rect key="frame" x="0.0" y="319" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qgl-Z4-hOV" id="yj3-nv-kbq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaccines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="lNt-Z3-tzF">
@@ -274,7 +274,7 @@
                                         <rect key="frame" x="0.0" y="386" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LRf-b9-VRE" id="8sW-Uu-J7W">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="mdJ-Kv-LdP">
@@ -305,7 +305,7 @@
                                         <rect key="frame" x="0.0" y="453" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FiM-ny-l6z" id="hEe-mL-Civ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Instructions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="rge-nl-Qcc">
@@ -336,7 +336,7 @@
                                         <rect key="frame" x="0.0" y="520" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4f1-gy-5ev" id="qJY-vx-Aqr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vet Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="uqY-Ey-Bel">
@@ -367,7 +367,7 @@
                                         <rect key="frame" x="0.0" y="587" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PFM-ax-zm4" id="IDy-Pz-g8e">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vet Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="wLq-LW-Y8q">
@@ -398,7 +398,7 @@
                                         <rect key="frame" x="0.0" y="654" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="as1-ae-bY3" id="j4c-FG-Nv4">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDN-V9-5Qz">
@@ -429,7 +429,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="6gf-D7-pa8"/>
                     <connections>
+                        <outlet property="breedLabel" destination="dba-y0-Gg4" id="WkD-Zk-eL8"/>
                         <outlet property="dateLabel" destination="uT8-SU-q7f" id="MR2-TQ-44c"/>
+                        <outlet property="medLabel" destination="TOg-O3-dLg" id="wtE-pj-cVq"/>
+                        <outlet property="petNameLabel" destination="jnc-fe-V92" id="fIN-5b-FmC"/>
+                        <outlet property="specialInsLabel" destination="Ssp-Ci-d5C" id="nBr-Ya-Mdv"/>
+                        <outlet property="vaccineLabel" destination="3Rw-FX-SKD" id="552-9U-4GF"/>
+                        <outlet property="vetNameLabel" destination="jd4-tc-tci" id="v1T-gw-SBH"/>
+                        <outlet property="vetPhoneLabel" destination="C0O-Ow-lwp" id="A9h-cg-hWf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgU-PR-R6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1451,21 +1458,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="Fmf-vk-bLW">
-                                                    <rect key="frame" x="30" y="10" width="187.5" height="22"/>
+                                                    <rect key="frame" x="30" y="10" width="94" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awj-eq-qnh">
-                                                    <rect key="frame" x="30" y="37" width="187.5" height="18"/>
+                                                    <rect key="frame" x="30" y="37" width="94" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjl-Lu-Ng0">
-                                                    <rect key="frame" x="261.5" y="10" width="93.5" height="46.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <state key="normal" title="Pay"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjl-Lu-Ng0">
+                                                    <rect key="frame" x="177.5" y="10" width="187.5" height="46.5"/>
+                                                    <state key="normal" image="ApplePayBTN"/>
                                                     <connections>
                                                         <action selector="payBTN:" destination="WgQ-UJ-lT1" eventType="touchUpInside" id="oVS-VD-gA0"/>
                                                     </connections>
@@ -1473,15 +1479,15 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Fmf-vk-bLW" firstAttribute="leading" secondItem="yEr-qu-3jF" secondAttribute="leading" constant="30" id="44B-3h-iCF"/>
-                                                <constraint firstItem="wjl-Lu-Ng0" firstAttribute="width" secondItem="yEr-qu-3jF" secondAttribute="width" multiplier="0.25" id="L0U-Ro-1oK"/>
+                                                <constraint firstItem="wjl-Lu-Ng0" firstAttribute="width" secondItem="yEr-qu-3jF" secondAttribute="width" multiplier="0.5" id="L0U-Ro-1oK"/>
                                                 <constraint firstItem="awj-eq-qnh" firstAttribute="width" secondItem="Fmf-vk-bLW" secondAttribute="width" id="QHm-8f-OQL"/>
                                                 <constraint firstItem="Fmf-vk-bLW" firstAttribute="top" secondItem="yEr-qu-3jF" secondAttribute="top" constant="10" id="RMg-He-uWT"/>
                                                 <constraint firstItem="awj-eq-qnh" firstAttribute="centerX" secondItem="Fmf-vk-bLW" secondAttribute="centerX" id="T5c-2D-mN0"/>
-                                                <constraint firstAttribute="trailing" secondItem="wjl-Lu-Ng0" secondAttribute="trailing" constant="20" id="aqJ-j8-bwr"/>
+                                                <constraint firstAttribute="trailing" secondItem="wjl-Lu-Ng0" secondAttribute="trailing" constant="10" id="aqJ-j8-bwr"/>
                                                 <constraint firstItem="wjl-Lu-Ng0" firstAttribute="top" secondItem="yEr-qu-3jF" secondAttribute="top" constant="10" id="hVw-3H-x30"/>
                                                 <constraint firstAttribute="bottom" secondItem="wjl-Lu-Ng0" secondAttribute="bottom" constant="10" id="led-eM-IpU"/>
                                                 <constraint firstItem="awj-eq-qnh" firstAttribute="top" secondItem="Fmf-vk-bLW" secondAttribute="bottom" constant="5" id="oZm-ue-VSU"/>
-                                                <constraint firstItem="Fmf-vk-bLW" firstAttribute="width" secondItem="yEr-qu-3jF" secondAttribute="width" multiplier="0.5" id="xqa-XO-AMF"/>
+                                                <constraint firstItem="Fmf-vk-bLW" firstAttribute="width" secondItem="yEr-qu-3jF" secondAttribute="width" multiplier="0.25" id="xqa-XO-AMF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1564,6 +1570,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="applePayBTN" destination="wjl-Lu-Ng0" id="ul1-7a-0Su"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBs-Ho-5PM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1730,6 +1739,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ApplePayBTN" width="140" height="32"/>
         <image name="dog" width="50" height="50"/>
         <image name="profile" width="100" height="100"/>
         <image name="schedule" width="32" height="32"/>
