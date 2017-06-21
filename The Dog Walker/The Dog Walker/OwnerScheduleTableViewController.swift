@@ -14,7 +14,7 @@ class OwnerScheduleTableViewController: UITableViewController {
     //TESTING POC
     var holderTest: [String] = ["Paid", "Paid","Paid","Paid","Paid"]
     var test: UILabel?
-//    test?.textColor = UIColor.green
+    //    test?.textColor = UIColor.green
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
@@ -28,7 +28,6 @@ class OwnerScheduleTableViewController: UITableViewController {
         //assign delegate and datasoure to self
         tableView.delegate = self
         tableView.dataSource = self
-    
         
         //init dictionary
         dateInfo = NSDictionary()
@@ -38,6 +37,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         
     }
     
+    //MARK: -- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         
         //add observer tp listen for changes in schedules
@@ -51,22 +51,26 @@ class OwnerScheduleTableViewController: UITableViewController {
             //reload tableView
             self.tableView.reloadData()
         })
-     
+        
     }
     
+    //MARK: -- viewWillDisappear
+    override func viewWillDisappear(_ animated: Bool) {
+        //remove observers
+        ref.removeAllObservers()
+    }
     
-    // MARK: - Table view data source
+    //MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        //return number of data in array
         return dateInfo.count
     }
-    
-    
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -81,7 +85,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         cell.dateLabel.text = scheduleDate
         cell.paidLabel.text = holderTest[indexPath.row]
         test = cell.paidLabel
-
+        
         
         return cell
     }
@@ -89,14 +93,49 @@ class OwnerScheduleTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if dateInfo.count != 0 {
-        
+            
             self.performSegue(withIdentifier: "scheduleDetails", sender: indexPath)
             
         }
     }
     
-
     
+    // MARK: -- navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if  segue.identifier == "scheduleDetails" {
+            
+            if let index = sender as? IndexPath{
+                
+                let details = segue.destination as! OwnerScheudleDetailsTableViewController
+                
+                let obj = self.dateInfo.allValues[(index as NSIndexPath).row] as! NSDictionary
+                
+                //dev
+                print(obj.value(forKey: "petName") as! String)
+                print(obj.value(forKey: "date") as! String)
+                print(obj.value(forKey: "time") as! String)
+                print(obj.value(forKey: "duration") as! String)
+                print(obj.value(forKey: "specialIns") as! String)
+                print(obj.value(forKey: "meds") as! String)
+                print(obj.value(forKey: "scheduleKey") as! String)
+                
+                //pass values to details VC
+                details.petNameHolder = obj.value(forKey: "petName") as? String
+                details.dateHolder = obj.value(forKey: "date") as? String
+                details.timeHolder = obj.value(forKey: "time") as? String
+                details.durationHolder = obj.value(forKey: "duration") as? String
+                details.specialInsHolder = obj.value(forKey: "specialIns") as? String
+                details.medHolder = obj.value(forKey: "meds") as? String
+                details.scheduleKeyHolder = obj.value(forKey: "scheduleKey") as? String
+                
+            }
+        }
+        
+    }
+    
+    
+    //TODO: Delete schedule!!!
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -117,33 +156,4 @@ class OwnerScheduleTableViewController: UITableViewController {
      }
      */
     
-    
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-        if  segue.identifier == "scheduleDetails" {
-            
-        if let index = sender as? IndexPath{
-            
-            let details = segue.destination as! OwnerScheudleDetailsTableViewController
-            
-            let obj = self.dateInfo.allValues[(index as NSIndexPath).row] as! NSDictionary
-            
-            //dev
-            print(obj.value(forKey: "petName") as! String)
-            print(obj.value(forKey: "date") as! String)
-            print(obj.value(forKey: "time") as! String)
-            print(obj.value(forKey: "duration") as! String)
-             print(obj.value(forKey: "specialIns") as! String)
-             print(obj.value(forKey: "meds") as! String)
-             print(obj.value(forKey: "scheduleKey") as! String)
-            details.petNameHolder = obj.value(forKey: "petName") as? String
-           
-            }
-    }
-        
-    }
 }

@@ -92,9 +92,6 @@ class PetProfileViewController: UIViewController {
             present(editOwnerVC!, animated: true, completion: nil)
         }
     }
-
-
-
     
     //func to display current tab
     func displaySelectedTab(_ tabIndex: Int){

@@ -35,10 +35,10 @@ class PetDetailsTableViewController: UITableViewController {
             
             print(snapshot)
             
-            for a in((snapshot.value as! NSDictionary).allKeys){
+            for keys in((snapshot.value as! NSDictionary).allKeys){
                 
-                print(a)
-                let key = a
+                print(keys)
+                let key = keys
                 
                 self.ref.child(key as! String).observeSingleEvent(of: .value, with: { (snapshot) in
                     print(snapshot)
