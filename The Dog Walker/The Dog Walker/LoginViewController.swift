@@ -11,6 +11,8 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
+    
+    
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var roleID: String?
@@ -40,33 +42,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO: transition depending on roleID - crashes if code implemented with auth.signin w/ FB (research for later release)
         Auth.auth().addStateDidChangeListener { (auth, user) in
             
             if let user = user{
-                
                 //dev
                 print("LOGGED IN" + " " + user.email!)
-                
-                //                self.ref = Database.database().reference().child("users").child(user.uid)
-                //                self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                //
-                //                    let dic = snapshot.value as? NSDictionary
-                //
-                //                    let id = dic?.value(forKey: "roleID") as? String
-                //
-                //                    print("STATE CHANGE" + " " + id!)
-                //                    self.roleID = id
-                //
-//                                    if self.roleID == "Walker"{
-//                
-//                                        self.present(self.walkerhomeVC!, animated: true, completion: nil)
-//                
-//                                    }else if self.roleID == "Owner"{
-//                
-//                                        self.present(self.ownerhomeVC!, animated: true, completion: nil)
-//                
-//                                    }
-//                                })
             }
         }
         

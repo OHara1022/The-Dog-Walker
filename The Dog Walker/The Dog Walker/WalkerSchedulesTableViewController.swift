@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import Firebase
 
+//TODO: get snapshot of all users - ?query by child equal to companyCode if exists display clients/pets on index selection (reference ownerscheudleTVC)
 class WalkerSchedulesTableViewController: UITableViewController {
     
-    
+    //MARK: -- stored properties
     let dateArray: [String] = ["06/22/2017", "06/23/2017","06/24/2017", "06/25/2017", "06/25/2017"]
-    
     let nameArray: [String] = ["Scott O'Hara", "Bill Davis", "Jim Jones", "Brittney Gault", "Nicole Deihl"]
     
-    
+    //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,13 +27,8 @@ class WalkerSchedulesTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - Table view data source
-    
+
+    // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -59,8 +55,21 @@ class WalkerSchedulesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-//        performSegue(withIdentifier: "details", sender: indexPath)
+        performSegue(withIdentifier: "scheduleDetails", sender: indexPath)
     }
+    
+    
+    // MARK: - Navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  
+//        if let index = sender as? IndexPath{
+//            
+//            let details = segue.destination as! WalkerScheduleDetailsTableViewController
+//           
+//        }
+//        
+//    }
+    
     
     
     /*
@@ -97,22 +106,6 @@ class WalkerSchedulesTableViewController: UITableViewController {
      return true
      }
      */
-    
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-//        if let index = sender as? IndexPath{
-//            
-//            let details = segue.destination as! WalkerScheduleDetailsTableViewController
-//           
-//        }
-//        
-    }
-    
-    
-    
 }
+
+

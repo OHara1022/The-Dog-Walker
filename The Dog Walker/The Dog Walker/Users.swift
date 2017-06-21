@@ -17,8 +17,8 @@ class Users{
     var uid: String
     var phoneNumber: String
     var address: AddressInfo
+    var companyCode: String?
     var role: String? //store if walker or owner is selected
-    var companyName: String?
     var profileImage: String?
     var roleID: String?//extra incase need another relation for walker & client 
     var password: String? //never store password in Firebase (for test purposes)

@@ -117,8 +117,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7g1-zL-1Bx">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7g1-zL-1Bx">
                                                 <rect key="frame" x="47" y="570" width="281" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I63-vo-6Ko">
+                                                <rect key="frame" x="47" y="615" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -139,6 +145,7 @@
                                             <constraint firstItem="YQQ-nj-nep" firstAttribute="centerX" secondItem="Cdb-WF-iLJ" secondAttribute="centerX" id="8dc-er-qLy"/>
                                             <constraint firstItem="kiZ-6V-gDN" firstAttribute="width" secondItem="A5m-Ht-Je5" secondAttribute="width" id="8mD-Sq-Y1P"/>
                                             <constraint firstItem="ZPI-0k-8DL" firstAttribute="centerX" secondItem="YQQ-nj-nep" secondAttribute="centerX" id="9c6-ob-Jc2"/>
+                                            <constraint firstItem="I63-vo-6Ko" firstAttribute="width" secondItem="7g1-zL-1Bx" secondAttribute="width" id="9hT-bm-Q4y"/>
                                             <constraint firstItem="hP0-Uw-hn3" firstAttribute="centerX" secondItem="xng-ZN-r2B" secondAttribute="centerX" id="B43-Ac-acC"/>
                                             <constraint firstItem="o8b-TQ-0Sy" firstAttribute="centerX" secondItem="ltM-nJ-vJc" secondAttribute="centerX" id="BjB-cG-GxQ"/>
                                             <constraint firstItem="A5m-Ht-Je5" firstAttribute="centerX" secondItem="d0a-Ua-7M6" secondAttribute="centerX" id="DcP-z4-YTT"/>
@@ -159,6 +166,7 @@
                                             <constraint firstItem="xng-ZN-r2B" firstAttribute="top" secondItem="2z9-Ry-I3x" secondAttribute="bottom" constant="15" id="UsA-ie-Cxk"/>
                                             <constraint firstItem="hP0-Uw-hn3" firstAttribute="width" secondItem="xng-ZN-r2B" secondAttribute="width" id="X04-oB-6qt"/>
                                             <constraint firstItem="7g1-zL-1Bx" firstAttribute="top" secondItem="ZPI-0k-8DL" secondAttribute="bottom" constant="15" id="aaJ-fj-BAv"/>
+                                            <constraint firstItem="I63-vo-6Ko" firstAttribute="top" secondItem="7g1-zL-1Bx" secondAttribute="bottom" constant="15" id="cvy-zp-ArG"/>
                                             <constraint firstItem="o8b-TQ-0Sy" firstAttribute="top" secondItem="ltM-nJ-vJc" secondAttribute="top" constant="15" id="eP9-z8-bh2"/>
                                             <constraint firstItem="XQL-xE-cgC" firstAttribute="width" secondItem="hP0-Uw-hn3" secondAttribute="width" id="gG2-eJ-Uyv"/>
                                             <constraint firstItem="kiZ-6V-gDN" firstAttribute="top" secondItem="A5m-Ht-Je5" secondAttribute="bottom" constant="15" id="gNh-wK-Ijx"/>
@@ -166,6 +174,7 @@
                                             <constraint firstItem="XQL-xE-cgC" firstAttribute="top" secondItem="hP0-Uw-hn3" secondAttribute="bottom" constant="15" id="jTL-DC-yY7"/>
                                             <constraint firstItem="XQL-xE-cgC" firstAttribute="centerX" secondItem="hP0-Uw-hn3" secondAttribute="centerX" id="lcd-Q8-zfo"/>
                                             <constraint firstItem="ZPI-0k-8DL" firstAttribute="width" secondItem="ltM-nJ-vJc" secondAttribute="width" multiplier="0.75" id="rVt-Mn-og9"/>
+                                            <constraint firstItem="I63-vo-6Ko" firstAttribute="centerX" secondItem="7g1-zL-1Bx" secondAttribute="centerX" id="tab-OL-8FO"/>
                                             <constraint firstItem="2z9-Ry-I3x" firstAttribute="centerX" secondItem="ltM-nJ-vJc" secondAttribute="centerX" id="thN-hs-3sf"/>
                                             <constraint firstItem="vym-hP-rgg" firstAttribute="top" secondItem="o8b-TQ-0Sy" secondAttribute="bottom" constant="4" id="ttr-BU-RdX"/>
                                             <constraint firstItem="Cdb-WF-iLJ" firstAttribute="width" secondItem="XQL-xE-cgC" secondAttribute="width" id="x2h-Ip-TfC"/>

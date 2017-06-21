@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+//TODO: change cell detail label to un-paid / paid on flag value from payment
+
 class OwnerScheduleTableViewController: UITableViewController {
     
     //TESTING POC

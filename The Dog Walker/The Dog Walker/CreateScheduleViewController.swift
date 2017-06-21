@@ -15,8 +15,8 @@ class CreateScheduleViewController: UIViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
     var petRef: DatabaseReference!
+    let userID = Auth.auth().currentUser?.uid
 
     //MARK: -- outlets
     @IBOutlet weak var dateTF: UITextField!
@@ -31,31 +31,35 @@ class CreateScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //get ref to database
         ref = Database.database().reference().child("schedules").child(userID!)
-        
         petRef = Database.database().reference().child("pets").child(userID!)
         
+        //set observer to retrieve pet key
         petRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            
+            //dev
             print(snapshot)
-            
+            //loop thru snapshot to retrieve petKey
             for keys in((snapshot.value as! NSDictionary).allKeys){
-                
+                //dev
                 print(keys)
+                //set key value
                 let key = keys
                 
+                //set observer to retrieve pet info values from FB DB
                 self.petRef.child(key as! String).observeSingleEvent(of: .value, with: { (snapshot) in
                     print(snapshot)
-                    
+                    //get snaphot as dictionary
                     let value = snapshot.value as? NSDictionary
                     
+                    //set values
                     let petName = value?.value(forKey: "petName")
                     let instructions = value?.value(forKey: "specialIns")
                     let meds = value?.value(forKey: "meds")
                     
                     //dev
                     print(petName!)
-                    
+                    //populate label with values from FB
                     self.petNameTF.text = petName as? String
                     self.instructionTF.text = instructions as? String
                     self.medTF.text = meds as? String
@@ -81,9 +85,10 @@ class CreateScheduleViewController: UIViewController {
         
         //generate key for each schedule
         let scheduleKey = ref.childByAutoId().key
-        
+        //populate class with text field values
         let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!)
         
+        //set values to push to firebase
         self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "scheduleKey": scheduleKey, "uid": userID])
         //dev
         print("save schedule")

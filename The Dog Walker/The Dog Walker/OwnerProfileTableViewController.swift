@@ -9,16 +9,9 @@
 import UIKit
 import Firebase
 
+//TODO: -- delete table view row (delete schdeudle), check empty fields, create flag for payment (local & remote)
+
 class OwnerProfileTableViewController: UITableViewController {
-    
-    //MARK: -- outlets
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var emergencyContactLabel: UILabel!
-    @IBOutlet weak var emergencyPhoneLabel: UILabel!
-    
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
@@ -32,11 +25,20 @@ class OwnerProfileTableViewController: UITableViewController {
         return homeVC
     }()
     
+    //MARK: -- outlets
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var emergencyContactLabel: UILabel!
+    @IBOutlet weak var emergencyPhoneLabel: UILabel!
+    
+    
     //MARK: --viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //set DB reference 
+        //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -53,23 +55,25 @@ class OwnerProfileTableViewController: UITableViewController {
             let email = userValues?.value(forKey: "email") as? String
             let phone = userValues?.value(forKey: "phoneNumber") as? String
             
+            //get address object
             let addressValue = userValues?.value(forKey: "address") as? NSDictionary
-            
+            //get values from address object
             let address = addressValue?.value(forKey: "address") as? String
             let city = addressValue?["city"] as? String
+            let state = addressValue?["state"] as? String
+            let zipCode = addressValue?["zipCode"] as? String
             
             //dev
             print(address!)
             print(city!)
-            
+            //set detail label text w/ FB values
             self.nameLabel.text = firstName! + " " + lastName!
             self.emailLabel.text = email!
             self.phoneLabel.text = phone!
-            self.addressLabel.text = address
-            
+            self.addressLabel.text = address! + " " + city! + ", " + state! + " " + zipCode!
         })
     }
-  
+    
     //MARK: -- actions
     @IBAction func signOutBtn(_ sender: Any) {
         
@@ -82,8 +86,6 @@ class OwnerProfileTableViewController: UITableViewController {
     }
     
     
-
-
 }
 
 

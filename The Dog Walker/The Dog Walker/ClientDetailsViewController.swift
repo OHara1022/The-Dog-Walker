@@ -15,23 +15,7 @@ class ClientDetailsViewController: UIViewController {
         case clientIndex = 0
         case petIndex = 1
     }
-    
-    //MARK: -- outlets
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var containerView: UIView!
-    
-    //MARK: -- actions
-    @IBAction func switchProfile(_ sender: UISegmentedControl) {
-        
-        //remove current vc from view on selection change
-        self.currentViewController!.view.removeFromSuperview()
-        self.currentViewController!.removeFromParentViewController()
-        //display selected tab
-        displayCurrentView(sender.selectedSegmentIndex)
-        
-    }
-    
-    
+
     //MARK: -- stored properties
     var currentViewController: UIViewController?
     
@@ -53,6 +37,9 @@ class ClientDetailsViewController: UIViewController {
         return petVC
     }()
     
+    //MARK: -- outlets
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +49,17 @@ class ClientDetailsViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = SegmentTabIndex.clientIndex.rawValue
         //display tab 1
         displayCurrentView(SegmentTabIndex.clientIndex.rawValue)
+        
+    }
+    
+    //MARK: -- actions
+    @IBAction func switchProfile(_ sender: UISegmentedControl) {
+        
+        //remove current vc from view on selection change
+        self.currentViewController!.view.removeFromSuperview()
+        self.currentViewController!.removeFromParentViewController()
+        //display selected tab
+        displayCurrentView(sender.selectedSegmentIndex)
         
     }
     

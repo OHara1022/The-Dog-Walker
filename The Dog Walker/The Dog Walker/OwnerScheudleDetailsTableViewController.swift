@@ -20,7 +20,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     var dateHolder: String?
     var timeHolder: String?
     var durationHolder: String?
-    var priceHolder: String?  = "" //use on later release 
+    var priceHolder: String?  = "" //use on later release
     var specialInsHolder: String?
     var medHolder: String?
     var scheduleKeyHolder: String?
@@ -42,25 +42,25 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         //hide applePay button if user does not have supported device
         applePayBTN.isHidden = !PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: supportedPayments)
         
-            //dev
-            print(petNameHolder!)
-            
-            deatilsPetNameLBL.text = petNameHolder
-            detailsDateLBL.text = dateHolder
-            detailsTimeLBL.text = timeHolder
-            durationLBL.text = durationHolder
-            specialInsLBL.text = specialInsHolder
-            medsLBL.text = medHolder
+        //dev
+        print(petNameHolder!)
         
-    
+        //set label w/ passed values
+        deatilsPetNameLBL.text = petNameHolder
+        detailsDateLBL.text = dateHolder
+        detailsTimeLBL.text = timeHolder
+        durationLBL.text = durationHolder
+        specialInsLBL.text = specialInsHolder
+        medsLBL.text = medHolder
+        
     }
- 
+    
     
     //MARK: -- actions
     @IBAction func payBTN(_ sender: UIButton) {
         
         if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: supportedPayments){
-        
+            
             let request = PKPaymentRequest()
             
             request.merchantIdentifier = applePayMerchantID
@@ -72,7 +72,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             request.countryCode = "US"
             
             request.currencyCode = "USD"
-        
+            
             request.requiredBillingAddressFields = PKAddressField.all
             
             let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
@@ -83,11 +83,11 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         }
     }
     
- 
-
+    
+    
 }
 
-//MARK: --extension payment delegate 
+//MARK: --extension payment delegate
 extension OwnerScheudleDetailsTableViewController: PKPaymentAuthorizationViewControllerDelegate{
     //delegate method to auth payment on completion
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {

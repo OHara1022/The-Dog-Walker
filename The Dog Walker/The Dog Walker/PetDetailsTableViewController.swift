@@ -11,6 +11,10 @@ import Firebase
 
 class PetDetailsTableViewController: UITableViewController {
 
+    //MARK: -- stored properties
+    var ref: DatabaseReference!
+    let userID = Auth.auth().currentUser?.uid
+    
     //MARK: -- outlets
     @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -21,30 +25,32 @@ class PetDetailsTableViewController: UITableViewController {
     @IBOutlet weak var vetNameLabel: UILabel!
     @IBOutlet weak var vetPhoneLabel: UILabel!
     
-    //MARK: -- stored properties
-    var ref: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
-    
     //MARK: --viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //get ref to pets
         ref = Database.database().reference().child("pets").child(userID!)
         
+        //set observor to get pet key
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             print(snapshot)
             
+            //loop thru snapshot to retrieve keys
             for keys in((snapshot.value as! NSDictionary).allKeys){
-                
+                //dev
                 print(keys)
+                //set key
                 let key = keys
                 
+                //set observer w/ key to retrieve pet info
                 self.ref.child(key as! String).observeSingleEvent(of: .value, with: { (snapshot) in
                     print(snapshot)
-                    
+                    //get snapcalue as dictionary
                 let value = snapshot.value as? NSDictionary
                     
+                    //set values
                     let petName = value?.value(forKey: "petName")
                     let bday = value?.value(forKey: "birthday")
                     let breed = value?.value(forKey: "breed")
@@ -57,6 +63,7 @@ class PetDetailsTableViewController: UITableViewController {
                     //dev
                     print(petName!)
                     
+                    //populate labels with passed values
                     self.petNameLabel.text = petName as? String
                     self.dateLabel.text = bday as? String
                     self.breedLabel.text = breed as? String
@@ -73,6 +80,7 @@ class PetDetailsTableViewController: UITableViewController {
         
     }
     
+    //MARK: -- actions
     @IBAction func addPet(_ sender: UIButton) {
         
         FieldValidation.textFieldAlert("Add Pet", message: "Add Pet will be in future release", presenter: self)

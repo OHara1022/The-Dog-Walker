@@ -7,28 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
+
+//TODO: get snapshot of all users - ?query by child equal to companyCode if exists display clients/pets on index selection (reference ownerscheudleTVC)
 class ClientsTableViewController: UITableViewController {
     
+    //MARK: -- store properties
     let nameArray: [String] = ["Scott O'Hara", "Bill Davis", "Jim Jones", "Brittney Gault", "Nicole Deihl"]
 
+    
+    //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
+    // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -52,6 +47,7 @@ class ClientsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
+       performSegue(withIdentifier: "clientDetails", sender: indexPath)
     }
     
 

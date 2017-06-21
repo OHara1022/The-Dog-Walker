@@ -11,8 +11,13 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
+
+//TODO: uncomment field check, add company code to relate users
 class RegisterViewController: UIViewController {
     
+    //MARK: -- stored properties
+    var ref: DatabaseReference!
+    let users: String = "users"
     
     //MARK: -- outlets
     @IBOutlet weak var profileImage: UIImageView!
@@ -28,29 +33,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var zipCodeTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var companyTV: UITextField!
-    
-    //MARK: -- stored properties
-    var ref: DatabaseReference!
-    let users: String = "users"
-    
-    
-    //TESTING
-    //refenerce to walker home VC - instantiant walkerHome VC
-//    lazy var ownerVC: UIViewController? = {
-//        //init walkerHomeVC w/ identifier
-//        let ownerVC = self.storyboard?.instantiateViewController(withIdentifier: "petReg")
-//        //return vc
-//        return ownerVC
-//    }()
-//    
-//    //refenerce to walker home VC - instantiant walkerHome VC
-//    lazy var homeVC: UIViewController? = {
-//        //init walkerHomeVC w/ identifier
-//        let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "walker")
-//        //return vc
-//        return homeVC
-//    }()
-    
+
+    //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,16 +43,30 @@ class RegisterViewController: UIViewController {
         ref = Database.database().reference()
     }
     
+    
+    //MARK: -- actions
+    @IBAction func addProfileImage(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: title, message: "OPEN CAMERA", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    //func to save address to FB database
     func saveAddress(_ addressInfo: AddressInfo, databaseRef: DatabaseReference, user: Users){
         databaseRef.child(users).child(user.uid).child("address").setValue(["address": addressInfo.address, "aptNumber": addressInfo.aptNumber, "city": addressInfo.city, "state": addressInfo.state, "zipCode": addressInfo.zipCode])
         
     }
     
+    //func to create user and save to FB DB
     func createUser(_ user: User){
         
         let addressInfo = AddressInfo(address: addressTF.text! as String, aptNumber: aptTF.text! as String, city: cityTF.text! as String, state: stateTF.text! as String, zipCode: zipCodeTF.text! as String)
         
         let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressInfo, phoneNumber: phoneTF.text! as String, uid: user.uid)
+        
+        userInfo.companyCode = "0101"
         
         ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid])
         
@@ -76,50 +74,8 @@ class RegisterViewController: UIViewController {
         
     }
     
-    //MARK: -- actions
-    @IBAction func addProfileImage(_ sender: UIButton) {
-        
-        let alert = UIAlertController(title: title, message: "OPEN CAMERA", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
-    }
-    
-//    @IBAction func saveReg(_ sender: Any) {
-//        
-//        let email = emailTF.text
-//        let password = passwordTF.text
-//        
-//        Auth.auth().createUser(withEmail: email!, password: password!, completion: {(user, error) in
-//            
-//            if let error = error{
-//                
-//                FieldValidation.textFieldAlert("Invalid Information", message: error.localizedDescription, presenter: self)
-//                //dev
-//                print(error.localizedDescription)
-//                return
-//            }
-//            self.createUser(user!)
-//        })
-//        
-//        if companyTV.text == "walker"{
-//            
-//            present(homeVC!, animated: true, completion: nil)
-//            
-//            
-//        }
-//        
-//        if companyTV.text == "owner"{
-//            
-//            present(ownerVC!, animated: true, completion: nil)
-//            
-//        }
-//        
-//        
-//        
-//    }
+    //MARK: --segue
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
         
         //auth register flag
         var loginFlag: Bool = false

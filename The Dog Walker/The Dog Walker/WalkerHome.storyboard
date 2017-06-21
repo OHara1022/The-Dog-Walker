@@ -56,7 +56,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="vtP-cZ-e5G" kind="show" identifier="clientDetails" id="qZF-4g-uKi"/>
+                                    <segue destination="vtP-cZ-e5G" kind="show" identifier="clientDetails" trigger="accessoryAction" id="aP7-Hl-igP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -95,7 +95,7 @@
             <objects>
                 <tableViewController id="wnb-fb-NJW" customClass="ClientPetTableViewController" customModule="The_Dog_Walker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Pc-Nw-vHl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -359,6 +359,19 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="J1X-ef-sSQ"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="750"/>
+                    <connections>
+                        <outlet property="bdayLBL" destination="N4R-2M-CWG" id="VBe-NZ-ZXh"/>
+                        <outlet property="breedLBL" destination="1wo-aj-7Oz" id="SAu-Gd-hbM"/>
+                        <outlet property="clientPetImg" destination="TN1-ln-bi9" id="GnO-y9-BOp"/>
+                        <outlet property="medsLBL" destination="F7d-tu-CIy" id="7Bz-IS-VWX"/>
+                        <outlet property="petNameLBL" destination="I1u-NI-5Ua" id="zsy-Iy-jpH"/>
+                        <outlet property="specialInsLBL" destination="mtm-Cq-hnP" id="u8J-rg-t3L"/>
+                        <outlet property="vaccineLBL" destination="9Uq-YU-bqU" id="sgi-b8-BsG"/>
+                        <outlet property="vetNameLBL" destination="Sxx-qq-IPQ" id="Ta8-TW-IEn"/>
+                        <outlet property="vetPhoneLBL" destination="pBu-eh-D4J" id="9Se-RG-XfU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBl-3n-b7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -381,7 +394,7 @@
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kkm-Eg-zmN">
-                                <rect key="frame" x="47" y="79" width="281" height="29"/>
+                                <rect key="frame" x="47" y="84" width="281" height="29"/>
                                 <segments>
                                     <segment title="Client Profile"/>
                                     <segment title="Pet Profile"/>
@@ -395,7 +408,7 @@
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="E4q-MM-9nR" firstAttribute="top" secondItem="l58-MZ-a8s" secondAttribute="topMargin" constant="-1" id="77N-sP-yam"/>
-                            <constraint firstItem="kkm-Eg-zmN" firstAttribute="top" secondItem="gnq-dD-dq9" secondAttribute="bottom" constant="15" id="BhY-Qd-hBj"/>
+                            <constraint firstItem="kkm-Eg-zmN" firstAttribute="top" secondItem="gnq-dD-dq9" secondAttribute="bottom" constant="20" id="BhY-Qd-hBj"/>
                             <constraint firstItem="kkm-Eg-zmN" firstAttribute="centerX" secondItem="l58-MZ-a8s" secondAttribute="centerX" id="E1q-kd-lKZ"/>
                             <constraint firstItem="E4q-MM-9nR" firstAttribute="width" secondItem="l58-MZ-a8s" secondAttribute="width" id="Iqv-Bg-Byq"/>
                             <constraint firstItem="kkm-Eg-zmN" firstAttribute="width" secondItem="l58-MZ-a8s" secondAttribute="width" multiplier="0.75" id="PXU-RL-boW"/>
@@ -639,6 +652,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="VRT-3w-IGa"/>
+                    <connections>
+                        <outlet property="clientAddressLBL" destination="zCH-Rp-DkV" id="Auk-Yg-MHg"/>
+                        <outlet property="clientEmaillLBL" destination="Dg9-9c-vxH" id="Lsm-9s-IGq"/>
+                        <outlet property="clientEmergencyContantLBL" destination="9ge-4I-x69" id="XWD-Sg-v1p"/>
+                        <outlet property="clientNameLBL" destination="1nm-a0-PM6" id="DWF-eU-U1L"/>
+                        <outlet property="clientPhoneLBL" destination="gpg-ka-yXM" id="EbB-ht-fLA"/>
+                        <outlet property="clientProfileImg" destination="b0Y-Ck-5Ph" id="2cR-Ut-cpT"/>
+                        <outlet property="emergencyPhoneLBL" destination="Hkb-r3-MLR" id="ItY-z4-N7S"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sph-yJ-Tj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -870,6 +892,16 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addressLBL" destination="2sa-dV-X6P" id="cVa-fd-BOx"/>
+                        <outlet property="companyNameCell" destination="d0V-aP-C6S" id="Gh6-mg-OIP"/>
+                        <outlet property="companyNameLBL" destination="6Ma-NK-2y6" id="cfi-60-kTW"/>
+                        <outlet property="companyNameTitle" destination="rTk-bj-hnM" id="BqM-aj-IhM"/>
+                        <outlet property="emailLBL" destination="EFh-44-Otd" id="mxe-fF-BA1"/>
+                        <outlet property="nameLBL" destination="qZF-SN-JVm" id="ifp-Re-tlj"/>
+                        <outlet property="phoneLBL" destination="lzo-RQ-3sb" id="WG7-Bt-BNz"/>
+                        <outlet property="profileImage" destination="cma-rm-M2L" id="M45-R6-Moe"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vrs-6b-oMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -44,7 +44,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="7ya-Qj-0aP" kind="show" identifier="details" id="kdI-FE-59Y"/>
+                                    <segue destination="7ya-Qj-0aP" kind="show" identifier="scheduleDetails" trigger="accessoryAction" id="11W-pD-loF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -418,6 +418,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateLabel" destination="ure-bO-yGx" id="qF5-mG-Lvj"/>
+                        <outlet property="durationLabel" destination="tOj-q9-cKS" id="9yP-TD-D1P"/>
+                        <outlet property="medsLabel" destination="oLV-gm-33R" id="z3s-1V-Hel"/>
+                        <outlet property="petImage" destination="ekX-Mv-Iee" id="d2C-Yi-3hW"/>
+                        <outlet property="petNameLabel" destination="zkR-FP-KkO" id="U3S-j3-24m"/>
+                        <outlet property="specialInsLabel" destination="zVP-Ti-wqo" id="3xE-5z-KXU"/>
+                        <outlet property="timeLabel" destination="SGD-DB-uht" id="NhK-5Y-CCn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb1-Xw-6Gs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
