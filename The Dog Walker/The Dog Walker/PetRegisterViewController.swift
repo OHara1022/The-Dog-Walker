@@ -41,17 +41,6 @@ class PetRegisterViewController: UIViewController {
         
         print("testID" + " " + userID!)
         
-//        Auth.auth().addStateDidChangeListener{ auth, user in
-//            
-//            //check if user is signed in
-//            if let user = user {
-//                //dev
-//                print("pet!!!" + " " +  user.uid)
-//              
-//              
-//            }
-//        }//end of listener
-        
          self.ref = Database.database().reference().child("pets").child(userID!)
     }
     

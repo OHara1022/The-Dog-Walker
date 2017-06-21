@@ -112,10 +112,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotPassword(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: "Forgot Password?", message: "Will send recover email in furture release", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
+        FieldValidation.textFieldAlert("Forgot Password?", message: "Will send recover email in furture release", presenter: self)
+        
     }
     
     

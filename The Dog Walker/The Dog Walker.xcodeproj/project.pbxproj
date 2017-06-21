@@ -15,6 +15,7 @@
 		D217B3251EF36FBD00785F88 /* CreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B3241EF36FBD00785F88 /* CreateScheduleViewController.swift */; };
 		D21CEF611EF3014200DF8602 /* EditPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF601EF3014200DF8602 /* EditPetViewController.swift */; };
 		D21CEF631EF3015800DF8602 /* EditOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */; };
+		D2206CC81EF9FC8100AA6322 /* DetailNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2206CC71EF9FC8100AA6322 /* DetailNavViewController.swift */; };
 		D226B69A1EF4FFD500105673 /* OwnerScheudlesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D226B6991EF4FFD500105673 /* OwnerScheudlesTableViewCell.swift */; };
 		D23FE2211EF4472700636F8F /* ClientPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23FE2201EF4472700636F8F /* ClientPetTableViewController.swift */; };
 		D27072331EF0ED720073501E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27072321EF0ED720073501E /* WelcomeViewController.swift */; };
@@ -83,6 +84,7 @@
 		D217B3241EF36FBD00785F88 /* CreateScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateScheduleViewController.swift; sourceTree = "<group>"; };
 		D21CEF601EF3014200DF8602 /* EditPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPetViewController.swift; sourceTree = "<group>"; };
 		D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOwnerViewController.swift; sourceTree = "<group>"; };
+		D2206CC71EF9FC8100AA6322 /* DetailNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNavViewController.swift; sourceTree = "<group>"; };
 		D226B6991EF4FFD500105673 /* OwnerScheudlesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerScheudlesTableViewCell.swift; sourceTree = "<group>"; };
 		D23FE2201EF4472700636F8F /* ClientPetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientPetTableViewController.swift; sourceTree = "<group>"; };
 		D27072321EF0ED720073501E /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				D2C5FABE1EF4CB09006BB572 /* OwnerScheudleDetailsTableViewController.swift */,
 				D2C5FAC21EF4CFE3006BB572 /* OwnerEditScheduleViewController.swift */,
 				D226B6991EF4FFD500105673 /* OwnerScheudlesTableViewCell.swift */,
+				D2206CC71EF9FC8100AA6322 /* DetailNavViewController.swift */,
 			);
 			name = OwnerSchedules;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				D27E9CC51EF3A0D900377A72 /* ClientProfileTableViewController.swift in Sources */,
 				D21CEF631EF3015800DF8602 /* EditOwnerViewController.swift in Sources */,
 				D27072331EF0ED720073501E /* WelcomeViewController.swift in Sources */,
+				D2206CC81EF9FC8100AA6322 /* DetailNavViewController.swift in Sources */,
 				D217B3231EF36F7400785F88 /* OwnerScheduleTableViewController.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
 				D2C5FABD1EF4C859006BB572 /* WalkerEditProfileViewController.swift in Sources */,

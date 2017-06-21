@@ -26,8 +26,8 @@ class OwnerProfileTableViewController: UITableViewController {
         try! Auth.auth().signOut()
         
         //present walkerHomeVC
+        homeVC?.modalTransitionStyle = .flipHorizontal
         present(homeVC!, animated: true, completion: nil)
-
     }
     
 

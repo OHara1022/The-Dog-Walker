@@ -39,10 +39,10 @@ class CreateScheduleViewController: UIViewController {
             
             print(snapshot)
             
-            for a in((snapshot.value as! NSDictionary).allKeys){
+            for keys in((snapshot.value as! NSDictionary).allKeys){
                 
-                print(a)
-                let key = a
+                print(keys)
+                let key = keys
                 
                 self.petRef.child(key as! String).observeSingleEvent(of: .value, with: { (snapshot) in
                     print(snapshot)
@@ -84,7 +84,7 @@ class CreateScheduleViewController: UIViewController {
         
         let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!)
         
-        self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds])
+        self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "scheduleKey": scheduleKey, "uid": userID])
         //dev
         print("save schedule")
         //dismiss VC

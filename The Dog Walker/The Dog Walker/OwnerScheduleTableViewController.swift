@@ -12,7 +12,6 @@ import Firebase
 class OwnerScheduleTableViewController: UITableViewController {
     
     //TESTING POC
-    let dateArray: [String] = ["06/22/2017", "06/23/2017","06/24/2017", "06/25/2017", "06/25/2017"]
     var holderTest: [String] = ["Paid", "Paid","Paid","Paid","Paid"]
     var test: UILabel?
 //    test?.textColor = UIColor.green
@@ -29,6 +28,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         //assign delegate and datasoure to self
         tableView.delegate = self
         tableView.dataSource = self
+    
         
         //init dictionary
         dateInfo = NSDictionary()
@@ -88,6 +88,11 @@ class OwnerScheduleTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if dateInfo.count != 0 {
+        
+            self.performSegue(withIdentifier: "scheduleDetails", sender: indexPath)
+            
+        }
     }
     
 
@@ -119,12 +124,26 @@ class OwnerScheduleTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
-//        if segue.identifier == "createSchedule"{
-//            
-//            let petData = segue.destination as? CreateScheduleViewController
-//            
-//        }
+        if  segue.identifier == "scheduleDetails" {
+            
+        if let index = sender as? IndexPath{
+            
+            let details = segue.destination as! OwnerScheudleDetailsTableViewController
+            
+            let obj = self.dateInfo.allValues[(index as NSIndexPath).row] as! NSDictionary
+            
+            //dev
+            print(obj.value(forKey: "petName") as! String)
+            print(obj.value(forKey: "date") as! String)
+            print(obj.value(forKey: "time") as! String)
+            print(obj.value(forKey: "duration") as! String)
+             print(obj.value(forKey: "specialIns") as! String)
+             print(obj.value(forKey: "meds") as! String)
+             print(obj.value(forKey: "scheduleKey") as! String)
+            details.petNameHolder = obj.value(forKey: "petName") as? String
+           
+            }
     }
-    
-    
+        
+    }
 }

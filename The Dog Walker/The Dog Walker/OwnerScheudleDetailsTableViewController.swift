@@ -8,15 +8,46 @@
 
 import UIKit
 import PassKit
-
+import Firebase
 
 class OwnerScheudleDetailsTableViewController: UITableViewController, PKPaymentAuthorizationViewControllerDelegate {
     
-    @IBOutlet weak var applePayBTN: UIButton!
     
     //MARK: --stored properties
     let supportedPayments = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard, PKPaymentNetwork.amex]
     let applePayMerchantID = "merchant.com.ohara.walks"
+    var petNameHolder: String?
+    var dateHolder: String?
+    var timeHolder: String?
+    var durationHolder: String?
+    var priceHolder: String?  = "" //use on later release 
+    var specialInsHolder: String?
+    var medHolder: String?
+    var scheduleKeyHolder: String?
+    
+    //MARK: -- outlets
+    @IBOutlet weak var deatilsPetNameLBL: UILabel!
+    @IBOutlet weak var detailsDateLBL: UILabel!
+    @IBOutlet weak var detailsTimeLBL: UILabel!
+    @IBOutlet weak var durationLBL: UILabel!
+    @IBOutlet weak var priceLBL: UILabel!
+    @IBOutlet weak var specialInsLBL: UILabel!
+    @IBOutlet weak var medsLBL: UILabel!
+    @IBOutlet weak var applePayBTN: UIButton!
+    
+    //MARK: -- viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //hide applePay button if user does not have supported device
+        applePayBTN.isHidden = !PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: supportedPayments)
+        
+        if let name = petNameHolder{
+            print(name)
+        }
+        
+    }
+ 
     
     //MARK: -- actions
     @IBAction func payBTN(_ sender: UIButton) {
@@ -44,16 +75,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController, PKPaymentA
             self.present(applePayController, animated: true, completion: nil)
         }
     }
-    
-    //MARK: -- viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //hide applePay button if user does not have supported device
-        applePayBTN.isHidden = !PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: supportedPayments)
-        
-    }
-    
     
     // MARK: - Table view data source
     //
@@ -122,16 +143,19 @@ class OwnerScheudleDetailsTableViewController: UITableViewController, PKPaymentA
      }
      */
     
+    //delegate method to auth payment on completion
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+        //complete on sucess of payment
         completion(PKPaymentAuthorizationStatus.success)
         
+        //dev
         print("PAID SUCCESSFUL")
     }
 
     
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        //dimiss vc if canceled or transation complete
         controller.dismiss(animated: true, completion: nil)
     }
-    
-    
+
 }

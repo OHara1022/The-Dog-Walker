@@ -22,6 +22,7 @@ class WelcomeViewController: UIViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var roleID: String = "roleID"
+
     
     //MARK: -- actions
     @IBAction func dogWalkerBTN(_ sender: UIButton) {
@@ -38,7 +39,7 @@ class WelcomeViewController: UIViewController {
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         Auth.auth().addStateDidChangeListener{ auth, user in
             
             //check if user is signed in
