@@ -32,7 +32,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var stateTF: UITextField!
     @IBOutlet weak var zipCodeTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
-    @IBOutlet weak var companyTV: UITextField!
+    @IBOutlet weak var companyCodeTF: UITextField!
+    @IBOutlet weak var companyNameTF: UITextField!
 
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
@@ -66,9 +67,9 @@ class RegisterViewController: UIViewController {
         
         let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressInfo, phoneNumber: phoneTF.text! as String, uid: user.uid)
         
-        userInfo.companyCode = "0101"
+        userInfo.companyCode = companyCodeTF.text! as String
         
-        ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid])
+        ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid, "companyCode": userInfo.companyCode! as String])
         
         saveAddress(userInfo.address, databaseRef: self.ref, user: userInfo)
         

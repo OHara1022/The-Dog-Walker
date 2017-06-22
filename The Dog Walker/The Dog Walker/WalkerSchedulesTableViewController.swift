@@ -13,21 +13,94 @@ import Firebase
 class WalkerSchedulesTableViewController: UITableViewController {
     
     //MARK: -- stored properties
-    let dateArray: [String] = ["06/22/2017", "06/23/2017","06/24/2017", "06/25/2017", "06/25/2017"]
-    let nameArray: [String] = ["Scott O'Hara", "Bill Davis", "Jim Jones", "Brittney Gault", "Nicole Deihl"]
+    var ref: DatabaseReference!
+    var scheduleData: NSDictionary!
+    var userRef: DatabaseReference!
+    let userID = Auth.auth().currentUser?.uid
+    var userInfo: [String] = []
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        //assign delegate and datasoure to self
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //init dictionary
+        scheduleData = NSDictionary()
+        
+        //set DB reference
+        ref = Database.database().reference().child("schedules")
+        userRef = Database.database().reference().child("users")
+        
     }
     
-
+    var role: String?
+    var walkerCode: String?
+    var current: String?
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+    
+        
+        self.userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //            print(snapshot)
+            
+            let code = snapshot.value as! NSDictionary
+            
+            self.current = code.value(forKey: "companyCode") as? String
+            
+            //            print(self.current!)
+            
+        })
+        
+        self.userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            print(snapshot)
+            
+            for keys in (snapshot.value as! NSDictionary).allValues{
+                
+                let roleKey = keys as! NSDictionary
+                
+                let roleID = roleKey.value(forKey: "roleID") as? String
+                
+                let walkerCode = roleKey.value(forKey: "companyCode") as? String
+                
+                print(roleID!)
+                print(walkerCode!)
+                
+                self.role = roleID!
+                self.walkerCode = walkerCode!
+                
+                if roleID == "Owner"  && self.walkerCode == self.current{
+                    
+                    print("HIT")
+                    
+                    self.ref.observe(.value, with: { (snapshot) in
+                        
+                        //print(snapshot)
+                        
+                        for keys in (snapshot.value as! NSDictionary).allKeys{
+                            
+                            //print(keys)
+                            
+                            self.ref.child(keys as! String).observeSingleEvent(of: .value, with: { (snapshot) in
+                                
+                                //print(snapshot)
+                                self.scheduleData = snapshot.value as! NSDictionary
+                                
+                                self.tableView.reloadData()
+                            })
+                            
+                        }
+                    })
+                }
+            }
+        })
+    }
+    
     // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -36,17 +109,27 @@ class WalkerSchedulesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dateArray.count
+        return scheduleData.count
     }
     
+    var testCode: String?
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
         
+        let obj = self.scheduleData.allValues[(indexPath as NSIndexPath).row] as! NSDictionary
+        //dev
+        //        print(obj)
+        
+        let date = obj.value(forKey: "date") as! String
+        
+        print(date)
+        userInfo.append(date)
+        
         // Configure the cell...
-        cell.textLabel?.text = dateArray[indexPath.row]
-        cell.detailTextLabel?.text = nameArray[indexPath.row]
+        cell.textLabel?.text = date
+        cell.detailTextLabel?.text = "Scott"
         
         return cell
     }
@@ -60,15 +143,15 @@ class WalkerSchedulesTableViewController: UITableViewController {
     
     
     // MARK: - Navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  
-//        if let index = sender as? IndexPath{
-//            
-//            let details = segue.destination as! WalkerScheduleDetailsTableViewController
-//           
-//        }
-//        
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    //        if let index = sender as? IndexPath{
+    //
+    //            let details = segue.destination as! WalkerScheduleDetailsTableViewController
+    //
+    //        }
+    //
+    //    }
     
     
     

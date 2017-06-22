@@ -9,10 +9,12 @@
 import UIKit
 import Firebase
 
-//TODO: fix address TF height, pull snaphot for currrent user display personal info (refer to owner profile)
 class WalkerProfileTableViewController: UITableViewController {
     
     //MARK: -- stored properties
+    var ref: DatabaseReference!
+    let userID = Auth.auth().currentUser?.uid//get current user userID
+    
     //refenerce to walker home VC - instantiant walkerHome VC
     lazy var homeVC: UIViewController? = {
         //init walkerHomeVC w/ identifier
@@ -35,6 +37,37 @@ class WalkerProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //set DB reference
+        ref = Database.database().reference().child("users").child(userID!)
+        
+        ref.observeSingleEvent(of: .value, with: {(snapshot) in
+            //dev
+            print(snapshot)
+            
+            //get values of current user
+            let userValues = snapshot.value as? NSDictionary
+        
+            //get object value as string
+            //get object value as string
+            let firstName = userValues?.value(forKey: "firstName") as? String
+            let lastName = userValues?.value(forKey: "lastName") as? String
+            let email = userValues?.value(forKey: "email") as? String
+            let phone = userValues?.value(forKey: "phoneNumber") as? String
+            
+            //get address object
+            let addressValue = userValues?.value(forKey: "address") as? NSDictionary
+            //get values from address object
+            let address = addressValue?.value(forKey: "address") as? String
+            let city = addressValue?["city"] as? String
+            let state = addressValue?["state"] as? String
+            let zipCode = addressValue?["zipCode"] as? String
+
+            self.nameLBL.text = firstName! + " " + lastName!
+            self.emailLBL.text = email!
+            self.phoneLBL.text = phone!
+            self.addressLBL.text = address! + " " + city! + ", " + state! + " " + zipCode!
+            
+        })
     }
 
     //MARK: -- actions

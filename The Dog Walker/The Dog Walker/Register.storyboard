@@ -19,14 +19,14 @@
                         <viewControllerLayoutGuide type="bottom" id="AJe-c0-6ec"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9PM-AA-4tN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmO-k9-MDp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltM-nJ-vJc">
-                                        <rect key="frame" x="0.0" y="-50" width="375" height="733.5"/>
+                                        <rect key="frame" x="0.0" y="-50" width="375" height="880"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="o8b-TQ-0Sy">
                                                 <rect key="frame" x="140" y="15" width="95" height="82"/>
@@ -215,11 +215,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="addressTF" destination="d0a-Ua-7M6" id="jXZ-se-ONV"/>
                         <outlet property="aptTF" destination="h5n-Nk-jxo" id="5fA-hk-xE8"/>
                         <outlet property="cityTF" destination="A5m-Ht-Je5" id="KTv-T1-Cep"/>
-                        <outlet property="companyTV" destination="7g1-zL-1Bx" id="vF8-5D-8xQ"/>
+                        <outlet property="companyCodeTF" destination="7g1-zL-1Bx" id="HLA-cb-FbW"/>
+                        <outlet property="companyNameTF" destination="I63-vo-6Ko" id="XCu-g2-HMK"/>
                         <outlet property="confirmPasswordTF" destination="YQQ-nj-nep" id="vc9-A7-ze0"/>
                         <outlet property="emailTF" destination="hP0-Uw-hn3" id="Bsy-cU-FQU"/>
                         <outlet property="firstNameTF" destination="2z9-Ry-I3x" id="1Jd-hm-IXw"/>

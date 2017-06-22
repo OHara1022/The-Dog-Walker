@@ -11,6 +11,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
+
+//TODO: check if email is in DB
 class WelcomeViewController: UIViewController {
 
     //MARK: -- stored properties

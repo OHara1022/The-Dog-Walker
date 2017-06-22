@@ -50,7 +50,6 @@ class LoginViewController: UIViewController {
                 print("LOGGED IN" + " " + user.email!)
             }
         }
-        
     }
     
     //MARK: -- actions
@@ -65,7 +64,9 @@ class LoginViewController: UIViewController {
                 return
             }
             if let user = user{
+                
                 self.ref = Database.database().reference().child("users").child(user.uid)
+                
                 self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
                     
                     let dic = snapshot.value as? NSDictionary
