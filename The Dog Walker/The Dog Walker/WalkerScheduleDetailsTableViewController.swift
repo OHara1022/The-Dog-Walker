@@ -12,6 +12,17 @@ import Firebase
 class WalkerScheduleDetailsTableViewController: UITableViewController {
     
     //MARK: -- stored properties
+    var petNameHolder: String?
+    var dateHolder: String?
+    var timeHolder: String?
+    var durationHolder: String?
+    var priceHolder: String?  = "" //use on later release
+    var specialInsHolder: String?
+    var medHolder: String?
+    var scheduleKeyHolder: String?
+    var clientNameHolder: String?
+    var clientAddressHolder: String?
+    var clientPhoneHolder: String?
     
     //MARK: --outlets
     @IBOutlet weak var petImage: UIImageView!
@@ -21,10 +32,26 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var specialInsLabel: UILabel!
     @IBOutlet weak var medsLabel: UILabel!
+    @IBOutlet weak var clientLabel: UILabel!
+    @IBOutlet weak var clientAddress: UILabel!
+    @IBOutlet weak var clientPhone: UILabel!
     
      //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let petName = petNameHolder, let date = dateHolder, let time = timeHolder, let duration = durationHolder, let specialIns = specialInsHolder, let meds = medHolder, let client = clientNameHolder, let address = clientAddressHolder, let phone = clientPhoneHolder{
+            
+            petNameLabel.text = petName
+            dateLabel.text = date
+            timeLabel.text = time
+            durationLabel.text = duration
+            specialInsLabel.text = specialIns
+            medsLabel.text = meds
+            clientLabel.text = client
+            clientAddress.text = address
+            clientPhone.text = phone
+        }
         
     }
     

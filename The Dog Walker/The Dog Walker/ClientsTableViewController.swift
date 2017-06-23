@@ -43,21 +43,24 @@ class ClientsTableViewController: UITableViewController {
             
             //dev
             //            print(snapshot)
-            
+            if snapshot.hasChildren(){
             let code = snapshot.value as! NSDictionary
             
             self.currentCode = code.value(forKey: "companyCode") as? String
             
             //dev
             //            print(self.current!)
-            
+            }
         })
         
         self.clientRef.observeSingleEvent(of: .value, with: { (snapshot) in
             //dev
             //            print(snapshot)
-            
-            self.clientData = snapshot.value as! NSDictionary
+            if snapshot.hasChildren(){
+                
+                self.clientData = snapshot.value as! NSDictionary
+                
+            }
             
             self.tableView.reloadData()
             

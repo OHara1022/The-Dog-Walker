@@ -27,15 +27,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="6/22/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cmt-vd-Day">
-                                            <rect key="frame" x="15" y="12" width="78.5" height="20.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cmt-vd-Day">
+                                            <rect key="frame" x="15" y="12" width="36" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Scott O'Hara" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bSY-xf-pZQ">
-                                            <rect key="frame" x="241.5" y="12" width="98.5" height="20.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Pet Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bSY-xf-pZQ">
+                                            <rect key="frame" x="265" y="12" width="75" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -419,6 +419,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="clientAddress" destination="c43-hw-X7z" id="DeS-i6-b8l"/>
+                        <outlet property="clientLabel" destination="DmO-ym-DRU" id="NAf-pY-V2Q"/>
+                        <outlet property="clientPhone" destination="6ZT-sb-Qwm" id="SBn-St-yWl"/>
                         <outlet property="dateLabel" destination="ure-bO-yGx" id="qF5-mG-Lvj"/>
                         <outlet property="durationLabel" destination="tOj-q9-cKS" id="9yP-TD-D1P"/>
                         <outlet property="medsLabel" destination="oLV-gm-33R" id="z3s-1V-Hel"/>

@@ -418,7 +418,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Special Instructions" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZQn-kq-sGz">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Special Instructions (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZQn-kq-sGz">
                                                 <rect key="frame" x="48" y="364" width="281" height="55"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -486,6 +486,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pet Registration" id="BGv-bC-h71">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9JS-8s-R81">
+                            <connections>
+                                <action selector="cancel:" destination="Zix-lQ-cDh" id="mk2-ub-E03"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="sm_save" id="PJ2-As-0U3">
                             <connections>
                                 <action selector="petSave:" destination="Zix-lQ-cDh" id="0AZ-5U-g0U"/>
@@ -517,6 +522,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnF-Lu-6XK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5010.3999999999996" y="-118.29085457271366"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="ZhD-y5-lfR">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="home" storyboardName="Main" id="Bml-5g-vWR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bUs-bm-na6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5051" y="20"/>
         </scene>
         <!--WalkerHome-->
         <scene sceneID="WBE-F1-7Jk">

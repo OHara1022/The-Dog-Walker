@@ -36,7 +36,7 @@ class PetDetailsTableViewController: UITableViewController {
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             print(snapshot)
-            
+            if snapshot.hasChildren(){
             //loop thru snapshot to retrieve keys
             for keys in((snapshot.value as! NSDictionary).allKeys){
                 //dev
@@ -75,7 +75,7 @@ class PetDetailsTableViewController: UITableViewController {
                     
                 })
             }
-            
+            }
         })
         
     }

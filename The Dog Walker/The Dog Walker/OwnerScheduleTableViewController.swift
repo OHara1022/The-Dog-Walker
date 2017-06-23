@@ -14,7 +14,7 @@ import Firebase
 class OwnerScheduleTableViewController: UITableViewController {
     
     //TESTING POC
-    var holderTest: [String] = ["Paid", "Paid","Paid","Paid","Paid"]
+    var holderTest: [String] = ["Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid"]
     var test: UILabel?
     //    test?.textColor = UIColor.green
     

@@ -26,6 +26,15 @@ class PetRegisterViewController: UIViewController {
         return ownerhomeVC
     }()
     
+    //refenerce to ownerhomeVC - instantiant ownerhomeVC
+    lazy var homeVC: UIViewController? = {
+        //init ownerhomeVC w/ identifier
+        let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "home")
+        //return vc
+        return homeVC
+    }()
+    
+    
     //MARK: -- outlets
     @IBOutlet weak var petNameTF: UITextField!
     @IBOutlet weak var bdayTF: UITextField!
@@ -60,12 +69,20 @@ class PetRegisterViewController: UIViewController {
     }
     
     //MARK: -- actions
+    @IBAction func cancel(_ sender: Any) {
+        
+        //sign user out w/ firebase auth
+        try! Auth.auth().signOut()
+        self.present(homeVC!, animated: true, completion: nil)
+    }
     @IBAction func addImage(_ sender: UIButton) {
         
         FieldValidation.textFieldAlert("Select Image", message: "Open camera will be in future release", presenter: self)
     }
     
     @IBAction func petSave(_ sender: UIBarButtonItem) {
+        
+        if (!FieldValidation.isEmpty(petNameTF, presenter: self) && !FieldValidation.isEmpty(bdayTF, presenter: self) && !FieldValidation.isEmpty(breedTF, presenter: self) && !FieldValidation.isEmpty(medsTF, presenter: self) && !FieldValidation.isEmpty(vaccineTF, presenter: self) && !FieldValidation.isEmpty(emergenctContactTF, presenter: self) && !FieldValidation.isEmpty(emergencyPhoneTF, presenter: self) && !FieldValidation.isEmpty(vetTF, presenter: self) && !FieldValidation.isEmpty(vetPhoneTF, presenter: self)){
         
         //retrieve textField text
         let petName = petNameTF.text
@@ -94,7 +111,7 @@ class PetRegisterViewController: UIViewController {
         print("SAVED PET")
         
         self.present(self.ownerhomeVC!, animated: true, completion: nil)
-        
+        }
     }
     
     //set size of scroll view to the view content size

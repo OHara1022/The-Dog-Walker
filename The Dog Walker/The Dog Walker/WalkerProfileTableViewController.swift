@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+//TODO: hide company cell if no data is available 
 class WalkerProfileTableViewController: UITableViewController {
     
     //MARK: -- stored properties
@@ -53,6 +54,7 @@ class WalkerProfileTableViewController: UITableViewController {
             let lastName = userValues?.value(forKey: "lastName") as? String
             let email = userValues?.value(forKey: "email") as? String
             let phone = userValues?.value(forKey: "phoneNumber") as? String
+             let companyName = userValues?.value(forKey: "companyName") as? String
             
             //get address object
             let addressValue = userValues?.value(forKey: "address") as? NSDictionary
@@ -61,6 +63,11 @@ class WalkerProfileTableViewController: UITableViewController {
             let city = addressValue?["city"] as? String
             let state = addressValue?["state"] as? String
             let zipCode = addressValue?["zipCode"] as? String
+           
+            if companyName != nil{
+                
+                self.companyNameLBL.text = companyName!
+            }
 
             self.nameLBL.text = firstName! + " " + lastName!
             self.emailLBL.text = email!

@@ -70,11 +70,10 @@ class RegisterViewController: UIViewController {
         
         let addressInfo = AddressInfo(address: addressTF.text! as String, aptNumber: aptTF.text! as String, city: cityTF.text! as String, state: stateTF.text! as String, zipCode: zipCodeTF.text! as String)
         
-        let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressInfo, phoneNumber: phoneTF.text! as String, uid: user.uid)
+        let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressInfo, phoneNumber: phoneTF.text! as String, uid: user.uid, companyCode: companyCodeTF.text! as String)
         
-        userInfo.companyCode = companyCodeTF.text! as String
         
-        ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid, "companyCode": userInfo.companyCode! as String])
+        ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid, "companyCode": userInfo.companyCode, "companyName": companyNameTF.text! as String])
         
         saveAddress(userInfo.address, databaseRef: self.ref, user: userInfo)
     }
@@ -92,7 +91,7 @@ class RegisterViewController: UIViewController {
             print("register segue")
             
             //check textFields are not empty
-//            if (!FieldValidation.isEmpty(firstNameTF, presenter: self) && !FieldValidation.isEmpty(lastNameTF, presenter: self) && !FieldValidation.isEmpty(emailTF, presenter: self) && !FieldValidation.isEmpty(passwordTF, presenter: self) && !FieldValidation.isEmpty(confirmPasswordTF, presenter: self) && !FieldValidation.isEmpty(addressTF, presenter: self) && !FieldValidation.isEmpty(cityTF, presenter: self) && !FieldValidation.isEmpty(stateTF, presenter: self) && !FieldValidation.isEmpty(zipCodeTF, presenter: self) && !FieldValidation.isEmpty(phoneTF, presenter: self) && !FieldValidation.isEmpty(companyCodeTF, presenter: self)){
+            if (!FieldValidation.isEmpty(firstNameTF, presenter: self) && !FieldValidation.isEmpty(lastNameTF, presenter: self) && !FieldValidation.isEmpty(emailTF, presenter: self) && !FieldValidation.isEmpty(passwordTF, presenter: self) && !FieldValidation.isEmpty(confirmPasswordTF, presenter: self) && !FieldValidation.isEmpty(addressTF, presenter: self) && !FieldValidation.isEmpty(cityTF, presenter: self) && !FieldValidation.isEmpty(stateTF, presenter: self) && !FieldValidation.isEmpty(zipCodeTF, presenter: self) && !FieldValidation.isEmpty(phoneTF, presenter: self) && !FieldValidation.isEmpty(companyCodeTF, presenter: self)){
                 //get emailTF text
                 let email = emailTF.text
                 let password = passwordTF.text
@@ -116,7 +115,7 @@ class RegisterViewController: UIViewController {
                 return loginFlag
                 
                 
-//            }//end of empty check
+            }//end of empty check
             
         }//end of auth check
         
