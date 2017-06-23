@@ -9,13 +9,14 @@
 import UIKit
 import Firebase
 
-//owner profile tableview reference
+//TODO: pull user company code to store in pets for query on walker side
 class PetRegisterViewController: UIViewController {
     
     //MARK: -- stored properties
     let userID = Auth.auth().currentUser?.uid
     var ref: DatabaseReference!
     var userRef: DatabaseReference!
+    var activeField: UITextField?
     
     //refenerce to ownerhomeVC - instantiant ownerhomeVC
     lazy var ownerhomeVC: UIViewController? = {
@@ -36,16 +37,26 @@ class PetRegisterViewController: UIViewController {
     @IBOutlet weak var emergencyPhoneTF: UITextField!
     @IBOutlet weak var vetTF: UITextField!
     @IBOutlet weak var vetPhoneTF: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //dev
         print("testID" + " " + userID!)
         
-         self.ref = Database.database().reference().child("pets").child(userID!)
-        
+        //get ref to DB
+        self.ref = Database.database().reference().child("pets").child(userID!)
         self.userRef = Database.database().reference().child("users").child(userID!)
+        
+        //broadcast info and add observer for when keyboard shows and hides
+        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        //set TF delegates
+        setTFDelegate()
+        
     }
     
     //MARK: -- actions
@@ -76,14 +87,62 @@ class PetRegisterViewController: UIViewController {
         
         //push create pet to Firebase
         self.ref.child(petKey).setValue(["petName": petData.petName, "birthday": petData.birthday, "breed": petData.breed, "meds": petData.meds, "vaccines": petData.vaccine, "specialIns": petData.specialInstructions, "emergencyContact": petData.emergencyContact, "emergencyPhone": petData.emergencyPhone, "vetName": petData.vetName,"vetPhone": petData.vetPhone, "petKey": petKey, "uid": userID])
-        self.userRef.updateChildValues(["petName": petData.petName])
+        
+        //testing to get values on walker side
+        self.userRef.updateChildValues(["petName": petData.petName, "petKey": petKey, "emergencyContact": petData.emergencyContact, "emergencyPhone": petData.emergencyPhone])
         
         print("SAVED PET")
         
         self.present(self.ownerhomeVC!, animated: true, completion: nil)
         
     }
-
     
+    //set size of scroll view to the view content size
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: 700)
+    }
     
 }
+
+
+//MARK: -- extension for keyboard funtionality
+extension PetRegisterViewController{
+    
+    //MARK: -- keyboard editing functionality
+    //reference used for this functionality:
+    //https://spin.atomicobject.com/2014/03/05/uiscrollview-autolayout-ios/
+    func keyboardDidShow(_ notification: Notification) {
+        if let activeField = self.activeField, let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            self.scrollView.contentInset = contentInsets
+            self.scrollView.scrollIndicatorInsets = contentInsets
+            var aRect = self.view.frame
+            aRect.size.height -= keyboardSize.size.height
+            if (!aRect.contains(activeField.frame.origin)) {
+                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+            }
+        }
+    }
+    //method to hide keyboard
+    func keyboardWillBeHidden(_ notification: Notification) {
+        let contentInsets = UIEdgeInsets.zero
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    func setTFDelegate(){
+        //set TF delegate to self
+        petNameTF.delegate = self
+        bdayTF.delegate = self
+        breedTF.delegate = self
+        medsTF.delegate = self
+        vaccineTF.delegate = self
+        specialInstructionTF.delegate = self
+        emergenctContactTF.delegate = self
+        emergencyPhoneTF.delegate = self
+        vetTF.delegate = self
+        vetPhoneTF.delegate = self
+        
+    }
+}
+

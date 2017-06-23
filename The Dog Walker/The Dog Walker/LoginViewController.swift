@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
-        
+    
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var roleID: String?
@@ -40,6 +40,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //set textFieldDelegate to self
+        emailLoginTF.delegate = self
+        passwordLoginTF.delegate = self
+        
         //TODO: transition depending on roleID - crashes if code implemented with auth.signin w/ FB (research for later release)
         Auth.auth().addStateDidChangeListener { (auth, user) in
             
@@ -60,49 +64,52 @@ class LoginViewController: UIViewController {
     //MARK: -- actions
     @IBAction func loginTest(_ sender: UIButton) {
         
-        Auth.auth().signIn(withEmail: emailLoginTF.text!, password: passwordLoginTF.text!) { (user, error) in
+        if (!FieldValidation.isEmpty(emailLoginTF, presenter: self) && !FieldValidation.isEmpty(passwordLoginTF, presenter: self)){
             
-            //check if email failed
-            if let error = error{
-                //dev
-                print(error.localizedDescription)
-                //alert user of login error
-                FieldValidation.textFieldAlert("Invalid Information", message: error.localizedDescription, presenter: self)
-                return
-            }
-            //optional bind to ensure we have user
-            if let user = user{
+            Auth.auth().signIn(withEmail: emailLoginTF.text!, password: passwordLoginTF.text!) { (user, error) in
                 
-                //set ref to DB
-                self.ref = Database.database().reference().child("users").child(user.uid)
-                
-                //obserserve event to check role on login
-                self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                    
-                    //get snapshot of users
-                    let dic = snapshot.value as? NSDictionary
-                    
-                    //get value from snapshot
-                    let id = dic?.value(forKey: "roleID") as? String
+                //check if email failed
+                if let error = error{
                     //dev
-                    print(id!)
-                    //set roldID
-                    self.roleID = id
+                    print(error.localizedDescription)
+                    //alert user of login error
+                    FieldValidation.textFieldAlert("Invalid Information", message: error.localizedDescription, presenter: self)
+                    return
+                }
+                //optional bind to ensure we have user
+                if let user = user{
                     
-                    //check role id
-                    if self.roleID == "Walker"{
+                    //set ref to DB
+                    self.ref = Database.database().reference().child("users").child(user.uid)
+                    
+                    //obserserve event to check role on login
+                    self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
                         
-                        //present walker homeVC
-                        self.present(self.walkerhomeVC!, animated: true, completion: nil)
+                        //get snapshot of users
+                        let dic = snapshot.value as? NSDictionary
                         
-                    }else if self.roleID == "Owner"{
+                        //get value from snapshot
+                        let id = dic?.value(forKey: "roleID") as? String
+                        //dev
+                        print(id!)
+                        //set roldID
+                        self.roleID = id
                         
-                        //present pet owner homeVC
-                        self.present(self.ownerhomeVC!, animated: true, completion: nil)
-                        
-                    }
-                })
-                
+                        //check role id
+                        if self.roleID == "Walker"{
+                            
+                            //present walker homeVC
+                            self.present(self.walkerhomeVC!, animated: true, completion: nil)
+                            
+                        }else if self.roleID == "Owner"{
+                            
+                            //present pet owner homeVC
+                            self.present(self.ownerhomeVC!, animated: true, completion: nil)
+                            
+                        }
+                    })
+                    
+                }
             }
         }
         
@@ -115,5 +122,32 @@ class LoginViewController: UIViewController {
         FieldValidation.textFieldAlert("Forgot Password?", message: "Will send recover email in furture release", presenter: self)
         
     }
+    
+}
+
+
+//MARK: -- extension TF delegate
+extension LoginViewController: UITextFieldDelegate{
+    
+    
+    //call TF shouldReturn method to move to next field on return selection
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //check emailTf
+        if (textField == emailLoginTF){
+            passwordLoginTF.becomeFirstResponder()//switch to password TF
+            return true
+        }
+        
+        //check passwordTF
+        if (textField == passwordLoginTF){
+            self.view.endEditing(true)//dismiss keyboard
+            return true
+        }
+        return false
+    }
+    
+    
+    
     
 }

@@ -35,6 +35,8 @@
 		D28A93DF1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93DE1EE4F03D00CF80B6 /* The_Dog_WalkerUITests.swift */; };
 		D28DFC971EEF5AAA001040B9 /* OwnerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */; };
 		D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */; };
+		D29F246E1EFCC5CE005A18FA /* RegisterVCDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F246D1EFCC5CE005A18FA /* RegisterVCDelegateExtensions.swift */; };
+		D29F24701EFCD32D005A18FA /* PetRegisterVCDelegateExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29F246F1EFCD32D005A18FA /* PetRegisterVCDelegateExtenstions.swift */; };
 		D2AB901F1EF4565900A05FEE /* OwnerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */; };
 		D2AB90211EF4584A00A05FEE /* WalkerSchedules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AB90201EF4584A00A05FEE /* WalkerSchedules.storyboard */; };
 		D2B1BFB11EF5865B00CEAF3E /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B1BFB01EF5865B00CEAF3E /* Users.swift */; };
@@ -110,6 +112,8 @@
 		D28A93E01EE4F03D00CF80B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D28DFC961EEF5AAA001040B9 /* OwnerProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfile.storyboard; sourceTree = "<group>"; };
 		D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D29F246D1EFCC5CE005A18FA /* RegisterVCDelegateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVCDelegateExtensions.swift; sourceTree = "<group>"; };
+		D29F246F1EFCD32D005A18FA /* PetRegisterVCDelegateExtenstions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegisterVCDelegateExtenstions.swift; sourceTree = "<group>"; };
 		D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProfileTableViewController.swift; sourceTree = "<group>"; };
 		D2AB90201EF4584A00A05FEE /* WalkerSchedules.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalkerSchedules.storyboard; sourceTree = "<group>"; };
 		D2B1BFB01EF5865B00CEAF3E /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -355,8 +359,10 @@
 			isa = PBXGroup;
 			children = (
 				D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */,
+				D29F246D1EFCC5CE005A18FA /* RegisterVCDelegateExtensions.swift */,
 				D27072321EF0ED720073501E /* WelcomeViewController.swift */,
 				D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */,
+				D29F246F1EFCD32D005A18FA /* PetRegisterVCDelegateExtenstions.swift */,
 				D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */,
 			);
 			name = Register;
@@ -663,6 +669,8 @@
 				D27E9CC51EF3A0D900377A72 /* ClientProfileTableViewController.swift in Sources */,
 				D21CEF631EF3015800DF8602 /* EditOwnerViewController.swift in Sources */,
 				D27072331EF0ED720073501E /* WelcomeViewController.swift in Sources */,
+				D29F24701EFCD32D005A18FA /* PetRegisterVCDelegateExtenstions.swift in Sources */,
+				D29F246E1EFCC5CE005A18FA /* RegisterVCDelegateExtensions.swift in Sources */,
 				D2206CC81EF9FC8100AA6322 /* DetailNavViewController.swift in Sources */,
 				D217B3231EF36F7400785F88 /* OwnerScheduleTableViewController.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
