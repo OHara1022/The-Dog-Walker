@@ -73,7 +73,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         present(alert, animated: true)
     }
 
- 
 
 }
 
