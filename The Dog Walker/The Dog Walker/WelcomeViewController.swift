@@ -30,6 +30,7 @@ class WelcomeViewController: UIViewController {
                 //dev
                 print("logged in?" + " " +  user.uid)
                 
+                //get ref of current user
                 self.ref = Database.database().reference().child("users").child(user.uid)
             }
         }//end of listener
@@ -39,12 +40,14 @@ class WelcomeViewController: UIViewController {
     //MARK: -- actions
     @IBAction func dogWalkerBTN(_ sender: UIButton) {
         
+        //set role in DB to walker
         ref.child(roleID).setValue("Walker")
         
     }
     
     @IBAction func petOwnerBTN(_ sender: UIButton) {
         
+        //set role in DB to Owner
         ref.child(roleID).setValue("Owner")
     }
     

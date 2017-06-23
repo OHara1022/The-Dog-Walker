@@ -41,6 +41,10 @@ class OwnerProfileTableViewController: UITableViewController {
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
         
+         }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             //dev
@@ -72,6 +76,7 @@ class OwnerProfileTableViewController: UITableViewController {
             self.phoneLabel.text = phone!
             self.addressLabel.text = address! + " " + city! + ", " + state! + " " + zipCode!
         })
+
     }
     
     //MARK: -- actions

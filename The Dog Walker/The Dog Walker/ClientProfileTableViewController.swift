@@ -13,8 +13,16 @@ import Firebase
 class ClientProfileTableViewController: UITableViewController {
 
     //MARK: -- stored properties
-
+    var firstNameHolder: String?
+    var lastNameHolder: String?
+    var emailHolder: String?
+    var phoneHolder: String?
+    var address: String?
+    var addressInfo: AddressInfo?
+    var emergencyContact: String?
+    var emergencyPhone: String?
     
+
     //MARK: -- outlets
     @IBOutlet weak var clientProfileImg: UIImageView!
     @IBOutlet weak var clientNameLBL: UILabel!
@@ -28,7 +36,7 @@ class ClientProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+//        print(firstNameHolder!)
 
     }
 

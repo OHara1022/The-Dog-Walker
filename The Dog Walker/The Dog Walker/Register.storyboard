@@ -270,12 +270,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You may change this at anytime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="xyG-GZ-khh">
-                                <rect key="frame" x="0.0" y="630" width="375" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjW-sE-6F4">
                                 <rect key="frame" x="0.0" y="244.5" width="375" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -292,7 +286,6 @@
                         <constraints>
                             <constraint firstItem="npx-1Y-eS4" firstAttribute="height" secondItem="GtW-kF-Abi" secondAttribute="height" multiplier="0.25" id="8CU-pY-pUM"/>
                             <constraint firstItem="npx-1Y-eS4" firstAttribute="top" secondItem="pb7-VZ-pyb" secondAttribute="bottom" id="8N8-1o-NP8"/>
-                            <constraint firstItem="xyG-GZ-khh" firstAttribute="width" secondItem="GtW-kF-Abi" secondAttribute="width" id="Bac-XL-NhC"/>
                             <constraint firstItem="wZt-7f-A51" firstAttribute="width" secondItem="jjW-sE-6F4" secondAttribute="width" id="Frv-vg-DKx"/>
                             <constraint firstItem="1GW-yX-aiP" firstAttribute="top" secondItem="jjW-sE-6F4" secondAttribute="bottom" constant="26" id="MLz-wG-hcs"/>
                             <constraint firstItem="wZt-7f-A51" firstAttribute="centerX" secondItem="1GW-yX-aiP" secondAttribute="centerX" id="Q6P-vw-pth"/>
@@ -302,9 +295,7 @@
                             <constraint firstItem="wZt-7f-A51" firstAttribute="top" secondItem="1GW-yX-aiP" secondAttribute="bottom" constant="37" id="fY7-Fd-AzD"/>
                             <constraint firstItem="jjW-sE-6F4" firstAttribute="centerX" secondItem="1GW-yX-aiP" secondAttribute="centerX" id="fyM-CU-t0M"/>
                             <constraint firstItem="1GW-yX-aiP" firstAttribute="centerX" secondItem="GtW-kF-Abi" secondAttribute="centerX" id="jZz-Us-L92"/>
-                            <constraint firstItem="lgP-ZP-9yD" firstAttribute="top" secondItem="xyG-GZ-khh" secondAttribute="bottom" constant="20" id="qRB-60-6XC"/>
                             <constraint firstAttribute="trailing" secondItem="npx-1Y-eS4" secondAttribute="trailing" id="rPt-XF-9B2"/>
-                            <constraint firstItem="xyG-GZ-khh" firstAttribute="centerX" secondItem="GtW-kF-Abi" secondAttribute="centerX" id="wjE-OT-Syg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="Sjv-rJ-rE3"/>

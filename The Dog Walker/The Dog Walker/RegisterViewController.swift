@@ -48,10 +48,7 @@ class RegisterViewController: UIViewController {
     //MARK: -- actions
     @IBAction func addProfileImage(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: title, message: "OPEN CAMERA", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alert, animated: true)
+     FieldValidation.textFieldAlert("Open Camera", message: "Will present option to take photo or choose from library", presenter: self)
     }
     
     //func to save address to FB database
@@ -72,7 +69,6 @@ class RegisterViewController: UIViewController {
         ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid, "companyCode": userInfo.companyCode! as String])
         
         saveAddress(userInfo.address, databaseRef: self.ref, user: userInfo)
-        
     }
     
     //MARK: --segue
@@ -89,22 +85,25 @@ class RegisterViewController: UIViewController {
             
             //check textFields are not empty
             //            if (!FieldValidation.isEmpty(firstNameTF, presenter: self) && !FieldValidation.isEmpty(lastNameTF, presenter: self) && !FieldValidation.isEmpty(emailTF, presenter: self) && !FieldValidation.isEmpty(passwordTF, presenter: self) && !FieldValidation.isEmpty(confirmPasswordTF, presenter: self) && !FieldValidation.isEmpty(addressTF, presenter: self) && !FieldValidation.isEmpty(cityTF, presenter: self) && !FieldValidation.isEmpty(stateTF, presenter: self) && !FieldValidation.isEmpty(zipCodeTF, presenter: self) && !FieldValidation.isEmpty(phoneTF, presenter: self)){
-            
+            //get emailTF text
             let email = emailTF.text
             let password = passwordTF.text
             
+            //auth w/ FB to create user
             Auth.auth().createUser(withEmail: email!, password: password!, completion: {(user, error) in
                 
+                //check if create user failed
                 if let error = error{
-                    
-                    FieldValidation.textFieldAlert("Invalid Information", message: error.localizedDescription, presenter: self)
+                    //present alert failed
+                    FieldValidation.textFieldAlert("Email or password invlaid", message: error.localizedDescription, presenter: self)
                     //dev
                     print(error.localizedDescription)
                     return
                 }
+                //create user
                 self.createUser(user!)
             })
-            
+                //perform segue
                 loginFlag = true
                 return loginFlag
             
@@ -120,6 +119,7 @@ class RegisterViewController: UIViewController {
             return loginFlag
         }
         
+        //don't perform segue
         return loginFlag
     }
     

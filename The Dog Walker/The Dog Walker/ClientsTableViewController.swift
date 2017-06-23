@@ -125,9 +125,19 @@ class ClientsTableViewController: UITableViewController {
     // MARK: -- navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
-        
-        
-        
+//        if segue.identifier == "clientDetails"{
+//            
+//            if let index = sender as? IndexPath{
+//                
+//                
+//                let clientDetails = segue.destination as! ClientProfileTableViewController
+//                
+//                let obj = self.clientData.allValues[(index as NSIndexPath).row] as! NSDictionary
+//                
+//                clientDetails.firstNameHolder = obj.value(forKey: "firstName") as? String
+//            }
+//        
+//        }
     }
 
     

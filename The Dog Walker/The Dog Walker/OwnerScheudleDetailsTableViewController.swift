@@ -95,6 +95,7 @@ extension OwnerScheudleDetailsTableViewController: PKPaymentAuthorizationViewCon
         
         //dev
         print("PAID SUCCESSFUL")
+        FieldValidation.textFieldAlert("PAID", message: "Paid Successful", presenter: self)
     }
     
     
