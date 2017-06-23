@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-//TODO: get snapshot of all users - ?query by child equal to companyCode if exists display clients/pets on index selection (reference ownerscheudleTVC)
+//TODO: fix override when another owner schedule is added to DB
 class WalkerSchedulesTableViewController: UITableViewController {
     
     //MARK: -- stored properties
@@ -42,7 +42,7 @@ class WalkerSchedulesTableViewController: UITableViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-    
+        
         
         self.userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -56,7 +56,8 @@ class WalkerSchedulesTableViewController: UITableViewController {
             
         })
         
-        self.userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        //THIS TEST HITS BUT OVERLAPS TABLE VIEW
+        self.userRef.observe(.value, with: { (snapshot) in
             
             print(snapshot)
             
@@ -80,22 +81,27 @@ class WalkerSchedulesTableViewController: UITableViewController {
                     
                     self.ref.observe(.value, with: { (snapshot) in
                         
-                        //print(snapshot)
-                        
-                        for keys in (snapshot.value as! NSDictionary).allKeys{
+                        self.ref.observe(.value, with: { (snapshot) in
                             
-                            //print(keys)
+                            //print(snapshot)
                             
-                            self.ref.child(keys as! String).observeSingleEvent(of: .value, with: { (snapshot) in
+                            for keys in (snapshot.value as! NSDictionary).allKeys{
                                 
-                                //print(snapshot)
-                                self.scheduleData = snapshot.value as! NSDictionary
+                                //print(keys)
                                 
-                                self.tableView.reloadData()
-                            })
+                                self.ref.child(keys as! String).observeSingleEvent(of: .value, with: { (snapshot) in
+                                    
+                                    //                        print(snapshot)
+                                    self.scheduleData = snapshot.value as! NSDictionary
+                                    
+                                    self.tableView.reloadData()
+                                })
+                                
+                            }
                             
-                        }
+                        })
                     })
+                    
                 }
             }
         })
@@ -123,15 +129,20 @@ class WalkerSchedulesTableViewController: UITableViewController {
         //        print(obj)
         
         let date = obj.value(forKey: "date") as! String
+        let petName = obj.value(forKey: "petName") as! String
         
         print(date)
-        userInfo.append(date)
+        
+        //        if role == "Owner" && walkerCode == current{
         
         // Configure the cell...
         cell.textLabel?.text = date
-        cell.detailTextLabel?.text = "Scott"
+        cell.detailTextLabel?.text = petName
         
+        
+        //        }
         return cell
+        
     }
     
     

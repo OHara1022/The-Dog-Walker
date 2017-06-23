@@ -13,6 +13,10 @@ import Firebase
 class ClientPetTableViewController: UITableViewController {
 
     //MARK: -- stored properties
+    var petRef: DatabaseReference!
+    var petInfo: NSDictionary!
+    let userID = Auth.auth().currentUser?.uid//get current user id
+    var userRef: DatabaseReference!
     
     //MARK: -- outles
     @IBOutlet weak var clientPetImg: UIImageView!
@@ -29,9 +33,21 @@ class ClientPetTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //init dictionary
+        petInfo = NSDictionary()
+        
+        //set ref to db
+        petRef = Database.database().reference().child("pets")
     
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        petRef.ref.observe(.value, with: { (snapshot) in
+            
+            print(snapshot)
+        })
+    }
    
    
 

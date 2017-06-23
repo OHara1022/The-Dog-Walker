@@ -12,7 +12,6 @@ import Firebase
 
 class OwnerScheudleDetailsTableViewController: UITableViewController{
     
-    
     //MARK: --stored properties
     let supportedPayments = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard, PKPaymentNetwork.amex]
     let applePayMerchantID = "merchant.com.ohara.walks"

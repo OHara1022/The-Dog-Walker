@@ -13,6 +13,7 @@ import Firebase
 class ClientProfileTableViewController: UITableViewController {
 
     //MARK: -- stored properties
+
     
     //MARK: -- outlets
     @IBOutlet weak var clientProfileImg: UIImageView!
@@ -26,6 +27,8 @@ class ClientProfileTableViewController: UITableViewController {
     //MARK: -- viewDidLoaf
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
     }
 
