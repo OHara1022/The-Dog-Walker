@@ -64,6 +64,7 @@ class LoginViewController: UIViewController {
     //MARK: -- actions
     @IBAction func loginTest(_ sender: UIButton) {
         
+        //check that fields are not empty
         if (!FieldValidation.isEmpty(emailLoginTF, presenter: self) && !FieldValidation.isEmpty(passwordLoginTF, presenter: self)){
             
             Auth.auth().signIn(withEmail: emailLoginTF.text!, password: passwordLoginTF.text!) { (user, error) in
@@ -146,8 +147,6 @@ extension LoginViewController: UITextFieldDelegate{
         }
         return false
     }
-    
-    
-    
+
     
 }

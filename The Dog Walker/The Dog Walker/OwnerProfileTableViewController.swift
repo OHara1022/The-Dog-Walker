@@ -9,13 +9,12 @@
 import UIKit
 import Firebase
 
-//TODO: -- delete table view row (delete schdeudle), check empty fields, create flag for payment (local & remote)
-
 class OwnerProfileTableViewController: UITableViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
+    var petRef: DatabaseReference!
     
     //refenerce to  home VC - instantiant walkerHome VC
     lazy var homeVC: UIViewController? = {
@@ -40,46 +39,57 @@ class OwnerProfileTableViewController: UITableViewController {
         
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
+        petRef = Database.database().reference().child("pets").child(userID!)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        //observer for pet info
+        petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
             
-            //dev
-            print(snapshot)
-            
-            if snapshot.hasChildren(){
-                
-                //get values of current user
-                let userValues = snapshot.value as? NSDictionary
-                
-                //get object value as string
-                let firstName = userValues?.value(forKey: "firstName") as? String
-                let lastName = userValues?.value(forKey: "lastName") as? String
-                let email = userValues?.value(forKey: "email") as? String
-                let phone = userValues?.value(forKey: "phoneNumber") as? String
-                
-                //get address object
-                let addressValue = userValues?.value(forKey: "address") as? NSDictionary
-                //get values from address object
-                let address = addressValue?.value(forKey: "address") as? String
-                let city = addressValue?["city"] as? String
-                let state = addressValue?["state"] as? String
-                let zipCode = addressValue?["zipCode"] as? String
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
                 
                 //dev
-                print(address!)
-                print(city!)
-                //set detail label text w/ FB values
-                self.nameLabel.text = firstName! + " " + lastName!
-                self.emailLabel.text = email!
-                self.phoneLabel.text = phone!
-                self.addressLabel.text = address! + " " + city! + ", " + state! + " " + zipCode!
+//                print(snapshot)
+                
+                //populate petModel w/ dictionary data
+                let pet = PetModel(dictionary: dictionary)
+                
+                //dev
+                print(pet.petName!)
+                
+                //populate label w/ data from FB
+                self.emergencyContactLabel.text = pet.emergencyContact!
+                self.emergencyPhoneLabel.text = pet.emergencyPhone!
             }
             
-        })
+        }, withCancel: nil)
+        
+        //set observer for users
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //set snaopshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //dev
+                //print(snapshot)
+                
+                //get user data as dictionary
+                let user = UserModel(dictionary: dictionary)
+
+                //dev
+                print(user.firstName!)
+                
+                //populate label w/ data from FB
+                self.nameLabel.text = user.firstName! + " " + user.lastName!
+                self.emailLabel.text = user.email!
+                self.phoneLabel.text = user.phoneNumber!
+             
+            }
+            
+        }, withCancel: nil)
         
     }
     
@@ -97,69 +107,3 @@ class OwnerProfileTableViewController: UITableViewController {
     
 }
 
-
-// MARK: - Table view data source
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-/*
- override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
- let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
- 
- // Configure the cell...
- 
- return cell
- }
- */
-
-/*
- // Override to support conditional editing of the table view.
- override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
- // Return false if you do not want the specified item to be editable.
- return true
- }
- */
-
-/*
- // Override to support editing the table view.
- override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
- if editingStyle == .delete {
- // Delete the row from the data source
- tableView.deleteRows(at: [indexPath], with: .fade)
- } else if editingStyle == .insert {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
- 
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
- // Return false if you do not want the item to be re-orderable.
- return true
- }
- */
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destinationViewController.
- // Pass the selected object to the new view controller.
- }
- */

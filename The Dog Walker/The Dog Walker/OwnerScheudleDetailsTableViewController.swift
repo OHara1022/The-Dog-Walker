@@ -10,6 +10,7 @@ import UIKit
 import PassKit
 import Firebase
 
+//TODO: set flag for payment in firebase and local on scheudleTableVC
 class OwnerScheudleDetailsTableViewController: UITableViewController{
     
     //MARK: --stored properties

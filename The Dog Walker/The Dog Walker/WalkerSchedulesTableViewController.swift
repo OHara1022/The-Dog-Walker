@@ -38,6 +38,7 @@ class WalkerSchedulesTableViewController: UITableViewController {
         userRef = Database.database().reference().child("users")
         
     }
+    var scheudles: [String] = []
     
     //MARK: -- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
@@ -57,67 +58,122 @@ class WalkerSchedulesTableViewController: UITableViewController {
                 
             }
         })
+//        
+//        ref.queryOrderedByKey().observe(.value, with: { (snpshot) in
+////            print(snpshot)
+//            
+//            for a in snpshot.value as! NSDictionary{
+//                
+////                print(a.value)
+//                self.ref.child(a.key as! String).observe(.value, with: { (snapshot) in
+//                    print(snapshot)
+//                    
+//                    self.scheduleData = snapshot.value as! NSDictionary
+//                    
+//                    self.tableView.reloadData()
+//                })
+//                
+//                
+//            }
+//            
+//            
+//    })
         
-        //THIS TEST HITS BUT OVERLAPS TABLE VIEW
-        self.userRef.observe(.value, with: { (snapshot) in
+        
+//        ref.observe(.childAdded, with: { (snapshot) in
+//            
+//            if let dictionary = snapshot.value as? [String:AnyObject]{
+//                
+//                  print(snapshot)
+//                
+//               
+//                self.scheduleData.setValuesForKeys(dictionary)
+//                
+//            }
+//            
+//          
+//            
+//        }, withCancel: nil)
+
+        ref.observe(.value, with: { (snapshot) in
             
-            print(snapshot)
+            //            print(snapshot)
             
-            if snapshot.hasChildren(){
+            for a in (snapshot.value as! NSDictionary).allKeys{
                 
-                for keys in (snapshot.value as! NSDictionary).allValues{
+                self.ref.child(a as! String).observe(.value, with: { (snapshot) in
                     
-                    let roleKey = keys as! NSDictionary
+                    self.scheduleData = snapshot.value as! NSDictionary
                     
-                    let roleID = roleKey.value(forKey: "roleID") as? String
-                    
-                    let walkerCode = roleKey.value(forKey: "companyCode") as? String
-                    
-                    print(roleID!)
-                    print(walkerCode!)
-                    
-                    self.role = roleID!
-                    self.walkerCode = walkerCode!
-                    
-                    if roleID == "Owner"  && self.walkerCode == self.current{
-                        
-                        print("HIT")
-                        
-                        self.ref.observe(.value, with: { (snapshot) in
-                            
-                            self.ref.observe(.value, with: { (snapshot) in
-                                
-                                //print(snapshot)
-                                if snapshot.hasChildren(){
-                                for keys in (snapshot.value as! NSDictionary).allKeys{
-                                    
-                                    //print(keys)
-                                    
-                                    self.ref.child(keys as! String).observeSingleEvent(of: .value, with: { (snapshot) in
-                                        
-                                        //                        print(snapshot)
-                                        
-                                        self.scheduleData = snapshot.value as! NSDictionary
-                                        
-                                        self.tableView.reloadData()
-                                    })
-                                    
-                                }
-                                }
-                                
-                            })
-                        })
-                        
-                    }
-                }
+                    self.tableView.reloadData()
+                })
             }
         })
+        
+        
+        
+        //THIS TEST HITS BUT OVERLAPS TABLE VIEW
+        //        self.userRef.observe(.value, with: { (snapshot) in
+        //
+        ////            print(snapshot)
+        //
+        //            if snapshot.hasChildren(){
+        //
+        //                for keys in (snapshot.value as! NSDictionary).allValues{
+        //
+        //                    let roleKey = keys as! NSDictionary
+        //
+        //                    let roleID = roleKey.value(forKey: "roleID") as? String
+        //
+        //                    let walkerCode = roleKey.value(forKey: "companyCode") as? String
+        //
+        ////                    print(roleID!)
+        ////                    print(walkerCode!)
+        //
+        //                    self.role = roleID!
+        //                    self.walkerCode = walkerCode!
+        //
+        //                    if roleID == "Owner"  && self.walkerCode == self.current{
+        //
+        //                        print("HIT")
+        //
+        //                        self.ref.observe(.value, with: { (snapshot) in
+        //
+        //                            self.ref.observe(.value, with: { (snapshot) in
+        //
+        //                                //print(snapshot)
+        //                                if snapshot.hasChildren(){
+        //                                    for keys in (snapshot.value as! NSDictionary).allKeys{
+        //
+        //                                        //print(keys)
+        //
+        //                                        self.ref.child(keys as! String).observeSingleEvent(of: .value, with: { (snapshot) in
+        //
+        //                                            //                        print(snapshot)
+        //
+        //                                            self.scheduleData = snapshot.value as! NSDictionary
+        //
+        ////                                            print(self.scheduleData.value(forKey: "date") as! String)
+        //
+        //                                            self.tableView.reloadData()
+        //                                        })
+        //
+        //                                    }
+        //                                }
+        //
+        //                            })
+        //                        })
+        //
+        //                    }
+        //                }
+        //            }
+        //        })
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        ref.removeAllObservers()
-        userRef.removeAllObservers()
-    }
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        ref.removeAllObservers()
+    //        userRef.removeAllObservers()
+    //    }
     
     // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -136,14 +192,16 @@ class WalkerSchedulesTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
         
+        //allValues[(indexPath as NSIndexPath).row] as! NSDictionary
+        
         let obj = self.scheduleData.allValues[(indexPath as NSIndexPath).row] as! NSDictionary
         //dev
-        //        print(obj)
+//        print(obj)
         
         let date = obj.value(forKey: "date") as! String
         let petName = obj.value(forKey: "petName") as! String
         
-        print(date)
+        
         
         //        if role == "Owner" && walkerCode == current{
         

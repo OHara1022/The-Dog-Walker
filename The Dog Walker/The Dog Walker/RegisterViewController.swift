@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 
-//TODO: uncomment field check, add company code to relate users
+//TODO: add address to user node (do not nest)
 class RegisterViewController: UIViewController {
     
     //MARK: -- stored properties

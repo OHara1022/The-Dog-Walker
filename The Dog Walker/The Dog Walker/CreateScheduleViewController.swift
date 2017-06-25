@@ -9,9 +9,9 @@
 import UIKit
 import Firebase
 
+
+//TODO: fix address once flat then populate schedule w/ user data for easier query on walker side
 class CreateScheduleViewController: UIViewController {
-    
-    //TODO: Check fields empty
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
@@ -40,85 +40,56 @@ class CreateScheduleViewController: UIViewController {
         petRef = Database.database().reference().child("pets").child(userID!)
         userRef = Database.database().reference().child("users").child(userID!)
         
-        //set observer to retrieve pet key
-        petRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            //dev
-            print(snapshot)
-            
-            //check if shapshot has values
-            if snapshot.hasChildren(){
-                //loop thru snapshot to retrieve petKey
-                for keys in((snapshot.value as! NSDictionary).allKeys){
-                    //dev
-                    print(keys)
-                    //set key value
-                    let key = keys
-                    
-                    //set observer to retrieve pet info values from FB DB
-                    self.petRef.child(key as! String).observeSingleEvent(of: .value, with: { (snapshot) in
-                        print(snapshot)
-                        //get snaphot as dictionary
-                        let value = snapshot.value as? NSDictionary
-                        
-                        //set values
-                        let petName = value?.value(forKey: "petName")
-                        let instructions = value?.value(forKey: "specialIns")
-                        let meds = value?.value(forKey: "meds")
-                        
-                        //dev
-                        print(petName!)
-                        //populate label with values from FB
-                        self.petNameTF.text = petName as? String
-                        self.instructionTF.text = instructions as? String
-                        self.medTF.text = meds as? String
-                        
-                    })
-                    
-                }
-            }
-        })
+
     }
-    
     
     //MARK: -- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         
-        //get user info
-        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        //set observer to retreive pet data for edit text
+        petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
             
-            //dev
-            print(snapshot)
-            
-            //check snapshot has value
-            if snapshot.hasChildren(){
-                
-                //get values of current user
-                let userValues = snapshot.value as? NSDictionary
-                
-                //get object value as string
-                let firstName = userValues?.value(forKey: "firstName") as? String
-                let lastName = userValues?.value(forKey: "lastName") as? String
-                let phone = userValues?.value(forKey: "phoneNumber") as? String
-                
-                //get address object
-                let addressValue = userValues?.value(forKey: "address") as? NSDictionary
-                //get values from address object
-                let address = addressValue?.value(forKey: "address") as? String
-                let city = addressValue?["city"] as? String
-                let state = addressValue?["state"] as? String
-                let zipCode = addressValue?["zipCode"] as? String
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
                 
                 //dev
-                print(address!)
-                print(city!)
-                print(firstName!)
+//                print(snapshot)
                 
-                self.fullName = firstName! + " " + lastName!
-                self.phone = phone
-                self.address = address! + " " + city! + ", " + state! + " " + zipCode!
+                //get obj values as dictionary
+                let pet = PetModel(dictionary: dictionary)
+                
+                //dev
+                print(pet.petName!)
+                
+                //set edit text w/ obj values
+                self.petNameTF.text = pet.petName!
+                self.instructionTF.text = pet.specialIns!
+                self.medTF.text = pet.meds!
             }
-        })
+            
+        }, withCancel: nil)
         
+         //set observer to retreive user data for edit text
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //dev
+                //                print(snapshot)
+                
+                //get user data as dictionary
+                let user = UserModel(dictionary: dictionary)
+                
+                //dev
+                print(user.firstName!)
+                
+                self.fullName = user.firstName! + " " + user.lastName!
+                self.phone = user.phoneNumber!
+//                self.address = user.address! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                
+            }
+            
+        }, withCancel: nil)
     }
     
     

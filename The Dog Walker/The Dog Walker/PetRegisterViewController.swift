@@ -9,13 +9,13 @@
 import UIKit
 import Firebase
 
-//TODO: pull user company code to store in pets for query on walker side
+//TODO: pull user company code to store in pets for query on walker side, store pet info to user node for walker side
 class PetRegisterViewController: UIViewController {
     
     //MARK: -- stored properties
     let userID = Auth.auth().currentUser?.uid
     var ref: DatabaseReference!
-    var userRef: DatabaseReference!
+//    var userRef: DatabaseReference!
     var activeField: UITextField?
     
     //refenerce to ownerhomeVC - instantiant ownerhomeVC
@@ -48,7 +48,7 @@ class PetRegisterViewController: UIViewController {
     @IBOutlet weak var vetPhoneTF: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
+    //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +57,7 @@ class PetRegisterViewController: UIViewController {
         
         //get ref to DB
         self.ref = Database.database().reference().child("pets").child(userID!)
-        self.userRef = Database.database().reference().child("users").child(userID!)
+//        self.userRef = Database.database().reference().child("users").child(userID!)
         
         //broadcast info and add observer for when keyboard shows and hides
         NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
@@ -96,8 +96,7 @@ class PetRegisterViewController: UIViewController {
         let vetName = vetTF.text
         let vetPhone = vetPhoneTF.text
         
-        //TODO: check text fields are not empty
-        //generate key for each pet create - for later release
+        //generate key for each pet created
         let petKey = self.ref.childByAutoId().key
         
         let petData = PetData(petName: petName!, birthday: bday!, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emeregencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
@@ -106,7 +105,7 @@ class PetRegisterViewController: UIViewController {
         self.ref.child(petKey).setValue(["petName": petData.petName, "birthday": petData.birthday, "breed": petData.breed, "meds": petData.meds, "vaccines": petData.vaccine, "specialIns": petData.specialInstructions, "emergencyContact": petData.emergencyContact, "emergencyPhone": petData.emergencyPhone, "vetName": petData.vetName,"vetPhone": petData.vetPhone, "petKey": petKey, "uid": userID])
         
         //testing to get values on walker side
-        self.userRef.updateChildValues(["petName": petData.petName, "petKey": petKey, "emergencyContact": petData.emergencyContact, "emergencyPhone": petData.emergencyPhone])
+//        self.userRef.updateChildValues(["petName": petData.petName, "petKey": petKey, "emergencyContact": petData.emergencyContact, "emergencyPhone": petData.emergencyPhone])
         
         print("SAVED PET")
         
