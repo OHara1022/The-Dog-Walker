@@ -59,23 +59,20 @@ class RegisterViewController: UIViewController {
         FieldValidation.textFieldAlert("Open Camera", message: "Will present option to take photo or choose from library", presenter: self)
     }
     
-    //func to save address to FB database
-    func saveAddress(_ addressInfo: AddressInfo, databaseRef: DatabaseReference, user: Users){
-        databaseRef.child(users).child(user.uid).child("address").setValue(["address": addressInfo.address, "aptNumber": addressInfo.aptNumber, "city": addressInfo.city, "state": addressInfo.state, "zipCode": addressInfo.zipCode])
-        
-    }
-    
     //func to create user and save to FB DB
     func createUser(_ user: User){
         
-        let addressInfo = AddressInfo(address: addressTF.text! as String, aptNumber: aptTF.text! as String, city: cityTF.text! as String, state: stateTF.text! as String, zipCode: zipCodeTF.text! as String)
+        //populate class w/ TF text
+        let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressTF.text! as String, city: cityTF.text! as String, state: stateTF.text! as String, zipCode: zipCodeTF.text! as String, phoneNumber: phoneTF.text! as String, uid: user.uid, companyCode: companyCodeTF.text! as String)
         
-        let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressInfo, phoneNumber: phoneTF.text! as String, uid: user.uid, companyCode: companyCodeTF.text! as String)
+        //check if apt # has value
+        if aptTF.text != nil{
+            //set value for apt #
+            userInfo.aptNumber = aptTF.text! as String
+        }
         
-        
-        ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid, "companyCode": userInfo.companyCode, "companyName": companyNameTF.text! as String])
-        
-        saveAddress(userInfo.address, databaseRef: self.ref, user: userInfo)
+        //save & push data to FB DB
+        ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid, "companyCode": userInfo.companyCode, "companyName": companyNameTF.text! as String, "address": userInfo.address, "city": userInfo.city, "state": userInfo.state, "zipCode": userInfo.zipCode, "aptNumber": userInfo.aptNumber])
     }
     
     //MARK: --segue

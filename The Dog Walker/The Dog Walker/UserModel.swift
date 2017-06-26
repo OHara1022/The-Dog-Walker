@@ -42,7 +42,7 @@ class UserModel: NSObject {
         self.city = dictionary["city"] as? String
         self.state = dictionary["state"] as? String
         self.zipCode = dictionary["zipCode"] as? String
-        
+        self.aptNumber = dictionary["aptNumber"] as? String
     }
     
 }

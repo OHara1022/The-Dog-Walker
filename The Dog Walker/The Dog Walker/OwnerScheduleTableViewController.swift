@@ -14,11 +14,11 @@ import Firebase
 class OwnerScheduleTableViewController: UITableViewController {
     
     //TESTING POC
-    var holderTest: [String] = ["Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid"]
+    var holderTest: [String] = ["Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid"]
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    var dateInfo: NSDictionary!
+//    var dateInfo: NSDictionary!
     let userID = Auth.auth().currentUser?.uid//get current user id
     var schedules = [ScheduleModel]()
     
@@ -31,7 +31,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         tableView.dataSource = self
         
         //init dictionary
-        dateInfo = NSDictionary()
+//        dateInfo = NSDictionary()
         
         //set ref of database to scheudles
         ref = Database.database().reference().child("schedules").child(userID!)
@@ -119,8 +119,8 @@ class OwnerScheduleTableViewController: UITableViewController {
                 details.durationHolder = scheduleDetail.duration!
                 details.specialInsHolder = scheduleDetail.specialIns!
                 details.medHolder = scheduleDetail.meds!
-                details.scheduleKeyHolder = scheduleDetail.scheduleKey
-                
+                details.scheduleKeyHolder = scheduleDetail.scheduleKey!
+                details.paidFlag = scheduleDetail.paidFlag!
             }
         }
         

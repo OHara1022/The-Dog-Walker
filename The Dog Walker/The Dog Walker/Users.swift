@@ -16,20 +16,29 @@ class Users{
     var email: String
     var uid: String
     var phoneNumber: String
-    var address: AddressInfo
+    var address: String
+    var city: String
+    var state: String
+    var zipCode: String
     var companyCode: String
-//    var role: String? //store if walker or owner is selected
+    var aptNumber: String?
     var profileImage: String?
-    var roleID: String?//extra incase need another relation for walker & client 
+    var roleID: String?
+    var paidFlag: Bool?
+    
+    //for testing purpose remove before release!!!
     var password: String? //never store password in Firebase (for test purposes)
     
     
-    init(firstName: String, lastName: String, email: String, address: AddressInfo, phoneNumber: String, uid: String, companyCode: String) {
+    init(firstName: String, lastName: String, email: String, address: String, city: String, state: String, zipCode: String,  phoneNumber: String, uid: String, companyCode: String) {
         
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.address = address
+        self.city = city
+        self.state = state
+        self.zipCode = zipCode
         self.phoneNumber = phoneNumber
         self.uid = uid
         self.companyCode = companyCode

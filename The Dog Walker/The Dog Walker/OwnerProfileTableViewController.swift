@@ -40,7 +40,7 @@ class OwnerProfileTableViewController: UITableViewController {
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
         petRef = Database.database().reference().child("pets").child(userID!)
-        
+  
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +86,15 @@ class OwnerProfileTableViewController: UITableViewController {
                 self.nameLabel.text = user.firstName! + " " + user.lastName!
                 self.emailLabel.text = user.email!
                 self.phoneLabel.text = user.phoneNumber!
+                self.addressLabel.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                
+                //if apt number add to address label
+                if user.aptNumber != nil{
+                    //dev
+                    print("APT HIT")
+                    //address w/ apt number
+                    self.addressLabel.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                }
              
             }
             

@@ -82,6 +82,7 @@ class PetRegisterViewController: UIViewController {
     
     @IBAction func petSave(_ sender: UIBarButtonItem) {
         
+        //check that fields are not empty
         if (!FieldValidation.isEmpty(petNameTF, presenter: self) && !FieldValidation.isEmpty(bdayTF, presenter: self) && !FieldValidation.isEmpty(breedTF, presenter: self) && !FieldValidation.isEmpty(medsTF, presenter: self) && !FieldValidation.isEmpty(vaccineTF, presenter: self) && !FieldValidation.isEmpty(emergenctContactTF, presenter: self) && !FieldValidation.isEmpty(emergencyPhoneTF, presenter: self) && !FieldValidation.isEmpty(vetTF, presenter: self) && !FieldValidation.isEmpty(vetPhoneTF, presenter: self)){
         
         //retrieve textField text
@@ -99,6 +100,7 @@ class PetRegisterViewController: UIViewController {
         //generate key for each pet created
         let petKey = self.ref.childByAutoId().key
         
+        //populate class with TF text
         let petData = PetData(petName: petName!, birthday: bday!, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emeregencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
         
         //push create pet to Firebase
@@ -107,8 +109,10 @@ class PetRegisterViewController: UIViewController {
         //testing to get values on walker side
 //        self.userRef.updateChildValues(["petName": petData.petName, "petKey": petKey, "emergencyContact": petData.emergencyContact, "emergencyPhone": petData.emergencyPhone])
         
+            //dev
         print("SAVED PET")
-        
+            
+        //present homeVC
         self.present(self.ownerhomeVC!, animated: true, completion: nil)
         }
     }

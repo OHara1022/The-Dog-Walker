@@ -23,7 +23,7 @@ class ScheduleModel: NSObject {
     var uid: String?
     
 //    var price: String?
-//    var paidFlag: Bool?
+    var paidFlag: Bool?
     
     init(dictionary: [String: AnyObject]){
         
@@ -38,7 +38,7 @@ class ScheduleModel: NSObject {
         self.clientAddress = dictionary["clientAddress"] as? String
         self.clientPhone = dictionary["clientPhone"] as? String
         self.uid = dictionary["uid"] as? String
-        
+        self.paidFlag = dictionary["paidFlag"] as? Bool
         
     }
     

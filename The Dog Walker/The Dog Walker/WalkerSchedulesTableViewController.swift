@@ -105,7 +105,10 @@ class WalkerSchedulesTableViewController: UITableViewController {
                     
                     self.scheduleData = snapshot.value as! NSDictionary
                     
+                    DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
+                        
+                    })
                 })
             }
         })

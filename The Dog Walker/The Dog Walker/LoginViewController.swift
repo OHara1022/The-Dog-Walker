@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
             if let user = user{
                 //dev
                 print("LOGGED IN" + " " + user.email!)
+                print("AUTH" + " " + (auth.currentUser?.uid)!)
             }
         }
     }
@@ -86,29 +87,31 @@ class LoginViewController: UIViewController {
                     //obserserve event to check role on login
                     self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
                         
-                        //get snapshot of users
-                        let dic = snapshot.value as? NSDictionary
-                        
-                        //get value from snapshot
-                        let id = dic?.value(forKey: "roleID") as? String
-                        //dev
-                        print(id!)
-                        //set roldID
-                        self.roleID = id
-                        
-                        //check role id
-                        if self.roleID == "Walker"{
+                        //get snapshot as dictionary
+                        if let dictionary = snapshot.value as? [String: AnyObject]{
                             
-                            //present walker homeVC
-                            self.present(self.walkerhomeVC!, animated: true, completion: nil)
+                            //get userModal w/ dictionary vallues
+                            let user = UserModel(dictionary: dictionary)
                             
-                        }else if self.roleID == "Owner"{
+                            //get user roleID
+                            let roleID = user.roleID
                             
-                            //present pet owner homeVC
-                            self.present(self.ownerhomeVC!, animated: true, completion: nil)
-                            
+                            //check role id
+                            if roleID == "Walker"{
+                                
+                                //present walker homeVC
+                                self.present(self.walkerhomeVC!, animated: true, completion: nil)
+                                
+                            }else if roleID == "Owner"{
+                                
+                                
+                                //present pet owner homeVC
+                                self.present(self.ownerhomeVC!, animated: true, completion: nil)
+                            }
                         }
-                    })
+                        
+                        
+                    }, withCancel: nil)
                     
                 }
             }
@@ -147,6 +150,6 @@ extension LoginViewController: UITextFieldDelegate{
         }
         return false
     }
-
+    
     
 }

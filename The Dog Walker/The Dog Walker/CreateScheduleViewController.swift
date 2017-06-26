@@ -9,8 +9,6 @@
 import UIKit
 import Firebase
 
-
-//TODO: fix address once flat then populate schedule w/ user data for easier query on walker side
 class CreateScheduleViewController: UIViewController {
     
     //MARK: -- stored properties
@@ -85,14 +83,22 @@ class CreateScheduleViewController: UIViewController {
                 
                 self.fullName = user.firstName! + " " + user.lastName!
                 self.phone = user.phoneNumber!
-//                self.address = user.address! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                 self.address = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                
+                //if apt number add to address label
+                if user.aptNumber != nil{
+                    //dev
+                    print("APT HIT")
+                    //address w/ apt number
+                    self.address = user.address! + ".  Apt." + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                }
                 
             }
             
         }, withCancel: nil)
     }
-    
-    
+
+
     //MARK: -- actions
     @IBAction func saveSchedule(_ sender: Any) {
         
@@ -113,7 +119,7 @@ class CreateScheduleViewController: UIViewController {
             let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!)
             
             //set values to push to firebase
-            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "scheduleKey": scheduleKey, "uid": userID, "clientName": fullName, "clientPhone": phone, "clientAddress": address])
+            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": address!, "paidFlag": false])
             //dev
             print("save schedule")
             //dismiss VC

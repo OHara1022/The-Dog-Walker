@@ -10,7 +10,7 @@ import UIKit
 import PassKit
 import Firebase
 
-//TODO: set flag for payment in firebase and local on scheudleTableVC
+//TODO: get ref to schedules update paidFlag on success of payment, change details label to paid
 class OwnerScheudleDetailsTableViewController: UITableViewController{
     
     //MARK: --stored properties
@@ -24,6 +24,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     var specialInsHolder: String?
     var medHolder: String?
     var scheduleKeyHolder: String?
+    var paidFlag: Bool?
     
     //MARK: -- outlets
     @IBOutlet weak var deatilsPetNameLBL: UILabel!
@@ -44,6 +45,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         
         //dev
         print(petNameHolder!)
+        print(paidFlag!)
         
         //set label w/ passed values
         deatilsPetNameLBL.text = petNameHolder
@@ -52,7 +54,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         durationLBL.text = durationHolder
         specialInsLBL.text = specialInsHolder
         medsLBL.text = medHolder
-        
     }
     
     
@@ -96,6 +97,8 @@ extension OwnerScheudleDetailsTableViewController: PKPaymentAuthorizationViewCon
         
         //dev
         print("PAID SUCCESSFUL")
+        
+        
         FieldValidation.textFieldAlert("PAID", message: "Paid Successful", presenter: self)
     }
     
