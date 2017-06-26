@@ -18,7 +18,7 @@ class OwnerScheduleTableViewController: UITableViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-//    var dateInfo: NSDictionary!
+    //    var dateInfo: NSDictionary!
     let userID = Auth.auth().currentUser?.uid//get current user id
     var schedules = [ScheduleModel]()
     
@@ -31,7 +31,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         tableView.dataSource = self
         
         //init dictionary
-//        dateInfo = NSDictionary()
+        //        dateInfo = NSDictionary()
         
         //set ref of database to scheudles
         ref = Database.database().reference().child("schedules").child(userID!)
@@ -58,7 +58,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         }, withCancel: nil)
     }
     
-
+    
     //MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -69,7 +69,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         //return number of data in array
         return schedules.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -112,15 +112,17 @@ class OwnerScheduleTableViewController: UITableViewController {
                 //get row selected to pass proper data to details
                 let scheduleDetail = self.schedules[index.row]
                 
+                details.selectedSchedule = scheduleDetail
+                
                 //pass values to details VC
-                details.petNameHolder = scheduleDetail.petName!
-                details.dateHolder = scheduleDetail.date!
-                details.timeHolder = scheduleDetail.time!
-                details.durationHolder = scheduleDetail.duration!
-                details.specialInsHolder = scheduleDetail.specialIns!
-                details.medHolder = scheduleDetail.meds!
-                details.scheduleKeyHolder = scheduleDetail.scheduleKey!
-                details.paidFlag = scheduleDetail.paidFlag!
+                //                details.petNameHolder = scheduleDetail.petName!
+                //                details.dateHolder = scheduleDetail.date!
+                //                details.timeHolder = scheduleDetail.time!
+                //                details.durationHolder = scheduleDetail.duration!
+                //                details.specialInsHolder = scheduleDetail.specialIns!
+                //                details.medHolder = scheduleDetail.meds!
+                //                details.scheduleKeyHolder = scheduleDetail.scheduleKey!
+                //                details.paidFlag = scheduleDetail.paidFlag!
             }
         }
         
@@ -128,24 +130,42 @@ class OwnerScheduleTableViewController: UITableViewController {
     
     
     //TODO: Delete schedule!!!
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
     
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            //get selected indexPath
+            let schedules = self.schedules[indexPath.row]
+            
+            //get scheduleKey
+            if let scheduleKey = schedules.scheduleKey{
+                
+                //ref to remove
+                ref.child(scheduleKey).removeValue(completionBlock: { (error, ref) in
+                    
+                    //check for error
+                    if error != nil{
+                        //dev
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    //remove from array & table view
+                    self.schedules.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    
+                })
+            }
+        }
+    }
+    
     
 }

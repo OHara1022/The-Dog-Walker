@@ -57,6 +57,7 @@ class PetProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //dev
         print(userID!)
         
         //set inital index for segmentController

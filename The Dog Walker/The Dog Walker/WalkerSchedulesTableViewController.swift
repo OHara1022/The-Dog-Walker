@@ -22,6 +22,8 @@ class WalkerSchedulesTableViewController: UITableViewController {
     var current: String?
     var userInfo: [String] = []//for testing add in class to pull data (reference lets code video)
     
+    var clientSchedules = [ScheduleModel]()
+    
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,80 +40,91 @@ class WalkerSchedulesTableViewController: UITableViewController {
         userRef = Database.database().reference().child("users")
         
     }
-    var scheudles: [String] = []
     
     //MARK: -- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         
         //set observer to users
-        self.userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            //            print(snapshot)
-            
-            //check snapshot has value
-            if snapshot.hasChildren(){
-                let code = snapshot.value as! NSDictionary
-                
-                self.current = code.value(forKey: "companyCode") as? String
-                
-                //            print(self.current!)
-                
-            }
-        })
-//        
-//        ref.queryOrderedByKey().observe(.value, with: { (snpshot) in
-////            print(snpshot)
-//            
-//            for a in snpshot.value as! NSDictionary{
-//                
-////                print(a.value)
-//                self.ref.child(a.key as! String).observe(.value, with: { (snapshot) in
-//                    print(snapshot)
-//                    
-//                    self.scheduleData = snapshot.value as! NSDictionary
-//                    
-//                    self.tableView.reloadData()
-//                })
-//                
-//                
-//            }
-//            
-//            
-//    })
+        //        self.userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+        //
+        //            //            print(snapshot)
+        //
+        //            //check snapshot has value
+        //            if snapshot.hasChildren(){
+        //                let code = snapshot.value as! NSDictionary
+        //
+        //                self.current = code.value(forKey: "companyCode") as? String
+        //
+        //                //            print(self.current!)
+        //
+        //            }
+        //        })
+        //
+        //        ref.queryOrderedByKey().observe(.value, with: { (snpshot) in
+        ////            print(snpshot)
+        //
+        //            for a in snpshot.value as! NSDictionary{
+        //
+        ////                print(a.value)
+        //                self.ref.child(a.key as! String).observe(.value, with: { (snapshot) in
+        //                    print(snapshot)
+        //
+        //                    self.scheduleData = snapshot.value as! NSDictionary
+        //
+        //                    self.tableView.reloadData()
+        //                })
+        //
+        //
+        //            }
+        //
+        //
+        //    })
         
         
-//        ref.observe(.childAdded, with: { (snapshot) in
-//            
-//            if let dictionary = snapshot.value as? [String:AnyObject]{
-//                
-//                  print(snapshot)
-//                
-//               
-//                self.scheduleData.setValuesForKeys(dictionary)
-//                
-//            }
-//            
-//          
-//            
-//        }, withCancel: nil)
-
-        ref.observe(.value, with: { (snapshot) in
+        ref.observe(.childAdded, with: { (snapshot) in
             
-            //            print(snapshot)
+            //                print(snapshot)
             
-            for a in (snapshot.value as! NSDictionary).allKeys{
+            let uid = snapshot.key
+            
+            self.ref.child(uid).observe(.childAdded, with: { (snapshot) in
                 
-                self.ref.child(a as! String).observe(.value, with: { (snapshot) in
+                print(snapshot)
+                
+                if let dictionary = snapshot.value as? [String:AnyObject]{
                     
-                    self.scheduleData = snapshot.value as! NSDictionary
+                    let schedules = ScheduleModel(dictionary: dictionary)
                     
+                    self.clientSchedules.append(schedules)
+                    
+                    //dispatch on main thread or app will crash!!
                     DispatchQueue.main.async(execute: {
-                    self.tableView.reloadData()
-                        
+                        //reload tableView
+                        self.tableView.reloadData()
                     })
-                })
-            }
-        })
+                }
+                
+            }, withCancel: nil)
+            
+        }, withCancel: nil)
+        //
+        //        ref.observe(.value, with: { (snapshot) in
+        //
+        //            //            print(snapshot)
+        //
+        //            for a in (snapshot.value as! NSDictionary).allKeys{
+        //
+        //                self.ref.child(a as! String).observe(.value, with: { (snapshot) in
+        //
+        //                    self.scheduleData = snapshot.value as! NSDictionary
+        //
+        //                    DispatchQueue.main.async(execute: {
+        //                    self.tableView.reloadData()
+        //
+        //                    })
+        //                })
+        //            }
+        //        })
         
         
         
@@ -186,7 +199,7 @@ class WalkerSchedulesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return scheduleData.count
+        return clientSchedules.count
     }
     
     var testCode: String?
@@ -197,20 +210,20 @@ class WalkerSchedulesTableViewController: UITableViewController {
         
         //allValues[(indexPath as NSIndexPath).row] as! NSDictionary
         
-        let obj = self.scheduleData.allValues[(indexPath as NSIndexPath).row] as! NSDictionary
+        //        let obj = self.scheduleData.allValues[(indexPath as NSIndexPath).row] as! NSDictionary
         //dev
-//        print(obj)
+        //        print(obj)
         
-        let date = obj.value(forKey: "date") as! String
-        let petName = obj.value(forKey: "petName") as! String
+        //        let date = obj.value(forKey: "date") as! String
+        //        let petName = obj.value(forKey: "petName") as! String
         
-        
+        let schedules = clientSchedules[indexPath.row]
         
         //        if role == "Owner" && walkerCode == current{
         
         // Configure the cell...
-        cell.textLabel?.text = date
-        cell.detailTextLabel?.text = petName
+        cell.textLabel?.text = schedules.date!
+        cell.detailTextLabel?.text = schedules.petName!
         
         
         //        }

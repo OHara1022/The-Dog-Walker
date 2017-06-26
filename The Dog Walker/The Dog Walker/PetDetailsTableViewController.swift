@@ -33,6 +33,7 @@ class PetDetailsTableViewController: UITableViewController {
         ref = Database.database().reference().child("pets").child(userID!)
     }
     
+    //MARK: --viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         
         //observer pet info

@@ -16,15 +16,18 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     //MARK: --stored properties
     let supportedPayments = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard, PKPaymentNetwork.amex]
     let applePayMerchantID = "merchant.com.ohara.walks"
-    var petNameHolder: String?
-    var dateHolder: String?
-    var timeHolder: String?
-    var durationHolder: String?
-    var priceHolder: String?  = "" //use on later release
-    var specialInsHolder: String?
-    var medHolder: String?
-    var scheduleKeyHolder: String?
     var paidFlag: Bool?
+    var selectedSchedule: ScheduleModel!
+    
+    //*testing remove before release!!!
+    //    var petNameHolder: String?
+    //    var dateHolder: String?
+    //    var timeHolder: String?
+    //    var durationHolder: String?
+    //    var priceHolder: String?  = "" //use on later release
+    //    var specialInsHolder: String?
+    //    var medHolder: String?
+    //    var scheduleKeyHolder: String?
     
     //MARK: -- outlets
     @IBOutlet weak var deatilsPetNameLBL: UILabel!
@@ -44,18 +47,20 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         applePayBTN.isHidden = !PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: supportedPayments)
         
         //dev
-        print(petNameHolder!)
-        print(paidFlag!)
+//        print(petNameHolder!)
+//        print(paidFlag!)
+        
+        //USE THIS METHOD
+//       print(selectedSchedule.paidFlag!)
         
         //set label w/ passed values
-        deatilsPetNameLBL.text = petNameHolder
-        detailsDateLBL.text = dateHolder
-        detailsTimeLBL.text = timeHolder
-        durationLBL.text = durationHolder
-        specialInsLBL.text = specialInsHolder
-        medsLBL.text = medHolder
+        deatilsPetNameLBL.text = selectedSchedule.petName
+        detailsDateLBL.text = selectedSchedule.date
+        detailsTimeLBL.text = selectedSchedule.time
+        durationLBL.text = selectedSchedule.duration
+        specialInsLBL.text = selectedSchedule.specialIns
+        medsLBL.text = selectedSchedule.meds
     }
-    
     
     //MARK: -- actions
     @IBAction func payBTN(_ sender: UIButton) {
@@ -82,10 +87,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             
             self.present(applePayController, animated: true, completion: nil)
         }
-    }
-    
-    
-    
+    } 
 }
 
 //MARK: --extension payment delegate
