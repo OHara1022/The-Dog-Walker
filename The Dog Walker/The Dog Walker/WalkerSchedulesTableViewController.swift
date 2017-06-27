@@ -9,19 +9,17 @@
 import UIKit
 import Firebase
 
-//TODO: fix override when another owner schedule is added to DB
+
 class WalkerSchedulesTableViewController: UITableViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-//    var scheduleData: NSDictionary!
     var userRef: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
-    var role: String?
+    var roleID: String?
     var walkerCode: String?
-    var current: String?
-    var userInfo: [String] = []//for testing add in class to pull data (reference lets code video)
-    
+    var clientCode: String?
+    var cell: UITableViewCell?
     var clientSchedules = [ScheduleModel]()
     
     //MARK: -- viewDidLoad
@@ -32,27 +30,47 @@ class WalkerSchedulesTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //init dictionary
-//        scheduleData = NSDictionary()
-        
         //set DB reference
         ref = Database.database().reference().child("schedules")
         userRef = Database.database().reference().child("users")
         
+        //set observer to current user
+        userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                let user = UserModel(dictionary: dictionary)
+                
+                //get walker code
+                self.walkerCode = user.companyCode
+                
+                //dev
+                //print("WALKER" + " " + self.walkerCode!)
+            }
+            
+        }, withCancel: nil)
+        
+        //set observer to schedules
         ref.observe(.childAdded, with: { (snapshot) in
             
-            //                print(snapshot)
+            //dev
+            //print(snapshot)
             
+            //get schedule key
             let uid = snapshot.key
             
+            //get observer w/ key
             self.ref.child(uid).observe(.childAdded, with: { (snapshot) in
                 
-                print(snapshot)
+                //dev
+                //print(snapshot)
                 
                 if let dictionary = snapshot.value as? [String:AnyObject]{
                     
+                    //populate data
                     let schedules = ScheduleModel(dictionary: dictionary)
                     
+                    //append data to array
                     self.clientSchedules.append(schedules)
                     
                     //dispatch on main thread or app will crash!!
@@ -65,36 +83,14 @@ class WalkerSchedulesTableViewController: UITableViewController {
             }, withCancel: nil)
             
         }, withCancel: nil)
-        
     }
     
-    //MARK: -- viewWillAppear
-    override func viewWillAppear(_ animated: Bool) {
-        
-        //set observer to users
-        //        self.userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-        //
-        //            //            print(snapshot)
-        //
-        //            //check snapshot has value
-        //            if snapshot.hasChildren(){
-        //                let code = snapshot.value as! NSDictionary
-        //
-        //                self.current = code.value(forKey: "companyCode") as? String
-        //
-        //                //            print(self.current!)
-        //
-        //            }
-        //        })
-    
-     
-  
+    //remove observer when viewDisappears
+    override func viewWillDisappear(_ animated: Bool) {
+        ref.removeAllObservers()
+        userRef.removeAllObservers()
     }
     
-        override func viewWillDisappear(_ animated: Bool) {
-            ref.removeAllObservers()
-            userRef.removeAllObservers()
-        }
     
     // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -103,113 +99,79 @@ class WalkerSchedulesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+       
         return clientSchedules.count
     }
     
-    var testCode: String?
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
-        
-        //allValues[(indexPath as NSIndexPath).row] as! NSDictionary
-        
-        //        let obj = self.scheduleData.allValues[(indexPath as NSIndexPath).row] as! NSDictionary
-        //dev
-        //        print(obj)
-        
-        //        let date = obj.value(forKey: "date") as! String
-        //        let petName = obj.value(forKey: "petName") as! String
+        cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
         
         let schedules = clientSchedules[indexPath.row]
         
-        //        if role == "Owner" && walkerCode == current{
-        
-        // Configure the cell...
-        cell.textLabel?.text = schedules.date!
-        cell.detailTextLabel?.text = schedules.petName!
+        let code = schedules.companyCode!
         
         
-        //        }
-        return cell
+        if walkerCode == code{
+            
+            // Configure the cell...
+            cell?.textLabel?.text = schedules.date!
+            cell?.detailTextLabel?.text = schedules.petName!
+            
+            return cell!
+        }
+        
+        cell?.isHidden = true
+        
+        return cell!
         
     }
     
+    //MARK: -- heightForRowAt
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        //set default height
+        var height: CGFloat = 0.0
+        
+        //check if cell is hidden
+        if cell?.isHidden == true {
+            
+            //set height
+            height = 0.0
+        }else {
+            //set height
+            height = 44.0
+        }
+        
+        //return proper height
+        return height
+    }
     
+    //MARK: -- didSelectRow
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        //check schedules has value
         if clientSchedules.count != 0{
             
-        performSegue(withIdentifier: "scheduleDetails", sender: indexPath)
-            
+            //perform segue to details
+            performSegue(withIdentifier: "scheduleDetails", sender: indexPath)
         }
     }
-    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        //get indexPath
         if let index = sender as? IndexPath{
             
+            //get destination
             let details = segue.destination as! WalkerScheduleDetailsTableViewController
             
+            //get row selected
             let scheduleDetails = self.clientSchedules[index.row]
             
+            //pass object for row selected
             details.selectedSchedule = scheduleDetails
-            
-//            let obj = self.scheduleData.allValues[(index as NSIndexPath).row] as! NSDictionary
-            
-//            details.petNameHolder = obj.value(forKey: "petName") as? String
-//            details.dateHolder = obj.value(forKey: "date") as? String
-//            details.timeHolder = obj.value(forKey: "time") as? String
-//            details.durationHolder = obj.value(forKey: "duration") as? String
-//            details.specialInsHolder = obj.value(forKey: "specialIns") as? String
-//            details.medHolder = obj.value(forKey: "meds") as? String
-//            details.scheduleKeyHolder = obj.value(forKey: "scheduleKey") as? String
-//            details.clientNameHolder = obj.value(forKey: "clientName") as? String
-//            details.clientAddressHolder = obj.value(forKey: "clientAddress") as? String
-//            details.clientPhoneHolder = obj.value(forKey: "clientPhone") as? String
         }
-        
     }
-    
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
 }
-
-

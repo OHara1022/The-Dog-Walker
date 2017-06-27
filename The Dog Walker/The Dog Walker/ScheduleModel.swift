@@ -21,6 +21,7 @@ class ScheduleModel: NSObject {
     var clientName: String?
     var clientPhone: String?
     var uid: String?
+    var companyCode: String?
     
 //    var price: String?
     var paidFlag: Bool?
@@ -39,6 +40,7 @@ class ScheduleModel: NSObject {
         self.clientPhone = dictionary["clientPhone"] as? String
         self.uid = dictionary["uid"] as? String
         self.paidFlag = dictionary["paidFlag"] as? Bool
+        self.companyCode = dictionary["companyCode"] as? String
         
     }
     

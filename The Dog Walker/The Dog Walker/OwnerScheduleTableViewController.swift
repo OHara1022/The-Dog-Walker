@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 
 //TODO: change cell detail label to un-paid / paid on flag value from payment
-//TODO: -- delete table view row (delete schdeudle), check empty fields, create flag for payment (local & remote)
 class OwnerScheduleTableViewController: UITableViewController {
     
     //TESTING POC
@@ -18,7 +17,6 @@ class OwnerScheduleTableViewController: UITableViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    //    var dateInfo: NSDictionary!
     let userID = Auth.auth().currentUser?.uid//get current user id
     var schedules = [ScheduleModel]()
     
@@ -29,10 +27,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         //assign delegate and datasoure to self
         tableView.delegate = self
         tableView.dataSource = self
-        
-        //init dictionary
-        //        dateInfo = NSDictionary()
-        
+
         //set ref of database to scheudles
         ref = Database.database().reference().child("schedules").child(userID!)
         
@@ -114,32 +109,19 @@ class OwnerScheduleTableViewController: UITableViewController {
                 
                 details.selectedSchedule = scheduleDetail
                 
-                //pass values to details VC
-                //                details.petNameHolder = scheduleDetail.petName!
-                //                details.dateHolder = scheduleDetail.date!
-                //                details.timeHolder = scheduleDetail.time!
-                //                details.durationHolder = scheduleDetail.duration!
-                //                details.specialInsHolder = scheduleDetail.specialIns!
-                //                details.medHolder = scheduleDetail.meds!
-                //                details.scheduleKeyHolder = scheduleDetail.scheduleKey!
-                //                details.paidFlag = scheduleDetail.paidFlag!
             }
         }
         
     }
     
-    
-    //TODO: Delete schedule!!!
-    
-    // Override to support conditional editing of the table view.
+    //MARK: -- edit cells
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
     
     
-    
-    // Override to support editing the table view.
+    //MARK: -- edit style
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
@@ -166,6 +148,5 @@ class OwnerScheduleTableViewController: UITableViewController {
             }
         }
     }
-    
     
 }

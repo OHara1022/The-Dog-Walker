@@ -23,6 +23,7 @@ class UserModel: NSObject {
     var city: String?
     var state: String?
     var zipCode: String?
+    var companyName: String?
     
 //    
 //    var profileImage: String?
@@ -43,6 +44,7 @@ class UserModel: NSObject {
         self.state = dictionary["state"] as? String
         self.zipCode = dictionary["zipCode"] as? String
         self.aptNumber = dictionary["aptNumber"] as? String
+        self.companyName = dictionary["companyName"] as? String
     }
     
 }

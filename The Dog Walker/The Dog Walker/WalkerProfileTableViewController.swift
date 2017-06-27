@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-//TODO: hide company cell if no data is available 
+//TODO: hide company cell if no data is available
 class WalkerProfileTableViewController: UITableViewController {
     
     //MARK: -- stored properties
@@ -41,42 +41,82 @@ class WalkerProfileTableViewController: UITableViewController {
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
         
-        ref.observeSingleEvent(of: .value, with: {(snapshot) in
-            //dev
-            print(snapshot)
-            
-            //get values of current user
-            let userValues = snapshot.value as? NSDictionary
         
-            //get object value as string
-            //get object value as string
-            let firstName = userValues?.value(forKey: "firstName") as? String
-            let lastName = userValues?.value(forKey: "lastName") as? String
-            let email = userValues?.value(forKey: "email") as? String
-            let phone = userValues?.value(forKey: "phoneNumber") as? String
-             let companyName = userValues?.value(forKey: "companyName") as? String
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            //get address object
-            let addressValue = userValues?.value(forKey: "address") as? NSDictionary
-            //get values from address object
-            let address = addressValue?.value(forKey: "address") as? String
-            let city = addressValue?["city"] as? String
-            let state = addressValue?["state"] as? String
-            let zipCode = addressValue?["zipCode"] as? String
-           
-            if companyName != nil{
+            //set snaopshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
                 
-                self.companyNameLBL.text = companyName!
+                //dev
+                //print(snapshot)
+                
+                //get user data as dictionary
+                let user = UserModel(dictionary: dictionary)
+                
+                //dev
+                print(user.firstName!)
+                
+                //populate label w/ data from FB
+                self.nameLBL.text = user.firstName! + " " + user.lastName!
+                self.emailLBL.text = user.email!
+                self.phoneLBL.text = user.phoneNumber!
+                self.addressLBL.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                
+                //if apt number add to address label
+                if user.aptNumber != nil{
+                    //dev
+                    print("APT HIT")
+                    //address w/ apt number
+                    self.addressLBL.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                }
+                
+                if user.companyName != nil{
+                    
+                    self.companyNameLBL.text = user.companyName!
+                }
+                
             }
-
-            self.nameLBL.text = firstName! + " " + lastName!
-            self.emailLBL.text = email!
-            self.phoneLBL.text = phone!
-            self.addressLBL.text = address! + " " + city! + ", " + state! + " " + zipCode!
             
-        })
+        }, withCancel: nil)
+        
+        
+        //
+        //        ref.observeSingleEvent(of: .value, with: {(snapshot) in
+        //            //dev
+        //            print(snapshot)
+        //
+        //            //get values of current user
+        //            let userValues = snapshot.value as? NSDictionary
+        //
+        //            //get object value as string
+        //            //get object value as string
+        //            let firstName = userValues?.value(forKey: "firstName") as? String
+        //            let lastName = userValues?.value(forKey: "lastName") as? String
+        //            let email = userValues?.value(forKey: "email") as? String
+        //            let phone = userValues?.value(forKey: "phoneNumber") as? String
+        //             let companyName = userValues?.value(forKey: "companyName") as? String
+        //
+        //            //get address object
+        //            let addressValue = userValues?.value(forKey: "address") as? NSDictionary
+        //            //get values from address object
+        //            let address = addressValue?.value(forKey: "address") as? String
+        //            let city = addressValue?["city"] as? String
+        //            let state = addressValue?["state"] as? String
+        //            let zipCode = addressValue?["zipCode"] as? String
+        //
+        //            if companyName != nil{
+        //
+        //                self.companyNameLBL.text = companyName!
+        //            }
+        //
+        //            self.nameLBL.text = firstName! + " " + lastName!
+        //            self.emailLBL.text = email!
+        //            self.phoneLBL.text = phone!
+        //            self.addressLBL.text = address! + " " + city! + ", " + state! + " " + zipCode!
+        //
+        //        })
     }
-
+    
     //MARK: -- actions
     @IBAction func signOut(_ sender: Any) {
         
@@ -87,8 +127,8 @@ class WalkerProfileTableViewController: UITableViewController {
         homeVC?.modalTransitionStyle = .flipHorizontal
         present(homeVC!, animated: true, completion: nil)
     }
-
-
+    
+    
 }
 
 

@@ -19,16 +19,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     var paidFlag: Bool?
     var selectedSchedule: ScheduleModel!
     
-    //*testing remove before release!!!
-    //    var petNameHolder: String?
-    //    var dateHolder: String?
-    //    var timeHolder: String?
-    //    var durationHolder: String?
-    //    var priceHolder: String?  = "" //use on later release
-    //    var specialInsHolder: String?
-    //    var medHolder: String?
-    //    var scheduleKeyHolder: String?
-    
     //MARK: -- outlets
     @IBOutlet weak var deatilsPetNameLBL: UILabel!
     @IBOutlet weak var detailsDateLBL: UILabel!
