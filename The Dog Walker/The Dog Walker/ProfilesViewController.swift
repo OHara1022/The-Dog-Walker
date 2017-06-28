@@ -21,7 +21,7 @@ class ProfilesViewController: UIViewController {
         
         var viewController = storyboard.instantiateViewController(withIdentifier: "clientDetails") as! ClientProfileTableViewController
         
-        self.add(asChildViewController: viewController)
+        self.add(viewController: viewController)
         
         return viewController
         
@@ -33,7 +33,7 @@ class ProfilesViewController: UIViewController {
         
         var viewController = storyboard.instantiateViewController(withIdentifier: "petDetails") as! ClientPetTableViewController
         
-        self.add(asChildViewController: viewController)
+        self.add(viewController: viewController)
         
         return viewController
         
@@ -96,7 +96,7 @@ class ProfilesViewController: UIViewController {
     }
     
     
-    func add(asChildViewController viewController: UIViewController){
+    func add(viewController: UIViewController){
         
         //add childVC
         addChildViewController(viewController)
@@ -109,7 +109,7 @@ class ProfilesViewController: UIViewController {
         
     }
     
-    func remove(asChildViewController viewController: UIViewController) {
+    func remove(viewController: UIViewController) {
         //notify childVC
         viewController.willMove(toParentViewController: nil)
         
@@ -124,11 +124,11 @@ class ProfilesViewController: UIViewController {
     func updateView() {
         
         if segmentedController.selectedSegmentIndex == 0 {
-            remove(asChildViewController: petProfileVC)
-            add(asChildViewController: clientProfileVC)
+            remove(viewController: petProfileVC)
+            add(viewController: clientProfileVC)
         } else {
-            remove(asChildViewController: clientProfileVC)
-            add(asChildViewController: petProfileVC)
+            remove(viewController: clientProfileVC)
+            add(viewController: petProfileVC)
         }
     }
     
