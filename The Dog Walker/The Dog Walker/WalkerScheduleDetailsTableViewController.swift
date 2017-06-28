@@ -52,6 +52,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             clientLabel.text = selectedSchedule.clientName
             clientAddress.text = selectedSchedule.clientAddress
             clientPhone.text = selectedSchedule.clientPhone
+        
 //        }
         
     }

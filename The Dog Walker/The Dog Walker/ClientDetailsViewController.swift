@@ -20,12 +20,14 @@ class ClientDetailsViewController: UIViewController {
     var currentViewController: UIViewController?
     
     var selectedClient: UserModel!
+    var clientProfile: ClientProfileTableViewController!
     
     //reference to client detailsVC - instantiant clientDetails VC
     lazy var clientVC: UIViewController? = {
         
         //init clientVC - instantiant clientDetails VC
-        let clientVC = self.storyboard?.instantiateViewController(withIdentifier: "clientDetails")
+        var clientVC = self.storyboard?.instantiateViewController(withIdentifier: "clientDetails")
+    
         //return vc
         return clientVC
     }()
@@ -54,7 +56,6 @@ class ClientDetailsViewController: UIViewController {
         
         print(selectedClient.firstName!)
         print(selectedClient.email!)
-        
     }
     
     //MARK: -- actions
@@ -65,8 +66,9 @@ class ClientDetailsViewController: UIViewController {
         self.currentViewController!.removeFromParentViewController()
         //display selected tab
         displayCurrentView(sender.selectedSegmentIndex)
-        
+       
     }
+    
     
     //display current tab
     func displayCurrentView(_ tabIndex: Int){
@@ -82,6 +84,8 @@ class ClientDetailsViewController: UIViewController {
             self.containerView.addSubview(selectedVC.view)
             //add selected to current vc
             self.currentViewController = selectedVC
+        
+
         }
         
     }
@@ -99,6 +103,7 @@ class ClientDetailsViewController: UIViewController {
             
             //set client vc to selected
             selectedVC = clientVC
+            
             
         //pet index
         case SegmentTabIndex.petIndex.rawValue:

@@ -145,11 +145,11 @@ class ClientsTableViewController: UITableViewController {
             
             if let index = sender as? IndexPath{
                 
-                let detailDestination = segue.destination as! ClientDetailsViewController
+                let detailDestination = segue.destination as! ProfilesViewController
                 
                 let clientDetails = clientsList[index.row]
                 
-                detailDestination.selectedClient = clientDetails
+                detailDestination.currentClient = clientDetails
                 
             }
         }

@@ -60,13 +60,14 @@ class WalkerProfileTableViewController: UITableViewController {
                 self.nameLBL.text = user.firstName! + " " + user.lastName!
                 self.emailLBL.text = user.email!
                 self.phoneLBL.text = user.phoneNumber!
-                self.addressLBL.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
                 
                 //if apt number add to address label
-                if user.aptNumber != nil{
+                if user.aptNumber == ""{
                     //dev
                     print("APT HIT")
                     //address w/ apt number
+                    self.addressLBL.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                }else{
                     self.addressLBL.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
