@@ -9,6 +9,7 @@ target 'The Dog Walker' do
 pod ‘Firebase/Core’
 pod ‘Firebase/Auth’
 pod ‘Firebase/Database’
+pod 'Firebase/Storage'
 
 
   target 'The Dog WalkerTests' do

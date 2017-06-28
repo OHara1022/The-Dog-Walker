@@ -76,6 +76,7 @@ class WalkerProfileTableViewController: UITableViewController {
                     self.companyNameLBL.text = user.companyName!
                 }
                 
+                
             }
             
         }, withCancel: nil)

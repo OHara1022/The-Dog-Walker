@@ -216,7 +216,6 @@
 		D27E9CB11EF38C8D00377A72 /* WalkerHome */ = {
 			isa = PBXGroup;
 			children = (
-				D2A058CA1F034B1100972CD0 /* New Group */,
 				D27E9CB41EF391FF00377A72 /* WalkerSchedules */,
 				D27E9CBF1EF39F9900377A72 /* WalkerClients */,
 				D2C5FAB91EF4C821006BB572 /* WalkerProfile */,
@@ -239,6 +238,7 @@
 		D27E9CBF1EF39F9900377A72 /* WalkerClients */ = {
 			isa = PBXGroup;
 			children = (
+				D2A058CB1F034B3100972CD0 /* ProfilesViewController.swift */,
 				D27E9CC01EF39FBA00377A72 /* ClientsTableViewController.swift */,
 				D27E9CC21EF39FEE00377A72 /* ClientDetailsViewController.swift */,
 				D27E9CC41EF3A0D900377A72 /* ClientProfileTableViewController.swift */,
@@ -313,14 +313,6 @@
 				D28A93E01EE4F03D00CF80B6 /* Info.plist */,
 			);
 			path = "The Dog WalkerUITests";
-			sourceTree = "<group>";
-		};
-		D2A058CA1F034B1100972CD0 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				D2A058CB1F034B3100972CD0 /* ProfilesViewController.swift */,
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		D2B1BFAF1EF5864600CEAF3E /* DataModel */ = {

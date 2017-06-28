@@ -13,12 +13,13 @@ import FirebaseDatabase
 
 
 //TODO: add address to user node (do not nest)
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
     let users: String = "users"
     var activeField: UITextField?
+    var imageURL: String?
     
     //MARK: -- outlets
     @IBOutlet weak var profileImage: UIImageView!
@@ -50,14 +51,70 @@ class RegisterViewController: UIViewController {
         
         //set TF delegate to self
         setTFDelegate()
+        
+        //MARK: --TESTING UIMAGEVIEW RADIUS
+//        profileImage.translatesAutoresizingMaskIntoConstraints = false
+//        profileImage.layer.cornerRadius = 25
+//        profileImage.layer.masksToBounds = true
+//        profileImage.contentMode = .scaleAspectFit
     }
     
     
     //MARK: -- actions
     @IBAction func addProfileImage(_ sender: UIButton) {
         
-        FieldValidation.textFieldAlert("Open Camera", message: "Will present option to take photo or choose from library", presenter: self)
+        let photoActionSheet = UIAlertController(title: "Profile Photo", message: nil, preferredStyle: .actionSheet)
+        
+        photoActionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+            
+                    if UIImagePickerController.isSourceTypeAvailable(.camera){
+            
+                        let imagePicker = UIImagePickerController()
+                        imagePicker.delegate = self
+                        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                        imagePicker.allowsEditing = false
+                        self.present(imagePicker, animated: true, completion: nil)
+                    }
+        }))
+        
+        photoActionSheet.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { action in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            
+        }))
+        
+        
+        photoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(photoActionSheet, animated: true, completion: nil)
+
+
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+     
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            
+        profileImage.image = image
+        }
+        
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //dismiss image picker if canceled
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
+    }
+
     
     //func to create user and save to FB DB
     func createUser(_ user: User){
@@ -69,6 +126,27 @@ class RegisterViewController: UIViewController {
         if aptTF.text != nil{
             //set value for apt #
             userInfo.aptNumber = aptTF.text! as String
+        }
+        
+        let storageRef = Storage.storage().reference().child("profileImages").child(user.uid)
+        
+        if let uploadImage = UIImagePNGRepresentation(self.profileImage.image!){
+            
+            storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
+                //check if create user failed
+                if let error = error{
+                    //present alert failed
+                    FieldValidation.textFieldAlert("Email or password invlaid", message: error.localizedDescription, presenter: self)
+                    //dev
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                if let profileImgURL = metadata?.downloadURL()?.absoluteString{
+                    
+                    print(profileImgURL)
+                }
+            })
         }
         
         //save & push data to FB DB
