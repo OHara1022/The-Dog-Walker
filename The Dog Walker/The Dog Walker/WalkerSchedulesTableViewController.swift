@@ -127,6 +127,7 @@ class WalkerSchedulesTableViewController: UITableViewController {
         
     }
     
+    
     //MARK: -- heightForRowAt
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -158,7 +159,7 @@ class WalkerSchedulesTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Navigation
+    // MARK: - navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         //get indexPath

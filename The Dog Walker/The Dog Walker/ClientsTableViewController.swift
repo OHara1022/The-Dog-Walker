@@ -14,11 +14,12 @@ import Firebase
 class ClientsTableViewController: UITableViewController {
     
     //MARK: -- store properties
-    var clientRef: DatabaseReference!
-    var clientData: NSDictionary!
     let userID = Auth.auth().currentUser?.uid
-    var currentCode: String?
     var userRef: DatabaseReference!
+    var clientRef: DatabaseReference!
+    var cell: UITableViewCell?
+    var walkerCode: String?
+    var clientsList = [UserModel]()
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
@@ -28,44 +29,49 @@ class ClientsTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //init dictionary
-        clientData = NSDictionary()
-        
         //set DB ref
         clientRef = Database.database().reference().child("users")
         userRef = Database.database().reference().child("users")
         
+        //set observer to current user
+        userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                let user = UserModel(dictionary: dictionary)
+                
+                //get walker code
+                self.walkerCode = user.companyCode
+                
+                //dev
+                //print("WALKER" + " " + self.walkerCode!)
+            }
+            
+        }, withCancel: nil)
+        
+        //set client observer
+        clientRef.observe(.childAdded, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //populate class w/ snapshot
+                let user = UserModel(dictionary: dictionary)
+                
+                //append snapshot to array
+                self.clientsList.append(user)
+                
+                //dispatch on main thread or app will crash!!
+                DispatchQueue.main.async(execute: {
+                    //reload tableView
+                    self.tableView.reloadData()
+                })
+            }
+            
+        }, withCancel: nil)
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            //dev
-            //            print(snapshot)
-            if snapshot.hasChildren(){
-            let code = snapshot.value as! NSDictionary
-            
-            self.currentCode = code.value(forKey: "companyCode") as? String
-            
-            //dev
-            //            print(self.current!)
-            }
-        })
-        
-        self.clientRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            //dev
-            //            print(snapshot)
-            if snapshot.hasChildren(){
-                
-                self.clientData = snapshot.value as! NSDictionary
-                
-            }
-            
-            self.tableView.reloadData()
-            
-        })
-    }
     
     // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -76,23 +82,21 @@ class ClientsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return clientData.count
+        return clientsList.count
     }
-    
-    var cell: UITableViewCell?
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell = tableView.dequeueReusableCell(withIdentifier: "clientCell", for: indexPath)
         
+        let clients = clientsList[indexPath.row]
         
-        let obj = self.clientData.allValues[(indexPath as NSIndexPath).row] as! NSDictionary
+        let roleID = clients.roleID!
+        let code = clients.companyCode!
+        let name = clients.firstName! + " " + clients.lastName!
         
-        let name = obj.value(forKey: "firstName") as! String
-        let roleID = obj.value(forKey: "roleID") as? String
-        let walkerCode = obj.value(forKey: "companyCode") as? String
+        print(code)
         
-        print(name)
-        if roleID == "Owner" && walkerCode == self.currentCode{
+        if roleID == "Owner" && walkerCode == code{
             // Configure the cell...
             cell?.textLabel?.text = name
             
@@ -104,50 +108,54 @@ class ClientsTableViewController: UITableViewController {
         return cell!
     }
     
+    //MARK: -- didSelectRow
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: "clientDetails", sender: indexPath)
+        //check array has value
+        if clientsList.count != 0{
+            //perform segue to detaisl
+            performSegue(withIdentifier: "clientDetails", sender: indexPath)
+        }
     }
     
+    //MARK: -- heightForRowAt
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        //set default height
         var height: CGFloat = 0.0
         
+        //check if cell is hidden
         if cell?.isHidden == true {
             
+            //set height
             height = 0.0
         }else {
-            
+            //set height
             height = 44.0
         }
         
+        //return proper height
         return height
     }
     
     
     // MARK: -- navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
-//        if segue.identifier == "clientDetails"{
-//            
-//            if let index = sender as? IndexPath{
-//                
-//                
-//                let clientDetails = segue.destination as! ClientProfileTableViewController
-//                
-//                let obj = self.clientData.allValues[(index as NSIndexPath).row] as! NSDictionary
-//                
-//                clientDetails.firstNameHolder = obj.value(forKey: "firstName") as? String
-//            }
-//        
-//        }
+        
+        if segue.identifier == "clientDetails"{
+            
+            if let index = sender as? IndexPath{
+                
+                let detailDestination = segue.destination as! ClientDetailsViewController
+                
+                let clientDetails = clientsList[index.row]
+                
+                detailDestination.selectedClient = clientDetails
+                
+            }
+        }
     }
-
-    
     
 }
-
-
 
 /*
  // Override to support conditional editing of the table view.

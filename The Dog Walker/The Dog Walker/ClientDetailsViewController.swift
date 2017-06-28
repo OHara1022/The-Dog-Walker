@@ -19,6 +19,8 @@ class ClientDetailsViewController: UIViewController {
     //MARK: -- stored properties
     var currentViewController: UIViewController?
     
+    var selectedClient: UserModel!
+    
     //reference to client detailsVC - instantiant clientDetails VC
     lazy var clientVC: UIViewController? = {
         
@@ -49,6 +51,9 @@ class ClientDetailsViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = SegmentTabIndex.clientIndex.rawValue
         //display tab 1
         displayCurrentView(SegmentTabIndex.clientIndex.rawValue)
+        
+        print(selectedClient.firstName!)
+        print(selectedClient.email!)
         
     }
     
@@ -91,6 +96,7 @@ class ClientDetailsViewController: UIViewController {
         switch index {
         //client index
         case SegmentTabIndex.clientIndex.rawValue:
+            
             //set client vc to selected
             selectedVC = clientVC
             

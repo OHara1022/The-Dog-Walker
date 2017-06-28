@@ -22,6 +22,8 @@ class ClientProfileTableViewController: UITableViewController {
     var emergencyContact: String?
     var emergencyPhone: String?
     
+    
+    var clientDetails: UserModel!
 
     //MARK: -- outlets
     @IBOutlet weak var clientProfileImg: UIImageView!
