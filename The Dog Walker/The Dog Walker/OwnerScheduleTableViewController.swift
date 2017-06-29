@@ -19,6 +19,8 @@ class OwnerScheduleTableViewController: UITableViewController {
     var ref: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid//get current user id
     var schedules = [ScheduleModel]()
+    var unpaid: String = "Unpaid"
+    var paid: String = "Paid"
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
@@ -77,6 +79,13 @@ class OwnerScheduleTableViewController: UITableViewController {
         //populate labels with schdule data
         cell.dateLabel.text = schedule.date!
         cell.paidLabel.text = holderTest[indexPath.row]
+        
+        if schedule.paidFlag == true{
+            
+            cell.paidLabel.text = paid
+            
+            cell.paidLabel.textColor = UIColor.green
+        }
         
         return cell
     }
