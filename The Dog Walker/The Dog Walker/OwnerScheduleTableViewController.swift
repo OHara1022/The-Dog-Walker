@@ -20,7 +20,8 @@ class OwnerScheduleTableViewController: UITableViewController {
     let userID = Auth.auth().currentUser?.uid//get current user id
     var schedules = [ScheduleModel]()
     var unpaid: String = "Unpaid"
-    var paid: String = "Paid"
+    var paid: String = "PAID"
+    var paidRef: DatabaseReference!
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
@@ -29,9 +30,10 @@ class OwnerScheduleTableViewController: UITableViewController {
         //assign delegate and datasoure to self
         tableView.delegate = self
         tableView.dataSource = self
-
+        
         //set ref of database to scheudles
         ref = Database.database().reference().child("schedules").child(userID!)
+        paidRef = Database.database().reference().child("schedules").child(userID!)
         
         //observer for schedules added
         ref.observe(.childAdded, with: { (snapshot) in
@@ -53,6 +55,8 @@ class OwnerScheduleTableViewController: UITableViewController {
             }
             
         }, withCancel: nil)
+        
+        
     }
     
     
@@ -78,14 +82,35 @@ class OwnerScheduleTableViewController: UITableViewController {
         
         //populate labels with schdule data
         cell.dateLabel.text = schedule.date!
-        cell.paidLabel.text = holderTest[indexPath.row]
+        
+//        if schedule.paidFlag == false {
+            cell.paidLabel.text = paid
+//        }
         
         if schedule.paidFlag == true{
             
-            cell.paidLabel.text = paid
+//            cell.paidLabel.text = paid
             
             cell.paidLabel.textColor = UIColor.green
         }
+        
+        paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
+            
+            print(snapshot)
+
+            //DOES NOT CHANGE TEXT
+//            cell.paidLabel.text = self.paid
+            
+            cell.paidLabel.textColor = UIColor.green
+            
+            //dispatch on main thread or app will crash!!
+            DispatchQueue.main.async(execute: {
+                
+                //reload tableView
+                self.tableView.reloadData()
+            })
+            
+        }, withCancel: nil)
         
         return cell
     }
