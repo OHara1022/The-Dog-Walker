@@ -82,13 +82,12 @@ class OwnerScheduleTableViewController: UITableViewController {
         
         //populate labels with schdule data
         cell.dateLabel.text = schedule.date!
+        cell.paidLabel.text = paid
         
-//        if schedule.paidFlag == false {
-            cell.paidLabel.text = paid
-//        }
-        
+        //check if paymeny was made
         if schedule.paidFlag == true{
             
+            //does not change text - (research issue)
 //            cell.paidLabel.text = paid
             
             cell.paidLabel.textColor = UIColor.green
@@ -98,7 +97,7 @@ class OwnerScheduleTableViewController: UITableViewController {
             
             print(snapshot)
 
-            //DOES NOT CHANGE TEXT
+            //DOES NOT CHANGE TEXT - (research issue)
 //            cell.paidLabel.text = self.paid
             
             cell.paidLabel.textColor = UIColor.green

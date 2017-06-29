@@ -16,9 +16,9 @@ class WalkerSchedulesTableViewController: UITableViewController {
     var ref: DatabaseReference!
     var userRef: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
-    var roleID: String?
+//    var roleID: String?
     var walkerCode: String?
-    var clientCode: String?
+//    var clientCode: String?
     var cell: UITableViewCell?
     var clientSchedules = [ScheduleModel]()
     

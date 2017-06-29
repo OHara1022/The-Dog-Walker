@@ -13,6 +13,9 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     
     //MARK: -- stored properties
     var selectedSchedule: ScheduleModel!
+    var ref: DatabaseReference!
+    
+    
     var priceHolder: String?  = "" //use on later release
     
     //MARK: --outlets
@@ -26,11 +29,13 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var clientLabel: UILabel!
     @IBOutlet weak var clientAddress: UILabel!
     @IBOutlet weak var clientPhone: UILabel!
+    @IBOutlet weak var paidLabel: UILabel!
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //populate labels w/ schedule data
         petNameLabel.text = selectedSchedule.petName
         dateLabel.text = selectedSchedule.date
         timeLabel.text = selectedSchedule.time
@@ -41,23 +46,49 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         clientAddress.text = selectedSchedule.clientAddress
         clientPhone.text = selectedSchedule.clientPhone
         
+        print(selectedSchedule.scheduleKey!)
+        
+        //get ref to database
+        ref = Database.database().reference().child("schedules").child(selectedSchedule.uid!).child(selectedSchedule.scheduleKey!)
     }
     
     //MARK: -- actions
     @IBAction func checkIn(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: "Check In", message: "Alert client walk started will be in future release", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
+        let alert = UIAlertController(title: "Check In", message: "Inform client walk has started?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            
+            //set checkIn to true
+            self.ref.updateChildValues(["checkIn": true])
+            
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true)
         
     }
     
     @IBAction func checkOut(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: "Check Out", message: "Alert client walk ended will be in future release", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
+        let alert = UIAlertController(title: "Check Out", message: "Walk Completed?", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            
+            textField.placeholder = "Enter Note"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            
+            if let textFields = alert.textFields{
+                let theTextFields = textFields as [UITextField]
+                let enteredText = theTextFields[0].text
+                print(enteredText!)
+            }
+            
+            //set checkIn to true
+//            self.ref.updateChildValues(["checkOut": true])
+            
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
     
