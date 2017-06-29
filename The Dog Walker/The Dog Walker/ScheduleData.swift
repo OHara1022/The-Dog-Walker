@@ -10,6 +10,7 @@ import Foundation
 
 class ScheduleData{
     
+    //stored properties
     var date: String
     var time: String
     var duration: String
@@ -17,9 +18,12 @@ class ScheduleData{
     var instructions: String
     var meds: String
     var scheduleKey: String?
-    var price: String?
     var paidFlag: Bool?
+    var checkIn: Bool?
+    var checkOut: Bool?
+    var price: String?//later user for changing prices
     
+    //init stored properties
     init(date: String, time: String, duration: String, petName: String, instructions: String, meds: String) {
         
         self.date = date

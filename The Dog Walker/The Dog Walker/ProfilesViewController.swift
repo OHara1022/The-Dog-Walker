@@ -46,10 +46,13 @@ class ProfilesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //method to show proper VC on value change
         segmentedController.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
         
+        //updateView
         updateView()
         
+        //set labels text w/ proper client data
         clientProfileVC.clientNameLBL.text = currentClient.firstName! + " " + currentClient.lastName!
         clientProfileVC.clientEmaillLBL.text = currentClient.email!
         
@@ -63,7 +66,7 @@ class ProfilesViewController: UIViewController {
             self.clientProfileVC.clientAddressLBL.text = currentClient.address! + ".  Apt. " + currentClient.aptNumber! + " " + currentClient.city! + ", " + currentClient.state! + " " + currentClient.zipCode!
         }
 
-        
+        //get ref to pets in DB
         petRef = Database.database().reference().child("pets")
         
         //observer for pet info
@@ -83,19 +86,30 @@ class ProfilesViewController: UIViewController {
                 self.clientProfileVC.emergencyPhoneLBL.text = pet.emergencyPhone!
                 
                 self.petProfileVC.petNameLBL.text = pet.petName!
+                self.petProfileVC.bdayLBL.text = pet.birthday!
+                self.petProfileVC.breedLBL.text = pet.breed!
+                self.petProfileVC.vaccineLBL.text = pet.vaccines!
+                self.petProfileVC.medsLBL.text = pet.meds
+                self.petProfileVC.specialInsLBL.text = pet.specialIns!
+                self.petProfileVC.vetNameLBL.text = pet.vetName!
+                self.petProfileVC.vetPhoneLBL.text = pet.vetPhone!
             }
             
         }, withCancel: nil)
-        
-        
     }
     
+}
+
+//MARK: -- extension for funtionality
+extension ProfilesViewController{
     
+    //check segment change
     func selectionDidChange(_ sender: UISegmentedControl){
+        //update to current VC
         updateView()
     }
     
-    
+    //add VC as subView to mainVC
     func add(viewController: UIViewController){
         
         //add childVC
@@ -109,6 +123,7 @@ class ProfilesViewController: UIViewController {
         
     }
     
+    //remove VC remove VC from parent on change
     func remove(viewController: UIViewController) {
         //notify childVC
         viewController.willMove(toParentViewController: nil)
@@ -120,18 +135,22 @@ class ProfilesViewController: UIViewController {
         viewController.removeFromParentViewController()
     }
     
-    
+    //update view on segment index
     func updateView() {
         
+        //check index
         if segmentedController.selectedSegmentIndex == 0 {
+            //remove VC
             remove(viewController: petProfileVC)
+            //add VC
             add(viewController: clientProfileVC)
         } else {
+            //removeVC
             remove(viewController: clientProfileVC)
+            //add VC
             add(viewController: petProfileVC)
         }
     }
-    
-    
+
     
 }

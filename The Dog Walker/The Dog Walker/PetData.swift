@@ -11,6 +11,7 @@ import Foundation
 
 class PetData{
     
+    //stored properties
     var petName: String
     var birthday: String
     var breed: String
@@ -25,6 +26,7 @@ class PetData{
     var uid: String?
     var petKey: String?
     
+    //init properties 
     init(petName: String, birthday: String, breed: String, meds: String, vaccine: String, specialInstructions: String, emergencyContact: String, emergencyPhone: String, vetName: String, vetPhone: String) {
         
         self.petName = petName

@@ -13,17 +13,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     
     //MARK: -- stored properties
     var selectedSchedule: ScheduleModel!
-      var priceHolder: String?  = "" //use on later release
-//    var petNameHolder: String?
-//    var dateHolder: String?
-//    var timeHolder: String?
-//    var durationHolder: String?
-//    var specialInsHolder: String?
-//    var medHolder: String?
-//    var scheduleKeyHolder: String?
-//    var clientNameHolder: String?
-//    var clientAddressHolder: String?
-//    var clientPhoneHolder: String?
+    var priceHolder: String?  = "" //use on later release
     
     //MARK: --outlets
     @IBOutlet weak var petImage: UIImageView!
@@ -37,23 +27,19 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var clientAddress: UILabel!
     @IBOutlet weak var clientPhone: UILabel!
     
-     //MARK: -- viewDidLoad
+    //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let petName = petNameHolder, let date = dateHolder, let time = timeHolder, let duration = durationHolder, let specialIns = specialInsHolder, let meds = medHolder, let client = clientNameHolder, let address = clientAddressHolder, let phone = clientPhoneHolder{
-        
-            petNameLabel.text = selectedSchedule.petName
-            dateLabel.text = selectedSchedule.date
-            timeLabel.text = selectedSchedule.time
-            durationLabel.text = selectedSchedule.duration
-            specialInsLabel.text = selectedSchedule.specialIns
-            medsLabel.text = selectedSchedule.meds
-            clientLabel.text = selectedSchedule.clientName
-            clientAddress.text = selectedSchedule.clientAddress
-            clientPhone.text = selectedSchedule.clientPhone
-        
-//        }
+        petNameLabel.text = selectedSchedule.petName
+        dateLabel.text = selectedSchedule.date
+        timeLabel.text = selectedSchedule.time
+        durationLabel.text = selectedSchedule.duration
+        specialInsLabel.text = selectedSchedule.specialIns
+        medsLabel.text = selectedSchedule.meds
+        clientLabel.text = selectedSchedule.clientName
+        clientAddress.text = selectedSchedule.clientAddress
+        clientPhone.text = selectedSchedule.clientPhone
         
     }
     
@@ -74,8 +60,8 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         alert.addAction(alertAction)
         present(alert, animated: true)
     }
-
-
+    
+    
 }
 
 

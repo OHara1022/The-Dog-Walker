@@ -10,6 +10,7 @@ import UIKit
 
 class PetModel: NSObject {
     
+    //stored properties
     var petName: String?
     var birthday: String?
     var breed: String?
@@ -23,6 +24,7 @@ class PetModel: NSObject {
     var vetName: String?
     var vetPhone: String?
     
+    //init dictionary obj reference to firebase DB
     init(dictionary: [String: AnyObject]) {
         
         self.petName = dictionary["petName"] as? String
@@ -38,6 +40,6 @@ class PetModel: NSObject {
         self.vetName = dictionary["vetName"] as? String
         self.vetPhone = dictionary["vetPhone"] as? String
         
-      }
-
+    }
+    
 }

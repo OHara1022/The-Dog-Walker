@@ -9,7 +9,8 @@
 import UIKit
 
 class ScheduleModel: NSObject {
-
+    
+    //stored properties
     var date: String?
     var time: String?
     var duration: String?
@@ -23,9 +24,13 @@ class ScheduleModel: NSObject {
     var uid: String?
     var companyCode: String?
     
-//    var price: String?
     var paidFlag: Bool?
+    var checkIn: Bool?
+    var checkOut: Bool?
     
+    var price: String?//for later use for walker to change price
+    
+    //init dictionary obj reference to firebase DB
     init(dictionary: [String: AnyObject]){
         
         self.date = dictionary["date"] as? String
@@ -41,6 +46,8 @@ class ScheduleModel: NSObject {
         self.uid = dictionary["uid"] as? String
         self.paidFlag = dictionary["paidFlag"] as? Bool
         self.companyCode = dictionary["companyCode"] as? String
+        self.checkIn = dictionary["checkIn"] as? Bool
+        self.checkOut = dictionary["checkOut"] as? Bool
         
     }
     

@@ -24,12 +24,14 @@ class UserModel: NSObject {
     var state: String?
     var zipCode: String?
     var companyName: String?
+    var profileImage: String?
     
 //    
 //    var profileImage: String?
 //    var address: AddressInfo?//may make indiviual variable
 //    var password: String?//for testing
     
+    //init dictionary obj reference to firebase DB
     init(dictionary: [String: AnyObject]){
         
         self.firstName = dictionary["firstName"] as? String
@@ -45,6 +47,7 @@ class UserModel: NSObject {
         self.zipCode = dictionary["zipCode"] as? String
         self.aptNumber = dictionary["aptNumber"] as? String
         self.companyName = dictionary["companyName"] as? String
+        self.profileImage = dictionary["profileImage"] as? String
     }
     
 }

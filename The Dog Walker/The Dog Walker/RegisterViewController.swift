@@ -11,15 +11,12 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-
-//TODO: add address to user node (do not nest)
-class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController{
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
     let users: String = "users"
     var activeField: UITextField?
-    var imageURL: String?
     
     //MARK: -- outlets
     @IBOutlet weak var profileImage: UIImageView!
@@ -63,94 +60,8 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     //MARK: -- actions
     @IBAction func addProfileImage(_ sender: UIButton) {
         
-        let photoActionSheet = UIAlertController(title: "Profile Photo", message: nil, preferredStyle: .actionSheet)
-        
-        photoActionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
-            
-                    if UIImagePickerController.isSourceTypeAvailable(.camera){
-            
-                        let imagePicker = UIImagePickerController()
-                        imagePicker.delegate = self
-                        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-                        imagePicker.allowsEditing = false
-                        self.present(imagePicker, animated: true, completion: nil)
-                    }
-        }))
-        
-        photoActionSheet.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { action in
-            
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-                
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                imagePicker.allowsEditing = false
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-            
-        }))
-        
-        
-        photoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        present(photoActionSheet, animated: true, completion: nil)
-
-
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-     
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            
-        profileImage.image = image
-        }
-        
-        //dismiss imagePickerVC
-        dismiss(animated: true, completion: nil)
-    }
-    
-    //dismiss image picker if canceled
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        //dismiss imagePickerVC
-        dismiss(animated: true, completion: nil)
-    }
-
-    
-    //func to create user and save to FB DB
-    func createUser(_ user: User){
-        
-        //populate class w/ TF text
-        let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressTF.text! as String, city: cityTF.text! as String, state: stateTF.text! as String, zipCode: zipCodeTF.text! as String, phoneNumber: phoneTF.text! as String, uid: user.uid, companyCode: companyCodeTF.text! as String)
-        
-        //check if apt # has value
-        if aptTF.text != nil{
-            //set value for apt #
-            userInfo.aptNumber = aptTF.text! as String
-        }
-        
-        let storageRef = Storage.storage().reference().child("profileImages").child(user.uid)
-        
-        if let uploadImage = UIImagePNGRepresentation(self.profileImage.image!){
-            
-            storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
-                //check if create user failed
-                if let error = error{
-                    //present alert failed
-                    FieldValidation.textFieldAlert("Email or password invlaid", message: error.localizedDescription, presenter: self)
-                    //dev
-                    print(error.localizedDescription)
-                    return
-                }
-                
-                if let profileImgURL = metadata?.downloadURL()?.absoluteString{
-                    
-                    print(profileImgURL)
-                }
-            })
-        }
-        
-        //save & push data to FB DB
-        ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid, "companyCode": userInfo.companyCode, "companyName": companyNameTF.text! as String, "address": userInfo.address, "city": userInfo.city, "state": userInfo.state, "zipCode": userInfo.zipCode, "aptNumber": userInfo.aptNumber])
+        //present image action sheet
+        presentImgOptions()
     }
     
     //MARK: --segue
@@ -212,47 +123,3 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
 
 }
 
-extension RegisterViewController{
-    
-    //MARK: --Keyboard editing functionality
-    //reference used for this functionality:
-    //https://spin.atomicobject.com/2014/03/05/uiscrollview-autolayout-ios/
-    func keyboardDidShow(_ notification: Notification) {
-        if let activeField = self.activeField, let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
-            self.scrollView.contentInset = contentInsets
-            self.scrollView.scrollIndicatorInsets = contentInsets
-            var aRect = self.view.frame
-            aRect.size.height -= keyboardSize.size.height
-            if (!aRect.contains(activeField.frame.origin)) {
-                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
-            }
-        }
-    }
-    //method to hide keyboard
-    func keyboardWillBeHidden(_ notification: Notification) {
-        let contentInsets = UIEdgeInsets.zero
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-    }
-    
-    func setTFDelegate(){
-        //set TF delegate to self
-        firstNameTF.delegate = self
-        lastNameTF.delegate = self
-        emailTF.delegate = self
-        passwordTF.delegate = self
-        confirmPasswordTF.delegate = self
-        addressTF.delegate = self
-        aptTF.delegate = self
-        cityTF.delegate = self
-        stateTF.delegate = self
-        zipCodeTF.delegate = self
-        phoneTF.delegate = self
-        companyCodeTF.delegate = self
-        companyNameTF.delegate = self
-    }
-    
-    
-    
-}

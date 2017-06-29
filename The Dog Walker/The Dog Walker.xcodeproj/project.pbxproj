@@ -43,7 +43,6 @@
 		D2AB901F1EF4565900A05FEE /* OwnerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */; };
 		D2AB90211EF4584A00A05FEE /* WalkerSchedules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2AB90201EF4584A00A05FEE /* WalkerSchedules.storyboard */; };
 		D2B1BFB11EF5865B00CEAF3E /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B1BFB01EF5865B00CEAF3E /* Users.swift */; };
-		D2B1BFB31EF588F300CEAF3E /* AddressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B1BFB21EF588F300CEAF3E /* AddressInfo.swift */; };
 		D2B1BFB51EF58BD600CEAF3E /* PetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B1BFB41EF58BD600CEAF3E /* PetData.swift */; };
 		D2B1BFB71EF58E4900CEAF3E /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B1BFB61EF58E4900CEAF3E /* ScheduleData.swift */; };
 		D2B1BFBA1EF5A06C00CEAF3E /* FieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B1BFB91EF5A06C00CEAF3E /* FieldValidation.swift */; };
@@ -55,6 +54,8 @@
 		D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */; };
 		D2D4E64E1EEF0EB000FB7A7C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */; };
 		D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */; };
+		D2D52F391F049EA20023D7A2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D52F381F049EA20023D7A2 /* Extension.swift */; };
+		D2D52F3C1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D52F3B1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,7 +124,6 @@
 		D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProfileTableViewController.swift; sourceTree = "<group>"; };
 		D2AB90201EF4584A00A05FEE /* WalkerSchedules.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalkerSchedules.storyboard; sourceTree = "<group>"; };
 		D2B1BFB01EF5865B00CEAF3E /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
-		D2B1BFB21EF588F300CEAF3E /* AddressInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressInfo.swift; sourceTree = "<group>"; };
 		D2B1BFB41EF58BD600CEAF3E /* PetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetData.swift; sourceTree = "<group>"; };
 		D2B1BFB61EF58E4900CEAF3E /* ScheduleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleData.swift; sourceTree = "<group>"; };
 		D2B1BFB91EF5A06C00CEAF3E /* FieldValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldValidation.swift; sourceTree = "<group>"; };
@@ -135,6 +135,8 @@
 		D2C8F1981EE584A900F7AC65 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegisterViewController.swift; sourceTree = "<group>"; };
+		D2D52F381F049EA20023D7A2 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		D2D52F3B1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVCFunctionalityExtension.swift; sourceTree = "<group>"; };
 		F0C9348669850476B9913E50 /* Pods-The Dog WalkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerTests/Pods-The Dog WalkerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,6 +221,7 @@
 				D27E9CB41EF391FF00377A72 /* WalkerSchedules */,
 				D27E9CBF1EF39F9900377A72 /* WalkerClients */,
 				D2C5FAB91EF4C821006BB572 /* WalkerProfile */,
+				D27E9CC21EF39FEE00377A72 /* ClientDetailsViewController.swift */,
 				D27E9CAF1EF3884900377A72 /* WalkerHome.storyboard */,
 			);
 			name = WalkerHome;
@@ -240,7 +243,6 @@
 			children = (
 				D2A058CB1F034B3100972CD0 /* ProfilesViewController.swift */,
 				D27E9CC01EF39FBA00377A72 /* ClientsTableViewController.swift */,
-				D27E9CC21EF39FEE00377A72 /* ClientDetailsViewController.swift */,
 				D27E9CC41EF3A0D900377A72 /* ClientProfileTableViewController.swift */,
 				D23FE2201EF4472700636F8F /* ClientPetTableViewController.swift */,
 			);
@@ -285,8 +287,8 @@
 				D216AA581EF8C26900FE5C15 /* The Dog Walker.entitlements */,
 				D27072341EF0F6410073501E /* Assets.xcassets */,
 				D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */,
+				D2D52F3A1F04AA570023D7A2 /* Helpers */,
 				D2B1BFAF1EF5864600CEAF3E /* DataModel */,
-				D2B1BFB81EF5A04800CEAF3E /* FormValidation */,
 				D2C8F1971EE5848E00F7AC65 /* Login */,
 				D2ECD9A61EEF2A2C00AC75E6 /* Register */,
 				D27F61F71EF1B251006258AA /* OwnerProfile */,
@@ -319,7 +321,6 @@
 			isa = PBXGroup;
 			children = (
 				D2B1BFB01EF5865B00CEAF3E /* Users.swift */,
-				D2B1BFB21EF588F300CEAF3E /* AddressInfo.swift */,
 				D2B1BFB41EF58BD600CEAF3E /* PetData.swift */,
 				D2B1BFB61EF58E4900CEAF3E /* ScheduleData.swift */,
 				D23F47781EFF75C400797B5E /* UserModel.swift */,
@@ -327,14 +328,6 @@
 				D23F477C1EFF88B400797B5E /* PetModel.swift */,
 			);
 			name = DataModel;
-			sourceTree = "<group>";
-		};
-		D2B1BFB81EF5A04800CEAF3E /* FormValidation */ = {
-			isa = PBXGroup;
-			children = (
-				D2B1BFB91EF5A06C00CEAF3E /* FieldValidation.swift */,
-			);
-			name = FormValidation;
 			sourceTree = "<group>";
 		};
 		D2C5FAB91EF4C821006BB572 /* WalkerProfile */ = {
@@ -364,10 +357,20 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		D2D52F3A1F04AA570023D7A2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D2B1BFB91EF5A06C00CEAF3E /* FieldValidation.swift */,
+				D2D52F381F049EA20023D7A2 /* Extension.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		D2ECD9A61EEF2A2C00AC75E6 /* Register */ = {
 			isa = PBXGroup;
 			children = (
 				D292058F1EEF8CCD008F49F6 /* RegisterViewController.swift */,
+				D2D52F3B1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift */,
 				D29F246D1EFCC5CE005A18FA /* RegisterVCDelegateExtensions.swift */,
 				D27072321EF0ED720073501E /* WelcomeViewController.swift */,
 				D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */,
@@ -688,16 +691,17 @@
 				D217B3251EF36FBD00785F88 /* CreateScheduleViewController.swift in Sources */,
 				D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */,
 				D23FE2211EF4472700636F8F /* ClientPetTableViewController.swift in Sources */,
+				D2D52F3C1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift in Sources */,
 				D2A058CC1F034B3100972CD0 /* ProfilesViewController.swift in Sources */,
 				D23F477D1EFF88B400797B5E /* PetModel.swift in Sources */,
 				D2B1BFB11EF5865B00CEAF3E /* Users.swift in Sources */,
 				D27F61F51EF1A7E4006258AA /* PetProfileViewController.swift in Sources */,
 				D217B31D1EF3453500785F88 /* PetDetailsTableViewController.swift in Sources */,
 				D226B69A1EF4FFD500105673 /* OwnerScheudlesTableViewCell.swift in Sources */,
-				D2B1BFB31EF588F300CEAF3E /* AddressInfo.swift in Sources */,
 				D2AB901F1EF4565900A05FEE /* OwnerProfileTableViewController.swift in Sources */,
 				D21CEF611EF3014200DF8602 /* EditPetViewController.swift in Sources */,
 				D2B1BFBA1EF5A06C00CEAF3E /* FieldValidation.swift in Sources */,
+				D2D52F391F049EA20023D7A2 /* Extension.swift in Sources */,
 				D2C5FABB1EF4C83D006BB572 /* WalkerProfileTableViewController.swift in Sources */,
 				D27E9CC31EF39FEE00377A72 /* ClientDetailsViewController.swift in Sources */,
 				D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */,

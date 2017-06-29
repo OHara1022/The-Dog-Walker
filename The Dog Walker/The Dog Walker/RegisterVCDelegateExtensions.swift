@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-extension RegisterViewController: UITextFieldDelegate{
+extension RegisterViewController: UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+    //MARK: -- textFieldDelegate
     //call textfieldDidBeginEditing for keyboard functionality
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.activeField = textField
@@ -83,6 +83,26 @@ extension RegisterViewController: UITextFieldDelegate{
         }
         //else return false
         return false
+    }
+    
+    //MARK -- imagePickerDelegate / navigationDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //get image
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            
+            //set image
+            profileImage.image = image
+        }
+        
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //dismiss image picker if canceled
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
     }
 
     

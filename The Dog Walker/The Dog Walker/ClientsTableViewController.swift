@@ -88,14 +88,18 @@ class ClientsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell = tableView.dequeueReusableCell(withIdentifier: "clientCell", for: indexPath)
         
+        //get obj a indexPath
         let clients = clientsList[indexPath.row]
         
+        //set obj values
         let roleID = clients.roleID!
         let code = clients.companyCode!
         let name = clients.firstName! + " " + clients.lastName!
         
+        //dev
         print(code)
         
+        //check role and code to make relation to walker clients
         if roleID == "Owner" && walkerCode == code{
             // Configure the cell...
             cell?.textLabel?.text = name
@@ -103,8 +107,8 @@ class ClientsTableViewController: UITableViewController {
             return cell!
         }
         
+        //hide cells that are not related
         cell?.isHidden = true
-        
         return cell!
     }
     
@@ -136,9 +140,8 @@ class ClientsTableViewController: UITableViewController {
         //return proper height
         return height
     }
-    
-    
-    // MARK: -- navigation
+
+    // MARK: -- prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "clientDetails"{
