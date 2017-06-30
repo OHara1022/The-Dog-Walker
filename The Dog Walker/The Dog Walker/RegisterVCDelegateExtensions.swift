@@ -90,13 +90,14 @@ extension RegisterViewController: UITextFieldDelegate, UIImagePickerControllerDe
         
         //get image
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            
             //set image
             profileImage.image = image
+        
         }
         
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
+     
     }
     
     //dismiss image picker if canceled

@@ -503,6 +503,7 @@
                         <outlet property="emergenctContactTF" destination="5mZ-LI-rwv" id="s7w-oX-eKn"/>
                         <outlet property="emergencyPhoneTF" destination="lNm-nI-ir8" id="Au4-Qt-Rb8"/>
                         <outlet property="medsTF" destination="gxU-Dh-nFo" id="aQ7-ki-ubl"/>
+                        <outlet property="petImage" destination="DEB-to-RBA" id="S8M-gK-OGp"/>
                         <outlet property="petNameTF" destination="B5B-bl-ehO" id="57H-2r-s6J"/>
                         <outlet property="scrollView" destination="smE-Rt-6Tf" id="nqx-fP-G5y"/>
                         <outlet property="specialInstructionTF" destination="ZQn-kq-sGz" id="T6Z-UY-FYw"/>

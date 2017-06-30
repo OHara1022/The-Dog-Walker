@@ -23,6 +23,7 @@ class PetModel: NSObject {
     var vaccines: String?
     var vetName: String?
     var vetPhone: String?
+    var petImage: String?
     
     //init dictionary obj reference to firebase DB
     init(dictionary: [String: AnyObject]) {
@@ -39,6 +40,7 @@ class PetModel: NSObject {
         self.vaccines = dictionary["vaccines"] as? String
         self.vetName = dictionary["vetName"] as? String
         self.vetPhone = dictionary["vetPhone"] as? String
+        self.petImage = dictionary["petImage"] as? String
         
     }
     

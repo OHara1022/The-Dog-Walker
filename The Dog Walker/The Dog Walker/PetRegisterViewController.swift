@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class PetRegisterViewController: UIViewController {
+class PetRegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: -- stored properties
     let userID = Auth.auth().currentUser?.uid
@@ -33,6 +33,7 @@ class PetRegisterViewController: UIViewController {
     }()
     
     //MARK: -- outlets
+    @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var petNameTF: UITextField!
     @IBOutlet weak var bdayTF: UITextField!
     @IBOutlet weak var breedTF: UITextField!
@@ -70,9 +71,11 @@ class PetRegisterViewController: UIViewController {
         try! Auth.auth().signOut()
         self.present(homeVC!, animated: true, completion: nil)
     }
+    
     @IBAction func addImage(_ sender: UIButton) {
         
-        FieldValidation.textFieldAlert("Select Image", message: "Open camera will be in future release", presenter: self)
+        presentImgOptions()
+        
     }
     
     @IBAction func petSave(_ sender: UIBarButtonItem) {
@@ -98,6 +101,29 @@ class PetRegisterViewController: UIViewController {
             //populate class with TF text
             let petData = PetData(petName: petName!, birthday: bday!, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emeregencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
             
+            let storageRef = Storage.storage().reference().child("profileImages").child("\(userID!).jpeg")
+            
+            if let uploadImage = UIImageJPEGRepresentation(self.petImage.image!, 0.6){
+                
+                storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
+                    //check if create user failed
+                    if let error = error{
+                        //present alert failed
+                        FieldValidation.textFieldAlert("Image Storage Error", message: error.localizedDescription, presenter: self)
+                        //dev
+                        print(error.localizedDescription)
+                        return
+                    }
+                    
+                    if let petImgURL = metadata?.downloadURL()?.absoluteString{
+                        
+                        print(petImgURL)
+                        
+                        self.ref.child(petKey).updateChildValues(["petImage": petImgURL])
+                    }
+                })
+            }
+            
             //push create pet to Firebase
             self.ref.child(petKey).setValue(["petName": petData.petName, "birthday": petData.birthday, "breed": petData.breed, "meds": petData.meds, "vaccines": petData.vaccine, "specialIns": petData.specialInstructions, "emergencyContact": petData.emergencyContact, "emergencyPhone": petData.emergencyPhone, "vetName": petData.vetName,"vetPhone": petData.vetPhone, "petKey": petKey, "uid": userID])
             
@@ -119,6 +145,65 @@ class PetRegisterViewController: UIViewController {
 
 //MARK: -- extension for keyboard funtionality
 extension PetRegisterViewController{
+    
+    //MARK: -- image functionality
+    func presentImgOptions(){
+        
+        //create action sheet
+        let photoActionSheet = UIAlertController(title: "Profile Photo", message: nil, preferredStyle: .actionSheet)
+        
+        //add actions
+        photoActionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }))
+        
+        photoActionSheet.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { action in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            
+        }))
+        
+        
+        photoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        //present action sheet
+        present(photoActionSheet, animated: true, completion: nil)
+    }
+    
+    //MARK -- imagePickerDelegate / navigationDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //get image
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            
+            //set image
+            petImage.image = image
+        }
+        
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //dismiss image picker if canceled
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
+    }
     
     //MARK: -- keyboard editing functionality
     //reference used for this functionality:

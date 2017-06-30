@@ -14,9 +14,24 @@ import UIKit
 
 extension UIImageView{
     
+//    func imageCirle(){
+//        
+//        let radius = self.frame.height / 2
+//        self.layer.cornerRadius = radius
+//        self.layer.masksToBounds = true
+//        self.contentMode = .scaleAspectFill
+//        self.clipsToBounds = true
+//    }
+
     func loadImageUsingCache(_ urlString: String) {
         
         self.image = nil
+        
+                let radius = self.frame.height / 2
+                self.layer.cornerRadius = radius
+                self.layer.masksToBounds = true
+                self.contentMode = .scaleAspectFill
+                self.clipsToBounds = true
         
         //check cache for image first
         if let cachedImage = imageCache.object(forKey: urlString as NSString) as? UIImage {
@@ -26,6 +41,8 @@ extension UIImageView{
         
         //get url as sting
         let url = URL(string: urlString)
+        
+        
         //get URLsession to download url
         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
             
@@ -48,8 +65,5 @@ extension UIImageView{
             
         }).resume()
     }
-    
-    
-    
     
 }

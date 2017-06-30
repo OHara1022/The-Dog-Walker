@@ -48,12 +48,7 @@ class RegisterViewController: UIViewController{
         
         //set TF delegate to self
         setTFDelegate()
-        
-        //MARK: --TESTING UIMAGEVIEW RADIUS
-//        profileImage.translatesAutoresizingMaskIntoConstraints = false
-//        profileImage.layer.cornerRadius = 25
-//        profileImage.layer.masksToBounds = true
-//        profileImage.contentMode = .scaleAspectFit
+
     }
     
     

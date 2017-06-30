@@ -16,6 +16,7 @@ class PetDetailsTableViewController: UITableViewController {
     let userID = Auth.auth().currentUser?.uid
     
     //MARK: -- outlets
+    @IBOutlet weak var petImageView: UIImageView!
     @IBOutlet weak var petNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var breedLabel: UILabel!
@@ -31,11 +32,49 @@ class PetDetailsTableViewController: UITableViewController {
         
         //get ref to pets
         ref = Database.database().reference().child("pets").child(userID!)
+        
+        //observer pet info
+//        ref.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+//            
+//            //get snapshot as dictionary
+//            if let dictionary = snapshot.value as? [String: AnyObject]{
+//                
+//                //dev
+//                //                print(snapshot)
+//                
+//                //populate petModel w/ dictionary
+//                let pet = PetModel(dictionary: dictionary)
+//                
+//                //dev
+//                print(pet.petName!)
+//                
+//                //populate labels with passed values
+//                self.petNameLabel.text = pet.petName!
+//                self.dateLabel.text = pet.birthday!
+//                self.breedLabel.text = pet.breed!
+//                self.vaccineLabel.text = pet.vaccines!
+//                self.medLabel.text = pet.meds!
+//                self.specialInsLabel.text = pet.specialIns!
+//                self.vetNameLabel.text = pet.vetName!
+//                self.vetPhoneLabel.text = pet.vetPhone!
+//                
+//                if let petImgURL = pet.petImage{
+//                    
+//                    print(petImgURL)
+//                    let radius = self.petImageView.frame.height / 2
+//                    self.petImageView.layer.cornerRadius = radius
+//                    self.petImageView.layer.masksToBounds = true
+//                    self.petImageView.contentMode = .scaleAspectFill
+//                    self.petImageView.clipsToBounds = true
+//                    
+//                    self.petImageView.loadImageUsingCache(petImgURL)
+//                }
+//                
+//            }
+//        }, withCancel: nil)
     }
     
-    //MARK: --viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
-        
         //observer pet info
         ref.observeSingleEvent(of: .childAdded, with: { (snapshot) in
             
@@ -43,7 +82,7 @@ class PetDetailsTableViewController: UITableViewController {
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 
                 //dev
-//                print(snapshot)
+                //print(snapshot)
                 
                 //populate petModel w/ dictionary
                 let pet = PetModel(dictionary: dictionary)
@@ -61,6 +100,17 @@ class PetDetailsTableViewController: UITableViewController {
                 self.vetNameLabel.text = pet.vetName!
                 self.vetPhoneLabel.text = pet.vetPhone!
                 
+                if let petImgURL = pet.petImage{
+                    
+                    print(petImgURL)
+//                    let radius = self.petImageView.frame.height / 2
+//                    self.petImageView.layer.cornerRadius = radius
+//                    self.petImageView.layer.masksToBounds = true
+//                    self.petImageView.contentMode = .scaleAspectFill
+//                    self.petImageView.clipsToBounds = true                    
+                    self.petImageView.loadImageUsingCache(petImgURL)
+                }
+                
             }
         }, withCancel: nil)
     }
@@ -72,7 +122,4 @@ class PetDetailsTableViewController: UITableViewController {
         FieldValidation.textFieldAlert("Add Pet", message: "Add Pet will be in future release", presenter: self)
         
     }
-    
-    
-    
 }

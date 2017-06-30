@@ -18,10 +18,12 @@ class WelcomeViewController: UIViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var roleID: String = "roleID"
+    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         Auth.auth().addStateDidChangeListener{ auth, user in
             
