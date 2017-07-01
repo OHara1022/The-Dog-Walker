@@ -66,6 +66,14 @@ class ProfilesViewController: UIViewController {
         }else{
             self.clientProfileVC.clientAddressLBL.text = currentClient.address! + ".  Apt. " + currentClient.aptNumber! + " " + currentClient.city! + ", " + currentClient.state! + " " + currentClient.zipCode!
         }
+        
+        if let profileImgURL = currentClient.profileImage{
+            
+            print(profileImgURL)
+            
+            self.clientProfileVC.clientProfileImg.loadImageUsingCache(profileImgURL)
+        }
+        
 
         //get ref to pets in DB
         petRef = Database.database().reference().child("pets")
@@ -94,6 +102,15 @@ class ProfilesViewController: UIViewController {
                 self.petProfileVC.specialInsLBL.text = pet.specialIns!
                 self.petProfileVC.vetNameLBL.text = pet.vetName!
                 self.petProfileVC.vetPhoneLBL.text = pet.vetPhone!
+                
+                
+                if let petImgURL = pet.petImage{
+                    //dev
+                    print(petImgURL)
+                    //set image to imageView
+                    self.petProfileVC.clientPetImg.loadImageUsingCache(petImgURL)
+                }
+                
             }
             
         }, withCancel: nil)

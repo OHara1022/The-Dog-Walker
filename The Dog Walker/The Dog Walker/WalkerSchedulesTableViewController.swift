@@ -16,9 +16,7 @@ class WalkerSchedulesTableViewController: UITableViewController {
     var ref: DatabaseReference!
     var userRef: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
-//    var roleID: String?
     var walkerCode: String?
-//    var clientCode: String?
     var cell: UITableViewCell?
     var clientSchedules = [ScheduleModel]()
     
@@ -109,7 +107,6 @@ class WalkerSchedulesTableViewController: UITableViewController {
         let schedules = clientSchedules[indexPath.row]
         
         let code = schedules.companyCode!
-        
         
         if walkerCode == code{
             

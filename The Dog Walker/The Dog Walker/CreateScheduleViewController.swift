@@ -20,6 +20,11 @@ class CreateScheduleViewController: UIViewController {
     var phone: String?
     var address: String?
     var companyCode: String?
+    var petImageUrl: String?
+    var vetName: String?
+    var vetPhone: String?
+    var emergencyContact: String?
+    var emergencyPhone: String?
     
     //MARK: -- outlets
     @IBOutlet weak var dateTF: UITextField!
@@ -62,6 +67,11 @@ class CreateScheduleViewController: UIViewController {
                 self.petNameTF.text = pet.petName!
                 self.instructionTF.text = pet.specialIns!
                 self.medTF.text = pet.meds!
+                self.petImageUrl = pet.petImage!
+                self.vetName = pet.vetName!
+                self.vetPhone = pet.vetPhone!
+                self.emergencyContact = pet.emergencyContact!
+                self.emergencyPhone = pet.emergencyPhone!
             }
             
         }, withCancel: nil)
@@ -72,7 +82,7 @@ class CreateScheduleViewController: UIViewController {
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 
                 //dev
-                //                print(snapshot)
+                //print(snapshot)
                 
                 //get user data as dictionary
                 let user = UserModel(dictionary: dictionary)
@@ -85,12 +95,13 @@ class CreateScheduleViewController: UIViewController {
                 self.address = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
                 self.companyCode = user.companyCode!
                 
-                //if apt number add to address label
-                if user.aptNumber != nil{
+                if user.aptNumber == ""{
                     //dev
                     print("APT HIT")
                     //address w/ apt number
-                    self.address = user.address! + ".  Apt." + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.address = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                }else{
+                    self.address = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
             }
@@ -119,7 +130,7 @@ class CreateScheduleViewController: UIViewController {
             let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!)
             
             //set values to push to firebase
-            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": address!, "paidFlag": false, "companyCode": companyCode!])
+            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": address!, "paidFlag": false, "companyCode": companyCode!, "vetName": vetName!, "vetPhone": vetPhone!, "petImage": petImageUrl!, "emergencyContact": emergencyContact!, "emergencyPhone": emergencyPhone!])
             //dev
             print("save schedule")
             //dismiss VC

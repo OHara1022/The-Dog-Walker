@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    var roleID: String?
     
     //refenerce to walker home VC - instantiant walkerHome VC
     lazy var walkerhomeVC: UIViewController? = {

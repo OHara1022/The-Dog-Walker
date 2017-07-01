@@ -243,8 +243,8 @@
 		D27E9CBF1EF39F9900377A72 /* WalkerClients */ = {
 			isa = PBXGroup;
 			children = (
-				D2A058CB1F034B3100972CD0 /* ProfilesViewController.swift */,
 				D27E9CC01EF39FBA00377A72 /* ClientsTableViewController.swift */,
+				D2A058CB1F034B3100972CD0 /* ProfilesViewController.swift */,
 				D27E9CC41EF3A0D900377A72 /* ClientProfileTableViewController.swift */,
 				D23FE2201EF4472700636F8F /* ClientPetTableViewController.swift */,
 			);

@@ -12,16 +12,13 @@ import Firebase
 //TODO: change cell detail label to un-paid / paid on flag value from payment
 class OwnerScheduleTableViewController: UITableViewController {
     
-    //TESTING POC
-    var holderTest: [String] = ["Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid","Unpaid", "Unpaid","Unpaid","Unpaid","Unpaid"]
-    
     //MARK: -- stored properties
     var ref: DatabaseReference!
+    var paidRef: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid//get current user id
     var schedules = [ScheduleModel]()
-    var unpaid: String = "Unpaid"
     var paid: String = "PAID"
-    var paidRef: DatabaseReference!
+    var unpaid: String = "Unpaid"//figure out how to change cell label text once paid (color changes text does not)
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
@@ -98,9 +95,7 @@ class OwnerScheduleTableViewController: UITableViewController {
 
             //DOES NOT CHANGE TEXT - (research issue)
 //            cell.paidLabel.text = self.paid
-            
             cell.paidLabel.textColor = UIColor.green
-            
             //dispatch on main thread or app will crash!!
             DispatchQueue.main.async(execute: {
                 

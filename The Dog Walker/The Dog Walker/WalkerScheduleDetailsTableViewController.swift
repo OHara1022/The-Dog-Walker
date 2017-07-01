@@ -14,7 +14,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     //MARK: -- stored properties
     var selectedSchedule: ScheduleModel!
     var ref: DatabaseReference!
-    
+    let phoneImage = UIImage(named: "phone")
     
     var priceHolder: String?  = "" //use on later release
     
@@ -30,10 +30,23 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var clientAddress: UILabel!
     @IBOutlet weak var clientPhone: UILabel!
     @IBOutlet weak var paidLabel: UILabel!
+    @IBOutlet weak var phoneBtnOutlet: UIButton!
+  
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //get ref to database
+        ref = Database.database().reference().child("schedules").child(selectedSchedule.uid!).child(selectedSchedule.scheduleKey!)
+    
+        //dev
+        print(selectedSchedule.scheduleKey!)
+        
+        //set button color to blue
+        let tintImage = phoneImage?.withRenderingMode(.alwaysTemplate)
+        phoneBtnOutlet.setImage(tintImage, for: .normal)
+        phoneBtnOutlet.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
         
         //populate labels w/ schedule data
         petNameLabel.text = selectedSchedule.petName
@@ -46,10 +59,19 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         clientAddress.text = selectedSchedule.clientAddress
         clientPhone.text = selectedSchedule.clientPhone
         
-        print(selectedSchedule.scheduleKey!)
+        //check if walk was paid
+        if selectedSchedule.paidFlag == true{
+            //set label to green
+            paidLabel.textColor = UIColor.green
+        }
         
-        //get ref to database
-        ref = Database.database().reference().child("schedules").child(selectedSchedule.uid!).child(selectedSchedule.scheduleKey!)
+        if let petImgURL = selectedSchedule.petImageUrl{
+            //dev
+            print(petImgURL)
+            //set image to imageView
+            self.petImage.loadImageUsingCache(petImgURL)
+        }
+    
     }
     
     //MARK: -- actions
@@ -64,6 +86,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true)
+     
 
     }
     
@@ -103,6 +126,51 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
+    
+    @IBAction func callContact(_ sender: UIButton) {
+        
+        //dev
+        print("CALL")
+        //present action sheet w/ call options
+        presentCallOptions()
+    }
+    
+    //MARK: -- call options action sheet
+    func presentCallOptions(){
+        
+        //create action sheet
+        let callActionSheet = UIAlertController(title: "Call Options", message: nil, preferredStyle: .actionSheet)
+        
+        //add actions
+        callActionSheet.addAction(UIAlertAction(title: "Call Client", style: .default, handler: { action in
+            
+            //call client phone number
+            self.callNumber(self.selectedSchedule.clientPhone!)
+       
+        }))
+        
+        callActionSheet.addAction(UIAlertAction(title: "Call Vet", style: .default, handler: { action in
+            
+            //call vet phone number
+            self.callNumber(self.selectedSchedule.vetPhone!)
+       
+            
+        }))
+        
+        callActionSheet.addAction(UIAlertAction(title: "Call Emergenct Contact", style: .destructive, handler: { action in
+            
+            //call emergency phone number
+            self.callNumber(self.selectedSchedule.emergencyPhone!)
+            
+        }))
+        
+        //cancel btn
+        callActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        //present action sheet
+        present(callActionSheet, animated: true, completion: nil)
+    }
+    
     
     //MARK: -- make phone call
     //open url for phone number

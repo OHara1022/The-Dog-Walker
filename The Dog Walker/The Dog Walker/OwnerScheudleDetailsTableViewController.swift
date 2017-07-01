@@ -18,8 +18,9 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     let applePayMerchantID = "merchant.com.ohara.walks"
     var selectedSchedule: ScheduleModel!
     var ref: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
     var petRef: DatabaseReference!
+    let userID = Auth.auth().currentUser?.uid
+    
     
     //MARK: -- outlets
     @IBOutlet weak var petImage: UIImageView!
@@ -41,7 +42,8 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         
         //get ref to database
         ref = Database.database().reference().child("schedules").child(userID!).child(selectedSchedule.scheduleKey!)
-         petRef = Database.database().reference().child("pets").child(userID!)
+        petRef = Database.database().reference().child("pets").child(userID!)
+        
         //set label w/ passed values
         deatilsPetNameLBL.text = selectedSchedule.petName
         detailsDateLBL.text = selectedSchedule.date

@@ -60,7 +60,6 @@ class PetDetailsTableViewController: UITableViewController {
                 self.vetNameLabel.text = pet.vetName!
                 self.vetPhoneLabel.text = pet.vetPhone!
                 
-                
                 if let petImgURL = pet.petImage{
                     //dev
                     print(petImgURL)

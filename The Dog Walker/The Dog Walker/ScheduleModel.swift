@@ -27,7 +27,12 @@ class ScheduleModel: NSObject {
     var checkIn: Bool?
     var checkOut: Bool?
     var notes: String?
-    
+    var petImageUrl: String?
+    var vetName: String?
+    var vetPhone: String?
+    var emergencyContact: String?
+    var emergencyPhone: String?
+
     var price: String?//for later use for walker to change price
     
     //init dictionary obj reference to firebase DB
@@ -49,6 +54,11 @@ class ScheduleModel: NSObject {
         self.checkIn = dictionary["checkIn"] as? Bool
         self.checkOut = dictionary["checkOut"] as? Bool
         self.notes = dictionary["notes"] as? String
+        self.petImageUrl = dictionary["petImage"] as? String
+        self.vetName = dictionary["vetName"] as? String
+        self.vetPhone = dictionary["vetPhone"] as? String
+        self.emergencyContact = dictionary["emergencyContact"] as? String
+        self.emergencyPhone = dictionary["emergencyPhone"] as? String 
         
     }
     

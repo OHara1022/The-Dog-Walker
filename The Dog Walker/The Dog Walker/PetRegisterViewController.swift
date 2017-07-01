@@ -143,10 +143,3 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
     
 }
 
-
-//MARK: -- extension for keyboard funtionality
-extension PetRegisterViewController{
-    
-
-}
-
