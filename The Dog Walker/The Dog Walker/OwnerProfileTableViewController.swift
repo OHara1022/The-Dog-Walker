@@ -25,6 +25,7 @@ class OwnerProfileTableViewController: UITableViewController {
     }()
     
     //MARK: -- outlets
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
@@ -40,32 +41,6 @@ class OwnerProfileTableViewController: UITableViewController {
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
         petRef = Database.database().reference().child("pets").child(userID!)
-  
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        //observer for pet info
-        petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            
-            //get snapshot as dictionary
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                
-                //dev
-//                print(snapshot)
-                
-                //populate petModel w/ dictionary data
-                let pet = PetModel(dictionary: dictionary)
-                
-                //dev
-                print(pet.petName!)
-                
-                //populate label w/ data from FB
-                self.emergencyContactLabel.text = pet.emergencyContact!
-                self.emergencyPhoneLabel.text = pet.emergencyPhone!
-            }
-            
-        }, withCancel: nil)
         
         //set observer for users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -78,7 +53,7 @@ class OwnerProfileTableViewController: UITableViewController {
                 
                 //get user data as dictionary
                 let user = UserModel(dictionary: dictionary)
-
+                
                 //dev
                 print(user.firstName!)
                 
@@ -86,21 +61,53 @@ class OwnerProfileTableViewController: UITableViewController {
                 self.nameLabel.text = user.firstName! + " " + user.lastName!
                 self.emailLabel.text = user.email!
                 self.phoneLabel.text = user.phoneNumber!
-            
+                
                 //if apt number add to address label
                 if user.aptNumber == ""{
                     //dev
                     print("APT HIT")
                     //address w/ apt number
-                     self.addressLabel.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLabel.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }else{
-                       self.addressLabel.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLabel.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
-             
+                
+                if let profileImgURL = user.profileImage{
+                    
+                    print(profileImgURL)
+                    
+                    self.profileImage.loadImageUsingCache(profileImgURL)
+                }
+                
             }
             
         }, withCancel: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
+        //observer for pet info
+        petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //dev
+//                print(snapshot)
+            
+                //populate petModel w/ dictionary data
+                let pet = PetModel(dictionary: dictionary)
+                
+                //dev
+                print(pet.petName!)
+                
+                //populate label w/ data from FB
+                self.emergencyContactLabel.text = pet.emergencyContact!
+                self.emergencyPhoneLabel.text = pet.emergencyPhone!
+            }
+            
+        }, withCancel: nil)
+ 
     }
     
     //MARK: -- actions

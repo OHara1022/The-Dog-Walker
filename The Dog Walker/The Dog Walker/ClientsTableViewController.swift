@@ -72,6 +72,11 @@ class ClientsTableViewController: UITableViewController {
         
     }
     
+    //remove observer when viewDisappears
+    override func viewWillDisappear(_ animated: Bool) {
+        clientRef.removeAllObservers()
+    }
+    
     
     // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {

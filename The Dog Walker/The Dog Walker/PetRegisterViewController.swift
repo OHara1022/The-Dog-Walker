@@ -74,6 +74,7 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func addImage(_ sender: UIButton) {
         
+        //present image option for camera or library
         presentImgOptions()
         
     }
@@ -101,7 +102,7 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
             //populate class with TF text
             let petData = PetData(petName: petName!, birthday: bday!, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emeregencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
             
-            let storageRef = Storage.storage().reference().child("profileImages").child("\(userID!).jpeg")
+            let storageRef = Storage.storage().reference().child("petImages").child("\(userID!).jpeg")
             
             if let uploadImage = UIImageJPEGRepresentation(self.petImage.image!, 0.6){
                 
@@ -150,7 +151,7 @@ extension PetRegisterViewController{
     func presentImgOptions(){
         
         //create action sheet
-        let photoActionSheet = UIAlertController(title: "Profile Photo", message: nil, preferredStyle: .actionSheet)
+        let photoActionSheet = UIAlertController(title: "Pet Photo", message: nil, preferredStyle: .actionSheet)
         
         //add actions
         photoActionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in

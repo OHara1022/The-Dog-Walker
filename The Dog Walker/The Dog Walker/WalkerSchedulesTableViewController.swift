@@ -88,7 +88,6 @@ class WalkerSchedulesTableViewController: UITableViewController {
     //remove observer when viewDisappears
     override func viewWillDisappear(_ animated: Bool) {
         ref.removeAllObservers()
-        userRef.removeAllObservers()
     }
     
     

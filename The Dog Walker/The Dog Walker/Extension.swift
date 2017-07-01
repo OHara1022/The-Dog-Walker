@@ -10,28 +10,28 @@
 import Foundation
 import UIKit
 
- let imageCache = NSCache<NSString, AnyObject>()
+let imageCache = NSCache<NSString, AnyObject>()
 
 extension UIImageView{
     
-//    func imageCirle(){
-//        
-//        let radius = self.frame.height / 2
-//        self.layer.cornerRadius = radius
-//        self.layer.masksToBounds = true
-//        self.contentMode = .scaleAspectFill
-//        self.clipsToBounds = true
-//    }
-
+    //    func imageCirle(){
+    //
+    //        let radius = self.frame.height / 2
+    //        self.layer.cornerRadius = radius
+    //        self.layer.masksToBounds = true
+    //        self.contentMode = .scaleAspectFill
+    //        self.clipsToBounds = true
+    //    }
+    
     func loadImageUsingCache(_ urlString: String) {
         
         self.image = nil
         
-                let radius = self.frame.height / 2
-                self.layer.cornerRadius = radius
-                self.layer.masksToBounds = true
-                self.contentMode = .scaleAspectFill
-                self.clipsToBounds = true
+        let radius = self.frame.height / 2
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
+        self.contentMode = .scaleAspectFill
+        self.clipsToBounds = true
         
         //check cache for image first
         if let cachedImage = imageCache.object(forKey: urlString as NSString) as? UIImage {
@@ -42,7 +42,6 @@ extension UIImageView{
         //get url as sting
         let url = URL(string: urlString)
         
-        
         //get URLsession to download url
         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
             
@@ -50,8 +49,7 @@ extension UIImageView{
             if let error = error {
                 //dev
                 print(error.localizedDescription)
-//                FieldValidation.textFieldAlert("Image Downlaod Failed", message: error.localizedDescription, presenter: )
-                
+                //TODO: alert that error loading image to avoid crash
                 return
             }
             

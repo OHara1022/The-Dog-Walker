@@ -12,18 +12,21 @@ import FirebaseAuth
 import FirebaseDatabase
 
 
-//TODO: check if email is in DB
+//add activity indicator to make sure data is loaded (research how to walk for save to DB from register)
 class WelcomeViewController: UIViewController {
 
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var roleID: String = "roleID"
-    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+//    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//            activityIndicatorView.hidesWhenStopped = true;
+//            activityIndicatorView.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.gray;
+//            activityIndicatorView.center = view.center;
         
         Auth.auth().addStateDidChangeListener{ auth, user in
             

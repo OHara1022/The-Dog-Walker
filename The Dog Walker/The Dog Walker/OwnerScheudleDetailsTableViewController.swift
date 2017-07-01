@@ -16,12 +16,13 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     //MARK: --stored properties
     let supportedPayments = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard, PKPaymentNetwork.amex]
     let applePayMerchantID = "merchant.com.ohara.walks"
-//    var paidFlag: Bool?
     var selectedSchedule: ScheduleModel!
     var ref: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
+    var petRef: DatabaseReference!
     
     //MARK: -- outlets
+    @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var deatilsPetNameLBL: UILabel!
     @IBOutlet weak var detailsDateLBL: UILabel!
     @IBOutlet weak var detailsTimeLBL: UILabel!
@@ -40,10 +41,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         
         //get ref to database
         ref = Database.database().reference().child("schedules").child(userID!).child(selectedSchedule.scheduleKey!)
-        
-        //USE THIS METHOD
-        //       print(selectedSchedule.paidFlag!)
-        
+         petRef = Database.database().reference().child("pets").child(userID!)
         //set label w/ passed values
         deatilsPetNameLBL.text = selectedSchedule.petName
         detailsDateLBL.text = selectedSchedule.date
@@ -51,6 +49,32 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         durationLBL.text = selectedSchedule.duration
         specialInsLBL.text = selectedSchedule.specialIns
         medsLBL.text = selectedSchedule.meds
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //dev
+                //print(snapshot)
+                
+                //populate petModel w/ dictionary
+                let pet = PetModel(dictionary: dictionary)
+  
+                if let petImgURL = pet.petImage{
+                    //dev
+                    print(petImgURL)
+                    //set image to imageView
+                    self.petImage.loadImageUsingCache(petImgURL)
+                }
+                
+            }
+        }, withCancel: nil)
+
     }
     
     //MARK: -- actions
@@ -92,6 +116,7 @@ extension OwnerScheudleDetailsTableViewController: PKPaymentAuthorizationViewCon
         //dev
         print("PAID SUCCESSFUL")
         
+        //update paid flag to true
         ref.updateChildValues(["paidFlag": true])
         
 }

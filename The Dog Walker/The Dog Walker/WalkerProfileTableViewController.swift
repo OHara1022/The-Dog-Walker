@@ -77,11 +77,6 @@ class WalkerProfileTableViewController: UITableViewController {
                 
                 if let profileImgURL = user.profileImage{
 
-//                    let radius = self.profileImage.frame.height / 2
-//                    self.profileImage.layer.cornerRadius = radius
-//                    self.profileImage.layer.masksToBounds = true
-//                    self.profileImage.contentMode = .scaleAspectFill
-//                    self.profileImage.clipsToBounds = true
                     
                     self.profileImage.loadImageUsingCache(profileImgURL)
                 }

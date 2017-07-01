@@ -85,7 +85,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             }
             
             //set checkIn to true
-//            self.ref.updateChildValues(["checkOut": true])
+            self.ref.updateChildValues(["checkOut": true])
             
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))

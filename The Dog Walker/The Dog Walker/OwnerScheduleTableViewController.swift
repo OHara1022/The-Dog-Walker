@@ -56,7 +56,6 @@ class OwnerScheduleTableViewController: UITableViewController {
             
         }, withCancel: nil)
         
-        
     }
     
     
