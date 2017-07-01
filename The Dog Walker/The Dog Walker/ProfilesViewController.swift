@@ -55,6 +55,7 @@ class ProfilesViewController: UIViewController {
         //set labels text w/ proper client data
         clientProfileVC.clientNameLBL.text = currentClient.firstName! + " " + currentClient.lastName!
         clientProfileVC.clientEmaillLBL.text = currentClient.email!
+        clientProfileVC.clientPhoneLBL.text = currentClient.phoneNumber!
         
         //if apt number add to address label
         if currentClient.aptNumber == ""{

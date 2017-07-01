@@ -64,7 +64,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true)
-        
+
     }
     
     @IBAction func checkOut(_ sender: UIButton) {
@@ -102,6 +102,21 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
 
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true)
+    }
+    
+    //MARK: -- make phone call
+    //open url for phone number
+    func callNumber(_ phoneNumber:String) {
+        //optional bind
+        if let phoneCallURL:URL = URL(string:"tel://\(phoneNumber)") {
+            //instance of shared app
+            let application:UIApplication = UIApplication.shared
+            //check if canOpenUrl
+            if (application.canOpenURL(phoneCallURL)) {
+                //openuRL
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     
