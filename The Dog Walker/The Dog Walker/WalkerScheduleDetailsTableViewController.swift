@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MapKit
 
 class WalkerScheduleDetailsTableViewController: UITableViewController {
     
@@ -33,7 +34,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var paidLabel: UILabel!
     @IBOutlet weak var phoneBtnOutlet: UIButton!
     @IBOutlet weak var directionBtnOutlet: UIButton!
-  
+    
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
@@ -41,7 +42,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         
         //get ref to database
         ref = Database.database().reference().child("schedules").child(selectedSchedule.uid!).child(selectedSchedule.scheduleKey!)
-    
+        
         //dev
         print(selectedSchedule.scheduleKey!)
         
@@ -79,7 +80,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             //set image to imageView
             self.petImage.loadImageUsingCache(petImgURL)
         }
-    
+        
     }
     
     //MARK: -- actions
@@ -94,8 +95,8 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true)
-     
-
+        
+        
     }
     
     @IBAction func checkOut(_ sender: UIButton) {
@@ -130,7 +131,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             }
             
         }))
-
+        
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
@@ -154,14 +155,14 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             
             //call client phone number
             self.callNumber(self.selectedSchedule.clientPhone!)
-       
+            
         }))
         
         callActionSheet.addAction(UIAlertAction(title: "Call Vet", style: .default, handler: { action in
             
             //call vet phone number
             self.callNumber(self.selectedSchedule.vetPhone!)
-       
+            
             
         }))
         
@@ -183,9 +184,52 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         
         //dev
         print("GET DIRECTIONS")
+        
+        //get address
+        CLGeocoder().geocodeAddressString(selectedSchedule.clientAddress!) { (places, error) in
+            
+            //check for error
+            if error != nil{
+                print("Geocode failed" + (error?.localizedDescription)!)
+                
+                //check for address
+            }else if places!.count > 0{
+                
+                //get address from string
+                let places = places![0]
+                //get location from address
+                let location = places.location
+                //get coordinates from location
+                let coords = location!.coordinate
+                
+                //dev
+                print(coords.latitude)
+                print(coords.longitude)
+                
+                //set coored in location manager
+                let coordinates = CLLocationCoordinate2DMake(coords.latitude, coords.longitude)
+                
+                //get home address to place on map
+                let home = MKPlacemark(coordinate: coordinates)
+                
+                //set map location
+                let mapItem = MKMapItem(placemark: home)
+                //set client address to route
+                mapItem.name = self.selectedSchedule.clientAddress!
+                
+                //doesn't display phone when launch options for driving implemented
+                //                mapItem.phoneNumber = self.selectedSchedule.clientPhone!
+                
+                //set options to driving and show traffic
+                let mapOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeKey, MKLaunchOptionsShowsTrafficKey: true] as [String : Any]
+                
+                //open address w/ options in maps
+                mapItem.openInMaps(launchOptions: mapOptions)
+                
+            }
+        }
+        
     }
-    
-    
     
     //MARK: -- make phone call
     //open url for phone number
