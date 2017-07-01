@@ -122,11 +122,40 @@ class LoginViewController: UIViewController {
     //TODO: display alert with edit text - send email reset w/ firebase auth
     @IBAction func forgotPassword(_ sender: UIButton) {
         
-        //alert user
-        FieldValidation.textFieldAlert("Forgot Password?", message: "Will send recover email in furture release", presenter: self)
+        let alert = UIAlertController(title: "Reset Password", message: "Please enter email address", preferredStyle: .alert)
         
+        alert.addTextField { (textField) in
+            
+            textField.placeholder = "Enter email address"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Send Email", style: .default, handler: { (action) in
+            
+            if let textField = alert.textFields{
+                let fields = textField as [UITextField]
+                let enteredText = fields[0].text
+                //dev
+                print(enteredText!)
+                
+                    Auth.auth().sendPasswordReset(withEmail: enteredText!, completion: { (error) in
+                        
+                            //check if email reset failed
+                            if let error = error{
+                                //dev
+                                print(error.localizedDescription)
+                                //alert user of send email error
+                                FieldValidation.textFieldAlert("Email address not registered", message: "Please register for an account", presenter: self)
+                                return
+                            }
+                    })
+
+            }
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
-    
 }
 
 
@@ -150,6 +179,5 @@ extension LoginViewController: UITextFieldDelegate{
         }
         return false
     }
-    
-    
+
 }

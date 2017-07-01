@@ -26,10 +26,6 @@ class UserModel: NSObject {
     var companyName: String?
     var profileImage: String?
     
-//    
-//    var profileImage: String?
-//    var address: AddressInfo?//may make indiviual variable
-//    var password: String?//for testing
     
     //init dictionary obj reference to firebase DB
     init(dictionary: [String: AnyObject]){

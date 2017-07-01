@@ -29,7 +29,7 @@ class Users{
     //for testing purpose remove before release!!!
     var password: String? //never store password in Firebase (for test purposes)
     
-    
+    //init stored properties
     init(firstName: String, lastName: String, email: String, address: String, city: String, state: String, zipCode: String,  phoneNumber: String, uid: String, companyCode: String) {
         
         self.firstName = firstName

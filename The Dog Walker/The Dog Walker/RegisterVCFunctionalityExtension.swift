@@ -116,9 +116,11 @@ extension RegisterViewController{
                     return
                 }
                 
+                //check string from image url
                 if let profileImgURL = metadata?.downloadURL()?.absoluteString{
-                    
+                    //dev
                     print(profileImgURL)
+                    //set ref to image url
                     self.ref.child(self.users).child(user.uid).updateChildValues(["profileImage": profileImgURL])
                     
                 }

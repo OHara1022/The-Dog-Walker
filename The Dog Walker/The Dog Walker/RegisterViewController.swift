@@ -51,7 +51,6 @@ class RegisterViewController: UIViewController{
 
     }
     
-    
     //MARK: -- actions
     @IBAction func addProfileImage(_ sender: UIButton) {
         

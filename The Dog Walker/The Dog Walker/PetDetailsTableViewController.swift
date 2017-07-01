@@ -32,7 +32,6 @@ class PetDetailsTableViewController: UITableViewController {
         
         //get ref to pets
         ref = Database.database().reference().child("pets").child(userID!)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

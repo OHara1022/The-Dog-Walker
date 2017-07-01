@@ -23,10 +23,10 @@ class ScheduleModel: NSObject {
     var clientPhone: String?
     var uid: String?
     var companyCode: String?
-    
     var paidFlag: Bool?
     var checkIn: Bool?
     var checkOut: Bool?
+    var notes: String?
     
     var price: String?//for later use for walker to change price
     
@@ -48,6 +48,7 @@ class ScheduleModel: NSObject {
         self.companyCode = dictionary["companyCode"] as? String
         self.checkIn = dictionary["checkIn"] as? Bool
         self.checkOut = dictionary["checkOut"] as? Bool
+        self.notes = dictionary["notes"] as? String
         
     }
     

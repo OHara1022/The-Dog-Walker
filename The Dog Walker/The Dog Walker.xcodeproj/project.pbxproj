@@ -56,6 +56,7 @@
 		D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */; };
 		D2D52F391F049EA20023D7A2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D52F381F049EA20023D7A2 /* Extension.swift */; };
 		D2D52F3C1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D52F3B1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift */; };
+		D2D9E23E1F07549F00699118 /* PetRegisterFunctionalityExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D9E23D1F07549F00699118 /* PetRegisterFunctionalityExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegisterViewController.swift; sourceTree = "<group>"; };
 		D2D52F381F049EA20023D7A2 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D2D52F3B1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVCFunctionalityExtension.swift; sourceTree = "<group>"; };
+		D2D9E23D1F07549F00699118 /* PetRegisterFunctionalityExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegisterFunctionalityExt.swift; sourceTree = "<group>"; };
 		F0C9348669850476B9913E50 /* Pods-The Dog WalkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerTests/Pods-The Dog WalkerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -366,6 +368,16 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		D2D9E23F1F0754FA00699118 /* PetRegister */ = {
+			isa = PBXGroup;
+			children = (
+				D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */,
+				D2D9E23D1F07549F00699118 /* PetRegisterFunctionalityExt.swift */,
+				D29F246F1EFCD32D005A18FA /* PetRegisterVCDelegateExtenstions.swift */,
+			);
+			name = PetRegister;
+			sourceTree = "<group>";
+		};
 		D2ECD9A61EEF2A2C00AC75E6 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,8 +385,7 @@
 				D2D52F3B1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift */,
 				D29F246D1EFCC5CE005A18FA /* RegisterVCDelegateExtensions.swift */,
 				D27072321EF0ED720073501E /* WelcomeViewController.swift */,
-				D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */,
-				D29F246F1EFCD32D005A18FA /* PetRegisterVCDelegateExtenstions.swift */,
+				D2D9E23F1F0754FA00699118 /* PetRegister */,
 				D2D4E64D1EEF0EB000FB7A7C /* Register.storyboard */,
 			);
 			name = Register;
@@ -693,6 +704,7 @@
 				D23FE2211EF4472700636F8F /* ClientPetTableViewController.swift in Sources */,
 				D2D52F3C1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift in Sources */,
 				D2A058CC1F034B3100972CD0 /* ProfilesViewController.swift in Sources */,
+				D2D9E23E1F07549F00699118 /* PetRegisterFunctionalityExt.swift in Sources */,
 				D23F477D1EFF88B400797B5E /* PetModel.swift in Sources */,
 				D2B1BFB11EF5865B00CEAF3E /* Users.swift in Sources */,
 				D27F61F51EF1A7E4006258AA /* PetProfileViewController.swift in Sources */,

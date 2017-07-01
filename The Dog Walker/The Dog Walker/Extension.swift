@@ -10,23 +10,18 @@
 import Foundation
 import UIKit
 
+//holser to cache images
 let imageCache = NSCache<NSString, AnyObject>()
 
 extension UIImageView{
     
-    //    func imageCirle(){
-    //
-    //        let radius = self.frame.height / 2
-    //        self.layer.cornerRadius = radius
-    //        self.layer.masksToBounds = true
-    //        self.contentMode = .scaleAspectFill
-    //        self.clipsToBounds = true
-    //    }
-    
+    //load image using cache
     func loadImageUsingCache(_ urlString: String) {
         
+        //set image to nil before load
         self.image = nil
         
+        //set radius so image is circle
         let radius = self.frame.height / 2
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
@@ -35,6 +30,7 @@ extension UIImageView{
         
         //check cache for image first
         if let cachedImage = imageCache.object(forKey: urlString as NSString) as? UIImage {
+            //set image
             self.image = cachedImage
             return
         }
@@ -53,15 +49,18 @@ extension UIImageView{
                 return
             }
             
+            //load on main queue
             DispatchQueue.main.async(execute: {
                 
+                //check for data
                 if let downloadedImage = UIImage(data: data!) {
+                    //cache image from FB
                     imageCache.setObject(downloadedImage, forKey: urlString as NSString)
+                    //set downloaded image
                     self.image = downloadedImage
                 }
             })
             
-        }).resume()
+        }).resume()//resume session
     }
-    
 }
