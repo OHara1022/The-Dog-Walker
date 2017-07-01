@@ -154,14 +154,25 @@
                                                     <rect key="frame" x="30" y="5" width="94" height="56.5"/>
                                                     <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" image="phone2"/>
+                                                    <state key="normal" image="phone"/>
                                                     <connections>
                                                         <action selector="callContact:" destination="7ya-Qj-0aP" eventType="touchUpInside" id="Byq-Ea-mHo"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAB-xQ-Mcd">
+                                                    <rect key="frame" x="251.5" y="5" width="93.5" height="56.5"/>
+                                                    <state key="normal" image="directions"/>
+                                                    <connections>
+                                                        <action selector="getDirections:" destination="7ya-Qj-0aP" eventType="touchUpInside" id="pfu-Kz-pca"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="JAB-xQ-Mcd" firstAttribute="width" secondItem="aj2-RD-g6m" secondAttribute="width" multiplier="0.25" id="2bb-il-oGU"/>
+                                                <constraint firstItem="JAB-xQ-Mcd" firstAttribute="top" secondItem="aj2-RD-g6m" secondAttribute="top" constant="5" id="5M3-XB-0hT"/>
+                                                <constraint firstAttribute="bottom" secondItem="JAB-xQ-Mcd" secondAttribute="bottom" constant="5" id="ERb-CS-GeF"/>
                                                 <constraint firstItem="x7z-Lf-7Q7" firstAttribute="width" secondItem="aj2-RD-g6m" secondAttribute="width" multiplier="0.25" id="N7h-Gc-tda"/>
+                                                <constraint firstAttribute="trailing" secondItem="JAB-xQ-Mcd" secondAttribute="trailing" constant="30" id="c7d-Pa-vFh"/>
                                                 <constraint firstItem="x7z-Lf-7Q7" firstAttribute="leading" secondItem="aj2-RD-g6m" secondAttribute="leading" constant="30" id="jvF-1k-ht6"/>
                                                 <constraint firstAttribute="bottom" secondItem="x7z-Lf-7Q7" secondAttribute="bottom" constant="5" id="suv-h3-Gvi"/>
                                                 <constraint firstItem="x7z-Lf-7Q7" firstAttribute="top" secondItem="aj2-RD-g6m" secondAttribute="top" constant="5" id="yCx-yF-QY7"/>
@@ -449,6 +460,7 @@
                         <outlet property="clientLabel" destination="DmO-ym-DRU" id="NAf-pY-V2Q"/>
                         <outlet property="clientPhone" destination="6ZT-sb-Qwm" id="SBn-St-yWl"/>
                         <outlet property="dateLabel" destination="ure-bO-yGx" id="qF5-mG-Lvj"/>
+                        <outlet property="directionBtnOutlet" destination="JAB-xQ-Mcd" id="A3L-vz-GYk"/>
                         <outlet property="durationLabel" destination="tOj-q9-cKS" id="9yP-TD-D1P"/>
                         <outlet property="medsLabel" destination="oLV-gm-33R" id="z3s-1V-Hel"/>
                         <outlet property="paidLabel" destination="MM6-X4-fGm" id="RW5-EA-5Yt"/>
@@ -618,8 +630,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="directions" width="48" height="48"/>
         <image name="dog" width="50" height="50"/>
-        <image name="phone2" width="48" height="48"/>
+        <image name="phone" width="48" height="48"/>
         <image name="schedule" width="32" height="32"/>
         <image name="sm_save" width="24" height="24"/>
     </resources>

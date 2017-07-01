@@ -15,6 +15,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     var selectedSchedule: ScheduleModel!
     var ref: DatabaseReference!
     let phoneImage = UIImage(named: "phone")
+    let directionsImg = UIImage(named: "directions")
     
     var priceHolder: String?  = "" //use on later release
     
@@ -31,6 +32,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var clientPhone: UILabel!
     @IBOutlet weak var paidLabel: UILabel!
     @IBOutlet weak var phoneBtnOutlet: UIButton!
+    @IBOutlet weak var directionBtnOutlet: UIButton!
   
     
     //MARK: -- viewDidLoad
@@ -44,9 +46,15 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         print(selectedSchedule.scheduleKey!)
         
         //set button color to blue
-        let tintImage = phoneImage?.withRenderingMode(.alwaysTemplate)
-        phoneBtnOutlet.setImage(tintImage, for: .normal)
+        let tintPhone = phoneImage?.withRenderingMode(.alwaysTemplate)
+        phoneBtnOutlet.setImage(tintPhone, for: .normal)
         phoneBtnOutlet.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
+        
+        let tintdir = directionsImg?.withRenderingMode(.alwaysTemplate)
+        directionBtnOutlet.setImage(tintdir, for: .normal)
+        directionBtnOutlet.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
+        
+        
         
         //populate labels w/ schedule data
         petNameLabel.text = selectedSchedule.petName
@@ -170,6 +178,13 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         //present action sheet
         present(callActionSheet, animated: true, completion: nil)
     }
+    
+    @IBAction func getDirections(_ sender: UIButton) {
+        
+        //dev
+        print("GET DIRECTIONS")
+    }
+    
     
     
     //MARK: -- make phone call
