@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "328624313000",
+    "firebase_url": "https://the-dog-walker-53bfa.firebaseio.com",
+    "project_id": "the-dog-walker-53bfa",
+    "storage_bucket": "the-dog-walker-53bfa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328624313000:android:7e721f9483d3cee0",
+        "android_client_info": {
+          "package_name": "com.ohara.thedogwalker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328624313000-qc110cuhu6251uuo8vc98a4ubkiau3mg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ohara.thedogwalker",
+            "certificate_hash": "8473275c6f1263ef6e334e7e89f667a2131b92ee"
+          }
+        },
+        {
+          "client_id": "328624313000-n22ojdblvclgpouvhe1rp4t7lupkcuih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTIg4I1C_Q9qCy0EiyEIXPToRBRXMFYsE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328624313000-n22ojdblvclgpouvhe1rp4t7lupkcuih.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "328624313000-as33q9ju2c866qjvtgefhu5n4k93k040.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.OHara.The-Dog-Walker"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

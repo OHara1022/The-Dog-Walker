@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">The Dog Walker</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="register">Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="add_profile_image">Add Profile Image</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="address">Address</string>
+    <string name="apt_number">Apt Number</string>
+    <string name="zip_code">Zip Code</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="company_code">Company Code</string>
+    <string name="company_name_optional">Company Name (optional)</string>
+    <string name="add">Add</string>
+    <string name="are_you_a_dog_walker">Are you a dog walker?</string>
+    <string name="or">OR</string>
+    <string name="are_you_a_pet_owner">Are you a pet owner?</string>
+</resources>
