@@ -55,7 +55,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         
     }
     
-
+    
     //MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -83,19 +83,39 @@ class OwnerScheduleTableViewController: UITableViewController {
         //check if paymeny was made
         if schedule.paidFlag == true{
             
-            //does not change text - (research issue)
-//            cell.paidLabel.text = paid
-            
+            //set paid label to green
             cell.paidLabel.textColor = UIColor.green
+        }
+        
+        if schedule.checkOut == true{
+            
+            //dev
+            print("WALK COMPLETE")
+            
+            
+        let alert = UIAlertController(title: "Walker Complete", message: "Notes: " + schedule.notes! + " " + "Please pay for walk on" + " " + schedule.date!, preferredStyle: .alert)
+            
+          alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+            
+            
+          }))
+            
+        
+//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alert, animated: true)
+            
+            
         }
         
         paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
             
+            //dev
             print(snapshot)
-
-            //DOES NOT CHANGE TEXT - (research issue)
-//            cell.paidLabel.text = self.paid
+            
+            //set paid label to green
             cell.paidLabel.textColor = UIColor.green
+            
             //dispatch on main thread or app will crash!!
             DispatchQueue.main.async(execute: {
                 
