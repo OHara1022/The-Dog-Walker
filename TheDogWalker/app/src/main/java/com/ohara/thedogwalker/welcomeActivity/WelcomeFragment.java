@@ -1,17 +1,23 @@
-package com.ohara.thedogwalker;
+package com.ohara.thedogwalker.welcomeActivity;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-/**
- * Created by Scott on 6/22/17.
- */
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.ohara.thedogwalker.R;
+
+
 
 public class WelcomeFragment extends Fragment implements View.OnClickListener{
 
