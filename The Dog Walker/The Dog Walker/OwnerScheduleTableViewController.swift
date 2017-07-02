@@ -97,11 +97,8 @@ class OwnerScheduleTableViewController: UITableViewController {
             
           alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             
-            
-            
           }))
-            
-        
+
 //            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             present(alert, animated: true)
             

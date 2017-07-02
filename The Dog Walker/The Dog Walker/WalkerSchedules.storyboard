@@ -389,8 +389,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2245 Gator Dr. Apt. 240 Orlando, FL 32802" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="c43-hw-X7z">
-                                                    <rect key="frame" x="30" y="37" width="281.5" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2245 Gator Dr. Apt. 240 Orlando, FL 32802" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="c43-hw-X7z">
+                                                    <rect key="frame" x="30" y="32" width="281.5" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -398,9 +398,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="c43-hw-X7z" firstAttribute="width" secondItem="qCL-OO-wCm" secondAttribute="width" id="2eG-c9-a3Q"/>
-                                                <constraint firstItem="c43-hw-X7z" firstAttribute="height" secondItem="wvR-G9-eeJ" secondAttribute="height" multiplier="0.2" id="480-aG-Oxd"/>
+                                                <constraint firstItem="c43-hw-X7z" firstAttribute="height" secondItem="wvR-G9-eeJ" secondAttribute="height" multiplier="0.4" id="480-aG-Oxd"/>
                                                 <constraint firstItem="c43-hw-X7z" firstAttribute="centerX" secondItem="qCL-OO-wCm" secondAttribute="centerX" id="DJt-yr-BEx"/>
-                                                <constraint firstItem="c43-hw-X7z" firstAttribute="top" secondItem="qCL-OO-wCm" secondAttribute="bottom" constant="5" id="dny-pU-4JW"/>
+                                                <constraint firstItem="c43-hw-X7z" firstAttribute="top" secondItem="qCL-OO-wCm" secondAttribute="bottom" id="dny-pU-4JW"/>
                                                 <constraint firstItem="qCL-OO-wCm" firstAttribute="width" secondItem="wvR-G9-eeJ" secondAttribute="width" multiplier="0.75" id="fMW-oL-fy7"/>
                                                 <constraint firstItem="qCL-OO-wCm" firstAttribute="top" secondItem="wvR-G9-eeJ" secondAttribute="top" constant="10" id="wGb-II-7m4"/>
                                                 <constraint firstItem="qCL-OO-wCm" firstAttribute="leading" secondItem="wvR-G9-eeJ" secondAttribute="leading" constant="30" id="zel-0R-hFU"/>
