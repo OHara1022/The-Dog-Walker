@@ -1,7 +1,7 @@
 # The-Dog-Walker README#
 Final Project
 
-Information to test Alpha
+Information to test Beta
 
 Github Link: https://github.com/OHara1022/The-Dog-Walker.git
 
@@ -10,12 +10,15 @@ Email: walker@test.com
 Password: password
 
 Login as pet owner:
-Email: owner@test.com
-Password: password 
+Email: ohara1822@gmail.com
+Password: password12
+
+Email: ohara1822@me.com
+Password: password
 	
 
-Register: You can register as a dog walker or pet owner - In order to relate the dog walker with pet owners please register the same company code on registration to link them together. The clients that are registered with same code as walker will display proper client relation in list. Schedules will not have the proper data.
+Register: You can register as a dog walker or pet owner - In order to relate the dog walker with pet owners please register the same company code on registration to link them together. The clients that are registered with same code as walker will display proper schedule & client relation in list. 
 
-Bugs: When view schedules as a walker the relation only displays one client schedule at a time. If you login with credentials provided you can view the schedule list and see details for that proper schedule. The clients list displays all the related clients but the details do not display proper data. 
+Bugs: When walk is completed and then the client pays for the walk the alert presents again that walk has been completed.
 
-Fixes: Need to fix relation on schedule query to display proper schedule list of clients related to that walker. Client and pet details on list selection UI needs to change in order to display the proper data on client selection. 
+Fixes: Need to change the paid flags to push notifications instead of alert to fix walk completed bug.

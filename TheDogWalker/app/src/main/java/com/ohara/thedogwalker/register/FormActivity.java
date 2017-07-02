@@ -129,14 +129,16 @@ public class FormActivity extends AppCompatActivity implements GetUserData{
                     mReference.child("users").child(uid).child("companyCode").setValue(companyCode);
                     mReference.child("users").child(uid).child("companyName").setValue(companyName);
 
+
+
                 }
             }
         });
 
-
-
         Intent welcomeIntent = new Intent(this, WelcomeActivity.class);
         startActivity(welcomeIntent);
+
+
 
     }
 
