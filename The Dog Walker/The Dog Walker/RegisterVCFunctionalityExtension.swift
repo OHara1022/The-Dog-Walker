@@ -94,7 +94,7 @@ extension RegisterViewController{
     func createUser(_ user: User){
         
         //populate class w/ TF text
-        let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressTF.text! as String, city: cityTF.text! as String, state: self.stateHolderString, zipCode: zipCodeTF.text! as String, phoneNumber: phoneTF.text! as String, uid: user.uid, companyCode: companyCodeTF.text! as String)
+        let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressTF.text! as String, city: cityTF.text! as String, state: stateTF.text! as String, zipCode: zipCodeTF.text! as String, phoneNumber: phoneTF.text! as String, uid: user.uid, companyCode: companyCodeTF.text! as String)
         
         //check if apt # has value
         if aptTF.text != nil{
@@ -131,7 +131,32 @@ extension RegisterViewController{
         ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid, "companyCode": userInfo.companyCode, "companyName": companyNameTF.text! as String, "address": userInfo.address, "city": userInfo.city, "state": userInfo.state, "zipCode": userInfo.zipCode, "aptNumber": userInfo.aptNumber])
     }
     
+    //MARK: --state picker item setup
+    func pickerItem(title: String, textField: UITextField, selector: Selector){
+        
+        //done button for date picker
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: selector)
+        let pickerInfo = UIBarButtonItem(title: title, style: .plain, target: self, action: nil)
+        
+        
+        doneButton.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
+        pickerInfo.tintColor = UIColor.black
+        
+        // if you remove the space element, the "done" button will be left aligned
+        toolBar.setItems([pickerInfo, space, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        toolBar.sizeToFit()
+        textField.inputAccessoryView = toolBar
+        
+    }
     
+    func doneSelected(){
+        self.view.endEditing(true)
+    }
     
     
 }

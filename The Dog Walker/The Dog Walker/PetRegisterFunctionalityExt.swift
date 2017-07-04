@@ -132,6 +132,29 @@ extension PetRegisterViewController {
         print("BDAY HOLDER STRING" + " " + dateHolderString)
     }
     
+    
+    func pickerItem(title: String, textField: UITextField, selector: Selector){
+        
+        //done button for date picker
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: selector)
+        let pickerInfo = UIBarButtonItem(title: title, style: .plain, target: self, action: nil)
+        
+        
+        doneButton.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
+        pickerInfo.tintColor = UIColor.black
+        
+        // if you remove the space element, the "done" button will be left aligned
+        toolBar.setItems([pickerInfo, space, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        toolBar.sizeToFit()
+        textField.inputAccessoryView = toolBar
+        
+    }
+    
     //stop editing on date picker
     func doneDatePickerPressed(){
         self.view.endEditing(true)

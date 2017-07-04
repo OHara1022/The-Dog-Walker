@@ -25,7 +25,10 @@ class CreateScheduleViewController: UIViewController {
     var vetPhone: String?
     var emergencyContact: String?
     var emergencyPhone: String?
-    
+    var timePicker: UIDatePicker!
+    var datePicker: UIDatePicker!
+    var durationPicker: UIPickerView!
+
     //MARK: -- outlets
     @IBOutlet weak var dateTF: UITextField!
     @IBOutlet weak var timeTF: UITextField!
@@ -43,6 +46,33 @@ class CreateScheduleViewController: UIViewController {
         ref = Database.database().reference().child("schedules").child(userID!)
         petRef = Database.database().reference().child("pets").child(userID!)
         userRef = Database.database().reference().child("users").child(userID!)
+        
+        //init time picker & set mode, inputView, & target
+        timePicker = UIDatePicker()
+        timePicker.datePickerMode = .time
+        timeTF.inputView = timePicker
+        timePicker.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
+        //set item bar time values
+        pickerItem(title: "Time", textField: timeTF, selector: #selector(CreateScheduleViewController.donePickerPressed))
+        
+        //init date picker & set mode, inputView, & target
+        datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        dateTF.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        //set item bar date values
+        pickerItem(title: "Date", textField: dateTF, selector:  #selector(CreateScheduleViewController.donePickerPressed))
+    
+        //init duration pickerView, set delegate & datasource
+        durationPicker  = UIPickerView()
+        durationPicker.tag = 0
+        durationPicker.dataSource = self
+        durationPicker.delegate = self
+        durationPicker.delegate = self
+        durationTF.inputView = durationPicker
+        //set item bar duration value
+        pickerItem(title: "Duration", textField: durationTF, selector: #selector(CreateScheduleViewController.donePickerPressed))
+    
     }
     
     //MARK: -- viewWillAppear
@@ -123,14 +153,15 @@ class CreateScheduleViewController: UIViewController {
             let petName = petNameTF.text
             let specialIns = instructionTF.text
             let meds = medTF.text
+            let price = priceLbl.text
             
             //generate key for each schedule
             let scheduleKey = ref.childByAutoId().key
             //populate class with text field values
-            let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!)
+            let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!, price: price!)
             
             //set values to push to firebase
-            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": address!, "paidFlag": false, "companyCode": companyCode!, "vetName": vetName!, "vetPhone": vetPhone!, "petImage": petImageUrl!, "emergencyContact": emergencyContact!, "emergencyPhone": emergencyPhone!])
+            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "price": newSchedule.price, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": address!, "paidFlag": false, "companyCode": companyCode!, "vetName": vetName!, "vetPhone": vetPhone!, "petImage": petImageUrl!, "emergencyContact": emergencyContact!, "emergencyPhone": emergencyPhone!])
             //dev
             print("save schedule")
             //dismiss VC

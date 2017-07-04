@@ -17,14 +17,15 @@ class ScheduleData{
     var petName: String
     var instructions: String
     var meds: String
+    var price: String
     var scheduleKey: String?
     var paidFlag: Bool?
     var checkIn: Bool?
     var checkOut: Bool?
-    var price: String?//later user for changing prices
+    
     
     //init stored properties
-    init(date: String, time: String, duration: String, petName: String, instructions: String, meds: String) {
+    init(date: String, time: String, duration: String, petName: String, instructions: String, meds: String, price: String) {
         
         self.date = date
         self.time = time
@@ -32,6 +33,7 @@ class ScheduleData{
         self.petName = petName
         self.instructions = instructions
         self.meds = meds
+        self.price = price
     }
     
     

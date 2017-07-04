@@ -64,24 +64,8 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
         bdayTF.inputView = datePicker
         datePicker.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
-        //done button for date picker
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(PetRegisterViewController.doneDatePickerPressed))
-         let pickerInfo = UIBarButtonItem(title: "Birthday", style: .plain, target: self, action: nil)
-        
-        doneButton.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
-        pickerInfo.tintColor = UIColor.black
-        
-        // if you remove the space element, the "done" button will be left aligned
-        toolBar.setItems([pickerInfo, space, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        toolBar.sizeToFit()
-        bdayTF.inputAccessoryView = toolBar
+        pickerItem(title: "Birthday", textField: bdayTF, selector:  #selector(PetRegisterViewController.doneDatePickerPressed))
 
-        
         //broadcast info and add observer for when keyboard shows and hides
         NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -113,7 +97,7 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
             
             //retrieve textField text
             let petName = petNameTF.text
-            let bday = bdayTF.text
+//            let bday = bdayTF.text
             let breed = breedTF.text
             let meds = medsTF.text
             let vaccine = vaccineTF.text

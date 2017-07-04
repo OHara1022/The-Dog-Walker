@@ -119,7 +119,6 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
 //MARK: -- pickerViewDataSource
 extension RegisterViewController: UIPickerViewDataSource{
     
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -144,7 +143,6 @@ extension RegisterViewController: UIPickerViewDelegate{
         
         switch pickerView.tag {
         case 0:
-            
             return states[row]
         default:
             break
@@ -154,15 +152,11 @@ extension RegisterViewController: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        //set endEditing to true, to dismiss pickerView
-//        self.view.endEditing(true)
-        
         switch pickerView.tag {
             
         case 0:
             stateTF.text = states[row]
-            stateHolderString = states[row]
-            
+
         default:
             break
         }

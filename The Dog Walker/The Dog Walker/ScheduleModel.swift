@@ -32,8 +32,7 @@ class ScheduleModel: NSObject {
     var vetPhone: String?
     var emergencyContact: String?
     var emergencyPhone: String?
-
-    var price: String?//for later use for walker to change price
+    var price: String?
     
     //init dictionary obj reference to firebase DB
     init(dictionary: [String: AnyObject]){
@@ -58,7 +57,8 @@ class ScheduleModel: NSObject {
         self.vetName = dictionary["vetName"] as? String
         self.vetPhone = dictionary["vetPhone"] as? String
         self.emergencyContact = dictionary["emergencyContact"] as? String
-        self.emergencyPhone = dictionary["emergencyPhone"] as? String 
+        self.emergencyPhone = dictionary["emergencyPhone"] as? String
+        self.price = dictionary["price"] as? String
         
     }
     

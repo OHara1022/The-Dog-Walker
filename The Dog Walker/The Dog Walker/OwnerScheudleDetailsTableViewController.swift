@@ -20,6 +20,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     var ref: DatabaseReference!
     var petRef: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
+    var price: NSDecimalNumber!
     
     //MARK: -- outlets
     @IBOutlet weak var petImage: UIImageView!
@@ -50,6 +51,10 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         durationLBL.text = selectedSchedule.duration
         specialInsLBL.text = selectedSchedule.specialIns
         medsLBL.text = selectedSchedule.meds
+        priceLBL.text = "$" + selectedSchedule.price!
+        
+        price = NSDecimalNumber(string: selectedSchedule.price!)
+       
     }
     
     
@@ -89,7 +94,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             request.supportedNetworks = supportedPayments
             request.merchantCapabilities = PKMerchantCapability.capability3DS
             
-            request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Walker", amount: NSDecimalNumber(string: "15")) ,PKPaymentSummaryItem(label: "Walker", amount: NSDecimalNumber(string: "15")) ]
+            request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Walker", amount: price) ,PKPaymentSummaryItem(label: "Walker", amount: price)]
             
             request.countryCode = "US"
             
