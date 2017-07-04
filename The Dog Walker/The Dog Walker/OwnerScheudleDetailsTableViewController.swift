@@ -21,7 +21,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     var petRef: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
     
-    
     //MARK: -- outlets
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var deatilsPetNameLBL: UILabel!

@@ -17,6 +17,8 @@ class RegisterViewController: UIViewController{
     var ref: DatabaseReference!
     let users: String = "users"
     var activeField: UITextField?
+     var statePicker: UIPickerView!
+    var stateHolderString: String = ""
     
     //MARK: -- outlets
     @IBOutlet weak var profileImage: UIImageView!
@@ -35,6 +37,7 @@ class RegisterViewController: UIViewController{
     @IBOutlet weak var companyNameTF: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +51,37 @@ class RegisterViewController: UIViewController{
         
         //set TF delegate to self
         setTFDelegate()
+        
+        //state pickerView
+        statePicker = UIPickerView()
+        statePicker.tag = 0
+        statePicker.dataSource = self
+        statePicker.delegate = self
+        stateTF.delegate = self
+        stateTF.inputView = statePicker
+        
+        //done button for state picker
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(RegisterViewController.doneSelected))
+        let pickerInfo = UIBarButtonItem(title: "State", style: .plain, target: self, action: nil)
+        
+        doneButton.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
+        pickerInfo.tintColor = UIColor.black
+        
 
+        // if you remove the space element, the "done" button will be left aligned
+        toolBar.setItems([pickerInfo, space, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        toolBar.sizeToFit()
+        stateTF.inputAccessoryView = toolBar
+
+    }
+    
+    func doneSelected(){
+        self.view.endEditing(true)
     }
     
     //MARK: -- actions
@@ -89,6 +122,7 @@ class RegisterViewController: UIViewController{
                     }
                     //create user
                     self.createUser(user!)
+                    
                 })
                 //perform segue
                 loginFlag = true

@@ -91,36 +91,33 @@ class OwnerScheduleTableViewController: UITableViewController {
             
             //dev
             print("WALK COMPLETE")
+   
+            let alert = UIAlertController(title: "Walker Complete", message: "Notes: " + schedule.notes! + " " + "Please pay for walk on" + " " + schedule.date!, preferredStyle: .alert)
             
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                
+            }))
             
-        let alert = UIAlertController(title: "Walker Complete", message: "Notes: " + schedule.notes! + " " + "Please pay for walk on" + " " + schedule.date!, preferredStyle: .alert)
-            
-          alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            
-          }))
-
-//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             present(alert, animated: true)
-            
-            
         }
         
         paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
             
             //dev
             print(snapshot)
-            
-            //set paid label to green
-            cell.paidLabel.textColor = UIColor.green
-            
-            //dispatch on main thread or app will crash!!
-            DispatchQueue.main.async(execute: {
                 
-                //reload tableView
-                self.tableView.reloadData()
-            })
+                //set paid label to green
+                cell.paidLabel.textColor = UIColor.green
+                
+                //dispatch on main thread or app will crash!!
+                DispatchQueue.main.async(execute: {
+                    
+                    //reload tableView
+                    self.tableView.reloadData()
+                })
             
         }, withCancel: nil)
+        
         
         return cell
     }

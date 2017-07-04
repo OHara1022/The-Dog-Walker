@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-extension RegisterViewController: UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//MARK: --TF extensions
+extension RegisterViewController: UITextFieldDelegate{
     
     //MARK: -- textFieldDelegate
     //call textfieldDidBeginEditing for keyboard functionality
@@ -85,6 +86,13 @@ extension RegisterViewController: UITextFieldDelegate, UIImagePickerControllerDe
         return false
     }
     
+
+
+}
+
+//MARK: -- image picker extenstion
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
     //MARK -- imagePickerDelegate / navigationDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -92,12 +100,12 @@ extension RegisterViewController: UITextFieldDelegate, UIImagePickerControllerDe
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             //set image
             profileImage.image = image
-        
+            
         }
         
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
-     
+        
     }
     
     //dismiss image picker if canceled
@@ -105,6 +113,62 @@ extension RegisterViewController: UITextFieldDelegate, UIImagePickerControllerDe
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
     }
+    
+}
 
+//MARK: -- pickerViewDataSource
+extension RegisterViewController: UIPickerViewDataSource{
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        switch pickerView.tag {
+        case 0:
+            
+            return states.count
+        default:
+            break
+        }
+        return 0
+    }
+}
+
+//MARK: -- pickerDidSelectRow
+extension RegisterViewController: UIPickerViewDelegate{
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        switch pickerView.tag {
+        case 0:
+            
+            return states[row]
+        default:
+            break
+        }
+        return nil
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        //set endEditing to true, to dismiss pickerView
+//        self.view.endEditing(true)
+        
+        switch pickerView.tag {
+            
+        case 0:
+            stateTF.text = states[row]
+            stateHolderString = states[row]
+            
+        default:
+            break
+        }
+     
+    }
+    
+    
     
 }

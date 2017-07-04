@@ -15,6 +15,8 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
     let userID = Auth.auth().currentUser?.uid
     var ref: DatabaseReference!
     var activeField: UITextField?
+    var dateHolderString: String = ""
+    var datePicker: UIDatePicker!
     
     //refenerce to ownerhomeVC - instantiant ownerhomeVC
     lazy var ownerhomeVC: UIViewController? = {
@@ -56,12 +58,37 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
         //get ref to DB
         self.ref = Database.database().reference().child("pets").child(userID!)
         
+        //init date picker & set mode, inputView, & target
+        datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        bdayTF.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+        //done button for date picker
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(PetRegisterViewController.doneDatePickerPressed))
+         let pickerInfo = UIBarButtonItem(title: "Birthday", style: .plain, target: self, action: nil)
+        
+        doneButton.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
+        pickerInfo.tintColor = UIColor.black
+        
+        // if you remove the space element, the "done" button will be left aligned
+        toolBar.setItems([pickerInfo, space, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        toolBar.sizeToFit()
+        bdayTF.inputAccessoryView = toolBar
+
+        
         //broadcast info and add observer for when keyboard shows and hides
         NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         //set TF delegates
         setTFDelegate()
+    
     }
     
     //MARK: -- actions
@@ -100,7 +127,7 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
             let petKey = self.ref.childByAutoId().key
             
             //populate class with TF text
-            let petData = PetData(petName: petName!, birthday: bday!, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emeregencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
+            let petData = PetData(petName: petName!, birthday: dateHolderString, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emeregencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
             
             let storageRef = Storage.storage().reference().child("petImages").child("\(userID!).jpeg")
             

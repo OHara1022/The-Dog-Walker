@@ -70,6 +70,9 @@ extension PetRegisterViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    
+    
     //MARK: -- keyboard editing functionality
     //reference used for this functionality:
     //https://spin.atomicobject.com/2014/03/05/uiscrollview-autolayout-ios/
@@ -106,6 +109,34 @@ extension PetRegisterViewController {
         vetPhoneTF.delegate = self
         
     }
+    
+    //MARK: --Date picker funtionality
+    func datePickerValueChanged(sender:UIDatePicker) {
+        
+        //init dateFormatter
+        let dateFormatter = DateFormatter()
+        
+        //set time to none
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        
+        //set date format
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        
+        //set textField to date picker selection
+        bdayTF.text = dateFormatter.string(from: sender.date)
+        
+        //set textField text to holder string for saving
+        dateHolderString = bdayTF.text!
+        
+        //dev
+        print("BDAY HOLDER STRING" + " " + dateHolderString)
+    }
+    
+    //stop editing on date picker
+    func doneDatePickerPressed(){
+        self.view.endEditing(true)
+    }
+    
     
     
     

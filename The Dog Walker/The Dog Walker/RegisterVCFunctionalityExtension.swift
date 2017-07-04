@@ -94,7 +94,7 @@ extension RegisterViewController{
     func createUser(_ user: User){
         
         //populate class w/ TF text
-        let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressTF.text! as String, city: cityTF.text! as String, state: stateTF.text! as String, zipCode: zipCodeTF.text! as String, phoneNumber: phoneTF.text! as String, uid: user.uid, companyCode: companyCodeTF.text! as String)
+        let userInfo = Users(firstName: firstNameTF.text! as String, lastName: lastNameTF.text! as String, email: emailTF.text! as String, address: addressTF.text! as String, city: cityTF.text! as String, state: self.stateHolderString, zipCode: zipCodeTF.text! as String, phoneNumber: phoneTF.text! as String, uid: user.uid, companyCode: companyCodeTF.text! as String)
         
         //check if apt # has value
         if aptTF.text != nil{

@@ -10,6 +10,7 @@
 		3AA18333D5948C691D4DEB3B /* Pods_The_Dog_Walker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EABD0474B655656272A14A8 /* Pods_The_Dog_Walker.framework */; };
 		75C1E6C5D93C444FBB170ED7 /* Pods_The_Dog_WalkerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */; };
 		9D70D9A70E9E8ADBE05ACE6D /* Pods_The_Dog_WalkerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC72B7D6AEA19ACDFE2BD3D /* Pods_The_Dog_WalkerTests.framework */; };
+		D207874F1F0BE80C00941955 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207874E1F0BE80C00941955 /* Constants.swift */; };
 		D217B31D1EF3453500785F88 /* PetDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B31C1EF3453500785F88 /* PetDetailsTableViewController.swift */; };
 		D217B3231EF36F7400785F88 /* OwnerScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B3221EF36F7400785F88 /* OwnerScheduleTableViewController.swift */; };
 		D217B3251EF36FBD00785F88 /* CreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D217B3241EF36FBD00785F88 /* CreateScheduleViewController.swift */; };
@@ -85,6 +86,7 @@
 		8E4B4B925FA6CEFEEB937A1A /* Pods-The Dog Walker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog Walker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog Walker/Pods-The Dog Walker.debug.xcconfig"; sourceTree = "<group>"; };
 		B990290895BC53A9E6AB6124 /* Pods-The Dog WalkerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerUITests/Pods-The Dog WalkerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BBD50859B30E6E531A33F557 /* Pods_The_Dog_WalkerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Dog_WalkerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D207874E1F0BE80C00941955 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D216AA581EF8C26900FE5C15 /* The Dog Walker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "The Dog Walker.entitlements"; sourceTree = "<group>"; };
 		D217B31C1EF3453500785F88 /* PetDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDetailsTableViewController.swift; sourceTree = "<group>"; };
 		D217B3221EF36F7400785F88 /* OwnerScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerScheduleTableViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 			children = (
 				D2B1BFB91EF5A06C00CEAF3E /* FieldValidation.swift */,
 				D2D52F381F049EA20023D7A2 /* Extension.swift */,
+				D207874E1F0BE80C00941955 /* Constants.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B1BFB51EF58BD600CEAF3E /* PetData.swift in Sources */,
+				D207874F1F0BE80C00941955 /* Constants.swift in Sources */,
 				D27E9CBE1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift in Sources */,
 				D2C8F1991EE584A900F7AC65 /* LoginViewController.swift in Sources */,
 				D27E9CBC1EF39EFA00377A72 /* WalkerScheduleDetailsTableViewController.swift in Sources */,
