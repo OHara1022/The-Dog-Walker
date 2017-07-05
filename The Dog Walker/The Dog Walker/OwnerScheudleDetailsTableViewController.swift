@@ -22,6 +22,8 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     let userID = Auth.auth().currentUser?.uid
     var price: NSDecimalNumber!
     
+    var date: String?
+    
     //MARK: -- outlets
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var deatilsPetNameLBL: UILabel!
@@ -53,11 +55,12 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         medsLBL.text = selectedSchedule.meds
         priceLBL.text = "$" + selectedSchedule.price!
         
+        date = selectedSchedule.date!
         price = NSDecimalNumber(string: selectedSchedule.price!)
        
     }
     
-    
+    //MARK: --viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         
         petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -109,6 +112,20 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             self.present(applePayController, animated: true, completion: nil)
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "edit"{
+            
+          let editDetails = segue.destination as! OwnerEditScheduleViewController
+            
+            editDetails.editSelectedSchedule = selectedSchedule!
+          
+        }
+    }
+
+    
 }
 
 //MARK: --extension payment delegate

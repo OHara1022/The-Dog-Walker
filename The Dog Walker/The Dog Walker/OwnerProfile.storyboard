@@ -29,13 +29,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06/22/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSz-pf-SUj">
-                                            <rect key="frame" x="20" y="5" width="171.5" height="33.5"/>
+                                            <rect key="frame" x="20" y="5" width="171" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="eMX-Ff-dZ4">
-                                            <rect key="frame" x="305.5" y="12.5" width="34" height="18"/>
+                                            <rect key="frame" x="305" y="12.5" width="34" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.6554741154" green="0.012271597550000001" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1576,7 +1576,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="Uko-9e-Tqw">
                             <color key="tintColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="uhn-sF-7zZ" kind="presentation" id="duU-6M-NNj"/>
+                                <segue destination="Yrl-4h-3DR" kind="show" identifier="edit" id="kKK-em-usx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1617,7 +1617,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljR-mQ-zcC">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJg-hL-95X">
                                         <rect key="frame" x="0.0" y="-50" width="375" height="800.5"/>
@@ -1721,39 +1721,25 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Schedule" id="qhF-Im-Wrf">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3gX-cI-QWl">
-                            <connections>
-                                <action selector="cancelEdit:" destination="Yrl-4h-3DR" id="x97-UD-pgk"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="sm_save" id="eob-fK-qag">
                             <connections>
                                 <action selector="saveEditChanges:" destination="Yrl-4h-3DR" id="jnL-Xo-oOp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editDateTF" destination="DvW-oD-O4h" id="upw-Yd-9zk"/>
+                        <outlet property="editDurationTF" destination="SAR-SX-qcv" id="diu-sV-ijk"/>
+                        <outlet property="editMedsTF" destination="0nv-FH-SHb" id="hfp-ai-MMx"/>
+                        <outlet property="editPetNameTF" destination="aaY-Dg-Tfg" id="O8m-Bk-Ydg"/>
+                        <outlet property="editPriceLBL" destination="aEr-GV-431" id="Fie-nP-tcd"/>
+                        <outlet property="editSpecialInsTF" destination="dCO-gb-cbE" id="8zz-r1-d1u"/>
+                        <outlet property="editTimeTF" destination="KHk-lv-X7h" id="DJY-6H-fTJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kxS-SE-mIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8606" y="2137"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="k3n-sM-IAk">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uhn-sF-7zZ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ILH-0n-82H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Yrl-4h-3DR" kind="relationship" relationship="rootViewController" id="ePK-n2-UCH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v1k-Ev-Ijt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7801" y="2154"/>
+            <point key="canvasLocation" x="7857" y="2154"/>
         </scene>
     </scenes>
     <resources>

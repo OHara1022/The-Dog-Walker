@@ -9,23 +9,49 @@
 import UIKit
 
 class OwnerEditScheduleViewController: UIViewController {
+    
+    
+    //MARK: --stored properties
+    var editSelectedSchedule: ScheduleModel!
 
-    
-    @IBAction func saveEditChanges(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func cancelEdit(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+    var dateHolder: String?
 
+    //MARK: --outlets
+    @IBOutlet weak var editDateTF: UITextField!
+    @IBOutlet weak var editTimeTF: UITextField!
+    @IBOutlet weak var editDurationTF: UITextField!
+    @IBOutlet weak var editPriceLBL: UILabel!
+    @IBOutlet weak var editPetNameTF: UITextField!
+    @IBOutlet weak var editSpecialInsTF: UITextField!
+    @IBOutlet weak var editMedsTF: UITextField!
+
+    //MARK: --viewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+ 
+        //dev
+        print(editSelectedSchedule.date!)
+         print(editSelectedSchedule.scheduleKey!)
+        
+        editDateTF.text = editSelectedSchedule.date!
+        editTimeTF.text = editSelectedSchedule.time!
+        editDurationTF.text = editSelectedSchedule.duration!
+        editPriceLBL.text = "$" + editSelectedSchedule.price!
+        editPetNameTF.text = editSelectedSchedule.petName!
+        editSpecialInsTF.text = editSelectedSchedule.specialIns!
+        editMedsTF.text = editSelectedSchedule.meds!
+        
+        
+       
     }
 
-
+    
+    //MARK: --actions
+    @IBAction func saveEditChanges(_ sender: Any) {
+   
+        //return to details vc
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
 
 }
