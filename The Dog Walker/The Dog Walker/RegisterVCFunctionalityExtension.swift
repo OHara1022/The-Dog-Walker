@@ -102,10 +102,13 @@ extension RegisterViewController{
             userInfo.aptNumber = aptTF.text! as String
         }
         
+        //get ref to store images
         let storageRef = Storage.storage().reference().child("profileImages").child("\(user.uid).jpeg")
         
+        //compress image
         if let uploadImage = UIImageJPEGRepresentation(self.profileImage.image!, 0.6){
             
+            //store data
             storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
                 //check if create user failed
                 if let error = error{
@@ -142,7 +145,7 @@ extension RegisterViewController{
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: selector)
         let pickerInfo = UIBarButtonItem(title: title, style: .plain, target: self, action: nil)
         
-        
+        //set button color
         doneButton.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
         pickerInfo.tintColor = UIColor.black
         
@@ -154,7 +157,9 @@ extension RegisterViewController{
         
     }
     
+    //dismiss on done
     func doneSelected(){
+        //dismiss pickerView
         self.view.endEditing(true)
     }
     

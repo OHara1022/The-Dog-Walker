@@ -44,6 +44,8 @@ class OwnerScheduleTableViewController: UITableViewController {
                 //append schedule data
                 self.schedules.append(schedules)
                 
+                print(schedules.paidFlag!)
+                
                 //dispatch on main thread or app will crash!!
                 DispatchQueue.main.async(execute: {
                     //reload tableView
@@ -52,11 +54,7 @@ class OwnerScheduleTableViewController: UITableViewController {
             }
             
         }, withCancel: nil)
-        
-        
-        
     }
-    
     
     //MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,7 +80,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         cell.dateLabel.text = schedule.date!
         cell.paidLabel.text = paid
         
-        //check if paymeny was made
+        //check if payment was made
         if schedule.paidFlag == true{
             
             //set paid label to green

@@ -48,7 +48,7 @@ class PetDetailsTableViewController: UITableViewController {
                 let pet = PetModel(dictionary: dictionary)
                 
                 //dev
-                print(pet.petName!)
+//                print(pet.petName!)
                 
                 //populate labels with passed values
                 self.petNameLabel.text = pet.petName!
@@ -73,7 +73,10 @@ class PetDetailsTableViewController: UITableViewController {
     }
     
     
-    //MARK: -- actions
+    //MARK: --actions
+    @IBAction func updateView(segue: UIStoryboardSegue){
+    }
+    
     @IBAction func addPet(_ sender: UIButton) {
         
         FieldValidation.textFieldAlert("Add Pet", message: "Add Pet will be in future release", presenter: self)

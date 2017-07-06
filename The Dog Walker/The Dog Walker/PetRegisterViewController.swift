@@ -113,10 +113,13 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
             //populate class with TF text
             let petData = PetData(petName: petName!, birthday: dateHolderString, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emeregencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
             
+            //ref to store pet images
             let storageRef = Storage.storage().reference().child("petImages").child("\(userID!).jpeg")
             
+            //compress images
             if let uploadImage = UIImageJPEGRepresentation(self.petImage.image!, 0.6){
                 
+                //get data
                 storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
                     //check if create user failed
                     if let error = error{
@@ -127,10 +130,12 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
                         return
                     }
                     
+                    //get image url
                     if let petImgURL = metadata?.downloadURL()?.absoluteString{
-                        
+                        //dev
                         print(petImgURL)
                         
+                        //save image url
                         self.ref.child(petKey).updateChildValues(["petImage": petImgURL])
                     }
                 })

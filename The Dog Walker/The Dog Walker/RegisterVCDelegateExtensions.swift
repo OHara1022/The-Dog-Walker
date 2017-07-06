@@ -143,6 +143,7 @@ extension RegisterViewController: UIPickerViewDelegate{
         
         switch pickerView.tag {
         case 0:
+            //set row of PV
             return states[row]
         default:
             break
@@ -155,6 +156,7 @@ extension RegisterViewController: UIPickerViewDelegate{
         switch pickerView.tag {
             
         case 0:
+            //set text with state selected
             stateTF.text = states[row]
 
         default:

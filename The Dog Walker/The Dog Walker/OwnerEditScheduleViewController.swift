@@ -15,8 +15,7 @@ class OwnerEditScheduleViewController: UIViewController {
     //MARK: --stored properties
     var ref: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
-    var editSelectedSchedule: ScheduleModel!
-    
+    //holder strings
     var date: String?
     var time: String?
     var duration: String?
@@ -39,20 +38,10 @@ class OwnerEditScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //dev
-        //        print(editSelectedSchedule.date!)
-//        print(editSelectedSchedule.scheduleKey!)
-        
+        //init ref to database
         ref = Database.database().reference().child("schedules").child(userID!).child(scheduleKey!)
 
-//        editDateTF.text = editSelectedSchedule.date!
-//        editTimeTF.text = editSelectedSchedule.time!
-//        editDurationTF.text = editSelectedSchedule.duration!
-//        editPriceLBL.text = "$" + editSelectedSchedule.price!
-//        editPetNameTF.text = editSelectedSchedule.petName!
-//        editSpecialInsTF.text = editSelectedSchedule.specialIns!
-//        editMedsTF.text = editSelectedSchedule.meds!
-        
+        //populate TF w/ passed data
         editDateTF.text = date
         editTimeTF.text = time
         editDurationTF.text = duration

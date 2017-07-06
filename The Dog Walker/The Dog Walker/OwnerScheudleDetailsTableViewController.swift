@@ -83,7 +83,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
 
     }
  
-
+    //MARK: --navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "edit"{
@@ -101,6 +101,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         }
     }
     
+    //MARK: --actions
     @IBAction func updateView(segue: UIStoryboardSegue){
         
         ref.observe(.value, with: { (snapshot) in
@@ -109,7 +110,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                 
                 let schedule = ScheduleModel(dictionary: dictionary)
                 
-                print(schedule.date!)
+//                print(schedule.date!)
                 
                 //set label w/ passed values
                 self.deatilsPetNameLBL.text = schedule.petName
@@ -118,7 +119,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                 self.durationLBL.text = schedule.duration
                 self.specialInsLBL.text = schedule.specialIns
                 self.medsLBL.text = schedule.meds
-                self.priceLBL.text = schedule.price!
+                self.priceLBL.text = "$" + schedule.price!
                 
             }
             

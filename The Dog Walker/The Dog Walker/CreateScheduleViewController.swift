@@ -25,6 +25,8 @@ class CreateScheduleViewController: UIViewController {
     var vetPhone: String?
     var emergencyContact: String?
     var emergencyPhone: String?
+    
+    //pickerViews
     var timePicker: UIDatePicker!
     var datePicker: UIDatePicker!
     var durationPicker: UIPickerView!

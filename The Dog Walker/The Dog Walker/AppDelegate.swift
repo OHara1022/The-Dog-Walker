@@ -14,13 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        //set tint color to color pallet button color
         UITabBar.appearance().tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
-        
         UINavigationBar.appearance().tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
         
         return true

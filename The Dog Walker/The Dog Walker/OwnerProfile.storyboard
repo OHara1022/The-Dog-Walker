@@ -29,13 +29,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06/22/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSz-pf-SUj">
-                                            <rect key="frame" x="20" y="5" width="171.5" height="33.5"/>
+                                            <rect key="frame" x="20" y="5" width="171" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="eMX-Ff-dZ4">
-                                            <rect key="frame" x="305.5" y="12.5" width="34" height="18"/>
+                                            <rect key="frame" x="305" y="12.5" width="34" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.6554741154" green="0.012271597550000001" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -565,13 +565,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" text="Use red harness" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="b5H-6K-FTy">
-                                                <rect key="frame" x="47" y="364" width="281" height="80"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
-                                            </textView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="408 Pet Clinic" borderStyle="roundedRect" placeholder="Vet Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fdj-YO-cdP">
                                                 <rect key="frame" x="47" y="459" width="281" height="30"/>
                                                 <nil key="textColor"/>
@@ -596,6 +589,12 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Special Instructions" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yYG-3W-nEt">
+                                                <rect key="frame" x="47" y="364" width="281" height="72"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -603,37 +602,37 @@
                                             <constraint firstItem="gAn-Ql-KIu" firstAttribute="width" secondItem="aDS-gJ-rKQ" secondAttribute="width" multiplier="0.75" id="0YR-kU-N5z"/>
                                             <constraint firstItem="Hhs-9S-cug" firstAttribute="top" secondItem="4Ut-cC-4SM" secondAttribute="bottom" id="3mi-Vf-Irk"/>
                                             <constraint firstItem="Cd5-PS-j64" firstAttribute="width" secondItem="ZXR-To-of9" secondAttribute="width" id="4ge-nd-4id"/>
-                                            <constraint firstItem="fdj-YO-cdP" firstAttribute="centerX" secondItem="b5H-6K-FTy" secondAttribute="centerX" id="4tV-R3-dr5"/>
-                                            <constraint firstItem="b5H-6K-FTy" firstAttribute="top" secondItem="Uyt-Ai-EIg" secondAttribute="bottom" constant="15" id="6lk-Hs-Lxj"/>
                                             <constraint firstItem="ZXR-To-of9" firstAttribute="top" secondItem="0zi-ud-HAs" secondAttribute="bottom" constant="15" id="7wa-A8-j7E"/>
                                             <constraint firstItem="ZXR-To-of9" firstAttribute="centerX" secondItem="0zi-ud-HAs" secondAttribute="centerX" id="9nr-kn-lVJ"/>
-                                            <constraint firstItem="fdj-YO-cdP" firstAttribute="top" secondItem="b5H-6K-FTy" secondAttribute="bottom" constant="15" id="Bdu-jl-cUb"/>
                                             <constraint firstItem="0zi-ud-HAs" firstAttribute="top" secondItem="gAn-Ql-KIu" secondAttribute="bottom" constant="15" id="CnA-Jl-CUy"/>
                                             <constraint firstItem="4Ut-cC-4SM" firstAttribute="centerX" secondItem="aDS-gJ-rKQ" secondAttribute="centerX" id="FsF-B1-a2Q"/>
+                                            <constraint firstItem="yYG-3W-nEt" firstAttribute="height" secondItem="aDS-gJ-rKQ" secondAttribute="height" multiplier="0.09" id="Gra-d5-Sv3"/>
                                             <constraint firstItem="ZXR-To-of9" firstAttribute="width" secondItem="0zi-ud-HAs" secondAttribute="width" id="Nlj-ev-wGl"/>
+                                            <constraint firstItem="fdj-YO-cdP" firstAttribute="top" secondItem="yYG-3W-nEt" secondAttribute="bottom" constant="23" id="Ns7-ZJ-2ku"/>
                                             <constraint firstItem="jw4-KA-EUx" firstAttribute="top" secondItem="5LZ-BO-Eog" secondAttribute="bottom" constant="15" id="Nuz-s5-1CC"/>
                                             <constraint firstItem="y7K-KN-t2M" firstAttribute="centerX" secondItem="jw4-KA-EUx" secondAttribute="centerX" id="P8L-u8-hKJ"/>
-                                            <constraint firstItem="b5H-6K-FTy" firstAttribute="centerX" secondItem="Uyt-Ai-EIg" secondAttribute="centerX" id="RHI-Ea-d4j"/>
                                             <constraint firstItem="y7K-KN-t2M" firstAttribute="width" secondItem="jw4-KA-EUx" secondAttribute="width" id="SAx-2F-Z2B"/>
-                                            <constraint firstItem="fdj-YO-cdP" firstAttribute="width" secondItem="b5H-6K-FTy" secondAttribute="width" id="SIv-F4-Gl6"/>
                                             <constraint firstItem="5LZ-BO-Eog" firstAttribute="centerX" secondItem="fdj-YO-cdP" secondAttribute="centerX" id="Vh4-jc-0pz"/>
                                             <constraint firstItem="4Ut-cC-4SM" firstAttribute="top" secondItem="aDS-gJ-rKQ" secondAttribute="top" constant="15" id="XTg-tw-a1C"/>
                                             <constraint firstItem="Uyt-Ai-EIg" firstAttribute="top" secondItem="Cd5-PS-j64" secondAttribute="bottom" constant="15" id="YE0-1a-nT1"/>
+                                            <constraint firstItem="yYG-3W-nEt" firstAttribute="width" secondItem="Uyt-Ai-EIg" secondAttribute="width" id="YjJ-my-JOk"/>
+                                            <constraint firstItem="fdj-YO-cdP" firstAttribute="width" secondItem="yYG-3W-nEt" secondAttribute="width" id="YoR-DB-Glx"/>
                                             <constraint firstItem="y7K-KN-t2M" firstAttribute="top" secondItem="jw4-KA-EUx" secondAttribute="bottom" constant="15" id="aHV-Wi-ArV"/>
                                             <constraint firstItem="0zi-ud-HAs" firstAttribute="centerX" secondItem="gAn-Ql-KIu" secondAttribute="centerX" id="al2-wH-hi5"/>
                                             <constraint firstItem="gAn-Ql-KIu" firstAttribute="top" secondItem="Hhs-9S-cug" secondAttribute="bottom" constant="15" id="cDQ-k1-Phv"/>
                                             <constraint firstItem="Uyt-Ai-EIg" firstAttribute="width" secondItem="Cd5-PS-j64" secondAttribute="width" id="e8o-U0-203"/>
                                             <constraint firstItem="5LZ-BO-Eog" firstAttribute="width" secondItem="fdj-YO-cdP" secondAttribute="width" id="efn-1c-80j"/>
                                             <constraint firstItem="Cd5-PS-j64" firstAttribute="centerX" secondItem="ZXR-To-of9" secondAttribute="centerX" id="h12-eo-cNb"/>
+                                            <constraint firstItem="yYG-3W-nEt" firstAttribute="centerX" secondItem="Uyt-Ai-EIg" secondAttribute="centerX" id="h7f-Bt-KGS"/>
                                             <constraint firstItem="jw4-KA-EUx" firstAttribute="centerX" secondItem="5LZ-BO-Eog" secondAttribute="centerX" id="i60-a4-wuW"/>
-                                            <constraint firstItem="b5H-6K-FTy" firstAttribute="height" secondItem="aDS-gJ-rKQ" secondAttribute="height" multiplier="0.1" id="msW-AJ-cYN"/>
+                                            <constraint firstItem="yYG-3W-nEt" firstAttribute="top" secondItem="Uyt-Ai-EIg" secondAttribute="bottom" constant="15" id="im6-d6-xmM"/>
+                                            <constraint firstItem="fdj-YO-cdP" firstAttribute="centerX" secondItem="yYG-3W-nEt" secondAttribute="centerX" id="jzC-oD-X41"/>
                                             <constraint firstItem="gAn-Ql-KIu" firstAttribute="centerX" secondItem="4Ut-cC-4SM" secondAttribute="centerX" id="oO1-dO-msD"/>
                                             <constraint firstItem="Cd5-PS-j64" firstAttribute="top" secondItem="ZXR-To-of9" secondAttribute="bottom" constant="15" id="oYn-J9-W6b"/>
                                             <constraint firstItem="jw4-KA-EUx" firstAttribute="width" secondItem="5LZ-BO-Eog" secondAttribute="width" id="sMr-mh-tDT"/>
                                             <constraint firstItem="Uyt-Ai-EIg" firstAttribute="centerX" secondItem="Cd5-PS-j64" secondAttribute="centerX" id="sYK-RI-7iP"/>
                                             <constraint firstItem="0zi-ud-HAs" firstAttribute="width" secondItem="gAn-Ql-KIu" secondAttribute="width" id="way-sL-inN"/>
                                             <constraint firstItem="5LZ-BO-Eog" firstAttribute="top" secondItem="fdj-YO-cdP" secondAttribute="bottom" constant="15" id="xkK-r1-UsA"/>
-                                            <constraint firstItem="b5H-6K-FTy" firstAttribute="width" secondItem="aDS-gJ-rKQ" secondAttribute="width" multiplier="0.75" id="xq8-hf-3MO"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -668,8 +667,23 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editBreed" destination="ZXR-To-of9" id="Gxo-hn-vnX"/>
+                        <outlet property="editEmergencyContact" destination="jw4-KA-EUx" id="wBi-AP-iIq"/>
+                        <outlet property="editEmergencyPhone" destination="y7K-KN-t2M" id="QRO-bZ-Vm2"/>
+                        <outlet property="editMeds" destination="Uyt-Ai-EIg" id="fR6-PB-du9"/>
+                        <outlet property="editPetBday" destination="0zi-ud-HAs" id="xrv-i5-y5W"/>
+                        <outlet property="editPetName" destination="gAn-Ql-KIu" id="smb-Xt-77S"/>
+                        <outlet property="editSpecialIns" destination="yYG-3W-nEt" id="Gu0-rw-CcQ"/>
+                        <outlet property="editVaccines" destination="Cd5-PS-j64" id="RMl-gy-z0T"/>
+                        <outlet property="editVetName" destination="fdj-YO-cdP" id="Gf4-8E-U7Q"/>
+                        <outlet property="editVetPhone" destination="5LZ-BO-Eog" id="oj8-NM-mck"/>
+                        <outlet property="petImageView" destination="4Ut-cC-4SM" id="9w7-kI-0Ej"/>
+                        <segue destination="K38-OR-qfr" kind="unwind" identifier="updatePet" unwindAction="updateViewWithSegue:" id="TRM-zW-gvY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJu-aS-SZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="K38-OR-qfr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4306" y="2946"/>
         </scene>
