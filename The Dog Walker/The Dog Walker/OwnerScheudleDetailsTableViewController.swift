@@ -22,7 +22,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     let userID = Auth.auth().currentUser?.uid
     var price: NSDecimalNumber!
     
-    var date: String?
     
     //MARK: -- outlets
     @IBOutlet weak var petImage: UIImageView!
@@ -54,8 +53,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         specialInsLBL.text = selectedSchedule.specialIns
         medsLBL.text = selectedSchedule.meds
         priceLBL.text = "$" + selectedSchedule.price!
-        
-        date = selectedSchedule.date!
         price = NSDecimalNumber(string: selectedSchedule.price!)
        
     }
@@ -85,6 +82,49 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         }, withCancel: nil)
 
     }
+ 
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "edit"{
+            
+            let editDetails = segue.destination as! OwnerEditScheduleViewController
+
+            editDetails.date = selectedSchedule.date
+            editDetails.time = selectedSchedule.time
+            editDetails.duration = selectedSchedule.duration
+            editDetails.price = selectedSchedule.price
+            editDetails.petName = selectedSchedule.petName
+            editDetails.specialIns = selectedSchedule.specialIns
+            editDetails.meds = selectedSchedule.meds
+            editDetails.scheduleKey = selectedSchedule.scheduleKey
+        }
+    }
+    
+    @IBAction func updateView(segue: UIStoryboardSegue){
+        
+        ref.observe(.value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                let schedule = ScheduleModel(dictionary: dictionary)
+                
+                print(schedule.date!)
+                
+                //set label w/ passed values
+                self.deatilsPetNameLBL.text = schedule.petName
+                self.detailsDateLBL.text = schedule.date
+                self.detailsTimeLBL.text = schedule.time
+                self.durationLBL.text = schedule.duration
+                self.specialInsLBL.text = schedule.specialIns
+                self.medsLBL.text = schedule.meds
+                self.priceLBL.text = schedule.price!
+                
+            }
+            
+        }, withCancel: nil)
+    }
+
     
     //MARK: -- actions
     @IBAction func payBTN(_ sender: UIButton) {
@@ -113,18 +153,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         }
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "edit"{
-            
-          let editDetails = segue.destination as! OwnerEditScheduleViewController
-            
-            editDetails.editSelectedSchedule = selectedSchedule!
-          
-        }
-    }
-
+ 
     
 }
 

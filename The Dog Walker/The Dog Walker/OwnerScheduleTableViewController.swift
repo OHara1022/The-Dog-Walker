@@ -107,7 +107,7 @@ class OwnerScheduleTableViewController: UITableViewController {
             
             //dev
             print(snapshot)
-                
+            
                 //set paid label to green
                 cell.paidLabel.textColor = UIColor.green
                 
