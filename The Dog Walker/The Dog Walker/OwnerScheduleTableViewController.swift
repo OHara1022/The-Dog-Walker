@@ -46,6 +46,22 @@ class OwnerScheduleTableViewController: UITableViewController {
                 
                 print(schedules.paidFlag!)
                 
+                
+                if schedules.checkOut == true && schedules.paidFlag != true{
+                    
+                    //dev
+                    print("WALK COMPLETE")
+                    
+                    let alert = UIAlertController(title: "Walker Complete", message: "Notes: " + schedules.notes! + " " + "Please pay for walk on" + " " + schedules.date!, preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        
+                    }))
+                    
+                    self.present(alert, animated: true)
+                }
+                
+                
                 //dispatch on main thread or app will crash!!
                 DispatchQueue.main.async(execute: {
                     //reload tableView
@@ -54,6 +70,7 @@ class OwnerScheduleTableViewController: UITableViewController {
             }
             
         }, withCancel: nil)
+    
     }
     
     //MARK: -- table view data source
@@ -86,21 +103,7 @@ class OwnerScheduleTableViewController: UITableViewController {
             //set paid label to green
             cell.paidLabel.textColor = UIColor.green
         }
-        
-        if schedule.checkOut == true{
-            
-            //dev
-            print("WALK COMPLETE")
-   
-            let alert = UIAlertController(title: "Walker Complete", message: "Notes: " + schedule.notes! + " " + "Please pay for walk on" + " " + schedule.date!, preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                
-            }))
-            
-            present(alert, animated: true)
-        }
-        
+
         paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
             
             //dev
@@ -118,6 +121,19 @@ class OwnerScheduleTableViewController: UITableViewController {
             
         }, withCancel: nil)
         
+        //        if schedule.checkOut == true{
+        //
+        //            //dev
+        //            print("WALK COMPLETE")
+        //
+        //            let alert = UIAlertController(title: "Walker Complete", message: "Notes: " + schedule.notes! + " " + "Please pay for walk on" + " " + schedule.date!, preferredStyle: .alert)
+        //
+        //            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+        //
+        //            }))
+        //            
+        //            present(alert, animated: true)
+        //        }
         
         return cell
     }

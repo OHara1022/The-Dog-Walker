@@ -75,8 +75,4 @@ class OwnerEditScheduleViewController: UIViewController {
         //return to details vc
         _ = navigationController?.popViewController(animated: true)
     }
-    
-
-    
-    
 }

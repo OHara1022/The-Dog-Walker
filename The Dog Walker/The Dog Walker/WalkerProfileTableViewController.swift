@@ -88,6 +88,54 @@ class WalkerProfileTableViewController: UITableViewController {
     }
     
     //MARK: -- actions
+    @IBAction func updateProfileView(segue: UIStoryboardSegue){
+        
+        //set observer for users
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //set snaopshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //dev
+                //print(snapshot)
+                
+                //get user data as dictionary
+                let user = UserModel(dictionary: dictionary)
+                
+                //dev
+                print(user.firstName!)
+                
+                //populate label w/ data from FB
+                self.nameLBL.text = user.firstName! + " " + user.lastName!
+                self.emailLBL.text = user.email!
+                //if apt number add to address label
+                if user.aptNumber == ""{
+                    //dev
+                    print("APT HIT")
+                    //address w/ apt number
+                    self.addressLBL.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                }else{
+                    self.addressLBL.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                }
+                
+                if user.companyName != nil{
+                    
+                    self.companyNameLBL.text = user.companyName!
+                }
+                
+                if let profileImgURL = user.profileImage{
+                    
+                    print(profileImgURL)
+                    
+                    self.profileImage.loadImageUsingCache(profileImgURL)
+                }
+                
+            }
+            
+        }, withCancel: nil)
+        
+    }
+
     @IBAction func signOut(_ sender: Any) {
         
         //sign user out w/ firebase auth

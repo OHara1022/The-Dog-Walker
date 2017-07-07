@@ -28,7 +28,6 @@
 		D27E9CBC1EF39EFA00377A72 /* WalkerScheduleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E9CBB1EF39EFA00377A72 /* WalkerScheduleDetailsTableViewController.swift */; };
 		D27E9CBE1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E9CBD1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift */; };
 		D27E9CC11EF39FBA00377A72 /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E9CC01EF39FBA00377A72 /* ClientsTableViewController.swift */; };
-		D27E9CC31EF39FEE00377A72 /* ClientDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E9CC21EF39FEE00377A72 /* ClientDetailsViewController.swift */; };
 		D27E9CC51EF3A0D900377A72 /* ClientProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E9CC41EF3A0D900377A72 /* ClientProfileTableViewController.swift */; };
 		D27F61F51EF1A7E4006258AA /* PetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F61F41EF1A7E4006258AA /* PetProfileViewController.swift */; };
 		D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */; };
@@ -106,7 +105,6 @@
 		D27E9CBB1EF39EFA00377A72 /* WalkerScheduleDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerScheduleDetailsTableViewController.swift; sourceTree = "<group>"; };
 		D27E9CBD1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerSchedulesTableViewController.swift; sourceTree = "<group>"; };
 		D27E9CC01EF39FBA00377A72 /* ClientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
-		D27E9CC21EF39FEE00377A72 /* ClientDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientDetailsViewController.swift; sourceTree = "<group>"; };
 		D27E9CC41EF3A0D900377A72 /* ClientProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProfileTableViewController.swift; sourceTree = "<group>"; };
 		D27F61F41EF1A7E4006258AA /* PetProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetProfileViewController.swift; sourceTree = "<group>"; };
 		D28A93B91EE4F03D00CF80B6 /* The Dog Walker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dog Walker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,7 +226,6 @@
 				D27E9CB41EF391FF00377A72 /* WalkerSchedules */,
 				D27E9CBF1EF39F9900377A72 /* WalkerClients */,
 				D2C5FAB91EF4C821006BB572 /* WalkerProfile */,
-				D27E9CC21EF39FEE00377A72 /* ClientDetailsViewController.swift */,
 				D27E9CAF1EF3884900377A72 /* WalkerHome.storyboard */,
 			);
 			name = WalkerHome;
@@ -723,7 +720,6 @@
 				D2B1BFBA1EF5A06C00CEAF3E /* FieldValidation.swift in Sources */,
 				D2D52F391F049EA20023D7A2 /* Extension.swift in Sources */,
 				D2C5FABB1EF4C83D006BB572 /* WalkerProfileTableViewController.swift in Sources */,
-				D27E9CC31EF39FEE00377A72 /* ClientDetailsViewController.swift in Sources */,
 				D29205901EEF8CCD008F49F6 /* RegisterViewController.swift in Sources */,
 				D2C5FABF1EF4CB09006BB572 /* OwnerScheudleDetailsTableViewController.swift in Sources */,
 				D2B1BFB71EF58E4900CEAF3E /* ScheduleData.swift in Sources */,

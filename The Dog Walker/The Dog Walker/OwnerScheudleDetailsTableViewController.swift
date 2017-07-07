@@ -10,7 +10,6 @@ import UIKit
 import PassKit
 import Firebase
 
-//TODO: get ref to schedules update paidFlag on success of payment, change details label to paid
 class OwnerScheudleDetailsTableViewController: UITableViewController{
     
     //MARK: --stored properties
@@ -21,7 +20,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     var petRef: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
     var price: NSDecimalNumber!
-    
     
     //MARK: -- outlets
     @IBOutlet weak var petImage: UIImageView!
@@ -104,15 +102,18 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     //MARK: --actions
     @IBAction func updateView(segue: UIStoryboardSegue){
         
+        //observe schedule values
         ref.observe(.value, with: { (snapshot) in
             
+            //get snapshot as dictionary
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 
+                //get snapshot values
                 let schedule = ScheduleModel(dictionary: dictionary)
                 
 //                print(schedule.date!)
                 
-                //set label w/ passed values
+                //set label w/ snapshot values
                 self.deatilsPetNameLBL.text = schedule.petName
                 self.detailsDateLBL.text = schedule.date
                 self.detailsTimeLBL.text = schedule.time
@@ -176,6 +177,7 @@ extension OwnerScheudleDetailsTableViewController: PKPaymentAuthorizationViewCon
     
     
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        
         //dimiss vc if canceled or transation complete
         controller.dismiss(animated: true, completion: nil)
         
