@@ -29,13 +29,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06/22/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSz-pf-SUj">
-                                            <rect key="frame" x="20" y="5" width="171" height="33.5"/>
+                                            <rect key="frame" x="20" y="5" width="171.5" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="eMX-Ff-dZ4">
-                                            <rect key="frame" x="305" y="12.5" width="34" height="18"/>
+                                            <rect key="frame" x="305.5" y="12.5" width="34" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.6554741154" green="0.012271597550000001" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -685,7 +685,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJu-aS-SZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="K38-OR-qfr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4306" y="2946"/>
+            <point key="canvasLocation" x="4308" y="2946"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="66c-CD-8i9">
@@ -723,60 +723,42 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="******" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p1c-q7-rvs">
-                                                <rect key="frame" x="47" y="293" width="281" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="******" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="utZ-Yp-aSZ">
-                                                <rect key="frame" x="47" y="360" width="281" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="943-774-8122" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yJN-hH-zU4">
-                                                <rect key="frame" x="47" y="540" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="428" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2245 Gator Dr." borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="feq-EX-uAs">
-                                                <rect key="frame" x="47" y="405" width="188" height="30"/>
+                                                <rect key="frame" x="47" y="293" width="188" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Orlando" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="LAC-TN-eCm">
-                                                <rect key="frame" x="47" y="450" width="188" height="30"/>
+                                                <rect key="frame" x="47" y="338" width="188" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="32802" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="oiB-z7-Zzc">
-                                                <rect key="frame" x="47" y="495" width="188" height="30"/>
+                                                <rect key="frame" x="47" y="383" width="188" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="240" borderStyle="roundedRect" placeholder="Apt/Unit" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="FBi-X7-ih8">
-                                                <rect key="frame" x="245" y="405" width="83" height="30"/>
+                                                <rect key="frame" x="245" y="293" width="83" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="FL" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Iuj-9w-iXY">
-                                                <rect key="frame" x="245" y="450" width="83" height="30"/>
+                                                <rect key="frame" x="245" y="338" width="83" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password must be six characters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WRa-EN-UKz">
-                                                <rect key="frame" x="47" y="328" width="281" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZG-NH-bXV">
                                                 <rect key="frame" x="94" y="116" width="187.5" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -791,43 +773,34 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="WRa-EN-UKz" firstAttribute="top" secondItem="p1c-q7-rvs" secondAttribute="bottom" constant="5" id="0Sg-eE-SDF"/>
                                             <constraint firstItem="oiB-z7-Zzc" firstAttribute="top" secondItem="LAC-TN-eCm" secondAttribute="bottom" constant="15" id="0nh-Pb-U0s"/>
-                                            <constraint firstItem="Iuj-9w-iXY" firstAttribute="width" secondItem="FBi-X7-ih8" secondAttribute="width" id="12S-8w-CSj"/>
-                                            <constraint firstItem="p1c-q7-rvs" firstAttribute="top" secondItem="EpI-nm-FoG" secondAttribute="bottom" constant="15" id="26C-mS-nr7"/>
+                                            <constraint firstItem="Iuj-9w-iXY" firstAttribute="width" secondItem="FBi-X7-ih8" secondAttribute="width" id="2Sk-vg-FB1"/>
+                                            <constraint firstItem="yJN-hH-zU4" firstAttribute="leading" secondItem="oiB-z7-Zzc" secondAttribute="leading" id="2vt-UO-xMp"/>
                                             <constraint firstItem="EpI-nm-FoG" firstAttribute="centerX" secondItem="S8Y-Xb-OhQ" secondAttribute="centerX" id="4AH-uz-hz9"/>
-                                            <constraint firstItem="WRa-EN-UKz" firstAttribute="centerX" secondItem="p1c-q7-rvs" secondAttribute="centerX" id="5Ou-f3-CbW"/>
                                             <constraint firstItem="LAC-TN-eCm" firstAttribute="top" secondItem="feq-EX-uAs" secondAttribute="bottom" constant="15" id="7Jd-Ua-Dsp"/>
                                             <constraint firstItem="feq-EX-uAs" firstAttribute="width" secondItem="maH-iP-lfd" secondAttribute="width" multiplier="0.5" id="7Xc-Pr-krz"/>
                                             <constraint firstItem="S8Y-Xb-OhQ" firstAttribute="width" secondItem="hVr-Hz-CV8" secondAttribute="width" id="7py-4n-MYy"/>
-                                            <constraint firstItem="WRa-EN-UKz" firstAttribute="width" secondItem="p1c-q7-rvs" secondAttribute="width" id="AqE-vG-WkY"/>
-                                            <constraint firstItem="FBi-X7-ih8" firstAttribute="trailing" secondItem="utZ-Yp-aSZ" secondAttribute="trailing" id="C1k-PG-CVA"/>
+                                            <constraint firstItem="FBi-X7-ih8" firstAttribute="trailing" secondItem="EpI-nm-FoG" secondAttribute="trailing" id="BXq-4x-rAr"/>
                                             <constraint firstItem="LAC-TN-eCm" firstAttribute="centerX" secondItem="feq-EX-uAs" secondAttribute="centerX" id="E8P-ea-4V8"/>
+                                            <constraint firstItem="feq-EX-uAs" firstAttribute="top" secondItem="EpI-nm-FoG" secondAttribute="bottom" constant="15" id="GZO-Ff-CD0"/>
                                             <constraint firstItem="hVr-Hz-CV8" firstAttribute="top" secondItem="LZG-NH-bXV" secondAttribute="bottom" constant="15" id="Gek-CB-zkN"/>
-                                            <constraint firstItem="utZ-Yp-aSZ" firstAttribute="width" secondItem="WRa-EN-UKz" secondAttribute="width" id="JRN-sL-5Hy"/>
-                                            <constraint firstItem="feq-EX-uAs" firstAttribute="leading" secondItem="utZ-Yp-aSZ" secondAttribute="leading" id="Lk6-lX-XRc"/>
+                                            <constraint firstItem="Iuj-9w-iXY" firstAttribute="centerX" secondItem="FBi-X7-ih8" secondAttribute="centerX" id="QP4-sh-5KJ"/>
                                             <constraint firstItem="S8Y-Xb-OhQ" firstAttribute="top" secondItem="hVr-Hz-CV8" secondAttribute="bottom" constant="15" id="QnM-EG-hRa"/>
                                             <constraint firstItem="Iuj-9w-iXY" firstAttribute="top" secondItem="FBi-X7-ih8" secondAttribute="bottom" constant="15" id="Qzf-og-SSg"/>
                                             <constraint firstItem="LAC-TN-eCm" firstAttribute="width" secondItem="feq-EX-uAs" secondAttribute="width" id="Uu4-PO-9GW"/>
                                             <constraint firstItem="EpI-nm-FoG" firstAttribute="top" secondItem="S8Y-Xb-OhQ" secondAttribute="bottom" constant="15" id="UuP-Y4-Dmt"/>
                                             <constraint firstItem="yJN-hH-zU4" firstAttribute="top" secondItem="oiB-z7-Zzc" secondAttribute="bottom" constant="15" id="YoE-Q5-36G"/>
                                             <constraint firstItem="oiB-z7-Zzc" firstAttribute="centerX" secondItem="LAC-TN-eCm" secondAttribute="centerX" id="ZVH-P6-pHg"/>
-                                            <constraint firstItem="p1c-q7-rvs" firstAttribute="width" secondItem="EpI-nm-FoG" secondAttribute="width" id="bIQ-G3-Rus"/>
+                                            <constraint firstItem="FBi-X7-ih8" firstAttribute="top" secondItem="EpI-nm-FoG" secondAttribute="bottom" constant="15" id="Zil-uQ-v4m"/>
                                             <constraint firstItem="hVr-Hz-CV8" firstAttribute="centerX" secondItem="maH-iP-lfd" secondAttribute="centerX" id="cfI-hS-Fgw"/>
                                             <constraint firstItem="S8Y-Xb-OhQ" firstAttribute="centerX" secondItem="hVr-Hz-CV8" secondAttribute="centerX" id="d22-Yr-pV7"/>
                                             <constraint firstItem="oiB-z7-Zzc" firstAttribute="width" secondItem="LAC-TN-eCm" secondAttribute="width" id="dwH-qi-GBb"/>
-                                            <constraint firstItem="utZ-Yp-aSZ" firstAttribute="top" secondItem="WRa-EN-UKz" secondAttribute="bottom" constant="15" id="h4b-Nn-ao5"/>
+                                            <constraint firstItem="feq-EX-uAs" firstAttribute="leading" secondItem="EpI-nm-FoG" secondAttribute="leading" id="gwi-bK-Ql2"/>
                                             <constraint firstItem="LZG-NH-bXV" firstAttribute="width" secondItem="maH-iP-lfd" secondAttribute="width" multiplier="0.5" id="hUH-eG-SLd"/>
-                                            <constraint firstItem="Iuj-9w-iXY" firstAttribute="centerX" secondItem="FBi-X7-ih8" secondAttribute="centerX" id="huD-Th-a8G"/>
                                             <constraint firstItem="hVr-Hz-CV8" firstAttribute="width" secondItem="maH-iP-lfd" secondAttribute="width" multiplier="0.75" id="ntr-Ew-0fi"/>
                                             <constraint firstItem="FBi-X7-ih8" firstAttribute="width" secondItem="maH-iP-lfd" secondAttribute="width" multiplier="0.22" id="pvm-cd-epL"/>
-                                            <constraint firstItem="feq-EX-uAs" firstAttribute="top" secondItem="utZ-Yp-aSZ" secondAttribute="bottom" constant="15" id="qCD-2v-hmE"/>
                                             <constraint firstItem="yJN-hH-zU4" firstAttribute="width" secondItem="maH-iP-lfd" secondAttribute="width" multiplier="0.75" id="rz6-NS-Sky"/>
-                                            <constraint firstItem="p1c-q7-rvs" firstAttribute="centerX" secondItem="EpI-nm-FoG" secondAttribute="centerX" id="uSM-Qz-6ky"/>
                                             <constraint firstItem="EpI-nm-FoG" firstAttribute="width" secondItem="S8Y-Xb-OhQ" secondAttribute="width" id="vrk-sf-plr"/>
-                                            <constraint firstItem="FBi-X7-ih8" firstAttribute="top" secondItem="utZ-Yp-aSZ" secondAttribute="bottom" constant="15" id="x0H-CN-zgg"/>
-                                            <constraint firstItem="yJN-hH-zU4" firstAttribute="centerX" secondItem="utZ-Yp-aSZ" secondAttribute="centerX" id="xIq-rT-3Z6"/>
-                                            <constraint firstItem="utZ-Yp-aSZ" firstAttribute="centerX" secondItem="WRa-EN-UKz" secondAttribute="centerX" id="zvd-iu-Ync"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="b0m-3g-00l">
@@ -873,8 +846,22 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editAddress" destination="feq-EX-uAs" id="Z9e-Nx-giw"/>
+                        <outlet property="editAptNum" destination="FBi-X7-ih8" id="a64-Fz-Bnb"/>
+                        <outlet property="editCity" destination="LAC-TN-eCm" id="ayI-Zk-h4p"/>
+                        <outlet property="editEmail" destination="EpI-nm-FoG" id="xwR-uA-dk0"/>
+                        <outlet property="editFirstName" destination="hVr-Hz-CV8" id="urf-bU-oPD"/>
+                        <outlet property="editLastName" destination="S8Y-Xb-OhQ" id="p4Q-MQ-NxN"/>
+                        <outlet property="editPhoneNum" destination="yJN-hH-zU4" id="nW3-rV-d2T"/>
+                        <outlet property="editState" destination="Iuj-9w-iXY" id="wdP-dp-Sn0"/>
+                        <outlet property="editZipCode" destination="oiB-z7-Zzc" id="jxB-Yc-bfy"/>
+                        <outlet property="profileImage" destination="b0m-3g-00l" id="rDh-Vv-E55"/>
+                        <segue destination="LAH-99-u7O" kind="unwind" identifier="updateProfile" unwindAction="updateProfileViewWithSegue:" id="Zpt-TD-TTR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oj1-iY-Iut" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="LAH-99-u7O" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5862" y="2946"/>
         </scene>
