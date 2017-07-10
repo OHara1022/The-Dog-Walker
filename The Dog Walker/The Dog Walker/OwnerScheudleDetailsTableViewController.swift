@@ -165,9 +165,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             self.present(applePayController, animated: true, completion: nil)
         }
     }
-    
- 
-    
 }
 
 //MARK: --extension payment delegate

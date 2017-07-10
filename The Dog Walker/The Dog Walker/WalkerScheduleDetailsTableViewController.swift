@@ -164,11 +164,9 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             
             //call vet phone number
             self.callNumber(self.selectedSchedule.vetPhone!)
-            
-            
         }))
         
-        callActionSheet.addAction(UIAlertAction(title: "Call Emergenct Contact", style: .destructive, handler: { action in
+        callActionSheet.addAction(UIAlertAction(title: "Call Emergency Contact", style: .destructive, handler: { action in
             
             //call emergency phone number
             self.callNumber(self.selectedSchedule.emergencyPhone!)
