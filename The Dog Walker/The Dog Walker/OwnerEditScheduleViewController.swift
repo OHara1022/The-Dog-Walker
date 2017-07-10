@@ -50,16 +50,22 @@ class OwnerEditScheduleViewController: UIViewController {
         editSpecialInsTF.text = specialIns
         editMedsTF.text = meds
         
+        if editSpecialInsTF.text == ""{
+         editSpecialInsTF.text = "None"
+        }
+        
     }
     
-    
+    //MARK: --viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
+        //perform segue to details w/ updated values
         self.performSegue(withIdentifier: "updateView", sender: self)
     }
     
     //MARK: --actions
     @IBAction func saveEditChanges(_ sender: Any) {
         
+        //get TF text
         let date = editDateTF.text
         let time = editTimeTF.text
         let duration = editDurationTF.text
@@ -67,9 +73,10 @@ class OwnerEditScheduleViewController: UIViewController {
         let petName = editPetNameTF.text
         let specialIns = editSpecialInsTF.text
         let meds = editMedsTF.text
-        
+        //populate schedule class
         let updatedSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!, price: price!)
         
+        //update schedule value in datebase
         ref.updateChildValues(["date": updatedSchedule.date, "time": updatedSchedule.time, "duration": updatedSchedule.duration, "price": updatedSchedule.price, "petName": updatedSchedule.petName, "specialIns": updatedSchedule.instructions, "meds": updatedSchedule.meds])
         
         //return to details vc

@@ -25,6 +25,7 @@ class Users{
     var profileImage: String?
     var roleID: String?
     var paidFlag: Bool?
+    var companyName: String?
     
     //for testing purpose remove before release!!!
     var password: String? //never store password in Firebase (for test purposes)

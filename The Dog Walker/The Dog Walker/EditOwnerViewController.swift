@@ -82,6 +82,7 @@ class EditOwnerViewController: UIViewController {
         //dev
         print("save owner changes")
         
+        //get TF text
         let firstName = editFirstName.text
         let lastName = editLastName.text
         let email = editEmail.text
@@ -92,13 +93,16 @@ class EditOwnerViewController: UIViewController {
         let zipCode = editZipCode.text
         let phoneNum = editPhoneNum.text
         
+        //populate user class w/ new values
         let updateProfile = Users(firstName: firstName!, lastName: lastName!, email: email!, address: address!, city: city!, state: state!, zipCode: zipCode!, phoneNumber: phoneNum!, uid: userID!, companyCode: companyCode!)
         
+        //check if apt has value
         if editAptNum.text != nil{
-            
+            //set apt # text
             updateProfile.aptNumber = aptNum!
         }
         
+        //update database w/ new values
         ref.updateChildValues(["firstName": updateProfile.firstName, "lastName": updateProfile.lastName, "email": updateProfile.email, "phoneNumber": updateProfile.phoneNumber, "uid": updateProfile.uid, "companyCode": updateProfile.companyCode, "address": updateProfile.address, "city": updateProfile.city, "state": updateProfile.state, "zipCode": updateProfile.zipCode, "aptNumber": updateProfile.aptNumber!])
         
         //segue to details, update view w/ new values
@@ -120,12 +124,5 @@ class EditOwnerViewController: UIViewController {
         alert.addAction(alertAction)
         present(alert, animated: true)
     }
-    
-    
-    
-    
- 
-
-
 
 }

@@ -33,7 +33,6 @@ class OwnerProfileTableViewController: UITableViewController {
     @IBOutlet weak var emergencyContactLabel: UILabel!
     @IBOutlet weak var emergencyPhoneLabel: UILabel!
     
-    
     //MARK: --viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,10 +71,12 @@ class OwnerProfileTableViewController: UITableViewController {
                     self.addressLabel.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
+                //get profile image
                 if let profileImgURL = user.profileImage{
-                    
+                    //dev
                     print(profileImgURL)
                     
+                    //set profile image w/ URL
                     self.profileImage.loadImageUsingCache(profileImgURL)
                 }
                 
@@ -143,8 +144,9 @@ class OwnerProfileTableViewController: UITableViewController {
                     self.addressLabel.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
+                //set profile img w/ URL
                 if let profileImgURL = user.profileImage{
-                    
+                    //dev
                     print(profileImgURL)
                     
                     self.profileImage.loadImageUsingCache(profileImgURL)

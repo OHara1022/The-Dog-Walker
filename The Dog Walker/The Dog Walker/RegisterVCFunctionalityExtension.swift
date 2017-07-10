@@ -34,6 +34,7 @@ extension RegisterViewController{
         self.scrollView.scrollIndicatorInsets = contentInsets
     }
     
+    //MARK: -- tfDelegate
     func setTFDelegate(){
         //set TF delegate to self
         firstNameTF.delegate = self

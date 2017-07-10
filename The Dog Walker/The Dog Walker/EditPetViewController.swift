@@ -28,6 +28,7 @@ class EditPetViewController: UIViewController {
     @IBOutlet weak var editVetPhone: UITextField!
     @IBOutlet weak var editEmergencyContact: UITextField!
     @IBOutlet weak var editEmergencyPhone: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     
     //MARK: -- viewDidLoad
@@ -64,6 +65,10 @@ class EditPetViewController: UIViewController {
                 self.editEmergencyContact.text = pet.emergencyContact!
                 self.editEmergencyPhone.text = pet.emergencyPhone!
                 
+                if self.editSpecialIns.text == ""{
+                 self.editSpecialIns.text = "None"
+                }
+                
                 if let petImgURL = pet.petImage{
                     //dev
                     print(petImgURL)
@@ -80,7 +85,12 @@ class EditPetViewController: UIViewController {
         
     }
     
+    //set size of scroll view to the view content size
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: 900)
+    }
     
+    //MARK: --actions
     @IBAction func savePetChanges(_ sender: Any) {
         
         //dev

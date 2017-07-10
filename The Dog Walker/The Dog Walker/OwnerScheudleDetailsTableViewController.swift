@@ -88,10 +88,13 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     //MARK: --navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
+        //check identifier
         if segue.identifier == "edit"{
             
+            //get destination of segue
             let editDetails = segue.destination as! OwnerEditScheduleViewController
 
+            //set TF with schedule data
             editDetails.date = selectedSchedule.date
             editDetails.time = selectedSchedule.time
             editDetails.duration = selectedSchedule.duration
@@ -125,6 +128,10 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                 self.specialInsLBL.text = schedule.specialIns
                 self.medsLBL.text = schedule.meds
                 self.priceLBL.text = "$" + schedule.price!
+                
+                if self.specialInsLBL.text == ""{
+                    self.specialInsLBL.text = "None"
+                }
                 
             }
             

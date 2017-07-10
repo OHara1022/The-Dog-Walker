@@ -7,10 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
 class WalkerEditScheduleViewController: UIViewController {
     
+    //MARK: --stored properties
     
+    //MARK: --outlets
+    
+    //MARK: --viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    //MARK: --actions
     @IBAction func saveChangesBTN(_ sender: Any) {
         //dev
         print("save edit")
@@ -25,11 +36,7 @@ class WalkerEditScheduleViewController: UIViewController {
 
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
 
 
 

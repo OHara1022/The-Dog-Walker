@@ -76,8 +76,6 @@ class WalkerProfileTableViewController: UITableViewController {
                 }
                 
                 if let profileImgURL = user.profileImage{
-
-                    
                     self.profileImage.loadImageUsingCache(profileImgURL)
                 }
                 
@@ -108,6 +106,8 @@ class WalkerProfileTableViewController: UITableViewController {
                 //populate label w/ data from FB
                 self.nameLBL.text = user.firstName! + " " + user.lastName!
                 self.emailLBL.text = user.email!
+                self.phoneLBL.text = user.phoneNumber!
+                
                 //if apt number add to address label
                 if user.aptNumber == ""{
                     //dev

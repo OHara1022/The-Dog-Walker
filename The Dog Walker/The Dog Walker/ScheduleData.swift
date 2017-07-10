@@ -23,7 +23,6 @@ class ScheduleData{
     var checkIn: Bool?
     var checkOut: Bool?
     
-    
     //init stored properties
     init(date: String, time: String, duration: String, petName: String, instructions: String, meds: String, price: String) {
         

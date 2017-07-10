@@ -102,25 +102,28 @@ class WalkerSchedulesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //get cell w/ identifier
         cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
         
+        //get schedule data
         let schedules = clientSchedules[indexPath.row]
         
+        //get company code
         let code = schedules.companyCode!
         
+        //check company code
         if walkerCode == code{
             
-            // Configure the cell...
+            //set cell label text
             cell?.textLabel?.text = schedules.date!
             cell?.detailTextLabel?.text = schedules.petName!
             
             return cell!
         }
-        
+        //hide cell that dont match company code
         cell?.isHidden = true
-        
+        //return tableView cell
         return cell!
-        
     }
     
     

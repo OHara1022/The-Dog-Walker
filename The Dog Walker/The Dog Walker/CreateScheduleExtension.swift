@@ -68,10 +68,7 @@ extension CreateScheduleViewController{
     func donePickerPressed(){
         self.view.endEditing(true)
     }
-    
-    
 }
-
 
 extension CreateScheduleViewController: UIPickerViewDataSource{
     
@@ -147,10 +144,5 @@ extension CreateScheduleViewController: UIPickerViewDelegate{
         default:
             break
         }
-        
-        
     }
-    
-    
 }
-

@@ -39,6 +39,7 @@ class CreateScheduleViewController: UIViewController {
     @IBOutlet weak var petNameTF: UITextField!
     @IBOutlet weak var instructionTF: UITextField!
     @IBOutlet weak var medTF: UITextField!
+    @IBOutlet weak var specialInsLBL: UILabel!
     
     //MARK: --- viewDidLoad
     override func viewDidLoad() {
@@ -104,6 +105,14 @@ class CreateScheduleViewController: UIViewController {
                 self.vetPhone = pet.vetPhone!
                 self.emergencyContact = pet.emergencyContact!
                 self.emergencyPhone = pet.emergencyPhone!
+                
+                if self.instructionTF.text == ""{
+                    //dev
+                    print("INS EMPTY")
+                    
+                    //set text to none
+                    self.instructionTF.text = "None"
+                }
             
             }
             

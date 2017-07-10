@@ -34,6 +34,7 @@ class PetDetailsTableViewController: UITableViewController {
         ref = Database.database().reference().child("pets").child(userID!)
     }
     
+    //MARK: --viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         //observer pet info
         ref.observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -59,6 +60,10 @@ class PetDetailsTableViewController: UITableViewController {
                 self.specialInsLabel.text = pet.specialIns!
                 self.vetNameLabel.text = pet.vetName!
                 self.vetPhoneLabel.text = pet.vetPhone!
+                
+                if self.specialInsLabel.text == ""{
+                 self.specialInsLabel.text = "None"
+                }
                 
                 if let petImgURL = pet.petImage{
                     //dev

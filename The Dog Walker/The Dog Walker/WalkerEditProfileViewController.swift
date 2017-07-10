@@ -89,6 +89,31 @@ class WalkerEditProfileViewController: UIViewController {
     //MARK: --actions
     @IBAction func saveProfileChanges(_ sender: Any) {
         
+        let firstName = editFirstNameTF.text
+        let lastName = editLastNameTF.text
+        let email = editEmailTF.text
+        let address = editAddressTF.text
+        let aptNum = editAptNumTF.text
+        let city = editCityTF.text
+        let state = editStateTF.text
+        let zipCode = editZipCodeTF.text
+        let phoneNum = editPhoneNumTF.text
+        let companyName = editCompanyNameTF.text
+        
+        let updateProfile = Users(firstName: firstName!, lastName: lastName!, email: email!, address: address!, city: city!, state: state!, zipCode: zipCode!, phoneNumber: phoneNum!, uid: userID!, companyCode: companyCode!)
+        
+        if editAptNumTF.text != nil{
+            
+            updateProfile.aptNumber = aptNum!
+        }
+        
+        if editCompanyNameTF.text != nil{
+            
+            updateProfile.companyName = companyName!
+        }
+        
+        ref.updateChildValues(["firstName": updateProfile.firstName, "lastName": updateProfile.lastName, "email": updateProfile.email, "phoneNumber": updateProfile.phoneNumber, "uid": updateProfile.uid, "companyCode": updateProfile.companyCode, "address": updateProfile.address, "city": updateProfile.city, "state": updateProfile.state, "zipCode": updateProfile.zipCode, "aptNumber": updateProfile.aptNumber!, "companyName": updateProfile.companyName!])
+        
         //segue to details, update view w/ new values
         self.performSegue(withIdentifier: "updateWalker", sender: self)
 

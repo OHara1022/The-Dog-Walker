@@ -35,7 +35,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordLoginTF: UITextField!
     
     //MARK: -- viewDidLoad
-    //TODO: get snapshot of users, check role (walker/owner) - transition to proper homeVC
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,64 +102,67 @@ class LoginViewController: UIViewController {
                                 
                             }else if roleID == "Owner"{
                                 
-                                
                                 //present pet owner homeVC
                                 self.present(self.ownerhomeVC!, animated: true, completion: nil)
                             }
                         }
                         
-                        
                     }, withCancel: nil)
-                    
                 }
             }
         }
-        
     }
     
-    //TODO: display alert with edit text - send email reset w/ firebase auth
+    //forgotPasword
     @IBAction func forgotPassword(_ sender: UIButton) {
         
+        //create alert controller
         let alert = UIAlertController(title: "Reset Password", message: "Please enter email address", preferredStyle: .alert)
         
+        //add textField to alert
         alert.addTextField { (textField) in
             
+            //set placeholder text
             textField.placeholder = "Enter email address"
         }
         
+        //add action to alert
         alert.addAction(UIAlertAction(title: "Send Email", style: .default, handler: { (action) in
             
+            //get alert textField
             if let textField = alert.textFields{
+                //set array of TF info
                 let fields = textField as [UITextField]
+                //get text from TF
                 let enteredText = fields[0].text
                 //dev
                 print(enteredText!)
                 
-                    Auth.auth().sendPasswordReset(withEmail: enteredText!, completion: { (error) in
-                        
-                            //check if email reset failed
-                            if let error = error{
-                                //dev
-                                print(error.localizedDescription)
-                                //alert user of send email error
-                                FieldValidation.textFieldAlert("Email address not registered", message: "Please register for an account", presenter: self)
-                                return
-                            }
-                    })
-
+                //send reset password email w/ FB Auth
+                Auth.auth().sendPasswordReset(withEmail: enteredText!, completion: { (error) in
+                    
+                    //check if email reset failed
+                    if let error = error{
+                        //dev
+                        print(error.localizedDescription)
+                        //alert user of send email error
+                        FieldValidation.textFieldAlert("Email address not registered", message: "Please register for an account", presenter: self)
+                        return
+                    }
+                })
             }
             
         }))
         
+        //add alert action
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        //present alert
         present(alert, animated: true)
     }
 }
 
-
 //MARK: -- extension TF delegate
 extension LoginViewController: UITextFieldDelegate{
-    
     
     //call TF shouldReturn method to move to next field on return selection
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -178,5 +180,5 @@ extension LoginViewController: UITextFieldDelegate{
         }
         return false
     }
-
+    
 }
