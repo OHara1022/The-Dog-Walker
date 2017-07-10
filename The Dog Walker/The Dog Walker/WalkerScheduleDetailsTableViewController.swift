@@ -54,9 +54,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         let tintdir = directionsImg?.withRenderingMode(.alwaysTemplate)
         directionBtnOutlet.setImage(tintdir, for: .normal)
         directionBtnOutlet.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
-        
-        
-        
+    
         //populate labels w/ schedule data
         petNameLabel.text = selectedSchedule.petName
         dateLabel.text = selectedSchedule.date
@@ -67,6 +65,10 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         clientLabel.text = selectedSchedule.clientName
         clientAddress.text = selectedSchedule.clientAddress
         clientPhone.text = selectedSchedule.clientPhone
+        
+        if specialInsLabel.text == ""{
+         specialInsLabel.text = "None"
+        }
         
         //check if walk was paid
         if selectedSchedule.paidFlag == true{

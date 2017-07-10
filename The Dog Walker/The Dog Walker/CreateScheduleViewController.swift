@@ -104,6 +104,7 @@ class CreateScheduleViewController: UIViewController {
                 self.vetPhone = pet.vetPhone!
                 self.emergencyContact = pet.emergencyContact!
                 self.emergencyPhone = pet.emergencyPhone!
+            
             }
             
         }, withCancel: nil)

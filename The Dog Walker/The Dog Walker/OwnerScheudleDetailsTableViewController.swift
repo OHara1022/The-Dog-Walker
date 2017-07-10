@@ -52,6 +52,10 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         medsLBL.text = selectedSchedule.meds
         priceLBL.text = "$" + selectedSchedule.price!
         price = NSDecimalNumber(string: selectedSchedule.price!)
+        
+        if specialInsLBL.text == ""{
+            specialInsLBL.text = "None"
+        }
        
     }
     
