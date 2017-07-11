@@ -49,6 +49,36 @@ class LoginViewController: UIViewController {
                 //dev
                 print("LOGGED IN" + " " + user.email!)
                 print("AUTH" + " " + (auth.currentUser?.uid)!)
+                //set ref to DB
+//                self.ref = Database.database().reference().child("users").child(user.uid)
+//                
+//                //obserserve event to check role on login
+//                self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
+//                    
+//                    //get snapshot as dictionary
+//                    if let dictionary = snapshot.value as? [String: AnyObject]{
+//                        
+//                        //get userModal w/ dictionary vallues
+//                        let user = UserModel(dictionary: dictionary)
+//                        
+//                        //get user roleID
+//                        let roleID = user.roleID
+//                        
+//                        //check role id
+//                        if roleID == "Walker"{
+//                            
+//                            //present walker homeVC
+//                            self.present(self.walkerhomeVC!, animated: true, completion: nil)
+//                            
+//                        }else if roleID == "Owner"{
+//                            
+//                            //present pet owner homeVC
+//                            self.present(self.ownerhomeVC!, animated: true, completion: nil)
+//                        }
+//                    }
+//                    
+//                }, withCancel: nil)
+
             }
         }
     }

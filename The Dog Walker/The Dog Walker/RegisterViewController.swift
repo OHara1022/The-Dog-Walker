@@ -42,6 +42,14 @@ class RegisterViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //set radius so image is circle
+        let radius = self.profileImage.frame.height / 2
+        self.profileImage.layer.cornerRadius = radius
+        self.profileImage.layer.masksToBounds = true
+        self.profileImage.contentMode = .scaleAspectFill
+        self.profileImage.clipsToBounds = true
+        
+        
         //create reference to database
         ref = Database.database().reference()
         
@@ -70,6 +78,8 @@ class RegisterViewController: UIViewController{
         
         //present image action sheet
         presentImgOptions()
+        
+        
     }
     
     //MARK: --segue

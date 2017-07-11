@@ -107,6 +107,8 @@ class OwnerScheduleTableViewController: UITableViewController {
             //dev
             print(snapshot)
             
+             if schedule.paidFlag == true{
+            
                 //set paid label to green
                 cell.paidLabel.textColor = UIColor.green
                 
@@ -116,6 +118,7 @@ class OwnerScheduleTableViewController: UITableViewController {
                     //reload tableView
                     self.tableView.reloadData()
                 })
+            }
             
         }, withCancel: nil)
         
