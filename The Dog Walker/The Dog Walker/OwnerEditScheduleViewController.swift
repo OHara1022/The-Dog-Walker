@@ -53,7 +53,6 @@ class OwnerEditScheduleViewController: UIViewController {
         if editSpecialInsTF.text == ""{
          editSpecialInsTF.text = "None"
         }
-        
     }
     
     //MARK: --viewWillDisappear
