@@ -34,6 +34,8 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var paidLabel: UILabel!
     @IBOutlet weak var phoneBtnOutlet: UIButton!
     @IBOutlet weak var directionBtnOutlet: UIButton!
+    @IBOutlet weak var checkInBtn: UIButton!
+    @IBOutlet weak var checkOutBtn: UIButton!
     
     
     //MARK: -- viewDidLoad
@@ -54,7 +56,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         let tintdir = directionsImg?.withRenderingMode(.alwaysTemplate)
         directionBtnOutlet.setImage(tintdir, for: .normal)
         directionBtnOutlet.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
-    
+        
         //populate labels w/ schedule data
         petNameLabel.text = selectedSchedule.petName
         dateLabel.text = selectedSchedule.date
@@ -66,8 +68,18 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         clientAddress.text = selectedSchedule.clientAddress
         clientPhone.text = selectedSchedule.clientPhone
         
+        //check for pet image url
+        if let petImgURL = selectedSchedule.petImageUrl{
+            //dev
+            print(petImgURL)
+            //set image to imageView
+            self.petImage.loadImageUsingCache(petImgURL)
+        }
+        
+        //check if there are special ins
         if specialInsLabel.text == ""{
-         specialInsLabel.text = "None"
+            //set special ins to none
+            specialInsLabel.text = "None"
         }
         
         //check if walk was paid
@@ -76,13 +88,49 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             paidLabel.textColor = UIColor.green
         }
         
-        if let petImgURL = selectedSchedule.petImageUrl{
-            //dev
-            print(petImgURL)
-            //set image to imageView
-            self.petImage.loadImageUsingCache(petImgURL)
-        }
+    }
+    
+    //MARL: -- viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
         
+        
+        //observe schedule values
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //get snapshot values
+            let values = snapshot.value as! NSDictionary
+            
+            //dev
+            print(values.value(forKey: "date") as! String)
+            
+            //get checkIn value
+            if let checkIn = values.value(forKey: "checkIn"){
+                
+                //check checkIn state
+                if checkIn as! Bool == true{
+                    //disable checkIn btn
+                    self.checkInBtn.isEnabled = false
+                    self.checkInBtn.setTitleColor(.gray, for: .disabled)
+                    
+                }else{
+                    
+                    //disable checkOut btn
+                    self.checkOutBtn.isEnabled = false
+                    self.checkOutBtn.setTitleColor(.gray, for: .disabled)
+                }
+                
+            }
+            //check checkOut state
+            if let checkOut = values.value(forKey: "checkOut"){
+                
+                if checkOut as! Bool == true{
+                    //disable checkOut btn
+                    self.checkOutBtn.isEnabled = false
+                    self.checkOutBtn.setTitleColor(.gray, for: .disabled)
+                }
+            }
+            
+        }, withCancel: nil)
     }
     
     //MARK: -- actions
@@ -93,6 +141,12 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             
             //set checkIn to true
             self.ref.updateChildValues(["checkIn": true])
+            
+            self.checkOutBtn.isEnabled = true
+            self.checkOutBtn.setTitleColor(UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0), for: .normal)
+            
+            self.checkInBtn.isEnabled = false
+            self.checkInBtn.setTitleColor(.gray, for: .disabled)
             
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -129,6 +183,10 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
                     
                     //set checkIn to true
                     self.ref.updateChildValues(["checkOut": true, "notes": enteredText!])
+                    
+                    //disable checkOut btn
+                    self.checkOutBtn.isEnabled = false
+                    self.checkOutBtn.setTitleColor(.gray, for: .disabled)
                 }
             }
             

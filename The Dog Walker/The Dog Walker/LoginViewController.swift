@@ -49,6 +49,7 @@ class LoginViewController: UIViewController {
                 //dev
                 print("LOGGED IN" + " " + user.email!)
                 print("AUTH" + " " + (auth.currentUser?.uid)!)
+                
                 //set ref to DB
 //                self.ref = Database.database().reference().child("users").child(user.uid)
 //                
@@ -210,5 +211,4 @@ extension LoginViewController: UITextFieldDelegate{
         }
         return false
     }
-    
 }
