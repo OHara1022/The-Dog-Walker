@@ -76,6 +76,7 @@ class WalkerProfileTableViewController: UITableViewController {
                 }
                 
                 if let profileImgURL = user.profileImage{
+                    
                     self.profileImage.loadImageUsingCache(profileImgURL)
                 }
                 

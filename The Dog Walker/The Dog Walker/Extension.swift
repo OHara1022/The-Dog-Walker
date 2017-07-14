@@ -20,6 +20,7 @@ extension UIImageView{
         
         //set image to nil before load
         self.image = nil
+//        self.alpha = 0.0    
         
         //set radius so image is circle
         let radius = self.frame.height / 2
@@ -58,6 +59,10 @@ extension UIImageView{
                     imageCache.setObject(downloadedImage, forKey: urlString as NSString)
                     //set downloaded image
                     self.image = downloadedImage
+                    UIView.animate(withDuration: 1.0, animations: {
+                        self.alpha = 1.0
+                        
+                    })
                 }
             })
             

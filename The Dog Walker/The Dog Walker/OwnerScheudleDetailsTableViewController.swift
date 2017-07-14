@@ -42,25 +42,42 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         //get ref to database
         ref = Database.database().reference().child("schedules").child(userID!).child(selectedSchedule.scheduleKey!)
         petRef = Database.database().reference().child("pets").child(userID!)
-        
-        //set label w/ passed values
-        deatilsPetNameLBL.text = selectedSchedule.petName
-        detailsDateLBL.text = selectedSchedule.date
-        detailsTimeLBL.text = selectedSchedule.time
-        durationLBL.text = selectedSchedule.duration
-        specialInsLBL.text = selectedSchedule.specialIns
-        medsLBL.text = selectedSchedule.meds
-        priceLBL.text = "$" + selectedSchedule.price!
-        price = NSDecimalNumber(string: selectedSchedule.price!)
-        
-        if specialInsLBL.text == ""{
-            specialInsLBL.text = "None"
-        }
-       
     }
     
     //MARK: --viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
+        
+        //observe schedule values
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //get snapshot values
+                let schedule = ScheduleModel(dictionary: dictionary)
+                
+                //                print(schedule.date!)
+                
+                //set label w/ passed values
+                self.deatilsPetNameLBL.text = schedule.petName
+                self.detailsDateLBL.text = schedule.date
+                self.detailsTimeLBL.text = schedule.time
+                self.durationLBL.text = schedule.duration
+                self.specialInsLBL.text = schedule.specialIns
+                self.medsLBL.text = schedule.meds
+                self.priceLBL.text = "$" + schedule.price!
+                self.price = NSDecimalNumber(string: schedule.price!)
+                
+                if self.specialInsLBL.text == ""{
+                    self.specialInsLBL.text = "None"
+                }
+                
+                if self.selectedSchedule.checkOut == false{
+                    self.applePayBTN.isHidden = true
+                }
+            }
+            
+        }, withCancel: nil)
         
         petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
             
@@ -72,7 +89,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                 
                 //populate petModel w/ dictionary
                 let pet = PetModel(dictionary: dictionary)
-  
+                
                 if let petImgURL = pet.petImage{
                     //dev
                     print(petImgURL)
@@ -82,19 +99,19 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                 
             }
         }, withCancel: nil)
-
+        
     }
- 
+    
     //MARK: --navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         //check identifier
         if segue.identifier == "edit"{
             
             //get destination of segue
             let editDetails = segue.destination as! OwnerEditScheduleViewController
-
-            //set TF with schedule data
+            
+            //set TF with schedule data (ownerEditSchedules)
             editDetails.date = selectedSchedule.date
             editDetails.time = selectedSchedule.time
             editDetails.duration = selectedSchedule.duration
@@ -103,6 +120,31 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             editDetails.specialIns = selectedSchedule.specialIns
             editDetails.meds = selectedSchedule.meds
             editDetails.scheduleKey = selectedSchedule.scheduleKey
+            //
+            //            editDetails.scheduleKey = self.selectedSchedule.scheduleKey
+            //
+            //           //observe schedule values
+            //            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            //
+            //                //get snapshot as dictionary
+            //                if let dictionary = snapshot.value as? [String: AnyObject]{
+            //
+            //                    //get snapshot values
+            //                    let schedule = ScheduleModel(dictionary: dictionary)
+            //
+            //                    //                print(schedule.date!)
+            //
+            //                    //set label w/ passed values
+            //                    editDetails.petName = schedule.petName
+            //                    editDetails.date = schedule.date
+            //                    editDetails.time = schedule.time
+            //                    editDetails.duration = schedule.duration
+            //                    editDetails.specialIns = schedule.specialIns
+            //                    editDetails.meds = schedule.meds
+            //                    editDetails.price = schedule.price!
+            //                }
+            //
+            //            }, withCancel: nil)
         }
     }
     
@@ -110,7 +152,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     @IBAction func updateView(segue: UIStoryboardSegue){
         
         //observe schedule values
-        ref.observe(.value, with: { (snapshot) in
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             //get snapshot as dictionary
             if let dictionary = snapshot.value as? [String: AnyObject]{
@@ -118,7 +160,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                 //get snapshot values
                 let schedule = ScheduleModel(dictionary: dictionary)
                 
-//                print(schedule.date!)
+                //                print(schedule.date!)
                 
                 //set label w/ snapshot values
                 self.deatilsPetNameLBL.text = schedule.petName
@@ -132,12 +174,11 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                 if self.specialInsLBL.text == ""{
                     self.specialInsLBL.text = "None"
                 }
-                
             }
             
         }, withCancel: nil)
     }
-
+    
     
     //MARK: -- actions
     @IBAction func payBTN(_ sender: UIButton) {
@@ -163,6 +204,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             applePayController.delegate = self
             
             self.present(applePayController, animated: true, completion: nil)
+            
         }
     }
 }
@@ -181,7 +223,7 @@ extension OwnerScheudleDetailsTableViewController: PKPaymentAuthorizationViewCon
         //update paid flag to true
         ref.updateChildValues(["paidFlag": true])
         
-}
+    }
     
     
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {

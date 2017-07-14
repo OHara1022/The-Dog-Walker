@@ -17,8 +17,7 @@ class OwnerScheduleTableViewController: UITableViewController {
     var paidRef: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid//get current user id
     var schedules = [ScheduleModel]()
-    var paid: String = "PAID"
-    var unpaid: String = "Unpaid"//figure out how to change cell label text once paid (color changes text does not)
+    var paid: String = "UNPAID"
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
@@ -93,34 +92,36 @@ class OwnerScheduleTableViewController: UITableViewController {
         
         //populate labels with schdule data
         cell.dateLabel.text = schedule.date!
-        cell.paidLabel.text = paid
+        
+        //TODO: fix paid label to show on walk completion
+//        cell.paidLabel.text = paid
         
         //check if payment was made
-        if schedule.paidFlag == true{
-            //set paid label to green
-            cell.paidLabel.textColor = UIColor.green
-        }
+//        if schedule.paidFlag == true{
+//            //set paid label to green
+//            cell.paidLabel.textColor = UIColor.green
+//        }
         
         //get ref to schedules
-        paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
-            
-            //dev
-            print(snapshot)
-            
-             if schedule.paidFlag == true{
-            
-                //set paid label to green
-                cell.paidLabel.textColor = UIColor.green
-                
-                //dispatch on main thread or app will crash!!
-                DispatchQueue.main.async(execute: {
-                    
-                    //reload tableView
-                    self.tableView.reloadData()
-                })
-            }
-            
-        }, withCancel: nil)
+//        paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
+//            
+//            //dev
+//            print(snapshot)
+//            
+////             if schedule.paidFlag == true{
+//            
+//                //set paid label to green
+//                cell.paidLabel.textColor = UIColor.green
+//                
+//                //dispatch on main thread or app will crash!!
+//                DispatchQueue.main.async(execute: {
+//                    
+//                    //reload tableView
+//                    self.tableView.reloadData()
+//                })
+////            }
+//            
+//        }, withCancel: nil)
         
         return cell
     }

@@ -173,7 +173,7 @@ class CreateScheduleViewController: UIViewController {
             let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!, price: price!)
             
             //set values to push to firebase
-            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "price": newSchedule.price, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": address!, "paidFlag": false, "checkIn": false, "companyCode": companyCode!, "vetName": vetName!, "vetPhone": vetPhone!, "petImage": petImageUrl!, "emergencyContact": emergencyContact!, "emergencyPhone": emergencyPhone!])
+            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "price": newSchedule.price, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": address!, "paidFlag": false, "checkIn": false, "checkOut": false, "companyCode": companyCode!, "vetName": vetName!, "vetPhone": vetPhone!, "petImage": petImageUrl!, "emergencyContact": emergencyContact!, "emergencyPhone": emergencyPhone!])
             //dev
             print("save schedule")
             //dismiss VC

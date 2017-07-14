@@ -40,26 +40,48 @@ class OwnerEditScheduleViewController: UIViewController {
         
         //init ref to database
         ref = Database.database().reference().child("schedules").child(userID!).child(scheduleKey!)
-
-        //populate TF w/ passed data
-        editDateTF.text = date
-        editTimeTF.text = time
-        editDurationTF.text = duration
-        editPriceLBL.text = price!
-        editPetNameTF.text = petName
-        editSpecialInsTF.text = specialIns
-        editMedsTF.text = meds
         
-        if editSpecialInsTF.text == ""{
-         editSpecialInsTF.text = "None"
-        }
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //get snapshot values
+                let schedule = ScheduleModel(dictionary: dictionary)
+                
+                //                print(schedule.date!)
+                
+                //set label w/ passed values
+                //populate TF w/ passed data
+                self.editDateTF.text = schedule.date
+                 self.editTimeTF.text =  schedule.time
+                 self.editDurationTF.text =  schedule.duration
+                 self.editPriceLBL.text =  schedule.price
+                self.editPetNameTF.text =  schedule.petName
+                 self.editSpecialInsTF.text =  schedule.specialIns
+                 self.editMedsTF.text =  schedule.meds
+                
+                if  self.editSpecialInsTF.text == ""{
+                     self.editSpecialInsTF.text = "None"
+                }
+            }
+            
+        }, withCancel: nil)
+
+//        //populate TF w/ passed data
+//        editDateTF.text = date
+//        editTimeTF.text = time
+//        editDurationTF.text = duration
+//        editPriceLBL.text = price
+//        editPetNameTF.text = petName
+//        editSpecialInsTF.text = specialIns
+//        editMedsTF.text = meds
+//        
+//        if editSpecialInsTF.text == ""{
+//         editSpecialInsTF.text = "None"
+//        }
     }
     
-    //MARK: --viewWillDisappear
-    override func viewWillDisappear(_ animated: Bool) {
-        //perform segue to details w/ updated values
-        self.performSegue(withIdentifier: "updateView", sender: self)
-    }
     
     //MARK: --actions
     @IBAction func saveEditChanges(_ sender: Any) {
@@ -78,7 +100,7 @@ class OwnerEditScheduleViewController: UIViewController {
         //update schedule value in datebase
         ref.updateChildValues(["date": updatedSchedule.date, "time": updatedSchedule.time, "duration": updatedSchedule.duration, "price": updatedSchedule.price, "petName": updatedSchedule.petName, "specialIns": updatedSchedule.instructions, "meds": updatedSchedule.meds])
         
-        //return to details vc
-        _ = navigationController?.popViewController(animated: true)
+        //perform segue to details w/ updated values
+        self.performSegue(withIdentifier: "updateView", sender: self)
     }
 }
