@@ -11,7 +11,6 @@ import Firebase
 
 class OwnerEditScheduleViewController: UIViewController {
     
-    
     //MARK: --stored properties
     var ref: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
@@ -68,18 +67,6 @@ class OwnerEditScheduleViewController: UIViewController {
             
         }, withCancel: nil)
 
-//        //populate TF w/ passed data
-//        editDateTF.text = date
-//        editTimeTF.text = time
-//        editDurationTF.text = duration
-//        editPriceLBL.text = price
-//        editPetNameTF.text = petName
-//        editSpecialInsTF.text = specialIns
-//        editMedsTF.text = meds
-//        
-//        if editSpecialInsTF.text == ""{
-//         editSpecialInsTF.text = "None"
-//        }
     }
     
     

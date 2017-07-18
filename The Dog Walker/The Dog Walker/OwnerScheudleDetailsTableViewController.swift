@@ -122,31 +122,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             editDetails.specialIns = selectedSchedule.specialIns
             editDetails.meds = selectedSchedule.meds
             editDetails.scheduleKey = selectedSchedule.scheduleKey
-            //
-            //            editDetails.scheduleKey = self.selectedSchedule.scheduleKey
-            //
-            //           //observe schedule values
-            //            ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            //
-            //                //get snapshot as dictionary
-            //                if let dictionary = snapshot.value as? [String: AnyObject]{
-            //
-            //                    //get snapshot values
-            //                    let schedule = ScheduleModel(dictionary: dictionary)
-            //
-            //                    //                print(schedule.date!)
-            //
-            //                    //set label w/ passed values
-            //                    editDetails.petName = schedule.petName
-            //                    editDetails.date = schedule.date
-            //                    editDetails.time = schedule.time
-            //                    editDetails.duration = schedule.duration
-            //                    editDetails.specialIns = schedule.specialIns
-            //                    editDetails.meds = schedule.meds
-            //                    editDetails.price = schedule.price!
-            //                }
-            //
-            //            }, withCancel: nil)
+       
         }
     }
     

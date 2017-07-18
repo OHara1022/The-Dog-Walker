@@ -558,14 +558,6 @@
             </objects>
             <point key="canvasLocation" x="1589.5999999999999" y="-125.4872563718141"/>
         </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="5Hx-Zw-ADw">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="walkerReg" id="oe4-RY-WDV" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VKT-eY-RbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1671" y="716"/>
-        </scene>
         <!--Pet Registration-->
         <scene sceneID="0Ef-Lt-6jm">
             <objects>

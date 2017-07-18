@@ -9,8 +9,51 @@
 import Foundation
 import UIKit
 
+extension CreateScheduleViewController: UITextFieldDelegate{
+    
+    //MARK: -- textFieldDelegate
+    //call textfieldDidBeginEditing for keyboard functionality
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeField = textField
+    }
+    
+    //call textfieldDidEndEditing for keyboard functionality
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeField = nil
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        switch textField {
+        case petNameTF:
+            instructionTF.becomeFirstResponder()
+            return true
+        case instructionTF:
+            medTF.becomeFirstResponder()
+            return true
+        case medTF:
+            self.view.endEditing(true)
+            return true
+
+        default:
+            break
+        }
+        return false
+    }
+}
 
 extension CreateScheduleViewController{
+    
+    func setTFDelegate(){
+        
+        dateTF.delegate = self
+        timeTF.delegate = self
+        durationTF.delegate = self
+        petNameTF.delegate = self
+        instructionTF.delegate = self
+        medTF.delegate = self
+        
+    }
     
     //MARK: -- keyboard editing functionality
     //reference used for this functionality:
@@ -89,6 +132,7 @@ extension CreateScheduleViewController{
     
     //stop editing on date picker
     func donePickerPressed(){
+        
         self.view.endEditing(true)
     }
 }

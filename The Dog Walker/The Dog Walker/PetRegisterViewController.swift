@@ -52,13 +52,6 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //set radius so image is circle
-//        let radius = self.petImage.frame.height / 2
-//        self.petImage.layer.cornerRadius = radius
-//        self.petImage.layer.masksToBounds = true
-//        self.petImage.contentMode = .scaleAspectFill
-//        self.petImage.clipsToBounds = true
-        
         //dev
         print("testID" + " " + userID!)
         
@@ -79,7 +72,6 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
         
         //set TF delegates
         setTFDelegate()
-    
     }
     
     //MARK: -- actions
@@ -94,7 +86,6 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
         
         //present image option for camera or library
         presentImgOptions()
-        
     }
     
     @IBAction func petSave(_ sender: UIBarButtonItem) {

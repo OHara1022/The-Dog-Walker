@@ -53,6 +53,9 @@ class CreateScheduleViewController: UIViewController {
         petRef = Database.database().reference().child("pets").child(userID!)
         userRef = Database.database().reference().child("users").child(userID!)
         
+        //set TF delegate
+        setTFDelegate()
+        
         //init time picker & set mode, inputView, & target
         timePicker = UIDatePicker()
         timePicker.datePickerMode = .time
@@ -155,17 +158,6 @@ class CreateScheduleViewController: UIViewController {
             
         }, withCancel: nil)
     }
-    
-    //reference to owner profiles VC - instantiant ownerProfile VC
-    lazy var schedule: UIViewController? = {
-        
-        //init profileVC w/ identifier
-        let schedule = self.storyboard?.instantiateViewController(withIdentifier: "schedule")
-        //return vc
-        return schedule
-    }()
-
-
 
     //MARK: -- actions
     @IBAction func saveSchedule(_ sender: Any) {

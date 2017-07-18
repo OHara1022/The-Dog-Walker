@@ -15,7 +15,7 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
     var ref: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
     var companyCode: String?
-    var profileImageUrl: String?
+    
     
     //MARK: --outlets
     @IBOutlet weak var profileImage: UIImageView!
@@ -34,7 +34,7 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
         super.viewDidLoad()
         
         //set DB reference
-        ref = Database.database().reference().child("users").child(userID!)
+        ref = Database.database().reference().child(users).child(userID!)
         
         //set observer for users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
