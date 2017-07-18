@@ -149,7 +149,7 @@ extension EditPetViewController{
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
             }
         }))
@@ -161,7 +161,7 @@ extension EditPetViewController{
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
             }
             
@@ -177,11 +177,21 @@ extension EditPetViewController{
     //MARK -- imagePickerDelegate / navigationDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        //get image
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-           
+        var selectedImage: UIImage?
+        
+        if let editableImage = info[UIImagePickerControllerEditedImage] as? UIImage{
+            
+            selectedImage = editableImage
+            
+        }else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             //set image
-            petImageView.image = image
+            selectedImage = image
+            
+        }
+        
+        if let selected = selectedImage{
+            
+            petImageView.image = selected
             
             //ref to store pet images
             let storageRef = Storage.storage().reference().child("petImages").child("\(userID!).jpeg")
@@ -210,12 +220,10 @@ extension EditPetViewController{
                     }
                 })
             }
-            
         }
         
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
-        
     }
     
     //dismiss image picker if canceled

@@ -25,7 +25,7 @@ extension PetRegisterViewController {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
             }
         }))
@@ -37,12 +37,10 @@ extension PetRegisterViewController {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
             }
-            
         }))
-        
         
         photoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
@@ -53,13 +51,27 @@ extension PetRegisterViewController {
     //MARK -- imagePickerDelegate / navigationDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        //get image
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        var selectedImage: UIImage?
+        
+        if let editableImage = info[UIImagePickerControllerEditedImage] as? UIImage{
             
+            selectedImage = editableImage
+            
+        }else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             //set image
-            petImage.image = image
+            selectedImage = image
         }
         
+        if let selected = selectedImage{
+            
+            let radius = self.petImage.frame.height / 2
+            self.petImage.layer.cornerRadius = radius
+            self.petImage.layer.masksToBounds = true
+            self.petImage.contentMode = .scaleAspectFill
+            self.petImage.clipsToBounds = true
+            
+            petImage.image = selected
+        }
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
     }

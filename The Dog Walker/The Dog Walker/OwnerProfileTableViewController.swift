@@ -38,7 +38,7 @@ class OwnerProfileTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //set DB reference
-        ref = Database.database().reference().child("users").child(userID!)
+        ref = Database.database().reference().child(users).child(userID!)
         petRef = Database.database().reference().child("pets").child(userID!)
     }
     
@@ -130,7 +130,6 @@ class OwnerProfileTableViewController: UITableViewController {
                 //dev
                 print(user.firstName!)
                 
-                
                 //set profile img w/ URL
                 if let profileImgURL = user.profileImage{
                     //dev
@@ -138,7 +137,7 @@ class OwnerProfileTableViewController: UITableViewController {
                     
                     self.profileImage.loadImageUsingCache(profileImgURL)
                 }
-                
+            
                 //populate label w/ data from FB
                 self.nameLabel.text = user.firstName! + " " + user.lastName!
                 self.emailLabel.text = user.email!

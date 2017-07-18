@@ -15,6 +15,7 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
     var ref: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid
     var companyCode: String?
+    var profileImageUrl: String?
     
     //MARK: --outlets
     @IBOutlet weak var profileImage: UIImageView!
@@ -75,12 +76,6 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
         }, withCancel: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-    
-     
-    }
-    
-    
     //MARK: --actions
     @IBAction func saveOwnerChanges(_ sender: Any) {
         
@@ -119,7 +114,6 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
         //dev
         print("cancel owner changes")
         dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func changeProfileImage(_ sender: UIButton) {
@@ -127,9 +121,10 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
         //present camera options
         presentImgOptions()
     }
-
 }
 
+
+//MARK: --extension
 extension EditOwnerViewController{
     
     //MARK: -- image functionality
@@ -146,7 +141,7 @@ extension EditOwnerViewController{
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
             }
         }))
@@ -158,7 +153,7 @@ extension EditOwnerViewController{
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
             }
             
@@ -174,11 +169,22 @@ extension EditOwnerViewController{
     //MARK -- imagePickerDelegate / navigationDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        //get image
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        
+        var selectedImage: UIImage?
+        
+        if let editableImage = info[UIImagePickerControllerEditedImage] as? UIImage{
             
+            selectedImage = editableImage
+            
+        }else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             //set image
-            profileImage.image = image
+            selectedImage = image
+            
+        }
+        
+        if let selected = selectedImage{
+            
+            profileImage.image = selected
             
             //get ref to store images
             let storageRef = Storage.storage().reference().child("profileImages").child("\(userID!).jpeg")
@@ -203,16 +209,14 @@ extension EditOwnerViewController{
                         print(profileImgURL)
                         //set ref to image url
                         self.ref.updateChildValues(["profileImage": profileImgURL])
-                        
                     }
                 })
             }
-            
+
         }
         
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
-        
     }
     
     //dismiss image picker if canceled
@@ -220,9 +224,5 @@ extension EditOwnerViewController{
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
     }
-
-    
-    
-    
     
 }

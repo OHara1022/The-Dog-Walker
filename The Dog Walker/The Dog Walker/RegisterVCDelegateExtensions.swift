@@ -93,11 +93,21 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     //MARK -- imagePickerDelegate / navigationDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        //get image
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            //set image
-            profileImage.image = image
+        var selectedImage: UIImage?
+        
+        if let editableImage = info[UIImagePickerControllerEditedImage] as? UIImage{
             
+            selectedImage = editableImage
+            
+        }else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            //set image
+            selectedImage = image
+            
+        }
+        
+        if let selected = selectedImage{
+            
+            profileImage.image = selected
         }
         
         //dismiss imagePickerVC
