@@ -12,7 +12,6 @@ import Firebase
 class PetRegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     //MARK: -- stored properties
-    let userID = Auth.auth().currentUser?.uid
     var ref: DatabaseReference!
     var activeField: UITextField?
     var dateHolderString: String = ""
@@ -56,7 +55,7 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
         print("testID" + " " + userID!)
         
         //get ref to DB
-        self.ref = Database.database().reference().child("pets").child(userID!)
+        self.ref = Database.database().reference().child(pets).child(userID!)
         
         //init date picker & set mode, inputView, & target
         datePicker = UIDatePicker()
@@ -67,8 +66,8 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
         pickerItem(title: "Birthday", textField: bdayTF, selector:  #selector(PetRegisterViewController.doneDatePickerPressed))
 
         //broadcast info and add observer for when keyboard shows and hides
-        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PetRegisterViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PetRegisterViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         //set TF delegates
         setTFDelegate()
@@ -109,7 +108,10 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
             let petKey = self.ref.childByAutoId().key
             
             //populate class with TF text
-            let petData = PetData(petName: petName!, birthday: dateHolderString, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emeregencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
+            let petData = PetData(petName: petName!, birthday: dateHolderString, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, vetName: vetName!, vetPhone: vetPhone!)
+            
+            petData.emergencyContact = emergencyContact!
+            petData.emergencyPhone = emeregencyPhone!
             
             //ref to store pet images
             let storageRef = Storage.storage().reference().child("petImages").child("\(userID!).jpeg")

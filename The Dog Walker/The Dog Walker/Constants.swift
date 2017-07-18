@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 //state array to populate picker views
 let states: [String] = ["AL", "AK", "AZ", "AR", "CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
@@ -15,4 +16,9 @@ let states: [String] = ["AL", "AK", "AZ", "AR", "CA","CO","CT","DE","FL","GA","H
 //duration of walks
 let durations: [String] = ["15 Minutes", "30 Minutes", "60 Minutes"]
 
+//ref to DB nodes
 let users: String = "users"
+let pets: String = "pets"
+let schedules: String = "schedules"
+let userID = Auth.auth().currentUser?.uid
+

@@ -13,7 +13,6 @@ class WalkerEditScheduleViewController: UIViewController {
     
     //MARK: --stored properties
     var ref: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
     var editSelectedSchedule: ScheduleModel!
     var scheduleKey: String?
     

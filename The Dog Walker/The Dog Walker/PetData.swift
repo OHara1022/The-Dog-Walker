@@ -18,8 +18,8 @@ class PetData{
     var meds: String
     var vaccine: String
     var specialInstructions: String
-    var emergencyContact: String
-    var emergencyPhone: String
+    var emergencyContact: String?
+    var emergencyPhone: String?
     var vetName: String
     var vetPhone: String
     var petImage: String?
@@ -27,7 +27,7 @@ class PetData{
     var petKey: String?
     
     //init properties 
-    init(petName: String, birthday: String, breed: String, meds: String, vaccine: String, specialInstructions: String, emergencyContact: String, emergencyPhone: String, vetName: String, vetPhone: String) {
+    init(petName: String, birthday: String, breed: String, meds: String, vaccine: String, specialInstructions: String, vetName: String, vetPhone: String) {
         
         self.petName = petName
         self.birthday = birthday
@@ -35,8 +35,6 @@ class PetData{
         self.meds = meds
         self.vaccine = vaccine
         self.specialInstructions = specialInstructions
-        self.emergencyContact = emergencyContact
-        self.emergencyPhone = emergencyPhone
         self.vetName = vetName
         self.vetPhone = vetPhone
     }

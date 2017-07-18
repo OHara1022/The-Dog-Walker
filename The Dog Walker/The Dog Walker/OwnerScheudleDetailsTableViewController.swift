@@ -18,7 +18,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     var selectedSchedule: ScheduleModel!
     var ref: DatabaseReference!
     var petRef: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
     var price: NSDecimalNumber!
     
     //MARK: -- outlets
@@ -40,8 +39,8 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         applePayBTN.isHidden = !PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: supportedPayments)
         
         //get ref to database
-        ref = Database.database().reference().child("schedules").child(userID!).child(selectedSchedule.scheduleKey!)
-        petRef = Database.database().reference().child("pets").child(userID!)
+        ref = Database.database().reference().child(schedules).child(userID!).child(selectedSchedule.scheduleKey!)
+        petRef = Database.database().reference().child(pets).child(userID!)
     }
     
     //MARK: --viewWillAppear
@@ -99,9 +98,6 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             }
             
         }, withCancel: nil)
-        
-
-        
     }
     
     //MARK: --navigation
@@ -113,14 +109,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             //get destination of segue
             let editDetails = segue.destination as! OwnerEditScheduleViewController
             
-            //set TF with schedule data (ownerEditSchedules)
-            editDetails.date = selectedSchedule.date
-            editDetails.time = selectedSchedule.time
-            editDetails.duration = selectedSchedule.duration
-            editDetails.price = selectedSchedule.price
-            editDetails.petName = selectedSchedule.petName
-            editDetails.specialIns = selectedSchedule.specialIns
-            editDetails.meds = selectedSchedule.meds
+            //send key to edit
             editDetails.scheduleKey = selectedSchedule.scheduleKey
        
         }

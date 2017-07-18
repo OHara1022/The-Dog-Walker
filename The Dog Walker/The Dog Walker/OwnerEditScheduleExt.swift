@@ -1,15 +1,15 @@
 //
-//  CreateScheduleExtension.swift
+//  OwnerEditScheduleExt.swift
 //  The Dog Walker
 //
-//  Created by Scott O'Hara on 7/4/17.
+//  Created by Scott O'Hara on 7/18/17.
 //  Copyright © 2017 Scott O'Hara. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-extension CreateScheduleViewController: UITextFieldDelegate{
+extension OwnerEditScheduleViewController: UITextFieldDelegate{
     
     //MARK: -- textFieldDelegate
     //call textfieldDidBeginEditing for keyboard functionality
@@ -25,34 +25,33 @@ extension CreateScheduleViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         switch textField {
-        case petNameTF:
-            instructionTF.becomeFirstResponder()
+        case editPetNameTF:
+            editSpecialInsTF.becomeFirstResponder()
             return true
-        case instructionTF:
-            medTF.becomeFirstResponder()
+        case editSpecialInsTF:
+            editMedsTF.becomeFirstResponder()
             return true
-        case medTF:
+        case editMedsTF:
             self.view.endEditing(true)
             return true
-
         default:
             break
         }
         return false
     }
+
 }
 
-extension CreateScheduleViewController{
+extension OwnerEditScheduleViewController{
     
     func setTFDelegate(){
         
-        dateTF.delegate = self
-        timeTF.delegate = self
-        durationTF.delegate = self
-        petNameTF.delegate = self
-        instructionTF.delegate = self
-        medTF.delegate = self
-        
+        editDateTF.delegate = self
+        editTimeTF.delegate = self
+        editDurationTF.delegate = self
+        editPetNameTF.delegate = self
+        editSpecialInsTF.delegate = self
+        editMedsTF.delegate = self
     }
     
     //MARK: -- keyboard editing functionality
@@ -88,7 +87,7 @@ extension CreateScheduleViewController{
         timeFormatter.timeStyle = DateFormatter.Style.short
         
         //set textField to time picker selection
-        timeTF.text = timeFormatter.string(from: sender.date)
+        editTimeTF.text = timeFormatter.string(from: sender.date)
         
     }
     
@@ -105,7 +104,7 @@ extension CreateScheduleViewController{
         dateFormatter.dateFormat = "MM/dd/YYYY"
         
         //set textField to date picker selection
-        dateTF.text = dateFormatter.string(from: sender.date)
+        editDateTF.text = dateFormatter.string(from: sender.date)
     }
     
     func pickerItem(title: String, textField: UITextField, selector: Selector){
@@ -134,9 +133,10 @@ extension CreateScheduleViewController{
         //dismiss picker
         self.view.endEditing(true)
     }
+    
 }
 
-extension CreateScheduleViewController: UIPickerViewDataSource{
+extension OwnerEditScheduleViewController: UIPickerViewDataSource{
     
     //set components to return 1 section, each pickerView only has one section
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -162,7 +162,7 @@ extension CreateScheduleViewController: UIPickerViewDataSource{
     
 }
 
-extension CreateScheduleViewController: UIPickerViewDelegate{
+extension OwnerEditScheduleViewController: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
@@ -174,14 +174,14 @@ extension CreateScheduleViewController: UIPickerViewDelegate{
                 
             case "15 Minutes":
                 
-                priceLbl.text = "10"
+                editPriceLBL.text = "10"
                 
             case "30 Minutes":
                 
-                priceLbl.text = "20"
+                editPriceLBL.text = "20"
                 
             case "60 Minutes":
-                priceLbl.text = "30"
+                editPriceLBL.text = "30"
                 
             default:
                 break
@@ -205,10 +205,15 @@ extension CreateScheduleViewController: UIPickerViewDelegate{
             
         case 0:
             
-            durationTF.text = durations[row]
+            editDurationTF.text = durations[row]
             
         default:
             break
         }
     }
 }
+
+
+
+
+

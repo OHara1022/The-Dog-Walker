@@ -13,7 +13,6 @@ class OwnerProfileTableViewController: UITableViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
     var petRef: DatabaseReference!
     
     //refenerce to  home VC - instantiant walkerHome VC
@@ -39,7 +38,7 @@ class OwnerProfileTableViewController: UITableViewController {
         
         //set DB reference
         ref = Database.database().reference().child(users).child(userID!)
-        petRef = Database.database().reference().child("pets").child(userID!)
+        petRef = Database.database().reference().child(pets).child(userID!)
     }
     
     //MARK: --viewWillAppear

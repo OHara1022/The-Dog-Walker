@@ -15,7 +15,6 @@ class CreateScheduleViewController: UIViewController {
     var ref: DatabaseReference!
     var petRef: DatabaseReference!
     var userRef: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
     var fullName: String?
     var phone: String?
     var address: String?
@@ -43,15 +42,14 @@ class CreateScheduleViewController: UIViewController {
     @IBOutlet weak var specialInsLBL: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
     //MARK: --- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //get ref to database
-        ref = Database.database().reference().child("schedules").child(userID!)
-        petRef = Database.database().reference().child("pets").child(userID!)
-        userRef = Database.database().reference().child("users").child(userID!)
+        ref = Database.database().reference().child(schedules).child(userID!)
+        petRef = Database.database().reference().child(pets).child(userID!)
+        userRef = Database.database().reference().child(users).child(userID!)
         
         //set TF delegate
         setTFDelegate()
@@ -83,8 +81,8 @@ class CreateScheduleViewController: UIViewController {
         pickerItem(title: "Duration", textField: durationTF, selector: #selector(CreateScheduleViewController.donePickerPressed))
         
         //broadcast info and add observer for when keyboard shows and hides
-        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateScheduleViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateScheduleViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     
     }
     
@@ -142,7 +140,6 @@ class CreateScheduleViewController: UIViewController {
                 
                 self.fullName = user.firstName! + " " + user.lastName!
                 self.phone = user.phoneNumber!
-                self.address = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
                 self.companyCode = user.companyCode!
                 
                 if user.aptNumber == ""{
@@ -151,7 +148,7 @@ class CreateScheduleViewController: UIViewController {
                     //address w/ apt number
                     self.address = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }else{
-                    self.address = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.address = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
             }

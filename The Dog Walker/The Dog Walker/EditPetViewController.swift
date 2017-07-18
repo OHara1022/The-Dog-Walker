@@ -13,8 +13,8 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
     var petKey: String?
+    var activeField: UITextField?
     
     //MARK: --outlets
     @IBOutlet weak var petImageView: UIImageView!
@@ -26,8 +26,6 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var editSpecialIns: UITextField!
     @IBOutlet weak var editVetName: UITextField!
     @IBOutlet weak var editVetPhone: UITextField!
-    @IBOutlet weak var editEmergencyContact: UITextField!
-    @IBOutlet weak var editEmergencyPhone: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
    
     //MARK: -- viewDidLoad
@@ -35,7 +33,7 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         
         //get ref to pets
-        ref = Database.database().reference().child("pets").child(userID!)
+        ref = Database.database().reference().child(pets).child(userID!)
         
         //observer pet info
         ref.observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -68,26 +66,23 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
                 self.editSpecialIns.text = pet.specialIns!
                 self.editVetName.text = pet.vetName!
                 self.editVetPhone.text = pet.vetPhone!
-                self.editEmergencyContact.text = pet.emergencyContact!
-                self.editEmergencyPhone.text = pet.emergencyPhone!
-                
+        
                 if self.editSpecialIns.text == ""{
                     self.editSpecialIns.text = "None"
                 }
-                
-                //                print(pet.petKey!)
-                
+                //get petKey
                 self.petKey = pet.petKey!
-                
             }
         }, withCancel: nil)
+        
+        //broadcast info and add observer for when keyboard shows and hides
+        NotificationCenter.default.addObserver(self, selector: #selector(EditPetViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EditPetViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        //set TF delegate
+        setTFDelegate()
     }
     
-    
-    //set size of scroll view to the view content size
-    override func viewDidLayoutSubviews() {
-        scrollView.contentSize = CGSize(width: view.bounds.width, height: 900)
-    }
     
     //MARK: --actions
     @IBAction func savePetChanges(_ sender: Any) {
@@ -105,15 +100,12 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
         let specialIns = editSpecialIns.text
         let vetName = editVetName.text
         let vetPhone = editVetPhone.text
-        let emergencyContact = editEmergencyContact.text
-        let emergencyPhone = editEmergencyPhone.text
         
         //populate class w/ TF values
-        let updatePet = PetData(petName: petName!, birthday: bday!, breed: breed!, meds: meds!, vaccine: vaccines!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emergencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
-        
+        let updatePet = PetData(petName: petName!, birthday: bday!, breed: breed!, meds: meds!, vaccine: vaccines!, specialInstructions: specialIns!, vetName: vetName!, vetPhone: vetPhone!)
         
         //update DB w/ new values
-        ref.child(petKey!).updateChildValues(["petName": updatePet.petName, "birthday": updatePet.birthday, "breed": updatePet.breed, "vaccines": updatePet.vaccine, "meds": updatePet.meds, "specialIns": updatePet.specialInstructions, "vetName": updatePet.vetName, "vetPhone": updatePet.vetPhone, "emergencyContact": updatePet.emergencyContact, "emergencyPhone": updatePet.emergencyPhone])
+        ref.child(petKey!).updateChildValues(["petName": updatePet.petName, "birthday": updatePet.birthday, "breed": updatePet.breed, "vaccines": updatePet.vaccine, "meds": updatePet.meds, "specialIns": updatePet.specialInstructions, "vetName": updatePet.vetName, "vetPhone": updatePet.vetPhone])
         
         //segue to details, update view w/ new values
         self.performSegue(withIdentifier: "updatePet", sender: self)
@@ -127,110 +119,8 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func changeImage(_ sender: UIButton) {
-        
+    //present image options
       presentImgOptions()
         
     }
-}
-
-extension EditPetViewController{
-    
-    //MARK: -- image functionality
-    func presentImgOptions(){
-        
-        //create action sheet
-        let photoActionSheet = UIAlertController(title: "Pet Photo", message: nil, preferredStyle: .actionSheet)
-        
-        //add actions
-        photoActionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
-            
-            if UIImagePickerController.isSourceTypeAvailable(.camera){
-                
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-                imagePicker.allowsEditing = true
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-        }))
-        
-        photoActionSheet.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { action in
-            
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-                
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                imagePicker.allowsEditing = true
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-            
-        }))
-        
-        photoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        //present action sheet
-        present(photoActionSheet, animated: true, completion: nil)
-    }
-    
-    
-    //MARK -- imagePickerDelegate / navigationDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        var selectedImage: UIImage?
-        
-        if let editableImage = info[UIImagePickerControllerEditedImage] as? UIImage{
-            
-            selectedImage = editableImage
-            
-        }else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            //set image
-            selectedImage = image
-            
-        }
-        
-        if let selected = selectedImage{
-            
-            petImageView.image = selected
-            
-            //ref to store pet images
-            let storageRef = Storage.storage().reference().child("petImages").child("\(userID!).jpeg")
-            
-            //compress images
-            if let uploadImage = UIImageJPEGRepresentation(self.petImageView.image!, 0.6){
-                
-                //get data
-                storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
-                    //check if create user failed
-                    if let error = error{
-                        //present alert failed
-                        FieldValidation.textFieldAlert("Image Storage Error", message: error.localizedDescription, presenter: self)
-                        //dev
-                        print(error.localizedDescription)
-                        return
-                    }
-                    
-                    //get image url
-                    if let petImgURL = metadata?.downloadURL()?.absoluteString{
-                        //dev
-                        print(petImgURL)
-                        
-                        //save image url
-                        self.ref.child(self.petKey!).updateChildValues(["petImage": petImgURL])
-                    }
-                })
-            }
-        }
-        
-        //dismiss imagePickerVC
-        dismiss(animated: true, completion: nil)
-    }
-    
-    //dismiss image picker if canceled
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        //dismiss imagePickerVC
-        dismiss(animated: true, completion: nil)
-    }
-    
-
 }

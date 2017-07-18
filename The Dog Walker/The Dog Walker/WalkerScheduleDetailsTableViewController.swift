@@ -36,13 +36,12 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var checkInBtn: UIButton!
     @IBOutlet weak var checkOutBtn: UIButton!
     
-    
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //get ref to database
-        ref = Database.database().reference().child("schedules").child(selectedSchedule.uid!).child(selectedSchedule.scheduleKey!)
+        ref = Database.database().reference().child(schedules).child(selectedSchedule.uid!).child(selectedSchedule.scheduleKey!)
         
         //dev
         print(selectedSchedule.scheduleKey!)
@@ -202,40 +201,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         presentCallOptions()
     }
     
-    //MARK: -- call options action sheet
-    func presentCallOptions(){
-        
-        //create action sheet
-        let callActionSheet = UIAlertController(title: "Call Options", message: nil, preferredStyle: .actionSheet)
-        
-        //add actions
-        callActionSheet.addAction(UIAlertAction(title: "Call Client", style: .default, handler: { action in
-            
-            //call client phone number
-            self.callNumber(self.selectedSchedule.clientPhone!)
-            
-        }))
-        
-        callActionSheet.addAction(UIAlertAction(title: "Call Vet", style: .default, handler: { action in
-            
-            //call vet phone number
-            self.callNumber(self.selectedSchedule.vetPhone!)
-        }))
-        
-        callActionSheet.addAction(UIAlertAction(title: "Call Emergency Contact", style: .destructive, handler: { action in
-            
-            //call emergency phone number
-            self.callNumber(self.selectedSchedule.emergencyPhone!)
-            
-        }))
-        
-        //cancel btn
-        callActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        //present action sheet
-        present(callActionSheet, animated: true, completion: nil)
-    }
-    
     @IBAction func getDirections(_ sender: UIButton) {
         
         //dev
@@ -302,6 +267,39 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         }
     }
     
+    //MARK: -- call options action sheet
+    func presentCallOptions(){
+        
+        //create action sheet
+        let callActionSheet = UIAlertController(title: "Call Options", message: nil, preferredStyle: .actionSheet)
+        
+        //add actions
+        callActionSheet.addAction(UIAlertAction(title: "Call Client", style: .default, handler: { action in
+            
+            //call client phone number
+            self.callNumber(self.selectedSchedule.clientPhone!)
+            
+        }))
+        
+        callActionSheet.addAction(UIAlertAction(title: "Call Vet", style: .default, handler: { action in
+            
+            //call vet phone number
+            self.callNumber(self.selectedSchedule.vetPhone!)
+        }))
+        
+        callActionSheet.addAction(UIAlertAction(title: "Call Emergency Contact", style: .destructive, handler: { action in
+            
+            //call emergency phone number
+            self.callNumber(self.selectedSchedule.emergencyPhone!)
+            
+        }))
+        
+        //cancel btn
+        callActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        //present action sheet
+        present(callActionSheet, animated: true, completion: nil)
+    }
     
 }
 

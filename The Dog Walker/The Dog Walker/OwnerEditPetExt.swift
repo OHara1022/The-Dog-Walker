@@ -1,15 +1,16 @@
 //
-//  PetRegisterFunctionalityExt.swift
+//  OwnerEditPetExt.swift
 //  The Dog Walker
 //
-//  Created by Scott O'Hara on 6/30/17.
+//  Created by Scott O'Hara on 7/18/17.
 //  Copyright © 2017 Scott O'Hara. All rights reserved.
 //
 
 import Foundation
 import UIKit
+import Firebase
 
-extension PetRegisterViewController {
+extension EditPetViewController{
     
     //MARK: -- image functionality
     func presentImgOptions(){
@@ -40,6 +41,7 @@ extension PetRegisterViewController {
                 imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
             }
+            
         }))
         
         photoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -47,6 +49,7 @@ extension PetRegisterViewController {
         //present action sheet
         present(photoActionSheet, animated: true, completion: nil)
     }
+    
     
     //MARK -- imagePickerDelegate / navigationDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -60,18 +63,42 @@ extension PetRegisterViewController {
         }else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             //set image
             selectedImage = image
+            
         }
         
         if let selected = selectedImage{
             
-            let radius = self.petImage.frame.height / 2
-            self.petImage.layer.cornerRadius = radius
-            self.petImage.layer.masksToBounds = true
-            self.petImage.contentMode = .scaleAspectFill
-            self.petImage.clipsToBounds = true
+            petImageView.image = selected
             
-            petImage.image = selected
+            //ref to store pet images
+            let storageRef = Storage.storage().reference().child("petImages").child("\(userID!).jpeg")
+            
+            //compress images
+            if let uploadImage = UIImageJPEGRepresentation(self.petImageView.image!, 0.6){
+                
+                //get data
+                storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
+                    //check if create user failed
+                    if let error = error{
+                        //present alert failed
+                        FieldValidation.textFieldAlert("Image Storage Error", message: error.localizedDescription, presenter: self)
+                        //dev
+                        print(error.localizedDescription)
+                        return
+                    }
+                    
+                    //get image url
+                    if let petImgURL = metadata?.downloadURL()?.absoluteString{
+                        //dev
+                        print(petImgURL)
+                        
+                        //save image url
+                        self.ref.child(self.petKey!).updateChildValues(["petImage": petImgURL])
+                    }
+                })
+            }
         }
+        
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
     }
@@ -81,7 +108,6 @@ extension PetRegisterViewController {
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
     }
-    
     
     //MARK: -- keyboard editing functionality
     //reference used for this functionality:
@@ -104,72 +130,67 @@ extension PetRegisterViewController {
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
     }
-    
+
     func setTFDelegate(){
         //set TF delegate to self
-        petNameTF.delegate = self
-        bdayTF.delegate = self
-        breedTF.delegate = self
-        medsTF.delegate = self
-        vaccineTF.delegate = self
-        specialInstructionTF.delegate = self
-        emergenctContactTF.delegate = self
-        emergencyPhoneTF.delegate = self
-        vetTF.delegate = self
-        vetPhoneTF.delegate = self
-        
+        editPetName.delegate = self
+        editPetBday.delegate = self
+        editBreed.delegate = self
+        editMeds.delegate = self
+        editVaccines.delegate = self
+        editSpecialIns.delegate = self
+        editVetName.delegate = self
+        editVetPhone.delegate = self
+    }
+}
+
+extension EditPetViewController: UITextFieldDelegate{
+    
+    //call textfieldDidBeginEditing for keyboard functionality
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeField = textField
     }
     
-    //MARK: --Date picker funtionality
-    func datePickerValueChanged(sender:UIDatePicker) {
-        
-        //init dateFormatter
-        let dateFormatter = DateFormatter()
-        
-        //set time to none
-        dateFormatter.timeStyle = DateFormatter.Style.none
-        
-        //set date format
-        dateFormatter.dateFormat = "MM/dd/YYYY"
-        
-        //set textField to date picker selection
-        bdayTF.text = dateFormatter.string(from: sender.date)
-        
-        //set textField text to holder string for saving
-        dateHolderString = bdayTF.text!
-        
-        //dev
-        print("BDAY HOLDER STRING" + " " + dateHolderString)
+    //call textfieldDidEndEditing for keyboard functionality
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeField = nil
     }
     
-    
-    func pickerItem(title: String, textField: UITextField, selector: Selector){
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        //done button for date picker
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: selector)
-        let pickerInfo = UIBarButtonItem(title: title, style: .plain, target: self, action: nil)
+        switch textField {
+        case editPetName:
+            editPetBday.becomeFirstResponder()
+            return true
+            
+        case editPetBday:
+            editBreed.becomeFirstResponder()
+            return true
+            
+        case editBreed:
+            editVaccines.becomeFirstResponder()
+            return true
+            
+        case editVaccines:
+            editMeds.becomeFirstResponder()
+            return true
+        case editMeds:
+            editSpecialIns.becomeFirstResponder()
+            return true
+        case editSpecialIns:
+            editVetName.becomeFirstResponder()
+            return true
+        case editVetName:
+            editVetPhone.becomeFirstResponder()
+            return true
+        case editVetPhone:
+            self.view.endEditing(true)//dismiss keyboard
+            return true
+        default:
+            break
+        }
         
-        
-        doneButton.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
-        pickerInfo.tintColor = UIColor.black
-        
-        // if you remove the space element, the "done" button will be left aligned
-        toolBar.setItems([pickerInfo, space, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        toolBar.sizeToFit()
-        textField.inputAccessoryView = toolBar
-        
+        return false
     }
-    
-    //stop editing on date picker
-    func doneDatePickerPressed(){
-        //dismiss picker
-        self.view.endEditing(true)
-    }
-    
     
 }

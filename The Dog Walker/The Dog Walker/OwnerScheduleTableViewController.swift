@@ -15,8 +15,8 @@ class OwnerScheduleTableViewController: UITableViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var paidRef: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid//get current user id
-    var schedules = [ScheduleModel]()
+    var schedulesArray = [ScheduleModel]()
+    var cell: UITableViewCell?
     
     //TODO: show unpaid on checkout
     var paid: String = "UNPAID"
@@ -30,8 +30,8 @@ class OwnerScheduleTableViewController: UITableViewController {
         tableView.dataSource = self
         
         //set ref of database to scheudles
-        ref = Database.database().reference().child("schedules").child(userID!)
-        paidRef = Database.database().reference().child("schedules").child(userID!)
+        ref = Database.database().reference().child(schedules).child(userID!)
+        paidRef = Database.database().reference().child(schedules).child(userID!)
         
         //observer for schedules added
         ref.observe(.childAdded, with: { (snapshot) in
@@ -43,9 +43,9 @@ class OwnerScheduleTableViewController: UITableViewController {
                 let schedules = ScheduleModel(dictionary: dictionary)
                 
                 //append schedule data
-                self.schedules.append(schedules)
+                self.schedulesArray.append(schedules)
                 //dev
-                print(schedules.paidFlag!)
+//                print(schedules.paidFlag!)
                 
                 //check if walk was completed and paid for
                 if schedules.checkOut == true && schedules.paidFlag != true{
@@ -72,6 +72,24 @@ class OwnerScheduleTableViewController: UITableViewController {
         }, withCancel: nil)
     }
     
+ 
+//    override func viewWillAppear(_ animated: Bool) {
+//        
+//        ref.observeSingleEvent(of: .childChanged, with: { (snapshot) in
+//            
+//            //get snapshot
+//            if let dictionary = snapshot.value as? [String: AnyObject]{
+//                
+//                //get snapshot to scheudleModel
+//                let schedules = ScheduleModel(dictionary: dictionary)
+//                
+//                print(schedules.date!)
+//                
+//            }
+//        }, withCancel: nil)
+//        
+//    }
+    
     //MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -80,20 +98,19 @@ class OwnerScheduleTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return number of data in array
-        return schedules.count
+        return schedulesArray.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Configure the cell...
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ownerScheduleCell", for: indexPath) as! OwnerScheudlesTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "ownerScheduleCell", for: indexPath)
         
         //get values of schedule from FB
-        let schedule = schedules[indexPath.row]
+        let schedule = schedulesArray[indexPath.row]
         
         //populate labels with schdule data
-        cell.dateLabel.text = schedule.date!
+        cell?.textLabel?.text = schedule.date!
         
         //TODO: fix paid label to show on walk completion
 //        cell.paidLabel.text = paid
@@ -125,19 +142,18 @@ class OwnerScheduleTableViewController: UITableViewController {
 //            
 //        }, withCancel: nil)
         
-        return cell
+        return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //check that data is available
-        if schedules.count != 0 {
+        if schedulesArray.count != 0 {
             
             //perform segue to details
             self.performSegue(withIdentifier: "scheduleDetails", sender: indexPath)
         }
     }
-    
     
     // MARK: -- navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -152,7 +168,7 @@ class OwnerScheduleTableViewController: UITableViewController {
                 let details = segue.destination as! OwnerScheudleDetailsTableViewController
                 
                 //get row selected to pass proper data to details
-                let scheduleDetail = self.schedules[index.row]
+                let scheduleDetail = self.schedulesArray[index.row]
                 
                 details.selectedSchedule = scheduleDetail
                 
@@ -173,7 +189,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         if editingStyle == .delete {
             
             //get selected indexPath
-            let schedules = self.schedules[indexPath.row]
+            let schedules = self.schedulesArray[indexPath.row]
             
             //get scheduleKey
             if let scheduleKey = schedules.scheduleKey{
@@ -188,7 +204,7 @@ class OwnerScheduleTableViewController: UITableViewController {
                         return
                     }
                     //remove from array & table view
-                    self.schedules.remove(at: indexPath.row)
+                    self.schedulesArray.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)
                     
                 })

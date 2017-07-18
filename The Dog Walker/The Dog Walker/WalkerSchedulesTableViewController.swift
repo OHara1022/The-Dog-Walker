@@ -15,7 +15,6 @@ class WalkerSchedulesTableViewController: UITableViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var userRef: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
     var walkerCode: String?
     var cell: UITableViewCell?
     var clientSchedules = [ScheduleModel]()
@@ -29,8 +28,8 @@ class WalkerSchedulesTableViewController: UITableViewController {
         tableView.dataSource = self
         
         //set DB reference
-        ref = Database.database().reference().child("schedules")
-        userRef = Database.database().reference().child("users")
+        ref = Database.database().reference().child(schedules)
+        userRef = Database.database().reference().child(users)
         
         //set observer to current user
         userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
