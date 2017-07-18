@@ -14,3 +14,5 @@ let states: [String] = ["AL", "AK", "AZ", "AR", "CA","CO","CT","DE","FL","GA","H
 
 //duration of walks
 let durations: [String] = ["15 Minutes", "30 Minutes", "60 Minutes"]
+
+let users: String = "users"

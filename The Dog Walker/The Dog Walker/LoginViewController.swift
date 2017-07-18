@@ -70,16 +70,13 @@ class LoginViewController: UIViewController {
     //MARK: -- actions
     @IBAction func loginUserBtn(_ sender: Any) {
         
-        
-        self.indicator.startAnimating()
-        
         //check that fields are not empty
         if (FieldValidation.isEmpty(emailLoginTF, presenter: self) && FieldValidation.isEmpty(passwordLoginTF, presenter: self)){
         }
         
         Auth.auth().signIn(withEmail: emailLoginTF.text!, password: passwordLoginTF.text!) { (user, error) in
             
-            
+//            self.indicator.startAnimating()
             //check if email failed
             if let error = error{
                 //dev
@@ -111,22 +108,24 @@ class LoginViewController: UIViewController {
                             
                             //present walker homeVC
                             self.present(self.walkerhomeVC!, animated: true, completion: nil)
+//                            self.indicator.stopAnimating()
                             
                         }else if roleID == "Owner"{
                             
                             //present pet owner homeVC
                             self.present(self.ownerhomeVC!, animated: true, completion: nil)
+//                            self.indicator.stopAnimating()
                         }
                     }
                     
                 }, withCancel: nil)
+                
             }
             //disable login until user is logged in
-            self.indicator.stopAnimating()
             self.loginBtn.isEnabled = false
-            
         }
     }
+    
     
     //forgotPasword
     @IBAction func forgotPassword(_ sender: UIButton) {

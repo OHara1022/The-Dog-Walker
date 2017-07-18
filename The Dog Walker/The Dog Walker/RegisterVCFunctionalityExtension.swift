@@ -125,8 +125,7 @@ extension RegisterViewController{
                     //dev
                     print(profileImgURL)
                     //set ref to image url
-                    self.ref.child(self.users).child(user.uid).updateChildValues(["profileImage": profileImgURL])
-                    
+                    self.ref.child(users).child(user.uid).updateChildValues(["profileImage": profileImgURL])
                 }
             })
         }

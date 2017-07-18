@@ -15,7 +15,6 @@ class RegisterViewController: UIViewController{
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    let users: String = "users"
     var activeField: UITextField?
     var statePicker: UIPickerView!
     var stateHolderString: String = ""

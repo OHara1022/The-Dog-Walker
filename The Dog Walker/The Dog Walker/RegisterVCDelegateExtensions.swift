@@ -85,9 +85,6 @@ extension RegisterViewController: UITextFieldDelegate{
         //else return false
         return false
     }
-    
-
-
 }
 
 //MARK: -- image picker extenstion

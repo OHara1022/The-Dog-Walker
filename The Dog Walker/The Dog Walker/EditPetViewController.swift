@@ -29,17 +29,14 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var editEmergencyContact: UITextField!
     @IBOutlet weak var editEmergencyPhone: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
-    
-    
+   
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //get ref to pets
         ref = Database.database().reference().child("pets").child(userID!)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         //observer pet info
         ref.observeSingleEvent(of: .childAdded, with: { (snapshot) in
             
@@ -85,6 +82,7 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }, withCancel: nil)
     }
+    
     
     //set size of scroll view to the view content size
     override func viewDidLayoutSubviews() {
@@ -141,7 +139,7 @@ extension EditPetViewController{
     func presentImgOptions(){
         
         //create action sheet
-        let photoActionSheet = UIAlertController(title: "Profile Photo", message: nil, preferredStyle: .actionSheet)
+        let photoActionSheet = UIAlertController(title: "Pet Photo", message: nil, preferredStyle: .actionSheet)
         
         //add actions
         photoActionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
@@ -185,6 +183,34 @@ extension EditPetViewController{
             //set image
             petImageView.image = image
             
+            //ref to store pet images
+            let storageRef = Storage.storage().reference().child("petImages").child("\(userID!).jpeg")
+            
+            //compress images
+            if let uploadImage = UIImageJPEGRepresentation(self.petImageView.image!, 0.6){
+                
+                //get data
+                storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
+                    //check if create user failed
+                    if let error = error{
+                        //present alert failed
+                        FieldValidation.textFieldAlert("Image Storage Error", message: error.localizedDescription, presenter: self)
+                        //dev
+                        print(error.localizedDescription)
+                        return
+                    }
+                    
+                    //get image url
+                    if let petImgURL = metadata?.downloadURL()?.absoluteString{
+                        //dev
+                        print(petImgURL)
+                        
+                        //save image url
+                        self.ref.child(self.petKey!).updateChildValues(["petImage": petImgURL])
+                    }
+                })
+            }
+            
         }
         
         //dismiss imagePickerVC
@@ -198,6 +224,5 @@ extension EditPetViewController{
         dismiss(animated: true, completion: nil)
     }
     
-
 
 }

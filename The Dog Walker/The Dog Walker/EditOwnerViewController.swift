@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class EditOwnerViewController: UIViewController {
+class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
@@ -34,10 +34,7 @@ class EditOwnerViewController: UIViewController {
         
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-    
+        
         //set observer for users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -72,10 +69,15 @@ class EditOwnerViewController: UIViewController {
                 self.editPhoneNum.text = user.phoneNumber!
                 
                 self.companyCode = user.companyCode!
-   
+                
             }
             
         }, withCancel: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+    
+     
     }
     
     
@@ -122,10 +124,105 @@ class EditOwnerViewController: UIViewController {
     
     @IBAction func changeProfileImage(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: title, message: "OPEN CAMERA", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
+        //present camera options
+        presentImgOptions()
     }
 
+}
+
+extension EditOwnerViewController{
+    
+    //MARK: -- image functionality
+    func presentImgOptions(){
+        
+        //create action sheet
+        let photoActionSheet = UIAlertController(title: "Profile Photo", message: nil, preferredStyle: .actionSheet)
+        
+        //add actions
+        photoActionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }))
+        
+        photoActionSheet.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { action in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            
+        }))
+        
+        photoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        //present action sheet
+        present(photoActionSheet, animated: true, completion: nil)
+    }
+    
+    
+    //MARK -- imagePickerDelegate / navigationDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //get image
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            
+            //set image
+            profileImage.image = image
+            
+            //get ref to store images
+            let storageRef = Storage.storage().reference().child("profileImages").child("\(userID!).jpeg")
+            
+            //compress image
+            if let uploadImage = UIImageJPEGRepresentation(self.profileImage.image!, 0.6){
+                
+                //store data
+                storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
+                    //check if create user failed
+                    if let error = error{
+                        //present alert failed
+                        FieldValidation.textFieldAlert("Image Storage Error", message: error.localizedDescription, presenter: self)
+                        //dev
+                        print(error.localizedDescription)
+                        return
+                    }
+                    
+                    //check string from image url
+                    if let profileImgURL = metadata?.downloadURL()?.absoluteString{
+                        //dev
+                        print(profileImgURL)
+                        //set ref to image url
+                        self.ref.updateChildValues(["profileImage": profileImgURL])
+                        
+                    }
+                })
+            }
+            
+        }
+        
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    //dismiss image picker if canceled
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
+    }
+
+    
+    
+    
+    
 }
