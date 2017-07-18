@@ -47,6 +47,27 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     //MARK: --viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         
+        petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //dev
+                //print(snapshot)
+                
+                //populate petModel w/ dictionary
+                let pet = PetModel(dictionary: dictionary)
+                
+                if let petImgURL = pet.petImage{
+                    //dev
+                    print(petImgURL)
+                    //set image to imageView
+                    self.petImage.loadImageUsingCache(petImgURL)
+                }
+                
+            }
+        }, withCancel: nil)
+        
         //observe schedule values
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -79,26 +100,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
             
         }, withCancel: nil)
         
-        petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            
-            //get snapshot as dictionary
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                
-                //dev
-                //print(snapshot)
-                
-                //populate petModel w/ dictionary
-                let pet = PetModel(dictionary: dictionary)
-                
-                if let petImgURL = pet.petImage{
-                    //dev
-                    print(petImgURL)
-                    //set image to imageView
-                    self.petImage.loadImageUsingCache(petImgURL)
-                }
-                
-            }
-        }, withCancel: nil)
+
         
     }
     

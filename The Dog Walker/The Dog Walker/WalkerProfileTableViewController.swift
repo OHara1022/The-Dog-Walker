@@ -15,7 +15,7 @@ class WalkerProfileTableViewController: UITableViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid//get current user userID
-    
+    var indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     //refenerce to walker home VC - instantiant walkerHome VC
     lazy var homeVC: UIViewController? = {
         //init walkerHomeVC w/ identifier
@@ -23,7 +23,7 @@ class WalkerProfileTableViewController: UITableViewController {
         //return vc
         return homeVC
     }()
-    
+  
     //MARK: -- outlets
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLBL: UILabel!
@@ -38,9 +38,19 @@ class WalkerProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(indicator)
+        indicator.activityIndicatorViewStyle = .gray
+        indicator.center = profileImage.center
+        indicator.startAnimating()
+        
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
+    }
+    
+    //MARK: --viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
         
+        //observe ref to users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
             //set snaopshot as dictionary
@@ -54,6 +64,13 @@ class WalkerProfileTableViewController: UITableViewController {
                 
                 //dev
                 print(user.firstName!)
+                
+                if let profileImgURL = user.profileImage{
+                    
+                    self.profileImage.loadImageUsingCache(profileImgURL)
+                    
+                    self.indicator.stopAnimating()
+                }
                 
                 //populate label w/ data from FB
                 self.nameLBL.text = user.firstName! + " " + user.lastName!
@@ -75,15 +92,9 @@ class WalkerProfileTableViewController: UITableViewController {
                     self.companyNameLBL.text = user.companyName!
                 }
                 
-                if let profileImgURL = user.profileImage{
-                    
-                    self.profileImage.loadImageUsingCache(profileImgURL)
-                }
-                
             }
             
         }, withCancel: nil)
-
     }
     
     //MARK: -- actions
@@ -136,7 +147,7 @@ class WalkerProfileTableViewController: UITableViewController {
         }, withCancel: nil)
         
     }
-
+    
     @IBAction func signOut(_ sender: Any) {
         
         //sign user out w/ firebase auth

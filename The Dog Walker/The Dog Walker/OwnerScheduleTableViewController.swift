@@ -17,6 +17,8 @@ class OwnerScheduleTableViewController: UITableViewController {
     var paidRef: DatabaseReference!
     let userID = Auth.auth().currentUser?.uid//get current user id
     var schedules = [ScheduleModel]()
+    
+    //TODO: show unpaid on checkout
     var paid: String = "UNPAID"
     
     //MARK: -- viewDidLoad

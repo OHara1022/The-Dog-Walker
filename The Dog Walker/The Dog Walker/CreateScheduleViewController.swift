@@ -25,6 +25,7 @@ class CreateScheduleViewController: UIViewController {
     var vetPhone: String?
     var emergencyContact: String?
     var emergencyPhone: String?
+    var activeField: UITextField?
     
     //pickerViews
     var timePicker: UIDatePicker!
@@ -40,6 +41,8 @@ class CreateScheduleViewController: UIViewController {
     @IBOutlet weak var instructionTF: UITextField!
     @IBOutlet weak var medTF: UITextField!
     @IBOutlet weak var specialInsLBL: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     
     //MARK: --- viewDidLoad
     override func viewDidLoad() {
@@ -75,6 +78,10 @@ class CreateScheduleViewController: UIViewController {
         durationTF.inputView = durationPicker
         //set item bar duration value
         pickerItem(title: "Duration", textField: durationTF, selector: #selector(CreateScheduleViewController.donePickerPressed))
+        
+        //broadcast info and add observer for when keyboard shows and hides
+        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     
     }
     
@@ -113,9 +120,7 @@ class CreateScheduleViewController: UIViewController {
                     //set text to none
                     self.instructionTF.text = "None"
                 }
-            
             }
-            
         }, withCancel: nil)
         
          //set observer to retreive user data for edit text
@@ -150,6 +155,16 @@ class CreateScheduleViewController: UIViewController {
             
         }, withCancel: nil)
     }
+    
+    //reference to owner profiles VC - instantiant ownerProfile VC
+    lazy var schedule: UIViewController? = {
+        
+        //init profileVC w/ identifier
+        let schedule = self.storyboard?.instantiateViewController(withIdentifier: "schedule")
+        //return vc
+        return schedule
+    }()
+
 
 
     //MARK: -- actions
@@ -169,6 +184,7 @@ class CreateScheduleViewController: UIViewController {
             
             //generate key for each schedule
             let scheduleKey = ref.childByAutoId().key
+            
             //populate class with text field values
             let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!, price: price!)
             
@@ -186,5 +202,5 @@ class CreateScheduleViewController: UIViewController {
         print("cancel schedule")
         dismiss(animated: true, completion: nil)
     }
-    
+ 
 }

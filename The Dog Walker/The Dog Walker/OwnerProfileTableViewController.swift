@@ -40,6 +40,10 @@ class OwnerProfileTableViewController: UITableViewController {
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
         petRef = Database.database().reference().child("pets").child(userID!)
+    }
+    
+    //MARK: --viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
         
         //set observer for users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -52,6 +56,15 @@ class OwnerProfileTableViewController: UITableViewController {
                 
                 //get user data as dictionary
                 let user = UserModel(dictionary: dictionary)
+                
+                //get profile image
+                if let profileImgURL = user.profileImage{
+                    //dev
+                    print(profileImgURL)
+                    
+                    //set profile image w/ URL
+                    self.profileImage.loadImageUsingCache(profileImgURL)
+                }
                 
                 //dev
                 print(user.firstName!)
@@ -71,21 +84,9 @@ class OwnerProfileTableViewController: UITableViewController {
                     self.addressLabel.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
-                //get profile image
-                if let profileImgURL = user.profileImage{
-                    //dev
-                    print(profileImgURL)
-                    
-                    //set profile image w/ URL
-                    self.profileImage.loadImageUsingCache(profileImgURL)
-                }
-                
             }
             
         }, withCancel: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         
         //observer for pet info
         petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -129,6 +130,15 @@ class OwnerProfileTableViewController: UITableViewController {
                 //dev
                 print(user.firstName!)
                 
+                
+                //set profile img w/ URL
+                if let profileImgURL = user.profileImage{
+                    //dev
+                    print(profileImgURL)
+                    
+                    self.profileImage.loadImageUsingCache(profileImgURL)
+                }
+                
                 //populate label w/ data from FB
                 self.nameLabel.text = user.firstName! + " " + user.lastName!
                 self.emailLabel.text = user.email!
@@ -143,15 +153,7 @@ class OwnerProfileTableViewController: UITableViewController {
                 }else{
                     self.addressLabel.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
-                
-                //set profile img w/ URL
-                if let profileImgURL = user.profileImage{
-                    //dev
-                    print(profileImgURL)
-                    
-                    self.profileImage.loadImageUsingCache(profileImgURL)
-                }
-                
+
             }
             
         }, withCancel: nil)

@@ -12,8 +12,19 @@ import Firebase
 class WalkerEditScheduleViewController: UIViewController {
     
     //MARK: --stored properties
+    var ref: DatabaseReference!
+    let userID = Auth.auth().currentUser?.uid
+    var editSelectedSchedule: ScheduleModel!
+    var scheduleKey: String?
     
     //MARK: --outlets
+    @IBOutlet weak var editDateTF: UITextField!
+    @IBOutlet weak var editTimeTF: UITextField!
+    @IBOutlet weak var editDurationTF: UITextField!
+    @IBOutlet weak var editPriceTF: UITextField!
+    @IBOutlet weak var editPetNameTF: UITextField!
+    @IBOutlet weak var editSpecialInsTF: UITextField!
+    
     
     //MARK: --viewDidLoad
     override func viewDidLoad() {

@@ -34,7 +34,10 @@ class EditOwnerViewController: UIViewController {
         
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+    
         //set observer for users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -50,6 +53,13 @@ class EditOwnerViewController: UIViewController {
                 //dev
                 print(user.firstName!)
                 
+                if let profileImgURL = user.profileImage{
+                    
+                    print(profileImgURL)
+                    
+                    self.profileImage.loadImageUsingCache(profileImgURL)
+                }
+                
                 //populate label w/ data from FB
                 self.editFirstName.text = user.firstName!
                 self.editLastName.text = user.lastName!
@@ -62,14 +72,7 @@ class EditOwnerViewController: UIViewController {
                 self.editPhoneNum.text = user.phoneNumber!
                 
                 self.companyCode = user.companyCode!
-                
-                if let profileImgURL = user.profileImage{
-                    
-                    print(profileImgURL)
-                    
-                    self.profileImage.loadImageUsingCache(profileImgURL)
-                }
-                
+   
             }
             
         }, withCancel: nil)

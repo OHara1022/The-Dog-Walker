@@ -72,7 +72,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginTest:" destination="glF-rR-Ale" eventType="touchUpInside" id="uQJ-JT-vAC"/>
+                                    <action selector="loginUserBtn:" destination="glF-rR-Ale" eventType="touchUpInside" id="hJ8-2Z-52x"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -103,6 +103,7 @@
                     </view>
                     <connections>
                         <outlet property="emailLoginTF" destination="SRT-gl-lDl" id="2w4-ih-dSC"/>
+                        <outlet property="loginBtn" destination="GSZ-ZC-Nbf" id="rQ9-u4-fwZ"/>
                         <outlet property="passwordLoginTF" destination="4x4-gF-Kea" id="1ed-wm-byr"/>
                     </connections>
                 </viewController>

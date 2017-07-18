@@ -57,6 +57,7 @@
 		D2D4E6501EEF191200FB7A7C /* PetRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */; };
 		D2D52F391F049EA20023D7A2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D52F381F049EA20023D7A2 /* Extension.swift */; };
 		D2D52F3C1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D52F3B1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift */; };
+		D2D731D71F1D133A001CA296 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D731D61F1D133A001CA296 /* ScheduleViewController.swift */; };
 		D2D9E23E1F07549F00699118 /* PetRegisterFunctionalityExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D9E23D1F07549F00699118 /* PetRegisterFunctionalityExt.swift */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +141,7 @@
 		D2D4E64F1EEF191200FB7A7C /* PetRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegisterViewController.swift; sourceTree = "<group>"; };
 		D2D52F381F049EA20023D7A2 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D2D52F3B1F04B5880023D7A2 /* RegisterVCFunctionalityExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVCFunctionalityExtension.swift; sourceTree = "<group>"; };
+		D2D731D61F1D133A001CA296 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		D2D9E23D1F07549F00699118 /* PetRegisterFunctionalityExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegisterFunctionalityExt.swift; sourceTree = "<group>"; };
 		F0C9348669850476B9913E50 /* Pods-The Dog WalkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Dog WalkerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-The Dog WalkerTests/Pods-The Dog WalkerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,6 +218,7 @@
 				D2C5FABE1EF4CB09006BB572 /* OwnerScheudleDetailsTableViewController.swift */,
 				D2C5FAC21EF4CFE3006BB572 /* OwnerEditScheduleViewController.swift */,
 				D226B6991EF4FFD500105673 /* OwnerScheudlesTableViewCell.swift */,
+				D2D731D61F1D133A001CA296 /* ScheduleViewController.swift */,
 			);
 			name = OwnerSchedules;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2D731D71F1D133A001CA296 /* ScheduleViewController.swift in Sources */,
 				D2B1BFB51EF58BD600CEAF3E /* PetData.swift in Sources */,
 				D207874F1F0BE80C00941955 /* Constants.swift in Sources */,
 				D27E9CBE1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift in Sources */,

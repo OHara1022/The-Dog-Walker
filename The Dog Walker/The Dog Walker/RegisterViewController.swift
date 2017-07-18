@@ -37,7 +37,6 @@ class RegisterViewController: UIViewController{
     @IBOutlet weak var companyNameTF: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +47,6 @@ class RegisterViewController: UIViewController{
         self.profileImage.layer.masksToBounds = true
         self.profileImage.contentMode = .scaleAspectFill
         self.profileImage.clipsToBounds = true
-        
         
         //create reference to database
         ref = Database.database().reference()
@@ -72,14 +70,10 @@ class RegisterViewController: UIViewController{
         pickerItem(title: "State", textField: stateTF, selector: #selector(RegisterViewController.doneSelected))
     }
     
- 
     //MARK: -- actions
     @IBAction func addProfileImage(_ sender: UIButton) {
-        
         //present image action sheet
         presentImgOptions()
-        
-        
     }
     
     //MARK: --segue
@@ -93,6 +87,11 @@ class RegisterViewController: UIViewController{
             
             //dev
             print("register segue")
+            
+            if passwordTF.text != confirmPasswordTF.text{
+                FieldValidation.textFieldAlert("Password does not match", message: "Please re-enter your password to match", presenter: self)
+                return loginFlag
+            }
             
             //check textFields are not empty
             if (!FieldValidation.isEmpty(firstNameTF, presenter: self) && !FieldValidation.isEmpty(lastNameTF, presenter: self) && !FieldValidation.isEmpty(emailTF, presenter: self) && !FieldValidation.isEmpty(passwordTF, presenter: self) && !FieldValidation.isEmpty(confirmPasswordTF, presenter: self) && !FieldValidation.isEmpty(addressTF, presenter: self) && !FieldValidation.isEmpty(cityTF, presenter: self) && !FieldValidation.isEmpty(stateTF, presenter: self) && !FieldValidation.isEmpty(zipCodeTF, presenter: self) && !FieldValidation.isEmpty(phoneTF, presenter: self) && !FieldValidation.isEmpty(companyCodeTF, presenter: self)){
@@ -111,17 +110,16 @@ class RegisterViewController: UIViewController{
                         print(error.localizedDescription)
                         return
                     }
+                    
                     //create user
                     self.createUser(user!)
-                    
                 })
+                
                 //perform segue
                 loginFlag = true
                 return loginFlag
                 
-                
             }//end of empty check
-            
         }//end of auth check
         
         //check if canceled

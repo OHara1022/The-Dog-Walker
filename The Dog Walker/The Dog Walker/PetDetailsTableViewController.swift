@@ -49,7 +49,14 @@ class PetDetailsTableViewController: UITableViewController {
                 let pet = PetModel(dictionary: dictionary)
                 
                 //dev
-//                print(pet.petName!)
+                //print(pet.petName!)
+                
+                if let petImgURL = pet.petImage{
+                    //dev
+                    print(petImgURL)
+                    //set image to imageView
+                    self.petImageView.loadImageUsingCache(petImgURL)
+                }
                 
                 //populate labels with passed values
                 self.petNameLabel.text = pet.petName!
@@ -61,20 +68,12 @@ class PetDetailsTableViewController: UITableViewController {
                 self.vetNameLabel.text = pet.vetName!
                 self.vetPhoneLabel.text = pet.vetPhone!
                 
+                //set special ins to none when nil
                 if self.specialInsLabel.text == ""{
                  self.specialInsLabel.text = "None"
                 }
-                
-                if let petImgURL = pet.petImage{
-                    //dev
-                    print(petImgURL)
-                    //set image to imageView
-                    self.petImageView.loadImageUsingCache(petImgURL)
-                }
-                
             }
         }, withCancel: nil)
-
     }
     
     

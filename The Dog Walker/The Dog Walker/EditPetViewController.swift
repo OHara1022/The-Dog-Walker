@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class EditPetViewController: UIViewController {
+class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
@@ -37,7 +37,9 @@ class EditPetViewController: UIViewController {
         
         //get ref to pets
         ref = Database.database().reference().child("pets").child(userID!)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         //observer pet info
         ref.observeSingleEvent(of: .childAdded, with: { (snapshot) in
             
@@ -53,6 +55,13 @@ class EditPetViewController: UIViewController {
                 //dev
                 print(pet.petName!)
                 
+                if let petImgURL = pet.petImage{
+                    //dev
+                    print(petImgURL)
+                    //set image to imageView
+                    self.petImageView.loadImageUsingCache(petImgURL)
+                }
+                
                 //populate TF with passed values
                 self.editPetName.text = pet.petName!
                 self.editPetBday.text = pet.birthday!
@@ -66,23 +75,15 @@ class EditPetViewController: UIViewController {
                 self.editEmergencyPhone.text = pet.emergencyPhone!
                 
                 if self.editSpecialIns.text == ""{
-                 self.editSpecialIns.text = "None"
+                    self.editSpecialIns.text = "None"
                 }
                 
-                if let petImgURL = pet.petImage{
-                    //dev
-                    print(petImgURL)
-                    //set image to imageView
-                    self.petImageView.loadImageUsingCache(petImgURL)
-                }
-                
-//                print(pet.petKey!)
+                //                print(pet.petKey!)
                 
                 self.petKey = pet.petKey!
                 
             }
         }, withCancel: nil)
-        
     }
     
     //set size of scroll view to the view content size
@@ -112,6 +113,7 @@ class EditPetViewController: UIViewController {
         //populate class w/ TF values
         let updatePet = PetData(petName: petName!, birthday: bday!, breed: breed!, meds: meds!, vaccine: vaccines!, specialInstructions: specialIns!, emergencyContact: emergencyContact!, emergencyPhone: emergencyPhone!, vetName: vetName!, vetPhone: vetPhone!)
         
+        
         //update DB w/ new values
         ref.child(petKey!).updateChildValues(["petName": updatePet.petName, "birthday": updatePet.birthday, "breed": updatePet.breed, "vaccines": updatePet.vaccine, "meds": updatePet.meds, "specialIns": updatePet.specialInstructions, "vetName": updatePet.vetName, "vetPhone": updatePet.vetPhone, "emergencyContact": updatePet.emergencyContact, "emergencyPhone": updatePet.emergencyPhone])
         
@@ -128,10 +130,74 @@ class EditPetViewController: UIViewController {
     
     @IBAction func changeImage(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: title, message: "OPEN CAMERA", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
+      presentImgOptions()
         
     }
+}
+
+extension EditPetViewController{
+    
+    //MARK: -- image functionality
+    func presentImgOptions(){
+        
+        //create action sheet
+        let photoActionSheet = UIAlertController(title: "Profile Photo", message: nil, preferredStyle: .actionSheet)
+        
+        //add actions
+        photoActionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }))
+        
+        photoActionSheet.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { action in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            
+        }))
+        
+        photoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        //present action sheet
+        present(photoActionSheet, animated: true, completion: nil)
+    }
+    
+    
+    //MARK -- imagePickerDelegate / navigationDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //get image
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+           
+            //set image
+            petImageView.image = image
+            
+        }
+        
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    //dismiss image picker if canceled
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //dismiss imagePickerVC
+        dismiss(animated: true, completion: nil)
+    }
+    
+
+
 }

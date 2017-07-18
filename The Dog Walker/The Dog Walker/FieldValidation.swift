@@ -33,5 +33,24 @@ class FieldValidation{
         }
         return false
     }
+    
+    //US - Zipcode Validation
+    class func isValidZipCode(_ zipcodeTV: UITextField, presenter: UIViewController) -> Bool {
+        
+        //zipcode holder
+        let zipcode: String = zipcodeTV.text!
+        
+        let zipCodeRegex = "^\\d{5}([\\-]?\\d{4})?$"	//00000
+        let zipCodeTest = NSPredicate(format: "SELF MATCHES %@", zipCodeRegex)
+        let evaluateZipCode = zipCodeTest.evaluate(with: zipcode)
+        //Invalid Zipcode
+        if(!evaluateZipCode) {
+            //alert user zipcode is invalid
+            textFieldAlert("Zipcode Invalid", message: "Please enter a valid US zipcode", presenter: presenter)
+            return false
+        }
+        //Valid Zipcode
+        return true
+    }
 
 }

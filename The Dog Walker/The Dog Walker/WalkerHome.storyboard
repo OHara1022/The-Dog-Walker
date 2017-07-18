@@ -521,13 +521,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="AEE-4G-PK1">
-                                                    <rect key="frame" x="30" y="10" width="281.5" height="22"/>
+                                                    <rect key="frame" x="30" y="10" width="337.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2245 Gator Dr. Apt. 240 Orlando, FL 32802" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="zCH-Rp-DkV">
-                                                    <rect key="frame" x="30.5" y="32" width="281.5" height="36.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2245 Gator Dr. Apt. 240 Orlando, FL 32802" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zCH-Rp-DkV">
+                                                    <rect key="frame" x="30" y="32" width="337.5" height="36.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -536,11 +536,11 @@
                                             <constraints>
                                                 <constraint firstItem="AEE-4G-PK1" firstAttribute="leading" secondItem="WIx-se-b2G" secondAttribute="leading" constant="30" id="0ns-UT-6lR"/>
                                                 <constraint firstItem="AEE-4G-PK1" firstAttribute="top" secondItem="WIx-se-b2G" secondAttribute="top" constant="10" id="6b0-6i-K3w"/>
-                                                <constraint firstItem="zCH-Rp-DkV" firstAttribute="width" secondItem="AEE-4G-PK1" secondAttribute="width" id="AtA-bz-ZFf"/>
                                                 <constraint firstItem="zCH-Rp-DkV" firstAttribute="height" secondItem="WIx-se-b2G" secondAttribute="height" multiplier="0.5" id="BAv-6E-Wsf"/>
                                                 <constraint firstItem="zCH-Rp-DkV" firstAttribute="top" secondItem="AEE-4G-PK1" secondAttribute="bottom" id="Cep-vK-efu"/>
-                                                <constraint firstItem="zCH-Rp-DkV" firstAttribute="centerX" secondItem="AEE-4G-PK1" secondAttribute="centerX" id="DsB-Ad-rGw"/>
-                                                <constraint firstItem="AEE-4G-PK1" firstAttribute="width" secondItem="WIx-se-b2G" secondAttribute="width" multiplier="0.75" id="gEu-3g-Awf"/>
+                                                <constraint firstItem="zCH-Rp-DkV" firstAttribute="width" secondItem="AEE-4G-PK1" secondAttribute="width" id="SGi-L1-spc"/>
+                                                <constraint firstItem="zCH-Rp-DkV" firstAttribute="leading" secondItem="AEE-4G-PK1" secondAttribute="leading" id="ZzR-Gv-MdO"/>
+                                                <constraint firstItem="AEE-4G-PK1" firstAttribute="width" secondItem="WIx-se-b2G" secondAttribute="width" multiplier="0.9" id="gEu-3g-Awf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -649,7 +649,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="cma-rm-M2L">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cma-rm-M2L">
                                                     <rect key="frame" x="137.5" y="33" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="Q80-WO-dmN"/>
@@ -748,7 +748,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="224 Conway Rd. Scranton, PA 18519" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="2sa-dV-X6P">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="224 Conway Rd. Scranton, PA 18519" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sa-dV-X6P">
                                                     <rect key="frame" x="25" y="32" width="291.5" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>

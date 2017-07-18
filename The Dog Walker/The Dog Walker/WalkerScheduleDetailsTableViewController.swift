@@ -17,7 +17,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     var ref: DatabaseReference!
     let phoneImage = UIImage(named: "phone")
     let directionsImg = UIImage(named: "directions")
-    
     var priceHolder: String?  = "" //use on later release
     
     //MARK: --outlets
@@ -57,6 +56,14 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         directionBtnOutlet.setImage(tintdir, for: .normal)
         directionBtnOutlet.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
         
+        //check for pet image url
+        if let petImgURL = selectedSchedule.petImageUrl{
+            //dev
+            print(petImgURL)
+            //set image to imageView
+            self.petImage.loadImageUsingCache(petImgURL)
+        }
+        
         //populate labels w/ schedule data
         petNameLabel.text = selectedSchedule.petName
         dateLabel.text = selectedSchedule.date
@@ -67,14 +74,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         clientLabel.text = selectedSchedule.clientName
         clientAddress.text = selectedSchedule.clientAddress
         clientPhone.text = selectedSchedule.clientPhone
-        
-        //check for pet image url
-        if let petImgURL = selectedSchedule.petImageUrl{
-            //dev
-            print(petImgURL)
-            //set image to imageView
-            self.petImage.loadImageUsingCache(petImgURL)
-        }
         
         //check if there are special ins
         if specialInsLabel.text == ""{
@@ -92,7 +91,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     
     //MARL: -- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
-        
         
         //observe schedule values
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -118,8 +116,8 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
                     self.checkOutBtn.isEnabled = false
                     self.checkOutBtn.setTitleColor(.gray, for: .disabled)
                 }
-                
             }
+            
             //check checkOut state
             if let checkOut = values.value(forKey: "checkOut"){
                 

@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
+    var indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     //refenerce to walker home VC - instantiant walkerHome VC
     lazy var walkerhomeVC: UIViewController? = {
@@ -22,7 +23,6 @@ class LoginViewController: UIViewController {
         return homeVC
     }()
     
-    //refenerce to ownerhomeVC - instantiant ownerhomeVC
     lazy var ownerhomeVC: UIViewController? = {
         //init ownerhomeVC w/ identifier
         let ownerhomeVC = self.storyboard?.instantiateViewController(withIdentifier: "ownerHome")
@@ -33,10 +33,17 @@ class LoginViewController: UIViewController {
     //MARK: -- outlets
     @IBOutlet weak var emailLoginTF: UITextField!
     @IBOutlet weak var passwordLoginTF: UITextField!
+    @IBOutlet weak var loginBtn: UIButton!
+    
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(self.indicator)
+        self.indicator.activityIndicatorViewStyle = .gray
+        self.indicator.sizeToFit()
+        self.indicator.center = self.view.center
         
         //set textFieldDelegate to self
         emailLoginTF.delegate = self
@@ -49,37 +56,6 @@ class LoginViewController: UIViewController {
                 //dev
                 print("LOGGED IN" + " " + user.email!)
                 print("AUTH" + " " + (auth.currentUser?.uid)!)
-                
-                //set ref to DB
-//                self.ref = Database.database().reference().child("users").child(user.uid)
-//                
-//                //obserserve event to check role on login
-//                self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
-//                    
-//                    //get snapshot as dictionary
-//                    if let dictionary = snapshot.value as? [String: AnyObject]{
-//                        
-//                        //get userModal w/ dictionary vallues
-//                        let user = UserModel(dictionary: dictionary)
-//                        
-//                        //get user roleID
-//                        let roleID = user.roleID
-//                        
-//                        //check role id
-//                        if roleID == "Walker"{
-//                            
-//                            //present walker homeVC
-//                            self.present(self.walkerhomeVC!, animated: true, completion: nil)
-//                            
-//                        }else if roleID == "Owner"{
-//                            
-//                            //present pet owner homeVC
-//                            self.present(self.ownerhomeVC!, animated: true, completion: nil)
-//                        }
-//                    }
-//                    
-//                }, withCancel: nil)
-
             }
         }
     }
@@ -92,55 +68,63 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: -- actions
-    @IBAction func loginTest(_ sender: UIButton) {
+    @IBAction func loginUserBtn(_ sender: Any) {
+        
+        
+        self.indicator.startAnimating()
         
         //check that fields are not empty
-        if (!FieldValidation.isEmpty(emailLoginTF, presenter: self) && !FieldValidation.isEmpty(passwordLoginTF, presenter: self)){
+        if (FieldValidation.isEmpty(emailLoginTF, presenter: self) && FieldValidation.isEmpty(passwordLoginTF, presenter: self)){
+        }
+        
+        Auth.auth().signIn(withEmail: emailLoginTF.text!, password: passwordLoginTF.text!) { (user, error) in
             
-            Auth.auth().signIn(withEmail: emailLoginTF.text!, password: passwordLoginTF.text!) { (user, error) in
-                
-                //check if email failed
-                if let error = error{
-                    //dev
-                    print(error.localizedDescription)
-                    //alert user of login error
-                    FieldValidation.textFieldAlert("Invalid Information", message: error.localizedDescription, presenter: self)
-                    return
-                }
-                //optional bind to ensure we have user
-                if let user = user{
-                    
-                    //set ref to DB
-                    self.ref = Database.database().reference().child("users").child(user.uid)
-                    
-                    //obserserve event to check role on login
-                    self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                        
-                        //get snapshot as dictionary
-                        if let dictionary = snapshot.value as? [String: AnyObject]{
-                            
-                            //get userModal w/ dictionary vallues
-                            let user = UserModel(dictionary: dictionary)
-                            
-                            //get user roleID
-                            let roleID = user.roleID
-                            
-                            //check role id
-                            if roleID == "Walker"{
-                                
-                                //present walker homeVC
-                                self.present(self.walkerhomeVC!, animated: true, completion: nil)
-                                
-                            }else if roleID == "Owner"{
-                                
-                                //present pet owner homeVC
-                                self.present(self.ownerhomeVC!, animated: true, completion: nil)
-                            }
-                        }
-                        
-                    }, withCancel: nil)
-                }
+            
+            //check if email failed
+            if let error = error{
+                //dev
+                print(error.localizedDescription)
+                //alert user of login error
+                FieldValidation.textFieldAlert("Invalid Information", message: error.localizedDescription, presenter: self)
+                return
             }
+            //optional bind to ensure we have user
+            if let user = user{
+                
+                //set ref to DB
+                self.ref = Database.database().reference().child("users").child(user.uid)
+                
+                //obserserve event to check role on login
+                self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    //get snapshot as dictionary
+                    if let dictionary = snapshot.value as? [String: AnyObject]{
+                        
+                        //get userModal w/ dictionary vallues
+                        let user = UserModel(dictionary: dictionary)
+                        
+                        //get user roleID
+                        let roleID = user.roleID
+                        
+                        //check role id
+                        if roleID == "Walker"{
+                            
+                            //present walker homeVC
+                            self.present(self.walkerhomeVC!, animated: true, completion: nil)
+                            
+                        }else if roleID == "Owner"{
+                            
+                            //present pet owner homeVC
+                            self.present(self.ownerhomeVC!, animated: true, completion: nil)
+                        }
+                    }
+                    
+                }, withCancel: nil)
+            }
+            //disable login until user is logged in
+            self.indicator.stopAnimating()
+            self.loginBtn.isEnabled = false
+            
         }
     }
     
