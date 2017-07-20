@@ -12,6 +12,43 @@ import Firebase
 
 extension WalkerEditProfileViewController{
     
+    //MARK: --Keyboard editing functionality
+    //reference used for this functionality:
+    //https://spin.atomicobject.com/2014/03/05/uiscrollview-autolayout-ios/
+    func keyboardDidShow(_ notification: Notification) {
+        if let activeField = self.activeField, let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            self.scrollView.contentInset = contentInsets
+            self.scrollView.scrollIndicatorInsets = contentInsets
+            var aRect = self.view.frame
+            aRect.size.height -= keyboardSize.size.height
+            if (!aRect.contains(activeField.frame.origin)) {
+                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+            }
+        }
+    }
+    //method to hide keyboard
+    func keyboardWillBeHidden(_ notification: Notification) {
+        let contentInsets = UIEdgeInsets.zero
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    }
+ 
+    //MARK: -- tfDelegate
+    func setTFDelegate(){
+        //set TF delegate to self
+        editFirstNameTF.delegate = self
+        editLastNameTF.delegate = self
+        editEmailTF.delegate = self
+        editAddressTF.delegate = self
+        editAptNumTF.delegate = self
+        editCityTF.delegate = self
+        editStateTF.delegate = self
+        editZipCodeTF.delegate = self
+        editPhoneNumTF.delegate = self
+        editCompanyNameTF.delegate = self
+    }
+    
     
     //MARK: -- image functionality
     func presentImgOptions(){
@@ -113,4 +150,73 @@ extension WalkerEditProfileViewController{
 
     
     
+}
+
+//MARK: --TF extensions
+extension WalkerEditProfileViewController: UITextFieldDelegate{
+    
+    //MARK: -- textFieldDelegate
+    //call textfieldDidBeginEditing for keyboard functionality
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeField = textField
+    }
+    
+    //call textfieldDidEndEditing for keyboard functionality
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeField = nil
+    }
+    
+    //call textFieldShouldReturn method to move to next field on return selection
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        //switch text fields to move to next on return selection
+        switch textField {
+            
+        //each case switches what textfield should respond next
+        case editFirstNameTF:
+            editLastNameTF.becomeFirstResponder()
+            return true
+            
+        case editLastNameTF:
+            editEmailTF.becomeFirstResponder()
+            return true
+            
+        case editEmailTF:
+            editAddressTF.becomeFirstResponder()
+            return true
+            
+        case editAddressTF:
+            editAptNumTF.becomeFirstResponder()
+            return true
+            
+        case editAptNumTF:
+            editCityTF.becomeFirstResponder()
+            return true
+            
+        case editCityTF:
+            editStateTF.becomeFirstResponder()
+            return true
+            
+        case editStateTF:
+            editZipCodeTF.becomeFirstResponder()
+            return true
+            
+        case editZipCodeTF:
+            editPhoneNumTF.becomeFirstResponder()
+            return true
+            
+        case editPhoneNumTF:
+            editCompanyNameTF.becomeFirstResponder()
+            return true
+            
+        case editCompanyNameTF:
+            self.view.endEditing(true)//dismiss keyboard
+            return true
+            
+        default:
+            break
+        }
+        //else return false
+        return false
+    }
 }

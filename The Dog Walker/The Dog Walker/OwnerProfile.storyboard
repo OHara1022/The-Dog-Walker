@@ -1175,20 +1175,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="6rx-B0-oLZ">
-                                                    <rect key="frame" x="30" y="10" width="281.5" height="22"/>
+                                                    <rect key="frame" x="30" y="10" width="337.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2245 Gator Dr. Apt. 240 Orlando, FL 32802" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="qmF-qX-Y0e">
-                                                    <rect key="frame" x="33" y="32" width="276" height="40"/>
+                                                    <rect key="frame" x="33" y="32" width="332" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="6rx-B0-oLZ" firstAttribute="width" secondItem="rPs-Bn-LBY" secondAttribute="width" multiplier="0.75" id="CMq-Jt-LQf"/>
+                                                <constraint firstItem="6rx-B0-oLZ" firstAttribute="width" secondItem="rPs-Bn-LBY" secondAttribute="width" multiplier="0.9" id="CMq-Jt-LQf"/>
                                                 <constraint firstItem="qmF-qX-Y0e" firstAttribute="centerX" secondItem="6rx-B0-oLZ" secondAttribute="centerX" id="GLL-OV-UlF"/>
                                                 <constraint firstItem="qmF-qX-Y0e" firstAttribute="leading" secondItem="rPs-Bn-LBY" secondAttribute="leadingMargin" constant="25" id="PVq-j0-9Op"/>
                                                 <constraint firstItem="6rx-B0-oLZ" firstAttribute="leading" secondItem="rPs-Bn-LBY" secondAttribute="leading" constant="30" id="Sip-ZD-nej"/>

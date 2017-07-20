@@ -13,7 +13,7 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
+    var activeField: UITextField?
     var companyCode: String?
     var companyName: String?
     
@@ -29,14 +29,14 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
     @IBOutlet weak var editZipCodeTF: UITextField!
     @IBOutlet weak var editPhoneNumTF: UITextField!
     @IBOutlet weak var editCompanyNameTF: UITextField!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: --viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //set DB reference
-        ref = Database.database().reference().child("users").child(userID!)
+        ref = Database.database().reference().child(users).child(userID!)
         
         //set observer for users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -82,6 +82,12 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
             }
             
         }, withCancel: nil)
+        
+        setTFDelegate()
+        
+        //broadcast info and add observer for when keyboard shows and hides
+        NotificationCenter.default.addObserver(self, selector: #selector(WalkerEditProfileViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(WalkerEditProfileViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     
@@ -115,10 +121,9 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
         
         //segue to details, update view w/ new values
         self.performSegue(withIdentifier: "updateWalker", sender: self)
-
+        
     }
     
-
     
     @IBAction func cancelEdit(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -128,6 +133,6 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
         //present image options
         presentImgOptions()
     }
-
-
+    
+    
 }

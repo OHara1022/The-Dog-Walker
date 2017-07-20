@@ -64,7 +64,7 @@ class ProfilesViewController: UIViewController {
             //address w/ apt number
             self.clientProfileVC.clientAddressLBL.text = currentClient.address! + ". " + currentClient.city! + ", " + currentClient.state! + " " + currentClient.zipCode!
         }else{
-            self.clientProfileVC.clientAddressLBL.text = currentClient.address! + ".  Apt. " + currentClient.aptNumber! + " " + currentClient.city! + ", " + currentClient.state! + " " + currentClient.zipCode!
+            self.clientProfileVC.clientAddressLBL.text = currentClient.address! + ". Apt. " + currentClient.aptNumber! + " " + currentClient.city! + ", " + currentClient.state! + " " + currentClient.zipCode!
         }
         
         if let profileImgURL = currentClient.profileImage{
@@ -90,6 +90,14 @@ class ProfilesViewController: UIViewController {
                 //populate petModel w/ dictionary data
                 let pet = PetModel(dictionary: dictionary)
                 
+                if let petImgURL = pet.petImage{
+                    //dev
+                    print(petImgURL)
+                    //set image to imageView
+                    self.petProfileVC.clientPetImg.loadImageUsingCache(petImgURL)
+                }
+                
+                
                 //populate label w/ data from FB
                 self.clientProfileVC.clientEmergencyContantLBL.text = pet.emergencyContact!
                 self.clientProfileVC.emergencyPhoneLBL.text = pet.emergencyPhone!
@@ -102,15 +110,7 @@ class ProfilesViewController: UIViewController {
                 self.petProfileVC.specialInsLBL.text = pet.specialIns!
                 self.petProfileVC.vetNameLBL.text = pet.vetName!
                 self.petProfileVC.vetPhoneLBL.text = pet.vetPhone!
-                
-                
-                if let petImgURL = pet.petImage{
-                    //dev
-                    print(petImgURL)
-                    //set image to imageView
-                    self.petProfileVC.clientPetImg.loadImageUsingCache(petImgURL)
-                }
-                
+  
             }
             
         }, withCancel: nil)

@@ -22,7 +22,6 @@ class PetProfileViewController: UIViewController {
     
     //MARK: -- stored properties
     var currentVC: UIViewController?
-    let userID = Auth.auth().currentUser?.uid
     
     //refenerce to pet profile VC - instantiant petProfile VC
     lazy var petVC: UIViewController? = {

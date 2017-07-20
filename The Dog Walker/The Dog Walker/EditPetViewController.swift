@@ -82,49 +82,7 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
         //set TF delegate
         setTFDelegate()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        //observer pet info
-//        ref.observeSingleEvent(of: .childAdded, with: { (snapshot) in
-//            
-//            //get snapshot as dictionary
-//            if let dictionary = snapshot.value as? [String: AnyObject]{
-//                
-//                //dev
-//                //print(snapshot)
-//                
-//                //populate petModel w/ dictionary
-//                let pet = PetModel(dictionary: dictionary)
-//                
-//                //dev
-//                print(pet.petName!)
-//                
-//                if let petImgURL = pet.petImage{
-//                    //dev
-//                    print(petImgURL)
-//                    //set image to imageView
-//                    self.petImageView.loadImageUsingCache(petImgURL)
-//                }
-//                
-//                //populate TF with passed values
-//                self.editPetName.text = pet.petName!
-//                self.editPetBday.text = pet.birthday!
-//                self.editBreed.text = pet.breed!
-//                self.editVaccines.text = pet.vaccines!
-//                self.editMeds.text = pet.meds!
-//                self.editSpecialIns.text = pet.specialIns!
-//                self.editVetName.text = pet.vetName!
-//                self.editVetPhone.text = pet.vetPhone!
-//                
-//                if self.editSpecialIns.text == ""{
-//                    self.editSpecialIns.text = "None"
-//                }
-//                //get petKey
-//                self.petKey = pet.petKey!
-//            }
-//        }, withCancel: nil)
-//    }
-//    
+
     
     //MARK: --actions
     @IBAction func savePetChanges(_ sender: Any) {

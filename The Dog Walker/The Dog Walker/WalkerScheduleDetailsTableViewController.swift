@@ -78,7 +78,15 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
                 //get snapshot values
                 let schedule = ScheduleModel(dictionary: dictionary)
                 
-                //                print(schedule.date!)
+                //print(schedule.date!)
+                
+                //check for pet image url
+//                if let petImgURL = schedule.petImageUrl{
+//                    //dev
+//                    print(petImgURL)
+//                    //set image to imageView
+//                    self.petImage.loadImageUsingCache(petImgURL)
+//                }
                 
                 //set label w/ passed values
                 self.petNameLabel.text = schedule.petName

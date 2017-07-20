@@ -72,7 +72,9 @@ class OwnerScheduleTableViewController: UITableViewController {
         }, withCancel: nil)
     }
     
- 
+    
+    
+ //TESTING
 //    override func viewWillAppear(_ animated: Bool) {
 //        
 //        ref.observeSingleEvent(of: .childChanged, with: { (snapshot) in
@@ -89,6 +91,7 @@ class OwnerScheduleTableViewController: UITableViewController {
 //        }, withCancel: nil)
 //        
 //    }
+
     
     //MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {

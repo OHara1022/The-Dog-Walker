@@ -21,4 +21,5 @@ let users: String = "users"
 let pets: String = "pets"
 let schedules: String = "schedules"
 let userID = Auth.auth().currentUser?.uid
-
+let walker = "Walker"
+let owner = "Owner"

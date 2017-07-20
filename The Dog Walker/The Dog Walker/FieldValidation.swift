@@ -18,14 +18,12 @@ class FieldValidation{
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         //alert action
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         presenter.present(alert, animated: true)
-        
     }
     
     //MARK: -- empty check
     class func isEmpty(_ textField: UITextField, presenter: UIViewController) -> Bool{
-        
+        //check if empty
         if (textField.text?.isEmpty)! {
             //alert user
             textFieldAlert("Missing Information", message: "No Empty Fields", presenter: presenter)
@@ -34,26 +32,27 @@ class FieldValidation{
         return false
     }
     
-    //US - Zipcode Validation
+    //check if zip code is valid
     class func isValidZipCode(_ zipcodeTV: UITextField, presenter: UIViewController) -> Bool {
         
         //zipcode holder
         let zipcode: String = zipcodeTV.text!
         
+        //zip reg Ex
         let zipCodeRegex = "^\\d{5}([\\-]?\\d{4})?$"	//00000
-        let zipCodeTest = NSPredicate(format: "SELF MATCHES %@", zipCodeRegex)
-        let evaluateZipCode = zipCodeTest.evaluate(with: zipcode)
+        let zipCodeEval = NSPredicate(format: "SELF MATCHES %@", zipCodeRegex)
+        let evaluateZipCode = zipCodeEval.evaluate(with: zipcode)
         //Invalid Zipcode
         if(!evaluateZipCode) {
             //alert user zipcode is invalid
             textFieldAlert("Zipcode Invalid", message: "Please enter a valid US zipcode", presenter: presenter)
             return false
         }
-        //Valid Zipcode
+        //valid zipCode
         return true
     }
     
-    //MARK: --Valid email
+    //MARK: --valid email
     //func check valid email
     class func validEmail(_ textField: UITextField, presenter: UIViewController) -> Bool{
         
@@ -71,7 +70,7 @@ class FieldValidation{
         return false
     }
     
-    //MARK: --Valid password
+    //MARK: --valid password
     //func check valid password, firebase password must be six chararcters
     class func validPassword(textField: UITextField, presenter: UIViewController) -> Bool{
         
@@ -84,6 +83,4 @@ class FieldValidation{
         }
         return true
     }
-
-
 }

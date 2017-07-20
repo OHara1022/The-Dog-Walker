@@ -98,12 +98,12 @@ class LoginViewController: UIViewController {
                         let roleID = user.roleID
                         
                         //check role id
-                        if roleID == "Walker"{
+                        if roleID == walker{
                             
                             //present walker homeVC
                             self.present(self.walkerhomeVC!, animated: true, completion: nil)
                             
-                        }else if roleID == "Owner"{
+                        }else if roleID == owner{
                             
                             //present pet owner homeVC
                             self.present(self.ownerhomeVC!, animated: true, completion: nil)

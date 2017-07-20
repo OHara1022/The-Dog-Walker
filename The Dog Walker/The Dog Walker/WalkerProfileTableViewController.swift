@@ -79,7 +79,7 @@ class WalkerProfileTableViewController: UITableViewController {
                     //address w/ apt number
                     self.addressLBL.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }else{
-                    self.addressLBL.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLBL.text = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
                 if user.companyName != nil{
@@ -131,7 +131,7 @@ class WalkerProfileTableViewController: UITableViewController {
                     //address w/ apt number
                     self.addressLBL.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }else{
-                    self.addressLBL.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLBL.text = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
                 if user.companyName != nil{
