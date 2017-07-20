@@ -97,8 +97,9 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             //get snapshot values
             let values = snapshot.value as! NSDictionary
             
+            
             //dev
-            print(values.value(forKey: "date") as! String)
+//            print(values.value(forKey: "date") as! String)
             
             //get checkIn value
             if let checkIn = values.value(forKey: "checkIn"){
@@ -129,6 +130,19 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             
         }, withCancel: nil)
     }
+    
+    //MARK: --prepare segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "edit"{
+            
+            let editSchedule = segue.destination as! WalkerEditScheduleViewController
+            
+            editSchedule.scheduleKey = selectedSchedule.scheduleKey
+            editSchedule.scheduleUID = selectedSchedule.uid
+        }
+    }
+    
     
     //MARK: -- actions
     @IBAction func checkIn(_ sender: UIButton) {
@@ -249,6 +263,10 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
                 
             }
         }
+    }
+    
+    //MARK: --updateView
+    @IBAction func updateSchedule(segue: UIStoryboardSegue){
         
     }
     
