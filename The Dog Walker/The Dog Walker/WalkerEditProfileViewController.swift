@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class WalkerEditProfileViewController: UIViewController {
+class WalkerEditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
@@ -53,6 +53,15 @@ class WalkerEditProfileViewController: UIViewController {
                 //dev
                 print(user.firstName!)
                 
+                if let profileImgURL = user.profileImage{
+                    
+                    //dev
+                    print(profileImgURL)
+                    
+                    //set profile image
+                    self.profileImage.loadImageUsingCache(profileImgURL)
+                }
+                
                 //populate label w/ data from FB
                 self.editFirstNameTF.text = user.firstName!
                 self.editLastNameTF.text = user.lastName!
@@ -70,16 +79,6 @@ class WalkerEditProfileViewController: UIViewController {
                     //set company name to TF
                     self.editCompanyNameTF.text = user.companyName!
                 }
-                
-                if let profileImgURL = user.profileImage{
-                    
-                    //dev
-                    print(profileImgURL)
-                    
-                    //set profile image
-                    self.profileImage.loadImageUsingCache(profileImgURL)
-                }
-                
             }
             
         }, withCancel: nil)
@@ -126,15 +125,9 @@ class WalkerEditProfileViewController: UIViewController {
     }
     
     @IBAction func changeImage(_ sender: UIButton) {
-        
-        let alert = UIAlertController(title: title, message: "OPEN CAMERA", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
+        //present image options
+        presentImgOptions()
     }
-
-  
-
 
 
 }

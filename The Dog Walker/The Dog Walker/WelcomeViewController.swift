@@ -23,8 +23,6 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
         Auth.auth().addStateDidChangeListener{ auth, user in
             
             //check if user is signed in

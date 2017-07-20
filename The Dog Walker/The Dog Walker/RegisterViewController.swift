@@ -17,7 +17,6 @@ class RegisterViewController: UIViewController{
     var ref: DatabaseReference!
     var activeField: UITextField?
     var statePicker: UIPickerView!
-    var stateHolderString: String = ""
     
     //MARK: -- outlets
     @IBOutlet weak var profileImage: UIImageView!
@@ -91,35 +90,6 @@ class RegisterViewController: UIViewController{
             //dev
             print("register segue")
             
-            //check passwords match
-            if passwordTF.text != confirmPasswordTF.text{
-                FieldValidation.textFieldAlert("Password does not match", message: "Please re-enter your password to match", presenter: self)
-                return loginFlag
-            }
-            
-            //check that zipCode is valid
-            if(!FieldValidation.isValidZipCode(zipCodeTF, presenter: self)){
-                //dev
-                print("ZIP HIT")
-                return loginFlag
-            }
-        
-            //check phone count
-            if (phoneTF.text?.characters.count)! < 10{
-                //dev
-            print("PHONE < 10")
-                
-            FieldValidation.textFieldAlert("Phone number", message: "Please add ten digit phone number with no dashes or seperators", presenter: self)
-                return loginFlag
-            }
-            //check phone has dashes
-            if (phoneTF.text?.characters.contains("-"))!{
-                //dev
-                print("DASHS")
-                FieldValidation.textFieldAlert("Phone number", message: "Please add ten digit phone number with no dashes or seperators", presenter: self)
-                return loginFlag
-            }
-            
             //check textFields are not empty
             if (!FieldValidation.isEmpty(firstNameTF, presenter: self) && !FieldValidation.isEmpty(lastNameTF, presenter: self) && !FieldValidation.isEmpty(emailTF, presenter: self) && !FieldValidation.isEmpty(passwordTF, presenter: self) && !FieldValidation.isEmpty(confirmPasswordTF, presenter: self) && !FieldValidation.isEmpty(addressTF, presenter: self) && !FieldValidation.isEmpty(cityTF, presenter: self) && !FieldValidation.isEmpty(stateTF, presenter: self) && !FieldValidation.isEmpty(zipCodeTF, presenter: self) && !FieldValidation.isEmpty(phoneTF, presenter: self) && !FieldValidation.isEmpty(companyCodeTF, presenter: self)){
              
@@ -148,6 +118,35 @@ class RegisterViewController: UIViewController{
                 
                 }
             }//end of empty check
+            
+            //check passwords match
+            if passwordTF.text != confirmPasswordTF.text{
+                FieldValidation.textFieldAlert("Password does not match", message: "Please re-enter your password to match", presenter: self)
+                return loginFlag
+            }
+            
+            //check that zipCode is valid
+            if(!FieldValidation.isValidZipCode(zipCodeTF, presenter: self)){
+                //dev
+                print("ZIP HIT")
+                return loginFlag
+            }
+            //check phone count
+            if (phoneTF.text?.characters.count)! < 10{
+                //dev
+                print("PHONE < 10")
+                
+                FieldValidation.textFieldAlert("Phone number", message: "Please add ten digit phone number with no dashes or seperators", presenter: self)
+                return loginFlag
+            }
+            //check phone has dashes
+            if (phoneTF.text?.characters.contains("-"))!{
+                //dev
+                print("DASHS")
+                FieldValidation.textFieldAlert("Phone number", message: "Please add ten digit phone number with no dashes or seperators", presenter: self)
+                return loginFlag
+            }
+
         }//end of identifier check
         
         //check if canceled

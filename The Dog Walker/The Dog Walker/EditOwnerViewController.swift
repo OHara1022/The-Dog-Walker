@@ -47,9 +47,6 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
         
         //set TF delegate
         setTFDelegate()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         //set observer for users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -88,7 +85,10 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
             }
             
         }, withCancel: nil)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+      
         //observer for pet info
         petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
             
@@ -157,7 +157,6 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func changeProfileImage(_ sender: UIButton) {
-        
         //present camera options
         presentImgOptions()
     }

@@ -93,7 +93,7 @@ class OwnerEditScheduleViewController: UIViewController {
         durationPicker.delegate = self
         editDurationTF.inputView = durationPicker
         //set item bar duration value
-        pickerItem(title: "Duration", textField: editDurationTF, selector: #selector(CreateScheduleViewController.donePickerPressed))
+        pickerItem(title: "Duration", textField: editDurationTF, selector: #selector(OwnerEditScheduleViewController.donePickerPressed))
         
         //broadcast info and add observer for when keyboard shows and hides
         NotificationCenter.default.addObserver(self, selector: #selector(OwnerEditScheduleViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)

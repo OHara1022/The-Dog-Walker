@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    var indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     //refenerce to walker home VC - instantiant walkerHome VC
     lazy var walkerhomeVC: UIViewController? = {
@@ -35,29 +34,23 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordLoginTF: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
     
-    
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.addSubview(self.indicator)
-        self.indicator.activityIndicatorViewStyle = .gray
-        self.indicator.sizeToFit()
-        self.indicator.center = self.view.center
-        
+   
         //set textFieldDelegate to self
         emailLoginTF.delegate = self
         passwordLoginTF.delegate = self
         
         //TODO: transition depending on roleID - crashes if code implemented with auth.signin w/ FB (research for later release)
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            
-            if let user = user{
-                //dev
-                print("LOGGED IN" + " " + user.email!)
-                print("AUTH" + " " + (auth.currentUser?.uid)!)
-            }
-        }
+//        Auth.auth().addStateDidChangeListener { (auth, user) in
+//            
+//            if let user = user{
+//                //dev
+//                print("LOGGED IN" + " " + user.email!)
+//                print("AUTH" + " " + (auth.currentUser?.uid)!)
+//            }
+//        }
     }
     
     //MARK: --viewWillAppear
@@ -74,9 +67,9 @@ class LoginViewController: UIViewController {
         if (FieldValidation.isEmpty(emailLoginTF, presenter: self) && FieldValidation.isEmpty(passwordLoginTF, presenter: self)){
         }
         
+        //sign in user w/ email & password
         Auth.auth().signIn(withEmail: emailLoginTF.text!, password: passwordLoginTF.text!) { (user, error) in
             
-//            self.indicator.startAnimating()
             //check if email failed
             if let error = error{
                 //dev
@@ -85,6 +78,7 @@ class LoginViewController: UIViewController {
                 FieldValidation.textFieldAlert("Invalid Information", message: error.localizedDescription, presenter: self)
                 return
             }
+            
             //optional bind to ensure we have user
             if let user = user{
                 
@@ -108,13 +102,11 @@ class LoginViewController: UIViewController {
                             
                             //present walker homeVC
                             self.present(self.walkerhomeVC!, animated: true, completion: nil)
-//                            self.indicator.stopAnimating()
                             
                         }else if roleID == "Owner"{
                             
                             //present pet owner homeVC
                             self.present(self.ownerhomeVC!, animated: true, completion: nil)
-//                            self.indicator.stopAnimating()
                         }
                     }
                     

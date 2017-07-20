@@ -17,7 +17,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     var ref: DatabaseReference!
     let phoneImage = UIImage(named: "phone")
     let directionsImg = UIImage(named: "directions")
-    var priceHolder: String?  = "" //use on later release
     
     //MARK: --outlets
     @IBOutlet weak var petImage: UIImageView!
@@ -27,9 +26,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var specialInsLabel: UILabel!
     @IBOutlet weak var medsLabel: UILabel!
-    @IBOutlet weak var clientLabel: UILabel!
-    @IBOutlet weak var clientAddress: UILabel!
-    @IBOutlet weak var clientPhone: UILabel!
     @IBOutlet weak var paidLabel: UILabel!
     @IBOutlet weak var phoneBtnOutlet: UIButton!
     @IBOutlet weak var directionBtnOutlet: UIButton!
@@ -63,29 +59,11 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             self.petImage.loadImageUsingCache(petImgURL)
         }
         
-        //populate labels w/ schedule data
-        petNameLabel.text = selectedSchedule.petName
-        dateLabel.text = selectedSchedule.date
-        timeLabel.text = selectedSchedule.time
-        durationLabel.text = selectedSchedule.duration
-        specialInsLabel.text = selectedSchedule.specialIns
-        medsLabel.text = selectedSchedule.meds
-        clientLabel.text = selectedSchedule.clientName
-        clientAddress.text = selectedSchedule.clientAddress
-        clientPhone.text = selectedSchedule.clientPhone
-        
-        //check if there are special ins
-        if specialInsLabel.text == ""{
-            //set special ins to none
-            specialInsLabel.text = "None"
-        }
-        
         //check if walk was paid
         if selectedSchedule.paidFlag == true{
             //set label to green
             paidLabel.textColor = UIColor.green
         }
-        
     }
     
     //MARL: -- viewWillAppear
@@ -94,40 +72,51 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         //observe schedule values
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            //get snapshot values
-            let values = snapshot.value as! NSDictionary
-            
-            
-            //dev
-//            print(values.value(forKey: "date") as! String)
-            
-            //get checkIn value
-            if let checkIn = values.value(forKey: "checkIn"){
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
                 
-                //check checkIn state
-                if checkIn as! Bool == true{
-                    //disable checkIn btn
-                    self.checkInBtn.isEnabled = false
-                    self.checkInBtn.setTitleColor(.gray, for: .disabled)
+                //get snapshot values
+                let schedule = ScheduleModel(dictionary: dictionary)
+                
+                //                print(schedule.date!)
+                
+                //set label w/ passed values
+                self.petNameLabel.text = schedule.petName
+                self.dateLabel.text = schedule.date
+                self.timeLabel.text = schedule.time
+                self.durationLabel.text = schedule.duration
+                self.specialInsLabel.text = schedule.specialIns
+                self.medsLabel.text = schedule.meds
+                
+                if self.specialInsLabel.text == ""{
+                    self.specialInsLabel.text = "None"
+                }
+                //get checkIn value
+                if let checkIn = schedule.checkIn{
                     
-                }else{
+                    //check checkIn state
+                    if checkIn == true{
+                        //disable checkIn btn
+                        self.checkInBtn.isEnabled = false
+                        self.checkInBtn.setTitleColor(.gray, for: .disabled)
+                        
+                    }else{
+                        
+                        //disable checkOut btn
+                        self.checkOutBtn.isEnabled = false
+                        self.checkOutBtn.setTitleColor(.gray, for: .disabled)
+                    }
+                }
+                //check checkOut state
+                if let checkOut = schedule.checkOut{
                     
-                    //disable checkOut btn
-                    self.checkOutBtn.isEnabled = false
-                    self.checkOutBtn.setTitleColor(.gray, for: .disabled)
+                    if checkOut  == true{
+                        //disable checkOut btn
+                        self.checkOutBtn.isEnabled = false
+                        self.checkOutBtn.setTitleColor(.gray, for: .disabled)
+                    }
                 }
             }
-            
-            //check checkOut state
-            if let checkOut = values.value(forKey: "checkOut"){
-                
-                if checkOut as! Bool == true{
-                    //disable checkOut btn
-                    self.checkOutBtn.isEnabled = false
-                    self.checkOutBtn.setTitleColor(.gray, for: .disabled)
-                }
-            }
-            
         }, withCancel: nil)
     }
     
@@ -140,6 +129,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
             
             editSchedule.scheduleKey = selectedSchedule.scheduleKey
             editSchedule.scheduleUID = selectedSchedule.uid
+            editSchedule.meds = selectedSchedule.meds
         }
     }
     
@@ -162,8 +152,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true)
-        
-        
     }
     
     @IBAction func checkOut(_ sender: UIButton) {
@@ -268,6 +256,29 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     //MARK: --updateView
     @IBAction func updateSchedule(segue: UIStoryboardSegue){
         
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //get snapshot values
+                let schedule = ScheduleModel(dictionary: dictionary)
+                
+                print(schedule.petName!)
+                //populate labels w/ schedule data
+                self.petNameLabel.text = schedule.petName
+                self.dateLabel.text = schedule.date
+                self.timeLabel.text = schedule.time
+                self.durationLabel.text = schedule.duration
+                self.specialInsLabel.text = schedule.specialIns
+                
+                //check if there are special ins
+                if self.specialInsLabel.text == ""{
+                    //set special ins to none
+                    self.specialInsLabel.text = "None"
+                }
+            }
+        })
     }
     
     //MARK: -- make phone call

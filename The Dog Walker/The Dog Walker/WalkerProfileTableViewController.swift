@@ -45,11 +45,6 @@ class WalkerProfileTableViewController: UITableViewController {
         
         //set DB reference
         ref = Database.database().reference().child("users").child(userID!)
-    }
-    
-    //MARK: --viewWillAppear
-    override func viewWillAppear(_ animated: Bool) {
-        
         //observe ref to users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -97,6 +92,7 @@ class WalkerProfileTableViewController: UITableViewController {
         }, withCancel: nil)
     }
     
+    
     //MARK: -- actions
     @IBAction func updateProfileView(segue: UIStoryboardSegue){
         
@@ -114,6 +110,14 @@ class WalkerProfileTableViewController: UITableViewController {
                 
                 //dev
                 print(user.firstName!)
+                
+                if let profileImgURL = user.profileImage{
+                    
+                    print(profileImgURL)
+                    
+                    self.profileImage.loadImageUsingCache(profileImgURL)
+                }
+                
                 
                 //populate label w/ data from FB
                 self.nameLBL.text = user.firstName! + " " + user.lastName!
@@ -135,13 +139,7 @@ class WalkerProfileTableViewController: UITableViewController {
                     self.companyNameLBL.text = user.companyName!
                 }
                 
-                if let profileImgURL = user.profileImage{
-                    
-                    print(profileImgURL)
-                    
-                    self.profileImage.loadImageUsingCache(profileImgURL)
-                }
-                
+             
             }
             
         }, withCancel: nil)

@@ -18,7 +18,7 @@ class FieldValidation{
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         //alert action
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         presenter.present(alert, animated: true)
         
     }
