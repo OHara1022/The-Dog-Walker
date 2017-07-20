@@ -13,7 +13,6 @@ class PetDetailsTableViewController: UITableViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
     
     //MARK: -- outlets
     @IBOutlet weak var petImageView: UIImageView!
@@ -31,7 +30,7 @@ class PetDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //get ref to pets
-        ref = Database.database().reference().child("pets").child(userID!)
+        ref = Database.database().reference().child(pets).child(userID!)
     }
     
     //MARK: --viewWillAppear

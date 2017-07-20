@@ -13,9 +13,10 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
-    let userID = Auth.auth().currentUser?.uid
+    var petRef: DatabaseReference!
     var companyCode: String?
-    
+    var petKey: String?
+    var activeField: UITextField?
     
     //MARK: --outlets
     @IBOutlet weak var profileImage: UIImageView!
@@ -28,6 +29,9 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var editState: UITextField!
     @IBOutlet weak var editZipCode: UITextField!
     @IBOutlet weak var editPhoneNum: UITextField!
+    @IBOutlet weak var editEmergencyContact: UITextField!
+    @IBOutlet weak var editEmergencyPhoneNum: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: --viewDidLoad
     override func viewDidLoad() {
@@ -35,7 +39,17 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
         
         //set DB reference
         ref = Database.database().reference().child(users).child(userID!)
+        petRef = Database.database().reference().child(pets).child(userID!)
         
+        //broadcast info and add observer for when keyboard shows and hides
+        NotificationCenter.default.addObserver(self, selector: #selector(EditOwnerViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EditOwnerViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        //set TF delegate
+        setTFDelegate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         //set observer for users
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -74,6 +88,30 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
             }
             
         }, withCancel: nil)
+        
+        //observer for pet info
+        petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //dev
+                //                print(snapshot)
+                
+                //populate petModel w/ dictionary data
+                let pet = PetModel(dictionary: dictionary)
+                
+                //dev
+                print(pet.emergencyContact!)
+                
+                self.petKey = pet.petKey!
+                
+                self.editEmergencyContact.text = pet.emergencyContact!
+                self.editEmergencyPhoneNum.text = pet.emergencyPhone!
+            }
+            
+        }, withCancel: nil)
+        
     }
     
     //MARK: --actions
@@ -105,6 +143,8 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
         //update database w/ new values
         ref.updateChildValues(["firstName": updateProfile.firstName, "lastName": updateProfile.lastName, "email": updateProfile.email, "phoneNumber": updateProfile.phoneNumber, "uid": updateProfile.uid, "companyCode": updateProfile.companyCode, "address": updateProfile.address, "city": updateProfile.city, "state": updateProfile.state, "zipCode": updateProfile.zipCode, "aptNumber": updateProfile.aptNumber!])
         
+        petRef.child(petKey!).updateChildValues(["emergencyContact": editEmergencyContact.text!, "emergencyPhone" : editEmergencyPhoneNum.text!])
+        
         //segue to details, update view w/ new values
         self.performSegue(withIdentifier: "updateProfile", sender: self)
     }
@@ -121,108 +161,4 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
         //present camera options
         presentImgOptions()
     }
-}
-
-
-//MARK: --extension
-extension EditOwnerViewController{
-    
-    //MARK: -- image functionality
-    func presentImgOptions(){
-        
-        //create action sheet
-        let photoActionSheet = UIAlertController(title: "Profile Photo", message: nil, preferredStyle: .actionSheet)
-        
-        //add actions
-        photoActionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
-            
-            if UIImagePickerController.isSourceTypeAvailable(.camera){
-                
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-                imagePicker.allowsEditing = true
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-        }))
-        
-        photoActionSheet.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { action in
-            
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-                
-                let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                imagePicker.allowsEditing = true
-                self.present(imagePicker, animated: true, completion: nil)
-            }
-            
-        }))
-        
-        photoActionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        //present action sheet
-        present(photoActionSheet, animated: true, completion: nil)
-    }
-    
-    
-    //MARK -- imagePickerDelegate / navigationDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        
-        var selectedImage: UIImage?
-        
-        if let editableImage = info[UIImagePickerControllerEditedImage] as? UIImage{
-            
-            selectedImage = editableImage
-            
-        }else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            //set image
-            selectedImage = image
-            
-        }
-        
-        if let selected = selectedImage{
-            
-            profileImage.image = selected
-            
-            //get ref to store images
-            let storageRef = Storage.storage().reference().child("profileImages").child("\(userID!).jpeg")
-            
-            //compress image
-            if let uploadImage = UIImageJPEGRepresentation(self.profileImage.image!, 0.6){
-                
-                //store data
-                storageRef.putData(uploadImage, metadata: nil, completion: { (metadata, error) in
-                    //check if create user failed
-                    if let error = error{
-                        //present alert failed
-                        FieldValidation.textFieldAlert("Image Storage Error", message: error.localizedDescription, presenter: self)
-                        //dev
-                        print(error.localizedDescription)
-                        return
-                    }
-                    
-                    //check string from image url
-                    if let profileImgURL = metadata?.downloadURL()?.absoluteString{
-                        //dev
-                        print(profileImgURL)
-                        //set ref to image url
-                        self.ref.updateChildValues(["profileImage": profileImgURL])
-                    }
-                })
-            }
-
-        }
-        
-        //dismiss imagePickerVC
-        dismiss(animated: true, completion: nil)
-    }
-    
-    //dismiss image picker if canceled
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        //dismiss imagePickerVC
-        dismiss(animated: true, completion: nil)
-    }
-    
 }

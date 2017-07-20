@@ -66,7 +66,7 @@ class OwnerProfileTableViewController: UITableViewController {
                 }
                 
                 //dev
-                print(user.firstName!)
+//                print(user.firstName!)
                 
                 //populate label w/ data from FB
                 self.nameLabel.text = user.firstName! + " " + user.lastName!
@@ -127,7 +127,7 @@ class OwnerProfileTableViewController: UITableViewController {
                 let user = UserModel(dictionary: dictionary)
                 
                 //dev
-                print(user.firstName!)
+//                print(user.firstName!)
                 
                 //set profile img w/ URL
                 if let profileImgURL = user.profileImage{
@@ -149,13 +149,33 @@ class OwnerProfileTableViewController: UITableViewController {
                     //address w/ apt number
                     self.addressLabel.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }else{
-                    self.addressLabel.text = user.address! + ".  Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLabel.text = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
 
             }
             
         }, withCancel: nil)
-
+        
+        //observer pet info
+        petRef.observeSingleEvent(of: .childChanged, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //dev
+                //print(snapshot)
+                
+                //populate petModel w/ dictionary
+                let pet = PetModel(dictionary: dictionary)
+                
+                //dev
+                print(pet.emergencyContact!)
+                //populate label w/ data returned from edit 
+                self.emergencyContactLabel.text = pet.emergencyContact!
+                self.emergencyPhoneLabel.text = pet.emergencyPhone!
+            
+            }
+        }, withCancel: nil)
     }
     
     @IBAction func signOutBtn(_ sender: Any) {

@@ -78,6 +78,10 @@ class RegisterViewController: UIViewController{
     //MARK: --segue
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
+        //get emailTF text
+        let email = emailTF.text
+        let password = passwordTF.text
+        
         //auth register flag
         var loginFlag: Bool = false
         
@@ -87,16 +91,40 @@ class RegisterViewController: UIViewController{
             //dev
             print("register segue")
             
+            //check passwords match
             if passwordTF.text != confirmPasswordTF.text{
                 FieldValidation.textFieldAlert("Password does not match", message: "Please re-enter your password to match", presenter: self)
                 return loginFlag
             }
             
+            //check that zipCode is valid
+            if(!FieldValidation.isValidZipCode(zipCodeTF, presenter: self)){
+                //dev
+                print("ZIP HIT")
+                return loginFlag
+            }
+        
+            //check phone count
+            if (phoneTF.text?.characters.count)! < 10{
+                //dev
+            print("PHONE < 10")
+                
+            FieldValidation.textFieldAlert("Phone number", message: "Please add ten digit phone number with no dashes or seperators", presenter: self)
+                return loginFlag
+            }
+            //check phone has dashes
+            if (phoneTF.text?.characters.contains("-"))!{
+                //dev
+                print("DASHS")
+                FieldValidation.textFieldAlert("Phone number", message: "Please add ten digit phone number with no dashes or seperators", presenter: self)
+                return loginFlag
+            }
+            
             //check textFields are not empty
             if (!FieldValidation.isEmpty(firstNameTF, presenter: self) && !FieldValidation.isEmpty(lastNameTF, presenter: self) && !FieldValidation.isEmpty(emailTF, presenter: self) && !FieldValidation.isEmpty(passwordTF, presenter: self) && !FieldValidation.isEmpty(confirmPasswordTF, presenter: self) && !FieldValidation.isEmpty(addressTF, presenter: self) && !FieldValidation.isEmpty(cityTF, presenter: self) && !FieldValidation.isEmpty(stateTF, presenter: self) && !FieldValidation.isEmpty(zipCodeTF, presenter: self) && !FieldValidation.isEmpty(phoneTF, presenter: self) && !FieldValidation.isEmpty(companyCodeTF, presenter: self)){
-                //get emailTF text
-                let email = emailTF.text
-                let password = passwordTF.text
+             
+                //check that email & password are valid 
+                if(FieldValidation.validEmail(emailTF, presenter: self) && FieldValidation.validPassword(textField: passwordTF, presenter: self)){
                 
                 //auth w/ FB to create user
                 Auth.auth().createUser(withEmail: email!, password: password!, completion: {(user, error) in
@@ -118,8 +146,9 @@ class RegisterViewController: UIViewController{
                 loginFlag = true
                 return loginFlag
                 
+                }
             }//end of empty check
-        }//end of auth check
+        }//end of identifier check
         
         //check if canceled
         if identifier == "cancel"{

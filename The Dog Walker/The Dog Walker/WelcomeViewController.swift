@@ -18,15 +18,12 @@ class WelcomeViewController: UIViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var roleID: String = "roleID"
-//    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//            activityIndicatorView.hidesWhenStopped = true;
-//            activityIndicatorView.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.gray;
-//            activityIndicatorView.center = view.center;
+
         
         Auth.auth().addStateDidChangeListener{ auth, user in
             
@@ -36,7 +33,7 @@ class WelcomeViewController: UIViewController {
                 print("logged in?" + " " +  user.uid)
                 
                 //get ref of current user
-                self.ref = Database.database().reference().child("users").child(user.uid)
+                self.ref = Database.database().reference().child(users).child(user.uid)
             }
         }//end of listener
         

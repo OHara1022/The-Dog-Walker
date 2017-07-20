@@ -31,6 +31,7 @@
 		D27E9CBE1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E9CBD1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift */; };
 		D27E9CC11EF39FBA00377A72 /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E9CC01EF39FBA00377A72 /* ClientsTableViewController.swift */; };
 		D27E9CC51EF3A0D900377A72 /* ClientProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E9CC41EF3A0D900377A72 /* ClientProfileTableViewController.swift */; };
+		D27EB8F61F20E6A300FDFF46 /* OwnerEditProfileExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27EB8F51F20E6A300FDFF46 /* OwnerEditProfileExt.swift */; };
 		D27F61F51EF1A7E4006258AA /* PetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F61F41EF1A7E4006258AA /* PetProfileViewController.swift */; };
 		D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */; };
 		D28A93C41EE4F03D00CF80B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A93C21EE4F03D00CF80B6 /* Main.storyboard */; };
@@ -111,6 +112,7 @@
 		D27E9CBD1EF39F3800377A72 /* WalkerSchedulesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerSchedulesTableViewController.swift; sourceTree = "<group>"; };
 		D27E9CC01EF39FBA00377A72 /* ClientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
 		D27E9CC41EF3A0D900377A72 /* ClientProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProfileTableViewController.swift; sourceTree = "<group>"; };
+		D27EB8F51F20E6A300FDFF46 /* OwnerEditProfileExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerEditProfileExt.swift; sourceTree = "<group>"; };
 		D27F61F41EF1A7E4006258AA /* PetProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetProfileViewController.swift; sourceTree = "<group>"; };
 		D28A93B91EE4F03D00CF80B6 /* The Dog Walker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Dog Walker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A93BC1EE4F03D00CF80B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				D257A9E21F1EC031006A9127 /* OwnerEditPetExt.swift */,
 				D2AB901E1EF4565900A05FEE /* OwnerProfileTableViewController.swift */,
 				D21CEF621EF3015800DF8602 /* EditOwnerViewController.swift */,
+				D27EB8F51F20E6A300FDFF46 /* OwnerEditProfileExt.swift */,
 			);
 			name = Owner;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 				D23F47791EFF75C400797B5E /* UserModel.swift in Sources */,
 				D217B3231EF36F7400785F88 /* OwnerScheduleTableViewController.swift in Sources */,
 				D23F477B1EFF828600797B5E /* ScheduleModel.swift in Sources */,
+				D27EB8F61F20E6A300FDFF46 /* OwnerEditProfileExt.swift in Sources */,
 				D28A93BD1EE4F03D00CF80B6 /* AppDelegate.swift in Sources */,
 				D2C5FABD1EF4C859006BB572 /* WalkerEditProfileViewController.swift in Sources */,
 				D217B3251EF36FBD00785F88 /* CreateScheduleViewController.swift in Sources */,
