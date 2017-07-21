@@ -62,7 +62,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         //check if walk was paid
         if selectedSchedule.paidFlag == true{
             //set label to green
-            paidLabel.textColor = UIColor.green
+            paidLabel.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
         }
     }
     

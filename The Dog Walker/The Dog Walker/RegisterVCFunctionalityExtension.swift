@@ -102,7 +102,6 @@ extension RegisterViewController{
             //set value for apt #
             userInfo.aptNumber = aptTF.text! as String
         }
-        
         //get ref to store images
         let storageRef = Storage.storage().reference().child("profileImages").child("\(user.uid).jpeg")
         
@@ -129,6 +128,7 @@ extension RegisterViewController{
                 }
             })
         }
+
         
         //save & push data to FB DB
         ref.child(users).child(user.uid).setValue(["firstName": userInfo.firstName, "lastName": userInfo.lastName, "email": userInfo.email, "password": passwordTF.text! as String, "phoneNumber": userInfo.phoneNumber, "uid": userInfo.uid, "companyCode": userInfo.companyCode, "companyName": companyNameTF.text! as String, "address": userInfo.address, "city": userInfo.city, "state": userInfo.state, "zipCode": userInfo.zipCode, "aptNumber": userInfo.aptNumber])

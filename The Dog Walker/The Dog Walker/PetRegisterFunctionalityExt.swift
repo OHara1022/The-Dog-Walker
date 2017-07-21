@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 extension PetRegisterViewController {
     
@@ -72,6 +73,8 @@ extension PetRegisterViewController {
             
             petImage.image = selected
         }
+        
+               
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
     }

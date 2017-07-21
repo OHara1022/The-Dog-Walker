@@ -15,6 +15,7 @@ class OwnerEditScheduleViewController: UIViewController {
     var ref: DatabaseReference!
     var scheduleKey: String?
     var activeField: UITextField?
+    let userID = Auth.auth().currentUser?.uid
     
     //pickerViews
     var timePicker: UIDatePicker!

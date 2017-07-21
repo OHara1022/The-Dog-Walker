@@ -16,6 +16,7 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
     var activeField: UITextField?
     var companyCode: String?
     var companyName: String?
+    let userID = Auth.auth().currentUser?.uid
     
     //MARK: --outlets
     @IBOutlet weak var profileImage: UIImageView!

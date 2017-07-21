@@ -18,6 +18,7 @@ class WalkerSchedulesTableViewController: UITableViewController {
     var walkerCode: String?
     var cell: UITableViewCell?
     var clientSchedules = [ScheduleModel]()
+    let userID = Auth.auth().currentUser?.uid
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {

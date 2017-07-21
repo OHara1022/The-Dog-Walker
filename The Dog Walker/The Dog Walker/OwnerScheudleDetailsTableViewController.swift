@@ -19,6 +19,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     var ref: DatabaseReference!
     var petRef: DatabaseReference!
     var price: NSDecimalNumber!
+    let userID = Auth.auth().currentUser?.uid
     
     //MARK: -- outlets
     @IBOutlet weak var petImage: UIImageView!

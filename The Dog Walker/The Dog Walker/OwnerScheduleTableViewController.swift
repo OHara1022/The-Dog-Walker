@@ -17,9 +17,10 @@ class OwnerScheduleTableViewController: UITableViewController {
     var paidRef: DatabaseReference!
     var schedulesArray = [ScheduleModel]()
     var cell: UITableViewCell?
+    let userID = Auth.auth().currentUser?.uid
     
     //TODO: show unpaid on checkout
-    var paid: String = "UNPAID"
+    var paid: String = "Paid"
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
@@ -72,7 +73,10 @@ class OwnerScheduleTableViewController: UITableViewController {
         }, withCancel: nil)
     }
     
-    
+//    override func viewDidDisappear(_ animated: Bool) {
+//  
+//        ref.removeAllObservers()
+//    }
     
  //TESTING
 //    override func viewWillAppear(_ animated: Bool) {
@@ -89,9 +93,7 @@ class OwnerScheduleTableViewController: UITableViewController {
 //                
 //            }
 //        }, withCancel: nil)
-//        
 //    }
-
     
     //MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -115,16 +117,18 @@ class OwnerScheduleTableViewController: UITableViewController {
         //populate labels with schdule data
         cell?.textLabel?.text = schedule.date!
         
-        //TODO: fix paid label to show on walk completion
-//        cell.paidLabel.text = paid
-        
         //check if payment was made
-//        if schedule.paidFlag == true{
-//            //set paid label to green
-//            cell.paidLabel.textColor = UIColor.green
-//        }
+        if schedule.paidFlag == true{
+            //TODO: fix paid label to show on walk completion
+            self.cell?.detailTextLabel?.text = paid
+          //set paid label to green
+            self.cell?.detailTextLabel?.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
+        }else{
+            //TODO: fix paid label to show on walk completion
+            self.cell?.detailTextLabel?.text = ""
+        }
         
-        //get ref to schedules
+//        //get ref to schedules
 //        paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
 //            
 //            //dev
@@ -132,8 +136,9 @@ class OwnerScheduleTableViewController: UITableViewController {
 //            
 ////             if schedule.paidFlag == true{
 //            
+//              self.cell?.detailTextLabel?.text = self.paid
 //                //set paid label to green
-//                cell.paidLabel.textColor = UIColor.green
+//                self.cell?.detailTextLabel?.textColor = UIColor.green
 //                
 //                //dispatch on main thread or app will crash!!
 //                DispatchQueue.main.async(execute: {
@@ -174,10 +179,8 @@ class OwnerScheduleTableViewController: UITableViewController {
                 let scheduleDetail = self.schedulesArray[index.row]
                 
                 details.selectedSchedule = scheduleDetail
-                
             }
         }
-        
     }
     
     //MARK: -- edit cells
@@ -185,7 +188,6 @@ class OwnerScheduleTableViewController: UITableViewController {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    
     
     //MARK: -- edit style
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -209,10 +211,8 @@ class OwnerScheduleTableViewController: UITableViewController {
                     //remove from array & table view
                     self.schedulesArray.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                    
                 })
             }
         }
     }
-    
 }

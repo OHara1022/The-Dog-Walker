@@ -25,6 +25,7 @@ class CreateScheduleViewController: UIViewController {
     var emergencyContact: String?
     var emergencyPhone: String?
     var activeField: UITextField?
+    let userID = Auth.auth().currentUser?.uid
     
     //pickerViews
     var timePicker: UIDatePicker!

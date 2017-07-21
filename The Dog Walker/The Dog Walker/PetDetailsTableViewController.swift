@@ -13,6 +13,7 @@ class PetDetailsTableViewController: UITableViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
+    let userID = Auth.auth().currentUser?.uid
     
     //MARK: -- outlets
     @IBOutlet weak var petImageView: UIImageView!

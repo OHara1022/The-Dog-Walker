@@ -13,6 +13,8 @@ class LoginViewController: UIViewController {
     
     //MARK: -- stored properties
     var ref: DatabaseReference!
+    var loginRef: DatabaseReference!
+    //    let userID = Auth.auth().currentUser?.uid
     
     //refenerce to walker home VC - instantiant walkerHome VC
     lazy var walkerhomeVC: UIViewController? = {
@@ -37,20 +39,13 @@ class LoginViewController: UIViewController {
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        //login ref for persitant login
+        self.loginRef = Database.database().reference().child(users)
+        
         //set textFieldDelegate to self
         emailLoginTF.delegate = self
         passwordLoginTF.delegate = self
         
-        //TODO: transition depending on roleID - crashes if code implemented with auth.signin w/ FB (research for later release)
-//        Auth.auth().addStateDidChangeListener { (auth, user) in
-//            
-//            if let user = user{
-//                //dev
-//                print("LOGGED IN" + " " + user.email!)
-//                print("AUTH" + " " + (auth.currentUser?.uid)!)
-//            }
-//        }
     }
     
     //MARK: --viewWillAppear
@@ -58,6 +53,46 @@ class LoginViewController: UIViewController {
         //clear textFields
         self.emailLoginTF.text = ""
         self.passwordLoginTF.text = ""
+        
+        //check auth state
+        if Auth.auth().currentUser != nil{
+            //listen for changes in auth state
+            Auth.auth().addStateDidChangeListener { (auth, user) in
+                
+                if let user = user{
+                    //dev
+                    print("LOGGED IN" + " " + user.email!)
+                    print("AUTH" + " " + (auth.currentUser?.uid)!)
+                    
+                    //obserserve event to check role on login
+                    self.loginRef.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        //get snapshot as dictionary
+                        if let dictionary = snapshot.value as? [String: AnyObject]{
+                            
+                            //get userModal w/ dictionary vallues
+                            let user = UserModel(dictionary: dictionary)
+                            
+                            //get user roleID
+                            let roleID = user.roleID
+                            
+                            //check role id
+                            if roleID == "Walker"{
+                                
+                                //present walker homeVC
+                                self.present(self.walkerhomeVC!, animated: true, completion: nil)
+                                
+                            }else if roleID == "Owner"{
+                                
+                                //present pet owner homeVC
+                                self.present(self.ownerhomeVC!, animated: true, completion: nil)
+                            }
+                        }
+                        
+                    }, withCancel: nil)
+                }
+            }
+        }
     }
     
     //MARK: -- actions
@@ -83,7 +118,7 @@ class LoginViewController: UIViewController {
             if let user = user{
                 
                 //set ref to DB
-                self.ref = Database.database().reference().child("users").child(user.uid)
+                self.ref = Database.database().reference().child(users).child(user.uid)
                 
                 //obserserve event to check role on login
                 self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -98,12 +133,12 @@ class LoginViewController: UIViewController {
                         let roleID = user.roleID
                         
                         //check role id
-                        if roleID == walker{
+                        if roleID == "Walker"{
                             
                             //present walker homeVC
                             self.present(self.walkerhomeVC!, animated: true, completion: nil)
                             
-                        }else if roleID == owner{
+                        }else if roleID == "Owner"{
                             
                             //present pet owner homeVC
                             self.present(self.ownerhomeVC!, animated: true, completion: nil)

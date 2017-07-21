@@ -14,6 +14,7 @@ class OwnerProfileTableViewController: UITableViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var petRef: DatabaseReference!
+    let userID = Auth.auth().currentUser?.uid
     
     //refenerce to  home VC - instantiant walkerHome VC
     lazy var homeVC: UIViewController? = {

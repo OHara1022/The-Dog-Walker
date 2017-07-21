@@ -16,6 +16,7 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
     var activeField: UITextField?
     var dateHolderString: String = ""
     var datePicker: UIDatePicker!
+    let userID = Auth.auth().currentUser?.uid
     
     //refenerce to ownerhomeVC - instantiant ownerhomeVC
     lazy var ownerhomeVC: UIViewController? = {
@@ -87,6 +88,8 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
         presentImgOptions()
     }
     
+    var petKey: String?
+    
     @IBAction func petSave(_ sender: UIBarButtonItem) {
         
         //check that fields are not empty
@@ -105,7 +108,7 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
             let vetPhone = vetPhoneTF.text
             
             //generate key for each pet created
-            let petKey = self.ref.childByAutoId().key
+            self.petKey = self.ref.childByAutoId().key
             
             //populate class with TF text
             let petData = PetData(petName: petName!, birthday: dateHolderString, breed: breed!, meds: meds!, vaccine: vaccine!, specialInstructions: specialIns!, vetName: vetName!, vetPhone: vetPhone!)
@@ -136,13 +139,13 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
                         print(petImgURL)
                         
                         //save image url
-                        self.ref.child(petKey).updateChildValues(["petImage": petImgURL])
+                        self.ref.child(self.petKey!).updateChildValues(["petImage": petImgURL])
                     }
                 })
             }
             
             //push create pet to Firebase
-            self.ref.child(petKey).setValue(["petName": petData.petName, "birthday": petData.birthday, "breed": petData.breed, "meds": petData.meds, "vaccines": petData.vaccine, "specialIns": petData.specialInstructions, "emergencyContact": petData.emergencyContact, "emergencyPhone": petData.emergencyPhone, "vetName": petData.vetName,"vetPhone": petData.vetPhone, "petKey": petKey, "uid": userID])
+            self.ref.child(petKey!).setValue(["petName": petData.petName, "birthday": petData.birthday, "breed": petData.breed, "meds": petData.meds, "vaccines": petData.vaccine, "specialIns": petData.specialInstructions, "emergencyContact": petData.emergencyContact, "emergencyPhone": petData.emergencyPhone, "vetName": petData.vetName,"vetPhone": petData.vetPhone, "petKey": petKey, "uid": userID])
             
             //dev
             print("SAVED PET")

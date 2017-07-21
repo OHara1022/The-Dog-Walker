@@ -17,6 +17,7 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
     var companyCode: String?
     var petKey: String?
     var activeField: UITextField?
+    let userID = Auth.auth().currentUser?.uid
     
     //MARK: --outlets
     @IBOutlet weak var profileImage: UIImageView!
