@@ -105,6 +105,10 @@ class OwnerEditScheduleViewController: UIViewController {
     //MARK: --actions
     @IBAction func saveEditChanges(_ sender: Any) {
         
+        //check for empty TF
+        if (!FieldValidation.isEmpty(editDateTF, presenter: self) && !FieldValidation.isEmpty(editTimeTF, presenter: self) &&
+            !FieldValidation.isEmpty(editDurationTF, presenter: self) && !FieldValidation.isEmpty(editPetNameTF, presenter: self) && !FieldValidation.isEmpty(editMedsTF, presenter: self)){
+        
         //get TF text
         let date = editDateTF.text
         let time = editTimeTF.text
@@ -122,6 +126,7 @@ class OwnerEditScheduleViewController: UIViewController {
         
         //perform segue to details w/ updated values
         self.performSegue(withIdentifier: "updateView", sender: self)
+        }
     }
     
     

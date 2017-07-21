@@ -89,7 +89,7 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
-      
+        
         //observer for pet info
         petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
             
@@ -121,35 +121,46 @@ class EditOwnerViewController: UIViewController, UIImagePickerControllerDelegate
         //dev
         print("save owner changes")
         
-        //get TF text
-        let firstName = editFirstName.text
-        let lastName = editLastName.text
-        let email = editEmail.text
-        let address = editAddress.text
-        let aptNum = editAptNum.text
-        let city = editCity.text
-        let state = editState.text
-        let zipCode = editZipCode.text
-        let phoneNum = editPhoneNum.text
-        
-        //populate user class w/ new values
-        let updateProfile = Users(firstName: firstName!, lastName: lastName!, email: email!, address: address!, city: city!, state: state!, zipCode: zipCode!, phoneNumber: phoneNum!, uid: userID!, companyCode: companyCode!)
-        
-        //check if apt has value
-        if editAptNum.text != nil{
-            //set apt # text
-            updateProfile.aptNumber = aptNum!
+        //check for empty TF
+        if (!FieldValidation.isEmpty(editFirstName, presenter: self) && !FieldValidation.isEmpty(editLastName, presenter: self) &&
+            !FieldValidation.isEmpty(editEmail, presenter: self) && !FieldValidation.isEmpty(editAddress, presenter: self) && !FieldValidation.isEmpty(editCity, presenter: self) && !FieldValidation.isEmpty(editState, presenter: self) && !FieldValidation.isEmpty(editZipCode, presenter: self) && !FieldValidation.isEmpty(editPhoneNum, presenter: self) && !FieldValidation.isEmpty(editEmergencyContact, presenter: self) && !FieldValidation.isEmpty(editEmergencyPhoneNum, presenter: self)){
+            
+            //check that zipCode is valid
+            if(FieldValidation.isValidZipCode(editZipCode, presenter: self)){
+                //dev
+                print("ZIP HIT")
+                
+                //get TF text
+                let firstName = editFirstName.text
+                let lastName = editLastName.text
+                let email = editEmail.text
+                let address = editAddress.text
+                let aptNum = editAptNum.text
+                let city = editCity.text
+                let state = editState.text
+                let zipCode = editZipCode.text
+                let phoneNum = editPhoneNum.text
+                
+                //populate user class w/ new values
+                let updateProfile = Users(firstName: firstName!, lastName: lastName!, email: email!, address: address!, city: city!, state: state!, zipCode: zipCode!, phoneNumber: phoneNum!, uid: userID!, companyCode: companyCode!)
+                
+                //check if apt has value
+                if editAptNum.text != nil{
+                    //set apt # text
+                    updateProfile.aptNumber = aptNum!
+                }
+                
+                //update database w/ new values
+                ref.updateChildValues(["firstName": updateProfile.firstName, "lastName": updateProfile.lastName, "email": updateProfile.email, "phoneNumber": updateProfile.phoneNumber, "uid": updateProfile.uid, "companyCode": updateProfile.companyCode, "address": updateProfile.address, "city": updateProfile.city, "state": updateProfile.state, "zipCode": updateProfile.zipCode, "aptNumber": updateProfile.aptNumber!])
+                
+                petRef.child(petKey!).updateChildValues(["emergencyContact": editEmergencyContact.text!, "emergencyPhone" : editEmergencyPhoneNum.text!])
+                
+                //segue to details, update view w/ new values
+                self.performSegue(withIdentifier: "updateProfile", sender: self)
+            }
         }
-        
-        //update database w/ new values
-        ref.updateChildValues(["firstName": updateProfile.firstName, "lastName": updateProfile.lastName, "email": updateProfile.email, "phoneNumber": updateProfile.phoneNumber, "uid": updateProfile.uid, "companyCode": updateProfile.companyCode, "address": updateProfile.address, "city": updateProfile.city, "state": updateProfile.state, "zipCode": updateProfile.zipCode, "aptNumber": updateProfile.aptNumber!])
-        
-        petRef.child(petKey!).updateChildValues(["emergencyContact": editEmergencyContact.text!, "emergencyPhone" : editEmergencyPhoneNum.text!])
-        
-        //segue to details, update view w/ new values
-        self.performSegue(withIdentifier: "updateProfile", sender: self)
     }
-
+    
     @IBAction func cancelEditOwner(_ sender: Any) {
         
         //dev

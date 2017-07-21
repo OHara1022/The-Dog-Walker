@@ -55,14 +55,6 @@ class CreateScheduleViewController: UIViewController {
         //set TF delegate
         setTFDelegate()
         
-        //init time picker & set mode, inputView, & target
-        timePicker = UIDatePicker()
-        timePicker.datePickerMode = .time
-        timeTF.inputView = timePicker
-        timePicker.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
-        //set item bar time values
-        pickerItem(title: "Time", textField: timeTF, selector: #selector(CreateScheduleViewController.donePickerPressed))
-        
         //init date picker & set mode, inputView, & target
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
@@ -70,6 +62,14 @@ class CreateScheduleViewController: UIViewController {
         datePicker.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
         //set item bar date values
         pickerItem(title: "Date", textField: dateTF, selector:  #selector(CreateScheduleViewController.donePickerPressed))
+        
+        //init time picker & set mode, inputView, & target
+        timePicker = UIDatePicker()
+        timePicker.datePickerMode = .time
+        timeTF.inputView = timePicker
+        timePicker.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
+        //set item bar time values
+        pickerItem(title: "Time", textField: timeTF, selector: #selector(CreateScheduleViewController.donePickerPressed))
     
         //init duration pickerView, set delegate & datasource
         durationPicker  = UIPickerView()
@@ -160,8 +160,9 @@ class CreateScheduleViewController: UIViewController {
     //MARK: -- actions
     @IBAction func saveSchedule(_ sender: Any) {
         
+        //check for empty TF
         if (!FieldValidation.isEmpty(dateTF, presenter: self) && !FieldValidation.isEmpty(timeTF, presenter: self) &&
-            !FieldValidation.isEmpty(durationTF, presenter: self)){
+            !FieldValidation.isEmpty(durationTF, presenter: self) && !FieldValidation.isEmpty(petNameTF, presenter: self) && !FieldValidation.isEmpty(medTF, presenter: self)){
             
             //retreive textField text
             let date = dateTF.text

@@ -128,28 +128,6 @@ class OwnerScheduleTableViewController: UITableViewController {
             self.cell?.detailTextLabel?.text = ""
         }
         
-//        //get ref to schedules
-//        paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
-//            
-//            //dev
-//            print(snapshot)
-//            
-////             if schedule.paidFlag == true{
-//            
-//              self.cell?.detailTextLabel?.text = self.paid
-//                //set paid label to green
-//                self.cell?.detailTextLabel?.textColor = UIColor.green
-//                
-//                //dispatch on main thread or app will crash!!
-//                DispatchQueue.main.async(execute: {
-//                    
-//                    //reload tableView
-//                    self.tableView.reloadData()
-//                })
-////            }
-//            
-//        }, withCancel: nil)
-        
         return cell!
     }
     

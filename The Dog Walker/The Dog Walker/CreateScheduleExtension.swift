@@ -118,7 +118,6 @@ extension CreateScheduleViewController{
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: selector)
         let pickerInfo = UIBarButtonItem(title: title, style: .plain, target: self, action: nil)
         
-        
         doneButton.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
         pickerInfo.tintColor = UIColor.black
         

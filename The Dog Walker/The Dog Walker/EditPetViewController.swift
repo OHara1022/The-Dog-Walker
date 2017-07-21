@@ -92,6 +92,10 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
         print("save pet changes")
         print(petKey!)
         
+        //check for empty TF
+        if (!FieldValidation.isEmpty(editPetName, presenter: self) && !FieldValidation.isEmpty(editPetBday, presenter: self) &&
+            !FieldValidation.isEmpty(editBreed, presenter: self) && !FieldValidation.isEmpty(editVaccines, presenter: self) && !FieldValidation.isEmpty(editMeds, presenter: self) && !FieldValidation.isEmpty(editVetName, presenter: self) && !FieldValidation.isEmpty(editVetPhone, presenter: self)){
+        
         //get TF values
         let petName = editPetName.text
         let bday = editPetBday.text
@@ -110,6 +114,8 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         //segue to details, update view w/ new values
         self.performSegue(withIdentifier: "updatePet", sender: self)
+            
+        }
     }
     
     @IBAction func cancelPetEdit(_ sender: Any) {
