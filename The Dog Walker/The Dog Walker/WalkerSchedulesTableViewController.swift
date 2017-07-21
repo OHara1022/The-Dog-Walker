@@ -87,10 +87,10 @@ class WalkerSchedulesTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         ref.removeAllObservers()
     }
+  
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
+//    override func viewWillAppear(_ animated: Bool) {
+//
 //        //set observer to schedules
 //        ref.observe(.childAdded, with: { (snapshot) in
 //            
@@ -127,9 +127,9 @@ class WalkerSchedulesTableViewController: UITableViewController {
 //            }, withCancel: nil)
 //            
 //        }, withCancel: nil)
-
-    }
-    
+//
+//    }
+//    
     
     // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {

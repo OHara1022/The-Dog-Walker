@@ -46,7 +46,7 @@ class OwnerScheduleTableViewController: UITableViewController {
                 //append schedule data
                 self.schedulesArray.append(schedules)
                 //dev
-//                print(schedules.paidFlag!)
+                //                print(schedules.paidFlag!)
                 
                 //check if walk was completed and paid for
                 if schedules.checkOut == true && schedules.paidFlag != true{
@@ -63,6 +63,12 @@ class OwnerScheduleTableViewController: UITableViewController {
                     self.present(alert, animated: true)
                 }
                 
+                if schedules.checkIn == true && schedules.paidFlag != true{
+                    
+                    FieldValidation.textFieldAlert(schedules.petName! + " " + "walk has started", message: "Your walk scheduled on" + " " + schedules.date! + " " + "has begun",  presenter: self)
+                }
+                
+                
                 //dispatch on main thread or app will crash!!
                 DispatchQueue.main.async(execute: {
                     //reload tableView
@@ -71,17 +77,14 @@ class OwnerScheduleTableViewController: UITableViewController {
             }
             
         }, withCancel: nil)
+        
     }
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//  
-//        ref.removeAllObservers()
-//    }
-    
- //TESTING
-//    override func viewWillAppear(_ animated: Bool) {
-//        
-//        ref.observeSingleEvent(of: .childChanged, with: { (snapshot) in
+    //TESTING
+    override func viewWillAppear(_ animated: Bool) {
+        
+//
+//        paidRef.observeSingleEvent(of: .childChanged, with: { (snapshot) in
 //            
 //            //get snapshot
 //            if let dictionary = snapshot.value as? [String: AnyObject]{
@@ -91,9 +94,23 @@ class OwnerScheduleTableViewController: UITableViewController {
 //                
 //                print(schedules.date!)
 //                
+//                //check if payment was made
+//             
+//                    //TODO: fix paid label to show on walk completion
+//                    self.cell?.detailTextLabel?.text = self.paid
+//                    //set paid label to green
+//                    self.cell?.detailTextLabel?.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
+//             
+//                
+//                //dispatch on main thread or app will crash!!
+//                DispatchQueue.main.async(execute: {
+//                    //reload tableView
+//                    self.tableView.reloadData()
+//                })
+//                
 //            }
 //        }, withCancel: nil)
-//    }
+    }
     
     //MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -121,12 +138,34 @@ class OwnerScheduleTableViewController: UITableViewController {
         if schedule.paidFlag == true{
             //TODO: fix paid label to show on walk completion
             self.cell?.detailTextLabel?.text = paid
-          //set paid label to green
+            //set paid label to green
             self.cell?.detailTextLabel?.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
+            
         }else{
             //TODO: fix paid label to show on walk completion
             self.cell?.detailTextLabel?.text = ""
+  
         }
+        
+//                //get ref to schedules
+//                paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
+//        
+//                    //dev
+////                    print(snapshot)
+//        
+//                      self.cell?.detailTextLabel?.text = self.paid
+//                        //set paid label to green
+//                        self.cell?.detailTextLabel?.textColor = UIColor.green
+//                    
+//        
+//                        //dispatch on main thread or app will crash!!
+//                        DispatchQueue.main.async(execute: {
+//        
+//                            //reload tableView
+//                            self.tableView.reloadData()
+//                        })
+//                    
+//                }, withCancel: nil)
         
         return cell!
     }

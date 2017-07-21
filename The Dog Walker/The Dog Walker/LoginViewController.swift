@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         self.passwordLoginTF.text = ""
         
         //check auth state
-        if Auth.auth().currentUser != nil{
+        if Auth.auth().currentUser?.uid != nil{
             //listen for changes in auth state
             Auth.auth().addStateDidChangeListener { (auth, user) in
                 

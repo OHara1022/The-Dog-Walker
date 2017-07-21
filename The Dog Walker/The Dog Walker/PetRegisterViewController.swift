@@ -16,6 +16,7 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
     var activeField: UITextField?
     var dateHolderString: String = ""
     var datePicker: UIDatePicker!
+    var petKey: String?
     let userID = Auth.auth().currentUser?.uid
     
     //refenerce to ownerhomeVC - instantiant ownerhomeVC
@@ -88,7 +89,7 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
         presentImgOptions()
     }
     
-    var petKey: String?
+    
     
     @IBAction func petSave(_ sender: UIBarButtonItem) {
         
@@ -97,7 +98,6 @@ class PetRegisterViewController: UIViewController, UIImagePickerControllerDelega
             
             //retrieve textField text
             let petName = petNameTF.text
-//            let bday = bdayTF.text
             let breed = breedTF.text
             let meds = medsTF.text
             let vaccine = vaccineTF.text
