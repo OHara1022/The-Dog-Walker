@@ -16,7 +16,7 @@ class OwnerEditScheduleViewController: UIViewController {
     var scheduleKey: String?
     var activeField: UITextField?
     let userID = Auth.auth().currentUser?.uid
-    
+
     //pickerViews
     var timePicker: UIDatePicker!
     var datePicker: UIDatePicker!
@@ -59,6 +59,7 @@ class OwnerEditScheduleViewController: UIViewController {
                 self.editPetNameTF.text =  schedule.petName
                 self.editSpecialInsTF.text =  schedule.specialIns
                 self.editMedsTF.text =  schedule.meds
+                
                 
                 if  self.editSpecialInsTF.text == ""{
                     self.editSpecialInsTF.text = "None"
