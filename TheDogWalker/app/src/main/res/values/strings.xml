@@ -22,4 +22,7 @@
     <string name="are_you_a_dog_walker">Are you a dog walker?</string>
     <string name="or">OR</string>
     <string name="are_you_a_pet_owner">Are you a pet owner?</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="add_schedule">Add Schedule</string>
 </resources>

@@ -10,13 +10,13 @@ public class UserData implements Serializable {
     public String lastName;
     public String email;
     public String uid;
-    public Long phoneNumber;
+    public String phoneNumber;
     public String address;
     public String city;
     public String state;
-    public Long zipCode;
-    public Long aptNumber;
-    public Long companyCode;
+    public String zipCode;
+    public String aptNumber;
+    public String companyCode;
     public String companyName;
     public String profileImg;
     public String roleID;
@@ -29,8 +29,8 @@ public class UserData implements Serializable {
     }
 
     //constructor
-    public UserData(String firstName, String lastName, String email, Long phoneNumber, String address,
-                    String city, String state, Long zipCode, Long companyCode, String password){
+    public UserData(String firstName, String lastName, String email, String phoneNumber, String address,
+                    String city, String state, String zipCode, String companyCode, String password){
 
         this.firstName = firstName;
         this.lastName = lastName;

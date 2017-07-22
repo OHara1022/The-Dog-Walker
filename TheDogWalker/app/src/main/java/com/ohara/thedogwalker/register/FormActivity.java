@@ -1,13 +1,11 @@
 package com.ohara.thedogwalker.register;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -89,15 +87,20 @@ public class FormActivity extends AppCompatActivity implements GetUserData{
         final String lastName = user.lastName;
         final String email = user.email;
         final String password = user.password;
-        final Long phoneNumber = user.phoneNumber;
+//        final Long phoneNumber = user.phoneNumber;
+        final String phoneNumber = user.phoneNumber;
         final String address = user.address;
         final String city = user.city;
         final String state = user.state;
-        final Long zipCode = user.zipCode;
-        final Long aptNumber = user.aptNumber;
-        final Long companyCode = user.companyCode;
+//        final Long zipCode = user.zipCode;
+        final String zipCode = user.zipCode;
+        final String aptNumber = user.aptNumber;
+//        final Long aptNumber = user.aptNumber;
+//        final Long companyCode = user.companyCode;
+        final String companyCode = user.companyCode;
         final String companyName = user.companyName;
 
+        //listener to save user data, gets hit after create user method finishes
         //listener to save user data, gets hit after create user method finishes
         mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -129,18 +132,12 @@ public class FormActivity extends AppCompatActivity implements GetUserData{
                     mReference.child("users").child(uid).child("companyCode").setValue(companyCode);
                     mReference.child("users").child(uid).child("companyName").setValue(companyName);
 
-
-
                 }
             }
-        });
 
-        Intent welcomeIntent = new Intent(this, WelcomeActivity.class);
+         });
+        Intent welcomeIntent = new Intent(FormActivity.this, WelcomeActivity.class);
         startActivity(welcomeIntent);
-
-
-
     }
-
 
 }

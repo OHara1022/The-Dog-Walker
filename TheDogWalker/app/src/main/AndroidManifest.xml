@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".register.FormActivity" />
-        <activity android:name=".welcomeActivity.WelcomeActivity"></activity>
+        <activity android:name=".welcomeActivity.WelcomeActivity" />
+        <activity android:name=".walkerHome.WalkerHomeActivity"></activity>
     </application>
 
 </manifest>

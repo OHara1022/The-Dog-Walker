@@ -119,12 +119,15 @@ public class FormFragment extends Fragment {
                 String lastName = mLastNameET.getText().toString().trim();
                 String email = mEmailET.getText().toString().trim();
                 String password = mPasswordET.getText().toString().trim();
-                Long phoneNumber = Long.parseLong(mPhoneNumberET.getText().toString().trim());
+//                Long phoneNumber = Long.parseLong(mPhoneNumberET.getText().toString().trim());
+                String phoneNumber = mPhoneNumberET.getText().toString().trim();
                 String address = mAddressET.getText().toString().trim();
                 String city = mCityET.getText().toString().trim();
                 String state = mStateET.getText().toString().trim();
-                Long zipCode = Long.parseLong(mZipCodeET.getText().toString().trim());
-                Long companyCode = Long.parseLong(mCompanyCodeET.getText().toString().trim());
+//                Long zipCode = Long.parseLong(mZipCodeET.getText().toString().trim());
+                String zipCode = mZipCodeET.getText().toString().trim();
+                String companyCode = mCompanyCodeET.getText().toString().trim();
+//                Long companyCode = Long.parseLong(mCompanyCodeET.getText().toString().trim());
 
                 if (mAptNumberET == null){
                     return false;
@@ -139,14 +142,15 @@ public class FormFragment extends Fragment {
 
                 //populate userData
                 UserData newUser = new UserData(firstName, lastName, email, phoneNumber, address, city, state, zipCode, companyCode, password);
-//
-//                if (mAptNumberET != null) {
+
+                if (mAptNumberET != null) {
 //                    newUser.aptNumber = Long.parseLong(mAptNumberET.getText().toString().trim());
-//            }
-//
-//            if (mCompanyNameET != null) {
-//                newUser.companyName = mCompanyNameET.getText().toString().trim();
-//             }
+                    newUser.aptNumber = mAptNumberET.getText().toString().trim();
+            }
+
+            if (mCompanyNameET != null) {
+                newUser.companyName = mCompanyNameET.getText().toString().trim();
+             }
 
              //pass user data
              mListener.getUser(newUser);
