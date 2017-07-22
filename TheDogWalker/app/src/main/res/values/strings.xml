@@ -25,4 +25,7 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="sign_out">Sign Out</string>
     <string name="add_schedule">Add Schedule</string>
+    <string name="schedules">Schedules</string>
+    <string name="clients">Clients</string>
+    <string name="profile">Profile</string>
 </resources>

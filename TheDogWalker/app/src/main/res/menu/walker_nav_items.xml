@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/schedules_tab"
+        android:title="@string/schedules"
+        android:icon="@drawable/schedule"
+        />
+
+
+    <item
+        android:id="@+id/clients_tab"
+        android:title="@string/clients"
+        android:icon="@drawable/clients"
+        />
+
+    <item
+        android:id="@+id/walker_profile"
+        android:title="@string/profile"
+        android:icon="@drawable/user"
+        />
+</menu>

@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".register.FormActivity" />
         <activity android:name=".welcomeActivity.WelcomeActivity" />
-        <activity android:name=".walkerHome.WalkerHomeActivity"></activity>
+        <activity android:name=".walkerHome.WalkerHomeActivity" />
+        <activity android:name=".walkerClients.WalkerClientsActivity"></activity>
     </application>
 
 </manifest>

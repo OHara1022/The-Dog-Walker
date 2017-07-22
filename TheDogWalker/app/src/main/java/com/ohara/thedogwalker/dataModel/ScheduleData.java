@@ -36,6 +36,6 @@ public class ScheduleData implements Serializable {
 
     @Override
     public String toString() {
-        return date + " " + petName;
+        return date + "                                                                 " + petName;
     }
 }

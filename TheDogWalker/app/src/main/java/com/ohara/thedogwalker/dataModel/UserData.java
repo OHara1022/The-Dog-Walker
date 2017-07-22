@@ -45,4 +45,8 @@ public class UserData implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 }

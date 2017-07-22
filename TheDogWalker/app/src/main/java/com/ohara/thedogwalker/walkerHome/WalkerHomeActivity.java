@@ -1,9 +1,15 @@
 package com.ohara.thedogwalker.walkerHome;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.ohara.thedogwalker.R;
+import com.ohara.thedogwalker.walkerClients.WalkerClientsFragment;
 
 public class WalkerHomeActivity extends AppCompatActivity {
 
@@ -16,5 +22,39 @@ public class WalkerHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walker_home);
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                Fragment selectedFrag = null;
+
+                switch (item.getItemId()) {
+
+                    case R.id.schedules_tab:
+
+                        selectedFrag = WalkerHomeFragment.newInstance();
+                        break;
+
+                    case  R.id.clients_tab:
+
+                        selectedFrag = WalkerClientsFragment.newInstance();
+                        break;
+                }
+
+                 getFragmentManager().beginTransaction().replace(R.id.container, selectedFrag).commit();
+
+                return true;
+            }
+        });
+
+        WalkerHomeFragment walkerHomeFragment = WalkerHomeFragment.newInstance();
+        getFragmentManager().beginTransaction().replace(R.id.container, walkerHomeFragment,
+                WalkerHomeFragment.HOME_TAG).commit();
+
+
+
     }
 }

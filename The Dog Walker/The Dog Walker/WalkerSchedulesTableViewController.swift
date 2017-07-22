@@ -87,49 +87,49 @@ class WalkerSchedulesTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         ref.removeAllObservers()
     }
-  
     
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//        //set observer to schedules
-//        ref.observe(.childAdded, with: { (snapshot) in
-//            
-//            //dev
-//            //print(snapshot)
-//            
-//            //get schedule key
-//            let uid = snapshot.key
-//            
-//            //get observer w/ key
-//            self.ref.child(uid).observe(.childChanged, with: { (snapshot) in
-//                
-//                //dev
-//                //print(snapshot)
-//                
-//                if let dictionary = snapshot.value as? [String:AnyObject]{
-//                    
-//                    //populate data
-//                    let schedules = ScheduleModel(dictionary: dictionary)
-//                    
-//                    print(schedules.petName!)
-//                    
-//                    //append data to array
-////                    self.clientSchedules.append(schedules)
-//                    self.cell?.detailTextLabel?.text = schedules.petName!
-//                    
-//                    //dispatch on main thread or app will crash!!
-//                    DispatchQueue.main.async(execute: {
-//                        //reload tableView
-//                        self.tableView.reloadData()
-//                    })
-//                }
-//                
-//            }, withCancel: nil)
-//            
-//        }, withCancel: nil)
-//
-//    }
-//    
+    
+    //    override func viewWillAppear(_ animated: Bool) {
+    //
+    //        //set observer to schedules
+    //        ref.observe(.childAdded, with: { (snapshot) in
+    //
+    //            //dev
+    //            //print(snapshot)
+    //
+    //            //get schedule key
+    //            let uid = snapshot.key
+    //
+    //            //get observer w/ key
+    //            self.ref.child(uid).observe(.childChanged, with: { (snapshot) in
+    //
+    //                //dev
+    //                //print(snapshot)
+    //
+    //                if let dictionary = snapshot.value as? [String:AnyObject]{
+    //
+    //                    //populate data
+    //                    let schedules = ScheduleModel(dictionary: dictionary)
+    //
+    //                    print(schedules.petName!)
+    //
+    //                    //append data to array
+    ////                    self.clientSchedules.append(schedules)
+    //                    self.cell?.detailTextLabel?.text = schedules.petName!
+    //
+    //                    //dispatch on main thread or app will crash!!
+    //                    DispatchQueue.main.async(execute: {
+    //                        //reload tableView
+    //                        self.tableView.reloadData()
+    //                    })
+    //                }
+    //
+    //            }, withCancel: nil)
+    //
+    //        }, withCancel: nil)
+    //
+    //    }
+    //
     
     // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -138,7 +138,7 @@ class WalkerSchedulesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+        
         return clientSchedules.count
     }
     
@@ -162,7 +162,7 @@ class WalkerSchedulesTableViewController: UITableViewController {
             
             return cell!
         }
-
+        
         //hide cell that dont match company code
         cell?.isHidden = true
         //return tableView cell
