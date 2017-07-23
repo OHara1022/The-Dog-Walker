@@ -28,4 +28,9 @@
     <string name="schedules">Schedules</string>
     <string name="clients">Clients</string>
     <string name="profile">Profile</string>
+    <string name="name">Name:</string>
+    <string name="emailLbl">Email:</string>
+    <string name="phone">Phone:</string>
+    <string name="addressLbl">Address:</string>
+    <string name="company_name">Company Name:</string>
 </resources>

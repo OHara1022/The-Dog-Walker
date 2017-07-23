@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.ohara.thedogwalker.R;
 import com.ohara.thedogwalker.walkerClients.WalkerClientsFragment;
+import com.ohara.thedogwalker.walkerProfile.WalkerProfileFragment;
 
 public class WalkerHomeActivity extends AppCompatActivity {
 
@@ -42,6 +43,10 @@ public class WalkerHomeActivity extends AppCompatActivity {
 
                         selectedFrag = WalkerClientsFragment.newInstance();
                         break;
+
+                    case  R.id.walker_profile:
+
+                        selectedFrag = WalkerProfileFragment.newInstance();
                 }
 
                  getFragmentManager().beginTransaction().replace(R.id.container, selectedFrag).commit();
