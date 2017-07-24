@@ -16,6 +16,7 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
     var petKey: String?
     var activeField: UITextField?
     let userID = Auth.auth().currentUser?.uid
+//    var scheduleRef: DatabaseReference!
     
     //MARK: --outlets
     @IBOutlet weak var petImageView: UIImageView!
@@ -35,6 +36,7 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         //get ref to pets
         ref = Database.database().reference().child(pets).child(userID!)
+//        scheduleRef = Database.database().reference().child(schedules).child(userID!)
         
         //observer pet info
         ref.observeSingleEvent(of: .childAdded, with: { (snapshot) in
@@ -83,6 +85,28 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
         //set TF delegate
         setTFDelegate()
     }
+//    var petImageUrl: String?
+//    
+//    override func viewWillAppear(_ animated: Bool) {
+//        
+//        scheduleRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+//            //get snapshot as dictionary
+//            if let dictionary = snapshot.value as? [String: AnyObject]{
+//                
+//                //dev
+//                //print(snapshot)
+//                
+//                //populate petModel w/ dictionary
+//                let schedule = ScheduleModel(dictionary: dictionary)
+//                
+//                print(schedule.petImageUrl!)
+//                
+//                self.petImageUrl = schedule.petImageUrl!
+//                
+//            }
+//            
+//        }, withCancel: nil)
+//    }
 
     
     //MARK: --actions
@@ -111,7 +135,7 @@ class EditPetViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         //update DB w/ new values
         ref.child(petKey!).updateChildValues(["petName": updatePet.petName, "birthday": updatePet.birthday, "breed": updatePet.breed, "vaccines": updatePet.vaccine, "meds": updatePet.meds, "specialIns": updatePet.specialInstructions, "vetName": updatePet.vetName, "vetPhone": updatePet.vetPhone])
-        
+            
         //segue to details, update view w/ new values
         self.performSegue(withIdentifier: "updatePet", sender: self)
             

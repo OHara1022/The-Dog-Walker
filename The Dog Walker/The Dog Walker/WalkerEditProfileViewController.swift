@@ -117,8 +117,20 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
             
             updateProfile.companyName = companyName!
         }
+  
+        Auth.auth().currentUser?.updateEmail(to: email!, completion: { (error) in
+            
+            if let error = error{
+                
+                FieldValidation.textFieldAlert("Error updating email", message: error.localizedDescription, presenter: self)
+            }
+            
+            self.ref.updateChildValues(["email": email!])
+            //segue to details, update view w/ new values
+            self.performSegue(withIdentifier: "updateWalker", sender: self)
+        })
         
-        ref.updateChildValues(["firstName": updateProfile.firstName, "lastName": updateProfile.lastName, "email": updateProfile.email, "phoneNumber": updateProfile.phoneNumber, "uid": updateProfile.uid, "companyCode": updateProfile.companyCode, "address": updateProfile.address, "city": updateProfile.city, "state": updateProfile.state, "zipCode": updateProfile.zipCode, "aptNumber": updateProfile.aptNumber!, "companyName": updateProfile.companyName!])
+        ref.updateChildValues(["firstName": updateProfile.firstName, "lastName": updateProfile.lastName, "phoneNumber": updateProfile.phoneNumber, "uid": updateProfile.uid, "companyCode": updateProfile.companyCode, "address": updateProfile.address, "city": updateProfile.city, "state": updateProfile.state, "zipCode": updateProfile.zipCode, "aptNumber": updateProfile.aptNumber!, "companyName": updateProfile.companyName!])
         
         //segue to details, update view w/ new values
         self.performSegue(withIdentifier: "updateWalker", sender: self)

@@ -18,11 +18,16 @@ class WelcomeViewController: UIViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var roleID: String = "roleID"
+     var indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(indicator)
+        indicator.activityIndicatorViewStyle = .whiteLarge
+        indicator.center = view.center
+        indicator.startAnimating()
         Auth.auth().addStateDidChangeListener{ auth, user in
             
             //check if user is signed in
@@ -32,6 +37,12 @@ class WelcomeViewController: UIViewController {
                 
                 //get ref of current user
                 self.ref = Database.database().reference().child(users).child(user.uid)
+                
+                if self.ref != nil{
+                    
+                    self.indicator.stopAnimating()
+                }
+                
             }
         }//end of listener
         

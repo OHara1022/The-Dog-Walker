@@ -30,8 +30,8 @@ class ClientsTableViewController: UITableViewController {
         tableView.dataSource = self
         
         //set DB ref
-        clientRef = Database.database().reference().child("users")
-        userRef = Database.database().reference().child("users")
+        clientRef = Database.database().reference().child(users)
+        userRef = Database.database().reference().child(users)
         
         //set observer to current user
         userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in

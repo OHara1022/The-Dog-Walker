@@ -198,21 +198,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MM6-X4-fGm">
-                                                    <rect key="frame" x="251.5" y="10" width="93.5" height="46.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" red="0.6554741154" green="0.012271597550000001" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2c4-2V-EAc" firstAttribute="leading" secondItem="fI4-33-VOH" secondAttribute="leading" constant="30" id="0c4-cY-Cmg"/>
-                                                <constraint firstAttribute="bottom" secondItem="MM6-X4-fGm" secondAttribute="bottom" constant="10" id="5iZ-2H-6nH"/>
                                                 <constraint firstItem="ure-bO-yGx" firstAttribute="top" secondItem="2c4-2V-EAc" secondAttribute="bottom" constant="5" id="L2J-ql-LCb"/>
                                                 <constraint firstItem="ure-bO-yGx" firstAttribute="width" secondItem="2c4-2V-EAc" secondAttribute="width" id="TFI-Qt-ABU"/>
-                                                <constraint firstAttribute="trailing" secondItem="MM6-X4-fGm" secondAttribute="trailing" constant="30" id="W1U-Qg-KCe"/>
-                                                <constraint firstItem="MM6-X4-fGm" firstAttribute="width" secondItem="fI4-33-VOH" secondAttribute="width" multiplier="0.25" id="WLn-1u-TLu"/>
-                                                <constraint firstItem="MM6-X4-fGm" firstAttribute="top" secondItem="fI4-33-VOH" secondAttribute="top" constant="10" id="aAP-oS-2xk"/>
                                                 <constraint firstItem="ure-bO-yGx" firstAttribute="centerX" secondItem="2c4-2V-EAc" secondAttribute="centerX" id="eTH-ah-3ql"/>
                                                 <constraint firstItem="2c4-2V-EAc" firstAttribute="width" secondItem="fI4-33-VOH" secondAttribute="width" multiplier="0.25" id="g7g-GS-7ah"/>
                                                 <constraint firstItem="2c4-2V-EAc" firstAttribute="top" secondItem="fI4-33-VOH" secondAttribute="top" constant="10" id="rbf-zS-cO8"/>
@@ -367,7 +357,6 @@
                         <outlet property="directionBtnOutlet" destination="JAB-xQ-Mcd" id="A3L-vz-GYk"/>
                         <outlet property="durationLabel" destination="tOj-q9-cKS" id="9yP-TD-D1P"/>
                         <outlet property="medsLabel" destination="oLV-gm-33R" id="z3s-1V-Hel"/>
-                        <outlet property="paidLabel" destination="MM6-X4-fGm" id="RW5-EA-5Yt"/>
                         <outlet property="petImage" destination="ekX-Mv-Iee" id="d2C-Yi-3hW"/>
                         <outlet property="petNameLabel" destination="zkR-FP-KkO" id="U3S-j3-24m"/>
                         <outlet property="phoneBtnOutlet" destination="x7z-Lf-7Q7" id="Yil-ek-hXJ"/>

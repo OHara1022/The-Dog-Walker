@@ -109,8 +109,9 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         if let selected = selectedImage{
             
             profileImage.image = selected
+            
         }
-        
+
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
         

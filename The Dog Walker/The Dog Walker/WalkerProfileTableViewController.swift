@@ -30,6 +30,7 @@ class WalkerProfileTableViewController: UITableViewController {
     @IBOutlet weak var emailLBL: UILabel!
     @IBOutlet weak var phoneLBL: UILabel!
     @IBOutlet weak var addressLBL: UILabel!
+    @IBOutlet weak var cityStateZipLBL: UILabel!
     @IBOutlet weak var companyNameCell: UIView!
     @IBOutlet weak var companyNameTitle: UILabel!
     @IBOutlet weak var companyNameLBL: UILabel!
@@ -77,9 +78,12 @@ class WalkerProfileTableViewController: UITableViewController {
                     //dev
                     print("APT HIT")
                     //address w/ apt number
-                    self.addressLBL.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLBL.text = user.address! + ". "
+                    self.cityStateZipLBL.text = user.city! + ", " + user.state! + " " + user.zipCode!
+                    
                 }else{
-                    self.addressLBL.text = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLBL.text = user.address! + ". Apt. " + user.aptNumber!
+                    self.cityStateZipLBL.text = user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
                 if user.companyName != nil{
@@ -125,14 +129,19 @@ class WalkerProfileTableViewController: UITableViewController {
                 self.phoneLBL.text = user.phoneNumber!
                 
                 //if apt number add to address label
+                //if apt number add to address label
                 if user.aptNumber == ""{
                     //dev
                     print("APT HIT")
                     //address w/ apt number
-                    self.addressLBL.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLBL.text = user.address! + ". "
+                    self.cityStateZipLBL.text = user.city! + ", " + user.state! + " " + user.zipCode!
+                    
                 }else{
-                    self.addressLBL.text = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLBL.text = user.address! + ". Apt. " + user.aptNumber!
+                    self.cityStateZipLBL.text = user.city! + ", " + user.state! + " " + user.zipCode!
                 }
+
                 
                 if user.companyName != nil{
                     

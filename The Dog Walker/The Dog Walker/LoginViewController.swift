@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     //MARK: -- stored properties
     var ref: DatabaseReference!
     var loginRef: DatabaseReference!
-    //    let userID = Auth.auth().currentUser?.uid
     
     //refenerce to walker home VC - instantiant walkerHome VC
     lazy var walkerhomeVC: UIViewController? = {

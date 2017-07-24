@@ -62,9 +62,15 @@ class ProfilesViewController: UIViewController {
             //dev
             print("APT HIT")
             //address w/ apt number
-            self.clientProfileVC.clientAddressLBL.text = currentClient.address! + ". " + currentClient.city! + ", " + currentClient.state! + " " + currentClient.zipCode!
+            self.clientProfileVC.clientAddressLBL.text = currentClient.address! + ". "
+            self.clientProfileVC.cityStateZipLBL.text = currentClient.city! + ", " + currentClient.state! + " " + currentClient.zipCode!
+
+            
         }else{
-            self.clientProfileVC.clientAddressLBL.text = currentClient.address! + ". Apt. " + currentClient.aptNumber! + " " + currentClient.city! + ", " + currentClient.state! + " " + currentClient.zipCode!
+            
+            self.clientProfileVC.clientAddressLBL.text = currentClient.address! + ". Apt. " + currentClient.aptNumber!
+            self.clientProfileVC.cityStateZipLBL.text =  currentClient.city! + ", " + currentClient.state! + " " + currentClient.zipCode!
+
         }
         
         if let profileImgURL = currentClient.profileImage{
@@ -76,7 +82,7 @@ class ProfilesViewController: UIViewController {
         
 
         //get ref to pets in DB
-        petRef = Database.database().reference().child("pets")
+        petRef = Database.database().reference().child(pets)
         
         //observer for pet info
         petRef.child(currentClient.uid!).observeSingleEvent(of: .childAdded, with: { (snapshot) in

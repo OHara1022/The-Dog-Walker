@@ -17,7 +17,7 @@ class RegisterViewController: UIViewController{
     var ref: DatabaseReference!
     var activeField: UITextField?
     var statePicker: UIPickerView!
-    let userID = Auth.auth().currentUser?.uid
+//    let userID = Auth.auth().currentUser?.uid
     
     //MARK: -- outlets
     @IBOutlet weak var profileImage: UIImageView!

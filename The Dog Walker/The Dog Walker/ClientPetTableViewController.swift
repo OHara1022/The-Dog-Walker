@@ -28,8 +28,6 @@ class ClientPetTableViewController: UITableViewController {
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
     }
 
 }

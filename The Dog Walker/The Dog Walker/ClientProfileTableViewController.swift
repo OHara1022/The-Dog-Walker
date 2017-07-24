@@ -21,6 +21,7 @@ class ClientProfileTableViewController: UITableViewController {
     @IBOutlet weak var clientEmaillLBL: UILabel!
     @IBOutlet weak var clientPhoneLBL: UILabel!
     @IBOutlet weak var clientAddressLBL: UILabel!
+    @IBOutlet weak var cityStateZipLBL: UILabel!
     @IBOutlet weak var clientEmergencyContantLBL: UILabel!
     @IBOutlet weak var emergencyPhoneLBL: UILabel!
 

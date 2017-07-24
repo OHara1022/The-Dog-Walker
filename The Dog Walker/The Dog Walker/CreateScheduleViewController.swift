@@ -17,7 +17,7 @@ class CreateScheduleViewController: UIViewController {
     var userRef: DatabaseReference!
     var fullName: String?
     var phone: String?
-    var address: String?
+    var fullAddress: String?
     var companyCode: String?
     var petImageUrl: String?
     var vetName: String?
@@ -26,7 +26,7 @@ class CreateScheduleViewController: UIViewController {
     var emergencyPhone: String?
     var activeField: UITextField?
     let userID = Auth.auth().currentUser?.uid
-    
+
     //pickerViews
     var timePicker: UIDatePicker!
     var datePicker: UIDatePicker!
@@ -146,12 +146,12 @@ class CreateScheduleViewController: UIViewController {
                 if user.aptNumber == ""{
                     //dev
                     print("APT HIT")
-                    //address w/ apt number
-                    self.address = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    //address w/o apt number
+                    self.fullAddress = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }else{
-                    self.address = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.fullAddress = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
-                
+               
             }
             
         }, withCancel: nil)
@@ -180,7 +180,8 @@ class CreateScheduleViewController: UIViewController {
             let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!, price: price!)
             
             //set values to push to firebase
-            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "price": newSchedule.price, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": address!, "paidFlag": false, "checkIn": false, "checkOut": false, "companyCode": companyCode!, "vetName": vetName!, "vetPhone": vetPhone!, "petImage": petImageUrl!, "emergencyContact": emergencyContact!, "emergencyPhone": emergencyPhone!])
+            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "price": newSchedule.price, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": fullAddress!, "paidFlag": false, "checkIn": false, "checkOut": false, "companyCode": companyCode!, "vetName": vetName!, "vetPhone": vetPhone!, "petImage": petImageUrl!, "emergencyContact": emergencyContact!, "emergencyPhone": emergencyPhone!])
+            
             //dev
             print("save schedule")
             //dismiss VC
