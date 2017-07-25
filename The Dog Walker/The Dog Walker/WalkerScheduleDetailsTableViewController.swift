@@ -17,6 +17,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     var ref: DatabaseReference!
     let phoneImage = UIImage(named: "phone")
     let directionsImg = UIImage(named: "directions")
+    var petRef: DatabaseReference!
     
     //MARK: --outlets
     @IBOutlet weak var petImage: UIImageView!
@@ -39,6 +40,8 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         //get ref to database
         ref = Database.database().reference().child(schedules).child(selectedSchedule.uid!).child(selectedSchedule.scheduleKey!)
         
+        petRef = Database.database().reference().child(pets).child(selectedSchedule.uid!)
+        
         //dev
         print(selectedSchedule.scheduleKey!)
         
@@ -52,12 +55,12 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
         directionBtnOutlet.tintColor = UIColor(red:0.00, green:0.60, blue:0.80, alpha:1.0)
         
         //check for pet image url
-        if let petImgURL = selectedSchedule.petImageUrl{
-            //dev
-            print(petImgURL)
-            //set image to imageView
-            self.petImage.loadImageUsingCache(petImgURL)
-        }
+//        if let petImgURL = selectedSchedule.petImageUrl{
+//            //dev
+//            print(petImgURL)
+//            //set image to imageView
+//            self.petImage.loadImageUsingCache(petImgURL)
+//        }
         
         //check if walk was paid
 //        if selectedSchedule.paidFlag == true{
@@ -79,14 +82,6 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
                 let schedule = ScheduleModel(dictionary: dictionary)
                 
                 //print(schedule.date!)
-                
-                //check for pet image url
-//                if let petImgURL = schedule.petImageUrl{
-//                    //dev
-//                    print(petImgURL)
-//                    //set image to imageView
-//                    self.petImage.loadImageUsingCache(petImgURL)
-//                }
                 
                 //set label w/ passed values
                 self.petNameLabel.text = schedule.petName
@@ -126,6 +121,33 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
                 }
             }
         }, withCancel: nil)
+        
+        
+            //observer pet info
+            petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+                
+                //get snapshot as dictionary
+                if let dictionary = snapshot.value as? [String: AnyObject]{
+                    
+                    //dev
+                    //print(snapshot)
+                    
+                    //populate petModel w/ dictionary
+                    let pet = PetModel(dictionary: dictionary)
+                    
+                    //dev
+                    //print(pet.petName!)
+                    
+                    if let petImgURL = pet.petImage{
+                        //dev
+                        print(petImgURL)
+                        //set image to imageView
+                        self.petImage.loadImageUsingCache(petImgURL)
+                    }
+                
+                }
+            }, withCancel: nil)
+        
     }
     
     //MARK: --prepare segue

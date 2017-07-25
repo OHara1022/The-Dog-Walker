@@ -32,7 +32,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         
         //set ref of database to scheudles
         ref = Database.database().reference().child(schedules).child(userID!)
-        paidRef = Database.database().reference().child(schedules).child(userID!)
+//        paidRef = Database.database().reference().child(schedules).child(userID!)
         
         //observer for schedules added
         ref.observe(.childAdded, with: { (snapshot) in
@@ -147,26 +147,7 @@ class OwnerScheduleTableViewController: UITableViewController {
   
         }
         
-//                //get ref to schedules
-//                paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
-//        
-//                    //dev
-////                    print(snapshot)
-//        
-//                      self.cell?.detailTextLabel?.text = self.paid
-//                        //set paid label to green
-//                        self.cell?.detailTextLabel?.textColor = UIColor.green
-//                    
-//        
-//                        //dispatch on main thread or app will crash!!
-//                        DispatchQueue.main.async(execute: {
-//        
-//                            //reload tableView
-//                            self.tableView.reloadData()
-//                        })
-//                    
-//                }, withCancel: nil)
-        
+
         return cell!
     }
     
