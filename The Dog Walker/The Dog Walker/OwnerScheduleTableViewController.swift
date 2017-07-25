@@ -48,6 +48,12 @@ class OwnerScheduleTableViewController: UITableViewController {
                 //dev
                 //                print(schedules.paidFlag!)
                 
+                
+//                if schedules.checkIn == true && schedules.paidFlag != true{
+//                    
+//                    FieldValidation.textFieldAlert(schedules.petName! + " " + "walk has started", message: "Your walk scheduled on" + " " + schedules.date! + " " + "has begun",  presenter: self)
+//                }
+                
                 //check if walk was completed and paid for
                 if schedules.checkOut == true && schedules.paidFlag != true{
                     
@@ -62,13 +68,7 @@ class OwnerScheduleTableViewController: UITableViewController {
                     //present alert
                     self.present(alert, animated: true)
                 }
-                
-                if schedules.checkIn == true && schedules.paidFlag != true{
-                    
-                    FieldValidation.textFieldAlert(schedules.petName! + " " + "walk has started", message: "Your walk scheduled on" + " " + schedules.date! + " " + "has begun",  presenter: self)
-                }
-                
-                
+            
                 //dispatch on main thread or app will crash!!
                 DispatchQueue.main.async(execute: {
                     //reload tableView

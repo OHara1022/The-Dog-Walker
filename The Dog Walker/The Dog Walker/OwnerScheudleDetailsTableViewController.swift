@@ -179,6 +179,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
 
 //MARK: --extension payment delegate
 extension OwnerScheudleDetailsTableViewController: PKPaymentAuthorizationViewControllerDelegate{
+    
     //delegate method to auth payment on completion
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         
