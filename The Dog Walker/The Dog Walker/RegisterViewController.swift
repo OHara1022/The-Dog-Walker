@@ -67,6 +67,9 @@ class RegisterViewController: UIViewController{
         
         //set picker items
         pickerItem(title: "State", textField: stateTF, selector: #selector(RegisterViewController.doneSelected))
+        
+        
+        
     }
     
     //MARK: -- actions
@@ -132,22 +135,8 @@ class RegisterViewController: UIViewController{
                 print("ZIP HIT")
                 return loginFlag
             }
-            //check phone count
-            if (phoneTF.text?.characters.count)! < 10{
-                //dev
-                print("PHONE < 10")
-                
-                FieldValidation.textFieldAlert("Phone number", message: "Please add ten digit phone number with no dashes or seperators", presenter: self)
-                return loginFlag
-            }
-            //check phone has dashes
-            if (phoneTF.text?.characters.contains("-"))!{
-                //dev
-                print("DASHS")
-                FieldValidation.textFieldAlert("Phone number", message: "Please add ten digit phone number with no dashes or seperators", presenter: self)
-                return loginFlag
-            }
-
+            
+            
         }//end of identifier check
         
         //check if canceled
@@ -163,8 +152,7 @@ class RegisterViewController: UIViewController{
     
     //set size of scroll view to the view content size
     override func viewDidLayoutSubviews() {
-        scrollView.contentSize = CGSize(width: view.bounds.width, height: 850)
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: 700)
     }
 
 }
-

@@ -83,4 +83,33 @@ class FieldValidation{
         }
         return true
     }
+ 
+    class func checkPhoneNumberFormat(string: String?, char: String?, textField: UITextField) -> Bool{
+        
+        //backspace
+        if string == ""{
+            
+            return true
+            
+        }else if char!.characters.count == 4{
+            
+            textField.text = textField.text! + "-"
+            
+            
+        }else if char!.characters.count == 8{
+            
+            textField.text = textField.text! + "-"
+            
+        }
+            
+        else if char!.characters.count > 12{
+            
+            return false
+        }
+        
+        return true
+    }
+    
+    
+    
 }

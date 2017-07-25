@@ -14,7 +14,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     
     //MARK: --stored properties
     let supportedPayments = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard, PKPaymentNetwork.amex]
-    let applePayMerchantID = "merchant.com.ohara.walks"
+    let applePayMerchantID = "merchant.com.ohara.walker"
     var selectedSchedule: ScheduleModel!
     var ref: DatabaseReference!
     var petRef: DatabaseReference!

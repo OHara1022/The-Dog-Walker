@@ -18,6 +18,7 @@ class WalkerEditScheduleViewController: UIViewController {
     var scheduleUID: String?
     var activeField: UITextField?
     var meds: String?
+    var specialIns: String?
     
     //pickerViews
     var timePicker: UIDatePicker!
@@ -29,8 +30,7 @@ class WalkerEditScheduleViewController: UIViewController {
     @IBOutlet weak var editTimeTF: UITextField!
     @IBOutlet weak var editDurationTF: UITextField!
     @IBOutlet weak var editPriceTF: UITextField!
-    @IBOutlet weak var editPetNameTF: UITextField!
-    @IBOutlet weak var editSpecialInsTF: UITextField!
+    @IBOutlet weak var petNameLBL: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: --viewDidLoad
@@ -94,12 +94,10 @@ class WalkerEditScheduleViewController: UIViewController {
                 self.editTimeTF.text =  schedule.time
                 self.editDurationTF.text =  schedule.duration
                 self.editPriceTF.text =  schedule.price
-                self.editPetNameTF.text =  schedule.petName
-                self.editSpecialInsTF.text =  schedule.specialIns
+                self.petNameLBL.text =  schedule.petName
+                self.meds = schedule.meds
+                self.specialIns =  schedule.specialIns
 
-                if  self.editSpecialInsTF.text == ""{
-                    self.editSpecialInsTF.text = "None"
-                }
             }
             
         }, withCancel: nil)
@@ -114,13 +112,13 @@ class WalkerEditScheduleViewController: UIViewController {
         let date = editDateTF.text
         let time = editTimeTF.text
         let duration = editDurationTF.text
-        let petName = editPetNameTF.text
-        let specialIns = editSpecialInsTF.text
+        let petName = petNameLBL.text
+        let specialIns = self.specialIns
         let price = editPriceTF.text
-        let meds = self.meds!
+        let meds = self.meds
         
         //populate schedule class
-        let updatedSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds, price: price!)
+        let updatedSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!, price: price!)
         
         //update schedule value in datebase
         ref.updateChildValues(["date": updatedSchedule.date, "time": updatedSchedule.time, "duration": updatedSchedule.duration, "price": updatedSchedule.price, "petName": updatedSchedule.petName, "specialIns": updatedSchedule.instructions, "meds": updatedSchedule.meds])

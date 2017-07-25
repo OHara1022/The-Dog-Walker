@@ -14,29 +14,29 @@ extension WalkerEditScheduleViewController: UITextFieldDelegate{
     
     //MARK: -- textFieldDelegate
     //call textfieldDidBeginEditing for keyboard functionality
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.activeField = textField
-    }
-    
-    //call textfieldDidEndEditing for keyboard functionality
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.activeField = nil
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        switch textField {
-        case editPetNameTF:
-            editSpecialInsTF.becomeFirstResponder()
-            return true
-        case editSpecialInsTF:
-            self.view.endEditing(true)
-            return true
-        default:
-            break
-        }
-        return false
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        self.activeField = textField
+//    }
+//    
+//    //call textfieldDidEndEditing for keyboard functionality
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        self.activeField = nil
+//    }
+//    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        
+//        switch textField {
+//        case editPetNameTF:
+//            editSpecialInsTF.becomeFirstResponder()
+//            return true
+//        case editSpecialInsTF:
+//            self.view.endEditing(true)
+//            return true
+//        default:
+//            break
+//        }
+//        return false
+//    }
     
 }
 
@@ -48,8 +48,8 @@ extension WalkerEditScheduleViewController{
         editDateTF.delegate = self
         editTimeTF.delegate = self
         editDurationTF.delegate = self
-        editPetNameTF.delegate = self
-        editSpecialInsTF.delegate = self
+//        editPetNameTF.delegate = self
+//        editSpecialInsTF.delegate = self
 
     }
     

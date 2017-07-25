@@ -13,10 +13,25 @@ import Firebase
 //MARK: --TF extensions
 extension RegisterViewController: UITextFieldDelegate{
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let replaceStr = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if textField == phoneTF{
+            
+            return FieldValidation.checkPhoneNumberFormat(string: string, char: replaceStr, textField: phoneTF)
+            
+        }else{
+            
+            return true
+        }
+    }
+    
     //MARK: -- textFieldDelegate
     //call textfieldDidBeginEditing for keyboard functionality
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.activeField = textField
+        
     }
     
     //call textfieldDidEndEditing for keyboard functionality
@@ -72,8 +87,8 @@ extension RegisterViewController: UITextFieldDelegate{
             return true
             
         case phoneTF:
-             companyCodeTF.becomeFirstResponder()
-             return true
+            companyCodeTF.becomeFirstResponder()
+            return true
         case companyCodeTF:
             companyNameTF.becomeFirstResponder()
             return true
@@ -111,7 +126,7 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
             profileImage.image = selected
             
         }
-
+        
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
         
@@ -167,13 +182,14 @@ extension RegisterViewController: UIPickerViewDelegate{
         case 0:
             //set text with state selected
             stateTF.text = states[row]
-
+            
         default:
             break
         }
-     
     }
-    
-    
-    
 }
+
+/*
+ Text field return characters referenced from:
+ https://stackoverflow.com/questions/36370519/format-inputed-digits-to-us-phone-number-to-format
+ */
