@@ -30,6 +30,7 @@ class OwnerProfileTableViewController: UITableViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var cityStateZipLbael: UILabel!
     @IBOutlet weak var emergencyContactLabel: UILabel!
     @IBOutlet weak var emergencyPhoneLabel: UILabel!
     
@@ -79,9 +80,13 @@ class OwnerProfileTableViewController: UITableViewController {
                     //dev
                     print("APT HIT")
                     //address w/ apt number
-                    self.addressLabel.text = user.address! + ". " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLabel.text = user.address! + ". "
+                    
+                    self.cityStateZipLbael.text = user.city! + ", " + user.state! + " " + user.zipCode!
                 }else{
-                    self.addressLabel.text = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
+                    self.addressLabel.text = user.address! + ". Apt. "
+                    
+                    self.cityStateZipLbael.text = user.city! + ", " + user.state! + " " + user.zipCode!
                 }
                 
             }

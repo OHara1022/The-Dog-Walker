@@ -108,10 +108,10 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         
         //check identifier
         if segue.identifier == "edit"{
-            
+        
             //get destination of segue
             let editDetails = segue.destination as! OwnerEditScheduleViewController
-            
+        
             //send key to edit
             editDetails.scheduleKey = selectedSchedule.scheduleKey
        
@@ -149,6 +149,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         }, withCancel: nil)
     }
     
+  
     
     //MARK: -- actions
     @IBAction func payBTN(_ sender: UIButton) {

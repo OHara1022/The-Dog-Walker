@@ -130,7 +130,6 @@ class OwnerEditScheduleViewController: UIViewController {
         }
     }
     
-    
     //set size of scroll view to the view content size
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize(width: view.bounds.width, height: 700)

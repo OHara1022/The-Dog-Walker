@@ -87,9 +87,6 @@ class OwnerScheduleTableViewController: UITableViewController {
                 //get snapshot to scheudleModel
                 let schedules = ScheduleModel(dictionary: dictionary)
                 
-                //append schedule data
-                self.schedulesArray.append(schedules)
-                
                 //check if walk was completed and paid for
                 if  schedules.checkOut == true && schedules.paidFlag != true{
                     
@@ -123,6 +120,26 @@ class OwnerScheduleTableViewController: UITableViewController {
     //TESTING
     override func viewWillAppear(_ animated: Bool) {
         
+//        //observer for schedules added
+//        ref.observe(.childChanged, with: { (snapshot) in
+//            
+//            //get snapshot
+//            if let dictionary = snapshot.value as? [String: AnyObject]{
+//                
+//                //get snapshot to scheudleModel
+//                let schedules = ScheduleModel(dictionary: dictionary)
+//                
+//                //populate labels with schdule data
+//                self.cell?.textLabel?.text = schedules.date
+//            }
+//            
+//            
+//        })
+//        //dispatch on main thread or app will crash!!
+//        DispatchQueue.main.async(execute: {
+//            //reload tableView
+//            self.tableView.reloadData()
+//        })
 //
 //        paidRef.observeSingleEvent(of: .childChanged, with: { (snapshot) in
 //            
