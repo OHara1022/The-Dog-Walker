@@ -24,6 +24,7 @@ class CreateScheduleViewController: UIViewController {
     var vetPhone: String?
     var emergencyContact: String?
     var emergencyPhone: String?
+    var breed: String?
     var activeField: UITextField?
     let userID = Auth.auth().currentUser?.uid
 
@@ -37,7 +38,7 @@ class CreateScheduleViewController: UIViewController {
     @IBOutlet weak var timeTF: UITextField!
     @IBOutlet weak var durationTF: UITextField!
     @IBOutlet weak var priceLbl: UILabel!
-    @IBOutlet weak var petNameTF: UITextField!
+    @IBOutlet weak var petNameLBL: UILabel!
     @IBOutlet weak var instructionTF: UITextField!
     @IBOutlet weak var medTF: UITextField!
     @IBOutlet weak var specialInsLBL: UILabel!
@@ -106,7 +107,7 @@ class CreateScheduleViewController: UIViewController {
                 print(pet.petName!)
                 
                 //set edit text w/ obj values
-                self.petNameTF.text = pet.petName!
+                self.petNameLBL.text = pet.petName!
                 self.instructionTF.text = pet.specialIns!
                 self.medTF.text = pet.meds!
                 self.petImageUrl = pet.petImage!
@@ -114,6 +115,7 @@ class CreateScheduleViewController: UIViewController {
                 self.vetPhone = pet.vetPhone!
                 self.emergencyContact = pet.emergencyContact!
                 self.emergencyPhone = pet.emergencyPhone!
+                self.breed = pet.breed!
                 
                 if self.instructionTF.text == ""{
                     //dev
@@ -156,19 +158,24 @@ class CreateScheduleViewController: UIViewController {
             
         }, withCancel: nil)
     }
+    
+    //set size of scroll view to the view content size
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: 700)
+    }
 
     //MARK: -- actions
     @IBAction func saveSchedule(_ sender: Any) {
         
         //check for empty TF
         if (!FieldValidation.isEmpty(dateTF, presenter: self) && !FieldValidation.isEmpty(timeTF, presenter: self) &&
-            !FieldValidation.isEmpty(durationTF, presenter: self) && !FieldValidation.isEmpty(petNameTF, presenter: self) && !FieldValidation.isEmpty(medTF, presenter: self)){
+            !FieldValidation.isEmpty(durationTF, presenter: self) && !FieldValidation.isEmpty(medTF, presenter: self)){
             
             //retreive textField text
             let date = dateTF.text
             let time = timeTF.text
             let duration = durationTF.text
-            let petName = petNameTF.text
+            let petName = petNameLBL.text
             let specialIns = instructionTF.text
             let meds = medTF.text
             let price = priceLbl.text
@@ -180,7 +187,7 @@ class CreateScheduleViewController: UIViewController {
             let newSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!, price: price!)
             
             //set values to push to firebase
-            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "price": newSchedule.price, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": fullAddress!, "paidFlag": false, "checkIn": false, "checkOut": false, "companyCode": companyCode!, "vetName": vetName!, "vetPhone": vetPhone!, "petImage": petImageUrl!, "emergencyContact": emergencyContact!, "emergencyPhone": emergencyPhone!])
+            self.ref.child(scheduleKey).setValue(["date": newSchedule.date, "time": newSchedule.time, "duration": newSchedule.duration, "petName": newSchedule.petName, "specialIns": newSchedule.instructions, "meds": newSchedule.meds, "price": newSchedule.price, "scheduleKey": scheduleKey, "uid": userID!, "clientName": fullName!, "clientPhone": phone!, "clientAddress": fullAddress!, "paidFlag": false, "checkIn": false, "checkOut": false, "companyCode": companyCode!, "vetName": vetName!, "vetPhone": vetPhone!, "petImage": petImageUrl!, "emergencyContact": emergencyContact!, "emergencyPhone": emergencyPhone!, "breed": breed!])
             
             //dev
             print("save schedule")

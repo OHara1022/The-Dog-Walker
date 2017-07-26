@@ -48,14 +48,8 @@ class OwnerScheduleTableViewController: UITableViewController {
                 //dev
                 //                print(schedules.paidFlag!)
                 
-                
-//                if schedules.checkIn == true && schedules.paidFlag != true{
-//                    
-//                    FieldValidation.textFieldAlert(schedules.petName! + " " + "walk has started", message: "Your walk scheduled on" + " " + schedules.date! + " " + "has begun",  presenter: self)
-//                }
-                
                 //check if walk was completed and paid for
-                if schedules.checkOut == true && schedules.paidFlag != true{
+                if  schedules.checkOut == true && schedules.paidFlag != true{
                     
                     //dev
                     print("WALK COMPLETE")
@@ -68,6 +62,12 @@ class OwnerScheduleTableViewController: UITableViewController {
                     //present alert
                     self.present(alert, animated: true)
                 }
+                
+                if schedules.checkIn == true && schedules.paidFlag != true && schedules.checkOut == false{
+                    
+                    FieldValidation.textFieldAlert(schedules.petName! + " " + "walk has started", message: "Your walk scheduled on" + " " + schedules.date! + " " + "has begun",  presenter: self)
+                }
+                
             
                 //dispatch on main thread or app will crash!!
                 DispatchQueue.main.async(execute: {
@@ -77,6 +77,46 @@ class OwnerScheduleTableViewController: UITableViewController {
             }
             
         }, withCancel: nil)
+        
+        //observer for schedules added
+        ref.observe(.childChanged, with: { (snapshot) in
+            
+            //get snapshot
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //get snapshot to scheudleModel
+                let schedules = ScheduleModel(dictionary: dictionary)
+                
+                //append schedule data
+                self.schedulesArray.append(schedules)
+                
+                //check if walk was completed and paid for
+                if  schedules.checkOut == true && schedules.paidFlag != true{
+                    
+                    //dev
+                    print("WALK COMPLETE")
+                    
+                    //alert user walk was completed
+                    let alert = UIAlertController(title: "Walker Complete", message: "Notes: " + schedules.notes! + " " + "Please pay for walk on" + " " + schedules.date!, preferredStyle: .alert)
+                    //add alert action
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    }))
+                    //present alert
+                    self.present(alert, animated: true)
+                }
+                
+                if schedules.checkIn == true && schedules.paidFlag != true && schedules.checkOut == false{
+                    
+                    FieldValidation.textFieldAlert(schedules.petName! + " " + "walk has started", message: "Your walk scheduled on" + " " + schedules.date! + " " + "has begun",  presenter: self)
+                }
+                
+                //dispatch on main thread or app will crash!!
+                DispatchQueue.main.async(execute: {
+                    //reload tableView
+                    self.tableView.reloadData()
+                })
+            }
+        })
         
     }
     

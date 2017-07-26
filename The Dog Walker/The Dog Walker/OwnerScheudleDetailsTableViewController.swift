@@ -24,6 +24,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
     //MARK: -- outlets
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var deatilsPetNameLBL: UILabel!
+    @IBOutlet weak var breedLBL: UILabel!
     @IBOutlet weak var detailsDateLBL: UILabel!
     @IBOutlet weak var detailsTimeLBL: UILabel!
     @IBOutlet weak var durationLBL: UILabel!
@@ -81,6 +82,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                 
                 //set label w/ passed values
                 self.deatilsPetNameLBL.text = schedule.petName
+                self.breedLBL.text = schedule.breed
                 self.detailsDateLBL.text = schedule.date
                 self.detailsTimeLBL.text = schedule.time
                 self.durationLBL.text = schedule.duration

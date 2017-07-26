@@ -33,6 +33,7 @@ class ScheduleModel: NSObject {
     var emergencyContact: String?
     var emergencyPhone: String?
     var price: String?
+    var breed: String?
     
     //init dictionary obj reference to firebase DB
     init(dictionary: [String: AnyObject]){
@@ -59,6 +60,7 @@ class ScheduleModel: NSObject {
         self.emergencyContact = dictionary["emergencyContact"] as? String
         self.emergencyPhone = dictionary["emergencyPhone"] as? String
         self.price = dictionary["price"] as? String
+        self.breed = dictionary["breed"] as? String
         
     }
     

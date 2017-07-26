@@ -25,9 +25,6 @@ extension OwnerEditScheduleViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         switch textField {
-        case editPetNameTF:
-            editSpecialInsTF.becomeFirstResponder()
-            return true
         case editSpecialInsTF:
             editMedsTF.becomeFirstResponder()
             return true
@@ -39,7 +36,7 @@ extension OwnerEditScheduleViewController: UITextFieldDelegate{
         }
         return false
     }
-
+    
 }
 
 extension OwnerEditScheduleViewController{
@@ -49,7 +46,7 @@ extension OwnerEditScheduleViewController{
         editDateTF.delegate = self
         editTimeTF.delegate = self
         editDurationTF.delegate = self
-        editPetNameTF.delegate = self
+        
         editSpecialInsTF.delegate = self
         editMedsTF.delegate = self
     }

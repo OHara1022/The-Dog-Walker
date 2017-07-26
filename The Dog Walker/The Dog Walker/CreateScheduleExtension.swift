@@ -25,9 +25,6 @@ extension CreateScheduleViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         switch textField {
-        case petNameTF:
-            instructionTF.becomeFirstResponder()
-            return true
         case instructionTF:
             medTF.becomeFirstResponder()
             return true
@@ -49,7 +46,6 @@ extension CreateScheduleViewController{
         dateTF.delegate = self
         timeTF.delegate = self
         durationTF.delegate = self
-        petNameTF.delegate = self
         instructionTF.delegate = self
         medTF.delegate = self
         

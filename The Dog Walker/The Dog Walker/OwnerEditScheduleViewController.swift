@@ -27,7 +27,7 @@ class OwnerEditScheduleViewController: UIViewController {
     @IBOutlet weak var editTimeTF: UITextField!
     @IBOutlet weak var editDurationTF: UITextField!
     @IBOutlet weak var editPriceLBL: UILabel!
-    @IBOutlet weak var editPetNameTF: UITextField!
+    @IBOutlet weak var petNameLBL: UILabel!
     @IBOutlet weak var editSpecialInsTF: UITextField!
     @IBOutlet weak var editMedsTF: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -56,7 +56,7 @@ class OwnerEditScheduleViewController: UIViewController {
                 self.editTimeTF.text =  schedule.time
                 self.editDurationTF.text =  schedule.duration
                 self.editPriceLBL.text =  schedule.price
-                self.editPetNameTF.text =  schedule.petName
+                self.petNameLBL.text =  schedule.petName
                 self.editSpecialInsTF.text =  schedule.specialIns
                 self.editMedsTF.text =  schedule.meds
                 
@@ -108,14 +108,14 @@ class OwnerEditScheduleViewController: UIViewController {
         
         //check for empty TF
         if (!FieldValidation.isEmpty(editDateTF, presenter: self) && !FieldValidation.isEmpty(editTimeTF, presenter: self) &&
-            !FieldValidation.isEmpty(editDurationTF, presenter: self) && !FieldValidation.isEmpty(editPetNameTF, presenter: self) && !FieldValidation.isEmpty(editMedsTF, presenter: self)){
+            !FieldValidation.isEmpty(editDurationTF, presenter: self)  && !FieldValidation.isEmpty(editMedsTF, presenter: self)){
         
         //get TF text
         let date = editDateTF.text
         let time = editTimeTF.text
         let duration = editDurationTF.text
         let price = editPriceLBL.text
-        let petName = editPetNameTF.text
+        let petName = petNameLBL.text
         let specialIns = editSpecialInsTF.text
         let meds = editMedsTF.text
         
