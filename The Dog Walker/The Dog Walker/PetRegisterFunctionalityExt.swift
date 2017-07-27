@@ -74,7 +74,6 @@ extension PetRegisterViewController {
             petImage.image = selected
         }
         
-               
         //dismiss imagePickerVC
         dismiss(animated: true, completion: nil)
     }

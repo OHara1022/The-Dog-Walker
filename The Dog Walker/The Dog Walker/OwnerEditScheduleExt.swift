@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension OwnerEditScheduleViewController: UITextFieldDelegate{
+extension ScheduleEditViewController: UITextFieldDelegate{
     
     //MARK: -- textFieldDelegate
     //call textfieldDidBeginEditing for keyboard functionality
@@ -39,14 +39,13 @@ extension OwnerEditScheduleViewController: UITextFieldDelegate{
     
 }
 
-extension OwnerEditScheduleViewController{
+extension ScheduleEditViewController{
     
     func setTFDelegate(){
         
         editDateTF.delegate = self
         editTimeTF.delegate = self
         editDurationTF.delegate = self
-        
         editSpecialInsTF.delegate = self
         editMedsTF.delegate = self
     }
@@ -133,7 +132,7 @@ extension OwnerEditScheduleViewController{
     
 }
 
-extension OwnerEditScheduleViewController: UIPickerViewDataSource{
+extension ScheduleEditViewController: UIPickerViewDataSource{
     
     //set components to return 1 section, each pickerView only has one section
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -159,7 +158,7 @@ extension OwnerEditScheduleViewController: UIPickerViewDataSource{
     
 }
 
-extension OwnerEditScheduleViewController: UIPickerViewDelegate{
+extension ScheduleEditViewController: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         

@@ -11,7 +11,7 @@ import UIKit
 
 class FieldValidation{
     
-    //MARK: -- textField alert
+    //MARK: --textField alert
     class func textFieldAlert(_ title: String, message: String, presenter: UIViewController){
         
         //alert controller
@@ -21,7 +21,7 @@ class FieldValidation{
         presenter.present(alert, animated: true)
     }
     
-    //MARK: -- empty check
+    //MARK: --empty check
     class func isEmpty(_ textField: UITextField, presenter: UIViewController) -> Bool{
         //check if empty
         if (textField.text?.isEmpty)! {
@@ -32,7 +32,7 @@ class FieldValidation{
         return false
     }
     
-    //check if zip code is valid
+    //MARK: --valid zipCode
     class func isValidZipCode(_ zipcodeTV: UITextField, presenter: UIViewController) -> Bool {
         
         //zipcode holder
@@ -83,7 +83,8 @@ class FieldValidation{
         }
         return true
     }
- 
+    
+    //MARK: --format phone number
     class func checkPhoneNumberFormat(string: String?, char: String?, textField: UITextField) -> Bool{
         
         //backspace
@@ -91,17 +92,20 @@ class FieldValidation{
             
             return true
             
+            //check character count
         }else if char!.characters.count == 4{
             
+            //add dash at character count
             textField.text = textField.text! + "-"
             
-            
+            //check character count
         }else if char!.characters.count == 8{
             
+            //add dash at character count
             textField.text = textField.text! + "-"
-            
         }
             
+            //check character count
         else if char!.characters.count > 12{
             
             return false

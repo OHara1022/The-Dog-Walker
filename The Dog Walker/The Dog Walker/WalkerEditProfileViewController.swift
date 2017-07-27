@@ -91,6 +91,8 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
         NotificationCenter.default.addObserver(self, selector: #selector(WalkerEditProfileViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+   
+    
     
     //MARK: --actions
     @IBAction func saveProfileChanges(_ sender: Any) {

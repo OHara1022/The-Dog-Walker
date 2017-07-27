@@ -67,9 +67,6 @@ class RegisterViewController: UIViewController{
         
         //set picker items
         pickerItem(title: "State", textField: stateTF, selector: #selector(RegisterViewController.doneSelected))
-        
-        
-        
     }
     
     //MARK: -- actions

@@ -381,55 +381,62 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800.5"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wWD-SO-ASG">
-                                                <rect key="frame" x="46.5" y="96" width="281" height="30"/>
+                                                <rect key="frame" x="46.5" y="170" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R9D-IL-c25">
-                                                <rect key="frame" x="47" y="167" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="241" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v1s-dF-R8y">
-                                                <rect key="frame" x="47" y="238" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="312" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qj2-37-KU5">
-                                                <rect key="frame" x="47" y="309" width="281" height="30"/>
+                                                <rect key="frame" x="47" y="383" width="281" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="Wda-Ae-KoI">
-                                                <rect key="frame" x="46.5" y="70" width="281" height="21"/>
+                                                <rect key="frame" x="46.5" y="144" width="281" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="YVm-6f-55h">
-                                                <rect key="frame" x="46.5" y="141" width="281" height="21"/>
+                                                <rect key="frame" x="46.5" y="215" width="281" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="oJ1-WU-i1h">
-                                                <rect key="frame" x="47" y="212" width="281" height="21"/>
+                                                <rect key="frame" x="47" y="286" width="281" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="3tH-hc-4GY">
-                                                <rect key="frame" x="47" y="283" width="281" height="21"/>
+                                                <rect key="frame" x="47" y="357" width="281" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="KaS-DX-9al">
-                                                <rect key="frame" x="0.5" y="31" width="375" height="24"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog" translatesAutoresizingMaskIntoConstraints="NO" id="UKl-MY-4r4">
+                                                <rect key="frame" x="137" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="3qG-Xd-fdk"/>
+                                                    <constraint firstAttribute="height" constant="100" id="dpF-VR-5ka"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="KaS-DX-9al">
+                                                <rect key="frame" x="0.0" y="105" width="375" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -444,6 +451,7 @@
                                             <constraint firstItem="wWD-SO-ASG" firstAttribute="top" secondItem="Wda-Ae-KoI" secondAttribute="bottom" constant="5" id="6gR-NR-sw4"/>
                                             <constraint firstItem="oJ1-WU-i1h" firstAttribute="top" secondItem="R9D-IL-c25" secondAttribute="bottom" constant="15" id="7Lk-zb-dfB"/>
                                             <constraint firstItem="KaS-DX-9al" firstAttribute="centerX" secondItem="3HY-oi-tje" secondAttribute="centerX" id="9Dz-Oy-wQ8"/>
+                                            <constraint firstItem="KaS-DX-9al" firstAttribute="top" secondItem="UKl-MY-4r4" secondAttribute="bottom" constant="5" id="GaJ-jB-kXM"/>
                                             <constraint firstItem="v1s-dF-R8y" firstAttribute="width" secondItem="R9D-IL-c25" secondAttribute="width" id="LrC-th-L9d"/>
                                             <constraint firstItem="Wda-Ae-KoI" firstAttribute="top" secondItem="KaS-DX-9al" secondAttribute="bottom" constant="15" id="PII-9U-Zrh"/>
                                             <constraint firstItem="v1s-dF-R8y" firstAttribute="centerX" secondItem="R9D-IL-c25" secondAttribute="centerX" id="ScJ-CH-AAf"/>
@@ -453,14 +461,15 @@
                                             <constraint firstItem="wWD-SO-ASG" firstAttribute="centerX" secondItem="3HY-oi-tje" secondAttribute="centerX" id="buN-PS-dK1"/>
                                             <constraint firstItem="wWD-SO-ASG" firstAttribute="width" secondItem="3HY-oi-tje" secondAttribute="width" multiplier="0.75" id="cyD-gc-P7b"/>
                                             <constraint firstItem="Qj2-37-KU5" firstAttribute="top" secondItem="3tH-hc-4GY" secondAttribute="bottom" constant="5" id="fNm-Ay-rzb"/>
+                                            <constraint firstItem="UKl-MY-4r4" firstAttribute="centerX" secondItem="3HY-oi-tje" secondAttribute="centerX" id="gUb-mS-eJ7"/>
                                             <constraint firstItem="v1s-dF-R8y" firstAttribute="top" secondItem="oJ1-WU-i1h" secondAttribute="bottom" constant="5" id="hWy-IK-eic"/>
                                             <constraint firstItem="YVm-6f-55h" firstAttribute="width" secondItem="wWD-SO-ASG" secondAttribute="width" id="hgr-CH-vru"/>
                                             <constraint firstItem="oJ1-WU-i1h" firstAttribute="width" secondItem="R9D-IL-c25" secondAttribute="width" id="isn-k6-JAK"/>
                                             <constraint firstItem="Wda-Ae-KoI" firstAttribute="leading" secondItem="wWD-SO-ASG" secondAttribute="leading" id="k5L-4H-BHi"/>
                                             <constraint firstItem="3tH-hc-4GY" firstAttribute="width" secondItem="v1s-dF-R8y" secondAttribute="width" id="l5y-Ay-6wW"/>
-                                            <constraint firstItem="KaS-DX-9al" firstAttribute="top" secondItem="3HY-oi-tje" secondAttribute="top" constant="31" id="qIt-5N-KA4"/>
                                             <constraint firstItem="oJ1-WU-i1h" firstAttribute="leading" secondItem="R9D-IL-c25" secondAttribute="leading" id="qXH-Uz-4kf"/>
                                             <constraint firstItem="Qj2-37-KU5" firstAttribute="centerX" secondItem="v1s-dF-R8y" secondAttribute="centerX" id="qkq-u9-zI0"/>
+                                            <constraint firstItem="UKl-MY-4r4" firstAttribute="top" secondItem="3HY-oi-tje" secondAttribute="top" id="tO4-hL-Xk3"/>
                                             <constraint firstItem="YVm-6f-55h" firstAttribute="top" secondItem="wWD-SO-ASG" secondAttribute="bottom" constant="15" id="vYS-3G-9ci"/>
                                             <constraint firstItem="R9D-IL-c25" firstAttribute="centerX" secondItem="wWD-SO-ASG" secondAttribute="centerX" id="vff-1h-q9r"/>
                                             <constraint firstItem="Qj2-37-KU5" firstAttribute="width" secondItem="v1s-dF-R8y" secondAttribute="width" id="xiM-JF-AY1"/>
@@ -498,6 +507,7 @@
                         <outlet property="editDurationTF" destination="v1s-dF-R8y" id="nqQ-Gq-eg6"/>
                         <outlet property="editPriceTF" destination="Qj2-37-KU5" id="vH2-31-zjI"/>
                         <outlet property="editTimeTF" destination="R9D-IL-c25" id="Yjl-Wt-mRB"/>
+                        <outlet property="petImage" destination="UKl-MY-4r4" id="FV8-iO-bBo"/>
                         <outlet property="petNameLBL" destination="KaS-DX-9al" id="8X8-EJ-s9k"/>
                         <outlet property="scrollView" destination="W8a-Oi-p0T" id="Hmo-GR-sne"/>
                         <segue destination="sZK-Kc-mgL" kind="unwind" identifier="updateSchedule" unwindAction="updateScheduleWithSegue:" id="X0c-w0-zdj"/>
@@ -506,7 +516,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDW-Um-XOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sZK-Kc-mgL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5022" y="412"/>
+            <point key="canvasLocation" x="5021.6000000000004" y="411.544227886057"/>
         </scene>
     </scenes>
     <resources>

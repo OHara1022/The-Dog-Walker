@@ -13,6 +13,7 @@ import Firebase
 //MARK: --TF extensions
 extension RegisterViewController: UITextFieldDelegate{
     
+    //MARK: --shouldChangeCharactersIn
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let replaceStr = (textField.text! as NSString).replacingCharacters(in: range, with: string)
@@ -31,7 +32,6 @@ extension RegisterViewController: UITextFieldDelegate{
     //call textfieldDidBeginEditing for keyboard functionality
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.activeField = textField
-        
     }
     
     //call textfieldDidEndEditing for keyboard functionality
@@ -89,12 +89,15 @@ extension RegisterViewController: UITextFieldDelegate{
         case phoneTF:
             companyCodeTF.becomeFirstResponder()
             return true
+            
         case companyCodeTF:
             companyNameTF.becomeFirstResponder()
             return true
+            
         case companyNameTF:
             self.view.endEditing(true)//dismiss keyboard
             return true
+            
         default:
             break
         }

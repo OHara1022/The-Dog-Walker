@@ -11,17 +11,58 @@ import UIKit
 
 extension WalkerEditScheduleViewController: UITextFieldDelegate{
     
-    func setTFDelegate(){
-        
-        editDateTF.delegate = self
-        editTimeTF.delegate = self
-        editDurationTF.delegate = self
+    //MARK: -- textFieldDelegate
+    //call textfieldDidBeginEditing for keyboard functionality
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeField = textField
     }
+    
+    //call textfieldDidEndEditing for keyboard functionality
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeField = nil
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        switch textField {
+            
+
+        case editDateTF:
+            editTimeTF.becomeFirstResponder()
+            return true
+            
+        case editTimeTF:
+            editDurationTF.becomeFirstResponder()
+            return true
+            
+        case editDurationTF:
+            editPriceTF.becomeFirstResponder()
+            return true
+            
+        case editPriceTF:
+            self.view.endEditing(true)//dismiss keyboard
+            return true
+            
+        default:
+            break
+        }
+        
+        return false
+    }
+    
+  
 }
 
 
 extension WalkerEditScheduleViewController{
     
+    
+    func setTFDelegate(){
+        editDateTF.delegate = self
+        editTimeTF.delegate = self
+        editDurationTF.delegate = self
+        editPriceTF.delegate = self
+    }
  
     //MARK: -- keyboard editing functionality
     //reference used for this functionality:

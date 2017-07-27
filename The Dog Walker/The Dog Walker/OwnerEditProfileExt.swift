@@ -147,11 +147,28 @@ extension EditOwnerViewController{
         editEmergencyContact.delegate = self
         editEmergencyPhoneNum.delegate = self
     }
-    
 }
 
-
 extension EditOwnerViewController: UITextFieldDelegate{
+    
+    //MARK: --shouldChangeCharactersIn
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let replaceStr = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if textField == editPhoneNum{
+            
+            return FieldValidation.checkPhoneNumberFormat(string: string, char: replaceStr, textField: editPhoneNum)
+            
+        }else if textField == editEmergencyPhoneNum{
+            
+            return FieldValidation.checkPhoneNumberFormat(string: string, char: replaceStr, textField: editEmergencyPhoneNum)
+            
+        }else{
+            
+            return true
+        }
+    }
     
     //call textfieldDidBeginEditing for keyboard functionality
     func textFieldDidBeginEditing(_ textField: UITextField) {

@@ -10,6 +10,26 @@ import Foundation
 import UIKit
 
 extension PetRegisterViewController: UITextFieldDelegate{
+    
+    //MARK: --shouldChangeCharactersIn
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let replaceStr = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if textField == emergencyPhoneTF{
+            
+            return FieldValidation.checkPhoneNumberFormat(string: string, char: replaceStr, textField: emergencyPhoneTF)
+            
+        }else if textField == vetPhoneTF{
+            
+            return FieldValidation.checkPhoneNumberFormat(string: string, char: replaceStr, textField: vetPhoneTF)
+            
+        }else{
+            
+            return true
+        }
+    }
+    
     //call textfieldDidBeginEditing for keyboard functionality
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.activeField = textField
@@ -72,7 +92,4 @@ extension PetRegisterViewController: UITextFieldDelegate{
         //else return false
         return false
     }
-    
-    
-    
 }

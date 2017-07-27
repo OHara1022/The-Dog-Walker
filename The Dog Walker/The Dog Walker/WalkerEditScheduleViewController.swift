@@ -13,6 +13,7 @@ class WalkerEditScheduleViewController: UIViewController {
     
     //MARK: --stored properties
     var ref: DatabaseReference!
+    var petRef: DatabaseReference!
     var editSelectedSchedule: ScheduleModel!
     var scheduleKey: String?
     var scheduleUID: String?
@@ -31,6 +32,7 @@ class WalkerEditScheduleViewController: UIViewController {
     @IBOutlet weak var editDurationTF: UITextField!
     @IBOutlet weak var editPriceTF: UITextField!
     @IBOutlet weak var petNameLBL: UILabel!
+    @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: --viewDidLoad
@@ -41,6 +43,8 @@ class WalkerEditScheduleViewController: UIViewController {
         
         //init ref to database
         ref = Database.database().reference().child(schedules).child(scheduleUID!).child(scheduleKey!)
+        
+         petRef = Database.database().reference().child(pets).child(scheduleUID!)
         
         //init time picker & set mode, inputView, & target
         timePicker = UIDatePicker()
@@ -97,10 +101,39 @@ class WalkerEditScheduleViewController: UIViewController {
                 self.petNameLBL.text =  schedule.petName
                 self.meds = schedule.meds
                 self.specialIns =  schedule.specialIns
-
             }
             
         }, withCancel: nil)
+        
+        //observer pet info
+        petRef.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            
+            //get snapshot as dictionary
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                //dev
+                //print(snapshot)
+                
+                //populate petModel w/ dictionary
+                let pet = PetModel(dictionary: dictionary)
+                
+                //dev
+                //print(pet.petName!)
+                
+                if let petImgURL = pet.petImage{
+                    //dev
+                    print(petImgURL)
+                    //set image to imageView
+                    self.petImage.loadImageUsingCache(petImgURL)
+                }
+                
+            }
+        }, withCancel: nil)
+    }
+    
+    //set size of scroll view to the view content size
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: 650)
     }
     
     //MARK: --actions

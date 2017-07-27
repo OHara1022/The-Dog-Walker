@@ -32,7 +32,7 @@ class OwnerScheduleTableViewController: UITableViewController {
         
         //set ref of database to scheudles
         ref = Database.database().reference().child(schedules).child(userID!)
-//        paidRef = Database.database().reference().child(schedules).child(userID!)
+        paidRef = Database.database().reference().child(schedules).child(userID!)
         
         //observer for schedules added
         ref.observe(.childAdded, with: { (snapshot) in
@@ -107,6 +107,13 @@ class OwnerScheduleTableViewController: UITableViewController {
                     FieldValidation.textFieldAlert(schedules.petName! + " " + "walk has started", message: "Your walk scheduled on" + " " + schedules.date! + " " + "has begun",  presenter: self)
                 }
                 
+                if schedules.paidFlag == true{
+                    //set paid label to green
+                    self.cell?.detailTextLabel?.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
+                    
+                }
+
+                
                 //dispatch on main thread or app will crash!!
                 DispatchQueue.main.async(execute: {
                     //reload tableView
@@ -114,59 +121,6 @@ class OwnerScheduleTableViewController: UITableViewController {
                 })
             }
         })
-        
-    }
-    
-    //TESTING
-    override func viewWillAppear(_ animated: Bool) {
-        
-//        //observer for schedules added
-//        ref.observe(.childChanged, with: { (snapshot) in
-//            
-//            //get snapshot
-//            if let dictionary = snapshot.value as? [String: AnyObject]{
-//                
-//                //get snapshot to scheudleModel
-//                let schedules = ScheduleModel(dictionary: dictionary)
-//                
-//                //populate labels with schdule data
-//                self.cell?.textLabel?.text = schedules.date
-//            }
-//            
-//            
-//        })
-//        //dispatch on main thread or app will crash!!
-//        DispatchQueue.main.async(execute: {
-//            //reload tableView
-//            self.tableView.reloadData()
-//        })
-//
-//        paidRef.observeSingleEvent(of: .childChanged, with: { (snapshot) in
-//            
-//            //get snapshot
-//            if let dictionary = snapshot.value as? [String: AnyObject]{
-//                
-//                //get snapshot to scheudleModel
-//                let schedules = ScheduleModel(dictionary: dictionary)
-//                
-//                print(schedules.date!)
-//                
-//                //check if payment was made
-//             
-//                    //TODO: fix paid label to show on walk completion
-//                    self.cell?.detailTextLabel?.text = self.paid
-//                    //set paid label to green
-//                    self.cell?.detailTextLabel?.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
-//             
-//                
-//                //dispatch on main thread or app will crash!!
-//                DispatchQueue.main.async(execute: {
-//                    //reload tableView
-//                    self.tableView.reloadData()
-//                })
-//                
-//            }
-//        }, withCancel: nil)
     }
     
     //MARK: -- table view data source
@@ -190,21 +144,32 @@ class OwnerScheduleTableViewController: UITableViewController {
         
         //populate labels with schdule data
         cell?.textLabel?.text = schedule.date!
+        cell?.detailTextLabel?.text = paid
         
         //check if payment was made
         if schedule.paidFlag == true{
-            //TODO: fix paid label to show on walk completion
-            self.cell?.detailTextLabel?.text = paid
             //set paid label to green
             self.cell?.detailTextLabel?.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
-            
-        }else{
-            //TODO: fix paid label to show on walk completion
-            self.cell?.detailTextLabel?.text = ""
-  
         }
         
-
+//        paidRef.child(schedule.scheduleKey!).observe(.childChanged, with: { (snapshot) in
+//            
+//            //dev
+//            print(snapshot)
+//
+//                //set paid label to green
+//                self.cell?.detailTextLabel?.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
+//            
+//            
+//            //dispatch on main thread or app will crash!!
+//            DispatchQueue.main.async(execute: {
+//                
+//                //reload tableView
+//                self.tableView.reloadData()
+//            })
+//            
+//        }, withCancel: nil)
+        
         return cell!
     }
     

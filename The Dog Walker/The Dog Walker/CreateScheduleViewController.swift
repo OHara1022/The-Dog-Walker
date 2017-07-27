@@ -43,6 +43,7 @@ class CreateScheduleViewController: UIViewController {
     @IBOutlet weak var medTF: UITextField!
     @IBOutlet weak var specialInsLBL: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var petImage: UIImageView!
     
     //MARK: --- viewDidLoad
     override func viewDidLoad() {
@@ -106,6 +107,13 @@ class CreateScheduleViewController: UIViewController {
                 //dev
                 print(pet.petName!)
                 
+                if let petImgURL = pet.petImage{
+                    //dev
+                    print(petImgURL)
+                    //set image to imageView
+                    self.petImage.loadImageUsingCache(petImgURL)
+                }
+                
                 //set edit text w/ obj values
                 self.petNameLBL.text = pet.petName!
                 self.instructionTF.text = pet.specialIns!
@@ -153,9 +161,7 @@ class CreateScheduleViewController: UIViewController {
                 }else{
                     self.fullAddress = user.address! + ". Apt. " + user.aptNumber! + " " + user.city! + ", " + user.state! + " " + user.zipCode!
                 }
-               
             }
-            
         }, withCancel: nil)
     }
     

@@ -95,9 +95,9 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                     self.specialInsLBL.text = "None"
                 }
                 
-                if self.selectedSchedule.checkOut == false{
-                    self.applePayBTN.isHidden = true
-                }
+//                if self.selectedSchedule.checkOut == false{
+//                    self.applePayBTN.isHidden = true
+//                }
             }
             
         }, withCancel: nil)
@@ -110,7 +110,7 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
         if segue.identifier == "edit"{
         
             //get destination of segue
-            let editDetails = segue.destination as! OwnerEditScheduleViewController
+            let editDetails = segue.destination as! ScheduleEditViewController
         
             //send key to edit
             editDetails.scheduleKey = selectedSchedule.scheduleKey

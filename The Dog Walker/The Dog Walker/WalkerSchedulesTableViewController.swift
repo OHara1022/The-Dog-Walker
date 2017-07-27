@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 
-
 class WalkerSchedulesTableViewController: UITableViewController {
     
     //MARK: -- stored properties
@@ -83,11 +82,18 @@ class WalkerSchedulesTableViewController: UITableViewController {
         }, withCancel: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //dispatch on main thread or app will crash!!
+        DispatchQueue.main.async(execute: {
+            //reload tableView
+            self.tableView.reloadData()
+        })
+    }
+    
     //remove observer when viewDisappears
     override func viewWillDisappear(_ animated: Bool) {
         ref.removeAllObservers()
     }
-    
     
     //    override func viewWillAppear(_ animated: Bool) {
     //
@@ -129,7 +135,6 @@ class WalkerSchedulesTableViewController: UITableViewController {
     //        }, withCancel: nil)
     //
     //    }
-    //
     
     // MARK: -- table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
