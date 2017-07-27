@@ -26,8 +26,10 @@ public class WalkerHomeFragment extends ListFragment {
     //stored properties
     FirebaseAuth mAuth;
     DatabaseReference mRef;
+    DatabaseReference mUserRef;
     FirebaseUser mUser;
     String mUserID;
+    String mWalkerCode;
     ScheduleData mQueriedScheduleData;
     public ArrayList<ScheduleData> mScheduleArrayList;
     public ArrayAdapter<ScheduleData> mAdapter;
@@ -71,6 +73,27 @@ public class WalkerHomeFragment extends ListFragment {
 
             //get instance of DB
             mRef = FirebaseDatabase.getInstance().getReference().child("schedules");
+            mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(mUserID);
+
+            mUserRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    //check snapshot has value
+                    if (dataSnapshot != null) {
+                        mWalkerCode = (String) dataSnapshot.child("companyCode").getValue();
+
+                        //dev
+                        Log.i(TAG, "onDataChange: " + mWalkerCode);
+
+                        }
+                    }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
             //get schedule data
             getScheduleData();
@@ -92,42 +115,46 @@ public class WalkerHomeFragment extends ListFragment {
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                        //dev
-                        Log.i(TAG, "onDataChange: " + dataSnapshot);
-                        Log.i(TAG, "onDataChange: SNAP" + snapshot);
+//                        //dev
+//                        Log.i(TAG, "onDataChange: " + dataSnapshot);
+//                        Log.i(TAG, "onDataChange: SNAP" + snapshot);
 
                         for (DataSnapshot snap : snapshot.getChildren()) {
 
-                            //dev
-                            Log.i(TAG, "onDataChange: " + snap);
-                            Log.i(TAG, "onDataChange: CHILD" + snap.getValue());
+//                            //dev
+//                            Log.i(TAG, "onDataChange: " + snap);
+//                            Log.i(TAG, "onDataChange: CHILD" + snap.getValue());
                             //check for current user
                             if (mUser != null) {
 
                                 //TODO: check if walker code matches code
+                                Log.i(TAG, "onDataChange: CODE" + snap.child("companyCode").getValue());
 
-                                //dev
-                                Log.i(TAG, "onDataChange: " + snap.child("petName").getValue());
 
-                                //get data
-                                String date = (String) snap.child("date").getValue();
-                                String time = (String) snap.child("time").getValue();
-                                String duration = (String) snap.child("duration").getValue();
-                                String petName = (String) snap.child("petName").getValue();
-                                String specialIns = (String) snap.child("specialIns").getValue();
-                                String meds = (String) snap.child("meds").getValue();
-                                String price = (String) snap.child("price").getValue();
+                                if (snap.child("companyCode").getValue().equals(mWalkerCode)) {
+//                                //dev
+//                                Log.i(TAG, "onDataChange: " + snap.child("petName").getValue());
 
-                                String companyCode = (String) snap.child("companyCode").getValue();
+                                    //get data
+                                    String date = (String) snap.child("date").getValue();
+                                    String time = (String) snap.child("time").getValue();
+                                    String duration = (String) snap.child("duration").getValue();
+                                    String petName = (String) snap.child("petName").getValue();
+                                    String specialIns = (String) snap.child("specialIns").getValue();
+                                    String meds = (String) snap.child("meds").getValue();
+                                    String price = (String) snap.child("price").getValue();
 
-                                Log.i(TAG, "onDataChange: CODE" + companyCode);
+                                    String companyCode = (String) snap.child("companyCode").getValue();
 
-                                //populate class w/ new data
-                                mQueriedScheduleData = new ScheduleData(date, time, duration, petName, specialIns, meds, price);
+//                                Log.i(TAG, "onDataChange: CODE" + companyCode);
 
-                                //populate array
-                                mScheduleArrayList.add(mQueriedScheduleData);
+                                    //populate class w/ new data
+                                    mQueriedScheduleData = new ScheduleData(date, time, duration, petName, specialIns, meds, price);
 
+                                    //populate array
+                                    mScheduleArrayList.add(mQueriedScheduleData);
+
+                                }
                             }
                         }
 

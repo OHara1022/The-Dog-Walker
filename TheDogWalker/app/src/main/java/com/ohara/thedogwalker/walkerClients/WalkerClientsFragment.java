@@ -28,16 +28,16 @@ public class WalkerClientsFragment extends ListFragment {
     FirebaseAuth mAuth;
     DatabaseReference mRef;
     FirebaseUser mUser;
+    DatabaseReference mUserRef;
     String mUserID;
+    String mWalkerCode;
     UserData mQueriedClientData;
     public ArrayList<UserData> mClientArrayList;
     public ArrayAdapter<UserData> mAdapter;
 
     public static WalkerClientsFragment newInstance() {
 
-        WalkerClientsFragment clientsFrag = new WalkerClientsFragment();
-
-        return clientsFrag;
+        return new WalkerClientsFragment();
     }
 
     @Override
@@ -65,6 +65,27 @@ public class WalkerClientsFragment extends ListFragment {
 
             //get instance of DB
             mRef = FirebaseDatabase.getInstance().getReference().child("users");
+            mUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(mUserID);
+
+            mUserRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    //check snapshot has value
+                    if (dataSnapshot != null) {
+                        mWalkerCode = (String) dataSnapshot.child("companyCode").getValue();
+
+                        //dev
+                        Log.i(TAG, "onDataChange: " + mWalkerCode);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
             //get client data
             getClientData();
@@ -91,7 +112,7 @@ public class WalkerClientsFragment extends ListFragment {
 
                         if (mUser != null) {
 
-                            if (snapshot.child("roleID").getValue().equals("Owner")) {
+                            if (snapshot.child("roleID").getValue().equals("Owner") && snapshot.child("companyCode").getValue().equals(mWalkerCode)){
 
                                 String first = (String) snapshot.child("firstName").getValue();
                                 String last = (String) snapshot.child("lastName").getValue();

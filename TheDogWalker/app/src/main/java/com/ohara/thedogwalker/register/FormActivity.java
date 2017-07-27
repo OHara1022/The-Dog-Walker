@@ -101,7 +101,6 @@ public class FormActivity extends AppCompatActivity implements GetUserData{
         final String companyName = user.companyName;
 
         //listener to save user data, gets hit after create user method finishes
-        //listener to save user data, gets hit after create user method finishes
         mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -117,6 +116,8 @@ public class FormActivity extends AppCompatActivity implements GetUserData{
                     //holder for users uid
                     String uid = user.getUid();
 
+                    //dev
+                    Log.i(TAG, "onAuthStateChanged: FORM" + user.getUid());
                     //save data to user firebase database
                     mReference.child("users").child(uid).child("firstName").setValue(firstName);
                     mReference.child("users").child(uid).child("lastName").setValue(lastName);
@@ -131,15 +132,14 @@ public class FormActivity extends AppCompatActivity implements GetUserData{
                     mReference.child("users").child(uid).child("aptNumber").setValue(aptNumber);
                     mReference.child("users").child(uid).child("companyCode").setValue(companyCode);
                     mReference.child("users").child(uid).child("companyName").setValue(companyName);
-                    mReference.child("users").child(uid).child("roleID").setValue("Walker");
 
-
+                    Intent welcomeIntent = new Intent(FormActivity.this, WelcomeActivity.class);
+                    startActivity(welcomeIntent);
                 }
             }
+        });
 
-         });
-        Intent welcomeIntent = new Intent(FormActivity.this, WelcomeActivity.class);
-        startActivity(welcomeIntent);
     }
+
 
 }

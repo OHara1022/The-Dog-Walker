@@ -58,8 +58,5 @@ public class WalkerHomeActivity extends AppCompatActivity {
         WalkerHomeFragment walkerHomeFragment = WalkerHomeFragment.newInstance();
         getFragmentManager().beginTransaction().replace(R.id.container, walkerHomeFragment,
                 WalkerHomeFragment.HOME_TAG).commit();
-
-
-
     }
 }
