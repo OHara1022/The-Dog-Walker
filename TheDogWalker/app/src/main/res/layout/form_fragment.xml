@@ -24,14 +24,14 @@
 
                 <Button
                     android:id="@+id/addProfileImgButton"
-                    android:layout_width="match_parent"
+                    android:layout_width="121dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="140dp"
-                    android:layout_marginRight="140dp"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="120dp"
+                    android:background="@android:color/transparent"
                     android:text="@string/add_profile_image"
                     android:textAlignment="center"
-                    android:textColor="#0099CC"
-                    android:background="@android:color/transparent" />
+                    android:textColor="#0099CC" />
 
                 <EditText
                     android:id="@+id/firstNameEditText"

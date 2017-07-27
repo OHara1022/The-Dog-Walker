@@ -156,6 +156,5 @@ public class WalkerClientsFragment extends ListFragment {
             }
         });
 
-
     }
 }

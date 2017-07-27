@@ -33,4 +33,14 @@
     <string name="phone">Phone:</string>
     <string name="addressLbl">Address:</string>
     <string name="company_name">Company Name:</string>
+    <string name="add_pet_image">Add Pet Image</string>
+    <string name="pet_name">Pet Name</string>
+    <string name="birthday">Birthday</string>
+    <string name="medication">Medication</string>
+    <string name="vaccines">Vaccines</string>
+    <string name="special_instructions">Special Instructions</string>
+    <string name="emergency_contact_name">Emergency Contact Name</string>
+    <string name="emergency_contact_phone_number">Emergency Contact Phone Number</string>
+    <string name="vet_name">Vet Name</string>
+    <string name="vet_phone">Vet Phone</string>
 </resources>

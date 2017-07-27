@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="80sp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/dog"/>
+
+                <Button
+                    android:id="@+id/addPetImgButton"
+                    android:layout_width="121dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="120dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/add_pet_image"
+                    android:textAlignment="center"
+                    android:textColor="#0099CC" />
+
+                <EditText
+                    android:id="@+id/petNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/pet_name"
+                    android:inputType="textPersonName"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/bdayEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/birthday"
+                    android:inputType="text"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/medsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/medication"
+                    android:inputType="text"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/vaccinesEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/vaccines"
+                    android:inputType="text"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/specialInsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/special_instructions"
+                    android:maxLines="5"
+                    android:scrollbars="none"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:textAlignment="textStart" />
+
+
+                <EditText
+                    android:id="@+id/emergencycontactEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/emergency_contact_name"
+                    android:inputType="text"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/emergencyPhoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/emergency_contact_phone_number"
+                    android:inputType="text"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/vetNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/vet_name"
+                    android:inputType="text"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/vetPhoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/vet_phone"
+                    android:inputType="text"
+                    android:textAlignment="textStart" />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
