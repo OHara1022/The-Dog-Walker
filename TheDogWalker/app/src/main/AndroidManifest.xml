@@ -19,7 +19,11 @@
         <activity android:name=".register.FormActivity" />
         <activity android:name=".welcomeActivity.WelcomeActivity" />
         <activity android:name=".walkerHome.WalkerHomeActivity" />
-        <activity android:name=".register.PetRegisterActivity"></activity>
+        <activity android:name=".register.PetRegisterActivity" />
+        <activity
+            android:name=".ownerHome.OwnerHomeActivity"
+            android:label="@string/title_activity_owner_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

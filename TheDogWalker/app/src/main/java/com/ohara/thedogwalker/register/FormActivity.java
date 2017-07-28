@@ -139,8 +139,5 @@ public class FormActivity extends AppCompatActivity implements GetUserData{
                 }
             }
         });
-
     }
-
-
 }

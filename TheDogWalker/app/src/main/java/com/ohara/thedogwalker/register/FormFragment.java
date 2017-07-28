@@ -129,13 +129,13 @@ public class FormFragment extends Fragment {
                 String companyCode = mCompanyCodeET.getText().toString().trim();
 //                Long companyCode = Long.parseLong(mCompanyCodeET.getText().toString().trim());
 
-//                if (mAptNumberET == null){
-//                    return false;
-//                }
-//
-//                if (mCompanyNameET == null){
-//                    return false;
-//                }
+                if (mAptNumberET == null){
+                    return false;
+                }
+
+                if (mCompanyNameET == null){
+                    return false;
+                }
 
                 //TODO: check for empty fields
 

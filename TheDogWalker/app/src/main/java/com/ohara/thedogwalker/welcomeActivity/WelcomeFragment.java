@@ -70,8 +70,10 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
                     //dev
                     Log.d(TAG, "onAuthStateChanged: SIGNED IN " + user.getUid());
 
+                    String uid = user.getUid();
+
                     //instance of database
-                    mRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+                    mRef = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
 
                 }
             }
