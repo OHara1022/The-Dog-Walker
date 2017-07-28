@@ -17,9 +17,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ohara.thedogwalker.ownerHome.ClientHomeActivity;
+import com.ohara.thedogwalker.ownerHome.OwnerHomeActivity;
 import com.ohara.thedogwalker.register.FormActivity;
 import com.ohara.thedogwalker.R;
 import com.ohara.thedogwalker.walkerHome.WalkerHomeActivity;
+import com.ohara.thedogwalker.walkerHome.WalkerHomeFragment;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -114,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     //dev
                                     Log.i(TAG, "onAuthStateChanged: " + "User: " + user.getEmail() + " / Signed In");
                                     //re-direct user to home activity
-                                    Intent homeActivityIntent = new Intent(LoginActivity.this, WalkerHomeActivity.class);
+                                    Intent homeActivityIntent = new Intent(LoginActivity.this, ClientHomeActivity.class);
                                     startActivity(homeActivityIntent);
                                     //kill login activity
                                     LoginActivity.this.finish();

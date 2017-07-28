@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/pet_tab"
+        android:title="@string/pet_profile"
+        android:icon="@drawable/dog"
+        />
+
+
+    <item
+        android:id="@+id/profile_tab"
+        android:title="@string/my_profile"
+        android:icon="@drawable/profile"
+        />
+
+    <item
+        android:id="@+id/client_schedule_tab"
+        android:title="@string/schedules"
+        android:icon="@drawable/schedule"
+        />
+
+</menu>

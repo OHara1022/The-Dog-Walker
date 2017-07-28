@@ -23,7 +23,9 @@
         <activity
             android:name=".ownerHome.OwnerHomeActivity"
             android:label="@string/title_activity_owner_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ownerHome.OwnerTabActivity" />
+        <activity android:name=".ownerHome.ClientHomeActivity"></activity>
     </application>
 
 </manifest>

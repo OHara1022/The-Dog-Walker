@@ -33,8 +33,7 @@ public class WalkerProfileFragment extends Fragment {
 
     public static WalkerProfileFragment newInstance() {
 
-        WalkerProfileFragment profileFragment = new WalkerProfileFragment();
-        return profileFragment;
+        return new WalkerProfileFragment();
     }
 
     @Override

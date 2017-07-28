@@ -4,21 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.ohara.thedogwalker.walkerHome.WalkerHomeActivity"
-    android:orientation="vertical">
+    tools:context="com.ohara.thedogwalker.ownerHome.ClientHomeActivity">
 
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/clientContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/clientNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        app:menu="@menu/walker_nav_items"/>
+        app:menu="@menu/client_nav_items"/>
+
 
 </RelativeLayout>

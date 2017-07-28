@@ -47,4 +47,7 @@
     <string name="title_activity_owner_home">OwnerHomeActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="edit">Edit</string>
+    <string name="pet_profile">Pet Profile</string>
+    <string name="my_profile">My Profile</string>
 </resources>
