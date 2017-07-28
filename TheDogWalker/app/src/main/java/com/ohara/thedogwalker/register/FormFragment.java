@@ -59,11 +59,11 @@ public class FormFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (context instanceof  GetUserData){
+        if (context instanceof GetUserData) {
 
             mListener = (GetUserData) context;
 
-        }else{
+        } else {
             throw new IllegalArgumentException("Please add get user data interface");
         }
 
@@ -103,14 +103,14 @@ public class FormFragment extends Fragment {
         mCompanyNameET = (EditText) formView.findViewById(R.id.companyNameEditText);
 
 
-       return formView;
+        return formView;
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.addUser:
 
@@ -129,14 +129,13 @@ public class FormFragment extends Fragment {
                 String companyCode = mCompanyCodeET.getText().toString().trim();
 //                Long companyCode = Long.parseLong(mCompanyCodeET.getText().toString().trim());
 
-                if (mAptNumberET == null){
-                    return false;
-                }
-
-                if (mCompanyNameET == null){
-                    return false;
-                }
-
+//                if (mAptNumberET == null){
+//                    return false;
+//                }
+//
+//                if (mCompanyNameET == null){
+//                    return false;
+//                }
 
                 //TODO: check for empty fields
 
@@ -146,14 +145,14 @@ public class FormFragment extends Fragment {
                 if (mAptNumberET != null) {
 //                    newUser.aptNumber = Long.parseLong(mAptNumberET.getText().toString().trim());
                     newUser.aptNumber = mAptNumberET.getText().toString().trim();
-            }
+                }
 
-            if (mCompanyNameET != null) {
-                newUser.companyName = mCompanyNameET.getText().toString().trim();
-             }
+                if (mCompanyNameET != null) {
+                    newUser.companyName = mCompanyNameET.getText().toString().trim();
+                }
 
-             //pass user data
-             mListener.getUser(newUser);
+                //pass user data
+                mListener.getUser(newUser);
 
                 //dev
                 Log.i(TAG, "onOptionsItemSelected: NEW USER" + firstName);

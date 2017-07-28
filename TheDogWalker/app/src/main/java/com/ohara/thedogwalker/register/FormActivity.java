@@ -126,6 +126,7 @@ public class FormActivity extends AppCompatActivity implements GetUserData{
                     mReference.child("users").child(uid).child("password").setValue(password);
                     mReference.child("users").child(uid).child("phoneNumber").setValue(phoneNumber);
                     mReference.child("users").child(uid).child("address").setValue(address);
+                    mReference.child("users").child(uid).child("aptNumber").setValue(aptNumber);
                     mReference.child("users").child(uid).child("city").setValue(city);
                     mReference.child("users").child(uid).child("state").setValue(state);
                     mReference.child("users").child(uid).child("zipCode").setValue(zipCode);

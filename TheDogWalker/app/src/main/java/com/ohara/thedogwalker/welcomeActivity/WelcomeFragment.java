@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.ohara.thedogwalker.R;
 import com.ohara.thedogwalker.dataModel.ScheduleData;
 import com.ohara.thedogwalker.login.LoginActivity;
+import com.ohara.thedogwalker.register.PetRegisterActivity;
 import com.ohara.thedogwalker.walkerHome.WalkerHomeActivity;
 import com.ohara.thedogwalker.walkerHome.WalkerHomeFragment;
 
@@ -121,9 +122,12 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
 
                 mRef.child("roleID").setValue("Owner");
 
+                Intent ownerPetReg = new Intent(getActivity(), PetRegisterActivity.class);
+                startActivity(ownerPetReg);
+
                 Toast.makeText(getActivity(), "Pet Owner Selected", Toast.LENGTH_SHORT).show();
-                return;
         }
+
 
     }
 

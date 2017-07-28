@@ -43,4 +43,5 @@
     <string name="emergency_contact_phone_number">Emergency Contact Phone Number</string>
     <string name="vet_name">Vet Name</string>
     <string name="vet_phone">Vet Phone</string>
+    <string name="breed">Breed</string>
 </resources>

@@ -26,14 +26,13 @@ public class PetData implements Serializable {
     }
 
     //constructor
-    public PetData(String petName, String birthday, String breed, String meds, String vaccines, String specialIns, String vetName, String vetPhone){
+    public PetData(String petName, String birthday, String breed, String meds, String vaccines, String vetName, String vetPhone){
 
         this.petName = petName;
         this.birthday = birthday;
         this.breed = breed;
         this.meds = meds;
         this.vaccines = vaccines;
-        this.specialIns = specialIns;
         this.vetName = vetName;
         this.vetPhone = vetPhone;
     }
