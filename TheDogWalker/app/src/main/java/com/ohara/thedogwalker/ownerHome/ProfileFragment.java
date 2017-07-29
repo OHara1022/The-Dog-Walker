@@ -12,6 +12,8 @@ import com.ohara.thedogwalker.R;
 
 public class ProfileFragment extends Fragment {
 
+
+
     public static ProfileFragment newInstance() {
 
         return new ProfileFragment();

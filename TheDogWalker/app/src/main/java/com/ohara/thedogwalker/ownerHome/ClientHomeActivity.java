@@ -44,7 +44,7 @@ public class ClientHomeActivity extends AppCompatActivity {
         });
 
         PetFragment petFragment = PetFragment.newInsance();
-        getFragmentManager().beginTransaction().replace(R.id.clientContainer, petFragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.clientContainer, petFragment, PetFragment.PET_TAG).commit();
 
     }
 }

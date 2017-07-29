@@ -135,7 +135,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 //dev
                 Log.i(TAG, "onClick: REGISTER");
 
-
                 Intent formIntent = new Intent(LoginActivity.this, FormActivity.class);
                 startActivity(formIntent);
         }

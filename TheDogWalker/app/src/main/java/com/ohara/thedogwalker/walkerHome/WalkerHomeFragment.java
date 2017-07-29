@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -13,6 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ohara.thedogwalker.dataModel.ScheduleData;
+
 import java.util.ArrayList;
 
 //TODO: add empty text view when no data is available
@@ -86,8 +88,8 @@ public class WalkerHomeFragment extends ListFragment {
                         //dev
                         Log.i(TAG, "onDataChange: " + mWalkerCode);
 
-                        }
                     }
+                }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
@@ -127,10 +129,10 @@ public class WalkerHomeFragment extends ListFragment {
                             //check for current user
                             if (mUser != null) {
 
-                                //TODO: check if walker code matches code
+                                //dev
                                 Log.i(TAG, "onDataChange: CODE" + snap.child("companyCode").getValue());
 
-
+                                //check if walker code matches code
                                 if (snap.child("companyCode").getValue().equals(mWalkerCode)) {
 //                                //dev
 //                                Log.i(TAG, "onDataChange: " + snap.child("petName").getValue());
@@ -143,8 +145,7 @@ public class WalkerHomeFragment extends ListFragment {
                                     String specialIns = (String) snap.child("specialIns").getValue();
                                     String meds = (String) snap.child("meds").getValue();
                                     String price = (String) snap.child("price").getValue();
-
-                                    String companyCode = (String) snap.child("companyCode").getValue();
+//                                    String companyCode = (String) snap.child("companyCode").getValue();
 
 //                                Log.i(TAG, "onDataChange: CODE" + companyCode);
 
