@@ -20,6 +20,7 @@ class WalkerEditScheduleViewController: UIViewController {
     var activeField: UITextField?
     var meds: String?
     var specialIns: String?
+    var price: String?
     
     //pickerViews
     var timePicker: UIDatePicker!
@@ -30,6 +31,7 @@ class WalkerEditScheduleViewController: UIViewController {
     @IBOutlet weak var editDateTF: UITextField!
     @IBOutlet weak var editTimeTF: UITextField!
     @IBOutlet weak var editDurationTF: UITextField!
+    @IBOutlet weak var editPriceLbl: UILabel!
     @IBOutlet weak var editPriceTF: UITextField!
     @IBOutlet weak var petNameLBL: UILabel!
     @IBOutlet weak var petImage: UIImageView!
@@ -40,6 +42,9 @@ class WalkerEditScheduleViewController: UIViewController {
         super.viewDidLoad()
         //dev
         print(scheduleKey!)
+        
+        editPriceTF.isHidden = true
+        editPriceLbl.isHidden = true
         
         //init ref to database
         ref = Database.database().reference().child(schedules).child(scheduleUID!).child(scheduleKey!)
@@ -101,6 +106,7 @@ class WalkerEditScheduleViewController: UIViewController {
                 self.petNameLBL.text =  schedule.petName
                 self.meds = schedule.meds
                 self.specialIns =  schedule.specialIns
+                self.price = schedule.price
             }
             
         }, withCancel: nil)
@@ -147,9 +153,12 @@ class WalkerEditScheduleViewController: UIViewController {
         let duration = editDurationTF.text
         let petName = petNameLBL.text
         let specialIns = self.specialIns
-        let price = editPriceTF.text
+        let price = self.price
         let meds = self.meds
-        
+        //check for empty TF
+        if (!FieldValidation.isEmpty(editDateTF, presenter: self) && !FieldValidation.isEmpty(editTimeTF, presenter: self) &&
+            !FieldValidation.isEmpty(editDurationTF, presenter: self)){
+            
         //populate schedule class
         let updatedSchedule = ScheduleData(date: date!, time: time!, duration: duration!, petName: petName!, instructions: specialIns!, meds: meds!, price: price!)
         
@@ -157,6 +166,6 @@ class WalkerEditScheduleViewController: UIViewController {
         ref.updateChildValues(["date": updatedSchedule.date, "time": updatedSchedule.time, "duration": updatedSchedule.duration, "price": updatedSchedule.price, "petName": updatedSchedule.petName, "specialIns": updatedSchedule.instructions, "meds": updatedSchedule.meds])
         
         self.performSegue(withIdentifier: "updateSchedule", sender: self)
-
+        }
     }
 }

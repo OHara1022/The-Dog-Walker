@@ -155,6 +155,21 @@ extension WalkerEditProfileViewController{
 //MARK: --TF extensions
 extension WalkerEditProfileViewController: UITextFieldDelegate{
     
+    //MARK: --shouldChangeCharactersIn
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let replaceStr = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if textField == editPhoneNumTF{
+            
+            return FieldValidation.checkPhoneNumberFormat(string: string, char: replaceStr, textField: editPhoneNumTF)
+            
+        }else{
+            
+            return true
+        }
+    }
+    
     //MARK: -- textFieldDelegate
     //call textfieldDidBeginEditing for keyboard functionality
     func textFieldDidBeginEditing(_ textField: UITextField) {

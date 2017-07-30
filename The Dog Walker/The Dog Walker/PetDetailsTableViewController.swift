@@ -25,6 +25,7 @@ class PetDetailsTableViewController: UITableViewController {
     @IBOutlet weak var specialInsLabel: UILabel!
     @IBOutlet weak var vetNameLabel: UILabel!
     @IBOutlet weak var vetPhoneLabel: UILabel!
+    @IBOutlet weak var singlePetCell: UITableViewCell!
     
     //MARK: --viewDidLoad
     override func viewDidLoad() {
@@ -48,8 +49,8 @@ class PetDetailsTableViewController: UITableViewController {
     }
     
     @IBAction func addPet(_ sender: UIButton) {
-        //TODO: add form to add another pet
-        FieldValidation.textFieldAlert("Add Pet", message: "Add Pet will be in future release", presenter: self)
+//        //TODO: add form to add another pet
+//        FieldValidation.textFieldAlert("Add Pet", message: "Add Pet will be in future release", presenter: self)
     }
 }
 

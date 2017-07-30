@@ -108,6 +108,7 @@ class OwnerScheduleTableViewController: UITableViewController {
                 }
                 
                 if schedules.paidFlag == true{
+                    self.cell?.detailTextLabel?.text = self.paid
                     //set paid label to green
                     self.cell?.detailTextLabel?.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
                     
@@ -144,10 +145,11 @@ class OwnerScheduleTableViewController: UITableViewController {
         
         //populate labels with schdule data
         cell?.textLabel?.text = schedule.date!
-        cell?.detailTextLabel?.text = paid
+//        cell?.detailTextLabel?.text = paid
         
         //check if payment was made
         if schedule.paidFlag == true{
+            cell?.detailTextLabel?.text = paid
             //set paid label to green
             self.cell?.detailTextLabel?.textColor = UIColor(red:0.18, green:0.66, blue:0.15, alpha:1.0)
         }

@@ -32,6 +32,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
     @IBOutlet weak var directionBtnOutlet: UIButton!
     @IBOutlet weak var checkInBtn: UIButton!
     @IBOutlet weak var checkOutBtn: UIButton!
+    @IBOutlet weak var breedLbl: UILabel!
     
     //MARK: -- viewDidLoad
     override func viewDidLoad() {
@@ -90,6 +91,7 @@ class WalkerScheduleDetailsTableViewController: UITableViewController {
                 self.durationLabel.text = schedule.duration
                 self.specialInsLabel.text = schedule.specialIns
                 self.medsLabel.text = schedule.meds
+                self.breedLbl.text = schedule.breed
                 
                 if self.specialInsLabel.text == ""{
                     self.specialInsLabel.text = "None"

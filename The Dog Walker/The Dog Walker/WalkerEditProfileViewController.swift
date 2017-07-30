@@ -97,16 +97,20 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
     //MARK: --actions
     @IBAction func saveProfileChanges(_ sender: Any) {
         
-        let firstName = editFirstNameTF.text
-        let lastName = editLastNameTF.text
-        let email = editEmailTF.text
-        let address = editAddressTF.text
-        let aptNum = editAptNumTF.text
-        let city = editCityTF.text
-        let state = editStateTF.text
-        let zipCode = editZipCodeTF.text
-        let phoneNum = editPhoneNumTF.text
-        let companyName = editCompanyNameTF.text
+        //check for empty TF
+        if (!FieldValidation.isEmpty(editFirstNameTF, presenter: self) && !FieldValidation.isEmpty(editLastNameTF, presenter: self) &&
+            !FieldValidation.isEmpty(editEmailTF, presenter: self) && !FieldValidation.isEmpty(editAddressTF, presenter: self) && !FieldValidation.isEmpty(editCityTF, presenter: self) && !FieldValidation.isEmpty(editStateTF, presenter: self) && !FieldValidation.isEmpty(editZipCodeTF, presenter: self) && !FieldValidation.isEmpty(editPhoneNumTF, presenter: self)){
+            
+            let firstName = editFirstNameTF.text
+            let lastName = editLastNameTF.text
+            let email = editEmailTF.text
+            let address = editAddressTF.text
+            let aptNum = editAptNumTF.text
+            let city = editCityTF.text
+            let state = editStateTF.text
+            let zipCode = editZipCodeTF.text
+            let phoneNum = editPhoneNumTF.text
+            let companyName = editCompanyNameTF.text
         
         let updateProfile = Users(firstName: firstName!, lastName: lastName!, email: email!, address: address!, city: city!, state: state!, zipCode: zipCode!, phoneNumber: phoneNum!, uid: userID!, companyCode: companyCode!)
         
@@ -136,7 +140,7 @@ class WalkerEditProfileViewController: UIViewController, UIImagePickerController
         
         //segue to details, update view w/ new values
         self.performSegue(withIdentifier: "updateWalker", sender: self)
-        
+        }
     }
     
     

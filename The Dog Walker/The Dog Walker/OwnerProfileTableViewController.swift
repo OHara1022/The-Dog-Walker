@@ -80,11 +80,11 @@ class OwnerProfileTableViewController: UITableViewController {
                     //dev
                     print("APT HIT")
                     //address w/ apt number
-                    self.addressLabel.text = user.address! + ". "
+                    self.addressLabel.text = user.address! + "demo 1. "
                     
                     self.cityStateZipLbael.text = user.city! + ", " + user.state! + " " + user.zipCode!
                 }else{
-                    self.addressLabel.text = user.address! + ". Apt. "
+                    self.addressLabel.text = user.address! + ". Apt. " + user.aptNumber!
                     
                     self.cityStateZipLbael.text = user.city! + ", " + user.state! + " " + user.zipCode!
                 }
