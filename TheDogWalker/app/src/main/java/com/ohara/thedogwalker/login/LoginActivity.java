@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ohara.thedogwalker.helperClasses.FieldValidation;
 import com.ohara.thedogwalker.ownerHome.ClientHomeActivity;
 import com.ohara.thedogwalker.ownerHome.OwnerHomeActivity;
 import com.ohara.thedogwalker.register.FormActivity;
@@ -95,6 +96,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.loginButton:
 
+                if (FieldValidation.isEmpty(mEmailEditText) || FieldValidation.isEmpty(mPasswordEditText)){
+
+                    //alert user no empty fields
+                    Toast.makeText(this, "No empty Fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 //dev
                 Log.i(TAG, "onClick: LOGIN");
 
@@ -117,7 +125,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     //dev
                                     Log.i(TAG, "onAuthStateChanged: " + "User: " + user.getEmail() + " / Signed In");
                                     //re-direct user to home activity
-                                    Intent homeActivityIntent = new Intent(LoginActivity.this, ClientHomeActivity.class);
+                                    Intent homeActivityIntent = new Intent(LoginActivity.this, WalkerHomeActivity.class);
                                     startActivity(homeActivityIntent);
                                     //kill login activity
                                     LoginActivity.this.finish();

@@ -1,10 +1,14 @@
 package com.ohara.thedogwalker.walkerHome;
 
 import android.app.ListFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -13,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ohara.thedogwalker.R;
 import com.ohara.thedogwalker.dataModel.ScheduleData;
 
 import java.util.ArrayList;
@@ -33,6 +38,7 @@ public class WalkerHomeFragment extends ListFragment {
     String mUserID;
     String mWalkerCode;
     ScheduleData mQueriedScheduleData;
+    private ScheduleSelected mListener;
     public ArrayList<ScheduleData> mScheduleArrayList;
     public ArrayAdapter<ScheduleData> mAdapter;
 
@@ -47,6 +53,17 @@ public class WalkerHomeFragment extends ListFragment {
         walkerHomeFragment.setArguments(args);
         //return frag w/ info
         return walkerHomeFragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        //attach listener
+        if (context instanceof ScheduleSelected){
+            mListener = (ScheduleSelected) context;
+        }else{
+            throw new IllegalArgumentException("Please add ScheduleSelected interface");
+        }
     }
 
     @Override
@@ -83,11 +100,12 @@ public class WalkerHomeFragment extends ListFragment {
 
                     //check snapshot has value
                     if (dataSnapshot != null) {
+
+                        //get walker code
                         mWalkerCode = (String) dataSnapshot.child("companyCode").getValue();
 
                         //dev
                         Log.i(TAG, "onDataChange: " + mWalkerCode);
-
                     }
                 }
 
@@ -100,7 +118,20 @@ public class WalkerHomeFragment extends ListFragment {
             //get schedule data
             getScheduleData();
         }
+    }
 
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+
+        //dev
+        Log.i(TAG, "onListItemClick: " + l.getAdapter().getItem(position));
+
+        if (mListener != null){
+            mListener.scheduleSelected((ScheduleData) l.getAdapter().getItem(position));
+
+            //dev
+            Log.i(TAG, "onListItemClick: CLICKED");
+        }
     }
 
     public void getScheduleData() {
@@ -115,12 +146,14 @@ public class WalkerHomeFragment extends ListFragment {
                 //check snapshot has value
                 if (dataSnapshot != null) {
 
+                    //loop thru snapshot
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
 //                        //dev
 //                        Log.i(TAG, "onDataChange: " + dataSnapshot);
 //                        Log.i(TAG, "onDataChange: SNAP" + snapshot);
 
+                        //loop thru keys
                         for (DataSnapshot snap : snapshot.getChildren()) {
 
 //                            //dev
@@ -137,7 +170,7 @@ public class WalkerHomeFragment extends ListFragment {
 //                                //dev
 //                                Log.i(TAG, "onDataChange: " + snap.child("petName").getValue());
 
-                                    //get data
+                                    //get data obj values from snapshot
                                     String date = (String) snap.child("date").getValue();
                                     String time = (String) snap.child("time").getValue();
                                     String duration = (String) snap.child("duration").getValue();
@@ -176,9 +209,5 @@ public class WalkerHomeFragment extends ListFragment {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-
     }
-
-
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -83,9 +84,14 @@ public class WalkerProfileFragment extends Fragment {
                     String city = (String) dataSnapshot.child("city").getValue();
                     String state = (String) dataSnapshot.child("state").getValue();
                     String zip = (String) dataSnapshot.child("zipCode").getValue();
-                    String fullAddress = address + " " + city + " " + state + " " + zip;
+                    String cityStateZip = city + " " + state + " " + zip;
                     String companyName = (String) dataSnapshot.child("companyName").getValue();
 
+
+                    ImageView profileImage = (ImageView) view.findViewById(R.id.walkerProfileImageView);
+
+
+                    //populate textViews
                     TextView tv = (TextView) view.findViewById(R.id.nameTV);
                     tv.setText(name);
 
@@ -96,7 +102,10 @@ public class WalkerProfileFragment extends Fragment {
                     tv.setText(phone);
 
                     tv = (TextView) view.findViewById(R.id.addressTV);
-                    tv.setText(fullAddress);
+                    tv.setText(address);
+
+                    tv = (TextView) view.findViewById(R.id.cityStateZipTV);
+                    tv.setText(cityStateZip);
 
                     tv = (TextView) view.findViewById(R.id.companyNameTV);
                     tv.setText(companyName);

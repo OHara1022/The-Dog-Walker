@@ -25,7 +25,8 @@
             android:label="@string/title_activity_owner_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ownerHome.OwnerTabActivity" />
-        <activity android:name=".ownerHome.ClientHomeActivity"></activity>
+        <activity android:name=".ownerHome.ClientHomeActivity" />
+        <activity android:name=".walkerScheduleDetails.ScheduleDetailsActivity"></activity>
     </application>
 
 </manifest>

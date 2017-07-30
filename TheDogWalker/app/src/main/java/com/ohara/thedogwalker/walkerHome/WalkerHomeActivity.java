@@ -6,13 +6,15 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.ohara.thedogwalker.R;
+import com.ohara.thedogwalker.dataModel.ScheduleData;
 import com.ohara.thedogwalker.walkerClients.WalkerClientsFragment;
 import com.ohara.thedogwalker.walkerProfile.WalkerProfileFragment;
 
-public class WalkerHomeActivity extends AppCompatActivity {
+public class WalkerHomeActivity extends AppCompatActivity implements ScheduleSelected{
 
     //TAG
     private static final String TAG = "WalkerHomeActivity";
@@ -58,5 +60,16 @@ public class WalkerHomeActivity extends AppCompatActivity {
         WalkerHomeFragment walkerHomeFragment = WalkerHomeFragment.newInstance();
         getFragmentManager().beginTransaction().replace(R.id.container, walkerHomeFragment,
                 WalkerHomeFragment.HOME_TAG).commit();
+    }
+
+    @Override
+    public void scheduleSelected(ScheduleData scheduleData) {
+
+        //dev
+        Log.i(TAG, "scheduleSelected: Date" + scheduleData.date);
+        Log.i(TAG, "scheduleSelected: Time" + scheduleData.time);
+        Log.i(TAG, "scheduleSelected: Duration" + scheduleData.duration);
+
+
     }
 }

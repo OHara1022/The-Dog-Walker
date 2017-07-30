@@ -102,6 +102,8 @@ public class PetRegisterFragment extends Fragment {
 
             case R.id.addPet:
 
+                //TODO: check empty fields
+
                 //get values of edit text
                 String petName = mPetName.getText().toString().trim();
                 String bday = mBday.getText().toString().trim();

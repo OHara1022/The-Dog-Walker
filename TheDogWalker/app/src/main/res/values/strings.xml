@@ -62,4 +62,18 @@
     <string name="_954_774_8533">954-774-8533</string>
     <string name="_2256_gator_drive">2256 Gator Drive.</string>
     <string name="orlando_fl_32802">Orlando, FL 32802</string>
+    <string name="emergency_contact">Emergency Contact</string>
+    <string name="brittney">Brittney</string>
+    <string name="_561_215_6366">561-215-6366</string>
+    <string name="walker_comapny_name">Company Name</string>
+    <string name="the_dog_guy">The Dog Guy</string>
+    <string name="date">Date</string>
+    <string name="duration">Duration</string>
+    <string name="time">Time</string>
+    <string name="_08_01_2017">08/01/2017</string>
+    <string name="_2_00_pm">2:00 PM</string>
+    <string name="_30_minutes">30 Minutes</string>
+    <string name="check_out">Check Out</string>
+    <string name="check_in">Check In</string>
+    <string name="directions">Directions</string>
 </resources>
