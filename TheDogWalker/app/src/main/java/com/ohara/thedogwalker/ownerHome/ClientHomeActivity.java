@@ -35,6 +35,8 @@ public class ClientHomeActivity extends AppCompatActivity {
                         selectedFrag = ProfileFragment.newInstance();
                         break;
 
+                    case R.id.schedules_tab:
+
                 }
 
                 getFragmentManager().beginTransaction().replace(R.id.clientContainer, selectedFrag).commit();

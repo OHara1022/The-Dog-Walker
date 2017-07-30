@@ -50,4 +50,16 @@
     <string name="edit">Edit</string>
     <string name="pet_profile">Pet Profile</string>
     <string name="my_profile">My Profile</string>
+    <string name="petName">Pet Name:</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="_04_22_2015">04/22/2015</string>
+    <string name="none">None</string>
+    <string name="pet_clinic">Pet Clinic</string>
+    <string name="_407_124_5455">407-124-5455</string>
+    <string name="scott_o_hara">Scott O\'Hara</string>
+    <string name="ohara1822_me_com">ohara1822@me.com</string>
+    <string name="profilePhone">Phone</string>
+    <string name="_954_774_8533">954-774-8533</string>
+    <string name="_2256_gator_drive">2256 Gator Drive.</string>
+    <string name="orlando_fl_32802">Orlando, FL 32802</string>
 </resources>
