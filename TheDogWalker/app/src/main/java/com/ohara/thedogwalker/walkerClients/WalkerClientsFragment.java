@@ -1,10 +1,13 @@
 package com.ohara.thedogwalker.walkerClients;
 
 import android.app.ListFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -15,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ohara.thedogwalker.dataModel.ScheduleData;
 import com.ohara.thedogwalker.dataModel.UserData;
+import com.ohara.thedogwalker.walkerHome.ScheduleSelected;
+import com.ohara.thedogwalker.walkerHome.WalkerHomeFragment;
 
 import java.util.ArrayList;
 
@@ -32,12 +37,33 @@ public class WalkerClientsFragment extends ListFragment {
     String mUserID;
     String mWalkerCode;
     UserData mQueriedClientData;
+    private ScheduleSelected mListener;
     public ArrayList<UserData> mClientArrayList;
     public ArrayAdapter<UserData> mAdapter;
 
     public static WalkerClientsFragment newInstance() {
 
-        return new WalkerClientsFragment();
+        //instance of home frag
+        WalkerClientsFragment walkerClientsFragment = new WalkerClientsFragment();
+        //bundle info
+        Bundle args = new Bundle();
+        //set args
+        walkerClientsFragment.setArguments(args);
+        //return frag w/ info
+        return walkerClientsFragment;
+
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof ScheduleSelected){
+            mListener  = (ScheduleSelected) context;
+        }else {
+
+            throw new IllegalArgumentException("Please add CLIENTSELECTED interface");
+        }
     }
 
     @Override
@@ -89,6 +115,19 @@ public class WalkerClientsFragment extends ListFragment {
 
             //get client data
             getClientData();
+        }
+    }
+
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+
+        //dev
+        Log.i(TAG, "onListItemClick: " + l.getAdapter().getItem(position));
+
+        if (mListener != null){
+
+            mListener.clientSelection((UserData) l.getAdapter().getItem(position));
         }
     }
 

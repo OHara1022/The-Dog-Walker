@@ -15,9 +15,9 @@
         />
 
     <item
-        android:id="@+id/client_schedule_tab"
-        android:title="@string/schedules"
-        android:icon="@drawable/schedule"
-        />
+    android:id="@+id/client_schedule_tab"
+    android:title="@string/schedules"
+    android:icon="@drawable/schedule"
+    />
 
 </menu>

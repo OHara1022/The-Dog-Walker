@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.ohara.thedogwalker.R;
+import com.ohara.thedogwalker.dataModel.ScheduleData;
 
 public class ScheduleDetailsActivity extends AppCompatActivity {
 
@@ -43,5 +44,11 @@ public class ScheduleDetailsActivity extends AppCompatActivity {
         //dev
         Log.i(TAG, "onCreate: DATE " + date);
         Log.i(TAG, "onCreate: BREED " + breed);
+
+        //populate obj w/ intent data
+        ScheduleData scheduleData = new ScheduleData(date, time, duration, petName, specialIns, meds, price, breed);
+        ScheduleDetailsFragment detailsFrag = ScheduleDetailsFragment.newInstance(scheduleData);
+        getFragmentManager().beginTransaction().replace(R.id.schedulesContainer, detailsFrag, ScheduleDetailsFragment.DETAILS_TAG).commit();
+
     }
 }

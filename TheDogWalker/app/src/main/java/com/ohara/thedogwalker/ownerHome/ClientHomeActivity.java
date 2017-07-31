@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.ohara.thedogwalker.R;
+import com.ohara.thedogwalker.ownerHome.PetFragment;
+import com.ohara.thedogwalker.ownerHome.ProfileFragment;
 
 public class ClientHomeActivity extends AppCompatActivity {
 
@@ -27,7 +29,7 @@ public class ClientHomeActivity extends AppCompatActivity {
 
                     case R.id.pet_tab:
 
-                        selectedFrag = PetFragment.newInsance();
+                        selectedFrag = PetFragment.newInstance();
                         break;
 
                     case R.id.profile_tab:
@@ -35,8 +37,11 @@ public class ClientHomeActivity extends AppCompatActivity {
                         selectedFrag = ProfileFragment.newInstance();
                         break;
 
-                    case R.id.schedules_tab:
+                    case R.id.client_schedule_tab:
 
+                        selectedFrag = SchedulesFragment.newInstance();
+
+                        break;
                 }
 
                 getFragmentManager().beginTransaction().replace(R.id.clientContainer, selectedFrag).commit();
@@ -45,7 +50,7 @@ public class ClientHomeActivity extends AppCompatActivity {
             }
         });
 
-        PetFragment petFragment = PetFragment.newInsance();
+        PetFragment petFragment = PetFragment.newInstance();
         getFragmentManager().beginTransaction().replace(R.id.clientContainer, petFragment, PetFragment.PET_TAG).commit();
 
     }

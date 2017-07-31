@@ -34,7 +34,7 @@ public class PetFragment extends Fragment {
     String mUserID;
 
 
-    public static PetFragment newInsance(){
+    public static PetFragment newInstance(){
 
         return new PetFragment();
     }
@@ -100,8 +100,6 @@ public class PetFragment extends Fragment {
 
                         }
                     }
-
-
                 }
 
                 @Override

@@ -88,8 +88,7 @@ public class WalkerProfileFragment extends Fragment {
                     String companyName = (String) dataSnapshot.child("companyName").getValue();
 
 
-                    ImageView profileImage = (ImageView) view.findViewById(R.id.walkerProfileImageView);
-
+//                    ImageView profileImage = (ImageView) view.findViewById(R.id.walkerProfileImageView);
 
                     //populate textViews
                     TextView tv = (TextView) view.findViewById(R.id.nameTV);

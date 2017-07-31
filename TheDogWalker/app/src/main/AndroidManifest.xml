@@ -21,12 +21,13 @@
         <activity android:name=".walkerHome.WalkerHomeActivity" />
         <activity android:name=".register.PetRegisterActivity" />
         <activity
-            android:name=".ownerHome.OwnerHomeActivity"
+            android:name=".walkerClientDetails.ClientDetailsActivity"
             android:label="@string/title_activity_owner_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ownerHome.OwnerTabActivity" />
         <activity android:name=".ownerHome.ClientHomeActivity" />
-        <activity android:name=".walkerScheduleDetails.ScheduleDetailsActivity"></activity>
+        <activity android:name=".walkerScheduleDetails.ScheduleDetailsActivity" />
+        <activity android:name=".walkerClientDetails.WalkerClientDetailsActivity"></activity>
     </application>
 
 </manifest>

@@ -1,10 +1,7 @@
 package com.ohara.thedogwalker.login;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,11 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ohara.thedogwalker.helperClasses.FieldValidation;
 import com.ohara.thedogwalker.ownerHome.ClientHomeActivity;
-import com.ohara.thedogwalker.ownerHome.OwnerHomeActivity;
 import com.ohara.thedogwalker.register.FormActivity;
 import com.ohara.thedogwalker.R;
 import com.ohara.thedogwalker.walkerHome.WalkerHomeActivity;
-import com.ohara.thedogwalker.walkerHome.WalkerHomeFragment;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 

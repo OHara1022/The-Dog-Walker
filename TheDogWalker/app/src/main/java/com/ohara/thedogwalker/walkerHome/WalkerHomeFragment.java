@@ -22,13 +22,11 @@ import com.ohara.thedogwalker.dataModel.ScheduleData;
 
 import java.util.ArrayList;
 
-//TODO: add empty text view when no data is available
 public class WalkerHomeFragment extends ListFragment {
 
     //TAG
     private static final String TAG = "WalkerHomeFragment";
     public static final String HOME_TAG = "HOME_TAG";
-    private static final int REQUEST_ADD = 0x02002;
 
     //stored properties
     FirebaseAuth mAuth;

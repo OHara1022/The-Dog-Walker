@@ -76,4 +76,9 @@
     <string name="check_out">Check Out</string>
     <string name="check_in">Check In</string>
     <string name="directions">Directions</string>
+    <string name="apollo">Apollo</string>
+    <string name="pitbill_mix">Pitbill Mix</string>
+    <string name="_05_05_2015">05/05/2015</string>
+    <string name="yes">Yes</string>
+    <string name="_407_321_2144">407-321-2144</string>
 </resources>
