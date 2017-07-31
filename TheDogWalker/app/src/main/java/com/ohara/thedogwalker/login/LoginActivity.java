@@ -59,8 +59,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     //dev
                     Log.d(TAG, "onAuthStateChanged: SIGNED IN " + user.getUid());
 
-//                    Intent walkerHome = new Intent(LoginActivity.this, WalkerHomeActivity.class);
-//                    startActivity(walkerHome);
+                    Intent walkerHome = new Intent(LoginActivity.this, WalkerHomeActivity.class);
+                    startActivity(walkerHome);
 
                 } else {
                     //dev

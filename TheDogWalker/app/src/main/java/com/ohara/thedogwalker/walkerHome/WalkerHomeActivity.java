@@ -2,6 +2,7 @@ package com.ohara.thedogwalker.walkerHome;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.ohara.thedogwalker.R;
 import com.ohara.thedogwalker.dataModel.ScheduleData;
 import com.ohara.thedogwalker.walkerClients.WalkerClientsFragment;
 import com.ohara.thedogwalker.walkerProfile.WalkerProfileFragment;
+import com.ohara.thedogwalker.walkerScheduleDetails.ScheduleDetailsActivity;
 
 public class WalkerHomeActivity extends AppCompatActivity implements ScheduleSelected{
 
@@ -70,6 +72,16 @@ public class WalkerHomeActivity extends AppCompatActivity implements ScheduleSel
         Log.i(TAG, "scheduleSelected: Time" + scheduleData.time);
         Log.i(TAG, "scheduleSelected: Duration" + scheduleData.duration);
 
-
+        //pass data w/ intent
+        Intent detailsIntent = new Intent(WalkerHomeActivity.this, ScheduleDetailsActivity.class);
+        detailsIntent.putExtra(ScheduleDetailsActivity.EXTRA_DATE, scheduleData.date);
+        detailsIntent.putExtra(ScheduleDetailsActivity.EXTRA_TIME, scheduleData.time);
+        detailsIntent.putExtra(ScheduleDetailsActivity.EXTRA_DURATION, scheduleData.duration);
+        detailsIntent.putExtra(ScheduleDetailsActivity.EXTRA_PET_NAME, scheduleData.petName);
+        detailsIntent.putExtra(ScheduleDetailsActivity.EXTRA_SPECIAL_INS, scheduleData.specialIns);
+        detailsIntent.putExtra(ScheduleDetailsActivity.EXTRA_MEDS, scheduleData.meds);
+        detailsIntent.putExtra(ScheduleDetailsActivity.EXTRA_PRICE, scheduleData.price);
+        detailsIntent.putExtra(ScheduleDetailsActivity.EXTRA_BREED, scheduleData.breed);
+        startActivityForResult(detailsIntent, REQUEST_DETAILS);
     }
 }

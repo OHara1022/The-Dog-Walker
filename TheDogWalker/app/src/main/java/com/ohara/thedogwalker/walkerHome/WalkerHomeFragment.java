@@ -179,11 +179,13 @@ public class WalkerHomeFragment extends ListFragment {
                                     String meds = (String) snap.child("meds").getValue();
                                     String price = (String) snap.child("price").getValue();
 //                                    String companyCode = (String) snap.child("companyCode").getValue();
+                                    String breed = (String) snap.child("breed").getValue();
 
 //                                Log.i(TAG, "onDataChange: CODE" + companyCode);
 
                                     //populate class w/ new data
-                                    mQueriedScheduleData = new ScheduleData(date, time, duration, petName, specialIns, meds, price);
+                                    mQueriedScheduleData = new ScheduleData(date, time, duration, petName, specialIns, meds, price, breed);
+
 
                                     //populate array
                                     mScheduleArrayList.add(mQueriedScheduleData);

@@ -17,13 +17,14 @@ public class ScheduleData implements Serializable {
     public String paidFlag;
     public String checkIn;
     public String checkOut;
+    public String breed;
 
     //firebase default constructor
     public ScheduleData(){
     }
 
     //constructor
-    public ScheduleData(String date, String time, String duration, String petName, String specialIns, String meds, String price){
+    public ScheduleData(String date, String time, String duration, String petName, String specialIns, String meds, String price, String breed){
 
         this.date = date;
         this.time = time;
@@ -32,6 +33,7 @@ public class ScheduleData implements Serializable {
         this.specialIns = specialIns;
         this.meds = meds;
         this.price = price;
+        this.breed = breed;
     }
 
     @Override
