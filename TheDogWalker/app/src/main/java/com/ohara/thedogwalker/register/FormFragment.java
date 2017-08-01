@@ -13,9 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.ohara.thedogwalker.R;
 import com.ohara.thedogwalker.dataModel.UserData;
+import com.ohara.thedogwalker.helperClasses.FieldValidation;
 import com.ohara.thedogwalker.welcomeActivity.WelcomeActivity;
 
 
@@ -114,6 +116,19 @@ public class FormFragment extends Fragment {
 
             case R.id.addUser:
 
+
+                //check for empty edit text
+                if (FieldValidation.isEmpty(mFirstNameET) || FieldValidation.isEmpty(mLastNameET)
+                        || FieldValidation.isEmpty(mEmailET) || FieldValidation.isEmpty(mPasswordET)
+                        || FieldValidation.isEmpty(mAddressET) || FieldValidation.isEmpty(mCityET)
+                        || FieldValidation.isEmpty(mStateET) || FieldValidation.isEmpty(mZipCodeET)
+                        || FieldValidation.isEmpty(mCompanyCodeET)) {
+
+                    //alert user no empty field
+                    Toast.makeText(getActivity(), "No Empty Fields", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+
                 //get values of edit text
                 String firstName = mFirstNameET.getText().toString().trim();
                 String lastName = mLastNameET.getText().toString().trim();
@@ -138,6 +153,8 @@ public class FormFragment extends Fragment {
                 }
 
                 //TODO: check for empty fields
+
+
 
                 //populate userData
                 UserData newUser = new UserData(firstName, lastName, email, phoneNumber, address, city, state, zipCode, companyCode, password);

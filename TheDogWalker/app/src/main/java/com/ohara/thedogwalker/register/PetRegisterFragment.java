@@ -11,9 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.ohara.thedogwalker.R;
 import com.ohara.thedogwalker.dataModel.PetData;
+import com.ohara.thedogwalker.helperClasses.FieldValidation;
 
 
 public class PetRegisterFragment extends Fragment {
@@ -103,6 +105,18 @@ public class PetRegisterFragment extends Fragment {
             case R.id.addPet:
 
                 //TODO: check empty fields
+
+                //check for empty edit text
+                if (FieldValidation.isEmpty(mPetName) || FieldValidation.isEmpty(mBday)
+                        || FieldValidation.isEmpty(mBreed) || FieldValidation.isEmpty(mMeds)
+                        || FieldValidation.isEmpty(mVaccines) || FieldValidation.isEmpty(mEmergencyContact)
+                        || FieldValidation.isEmpty(mEmergencyPhone) || FieldValidation.isEmpty(mVetName)
+                        || FieldValidation.isEmpty(mVetPhone)) {
+
+                    //alert user no empty field
+                    Toast.makeText(getActivity(), "No Empty Fields", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
 
                 //get values of edit text
                 String petName = mPetName.getText().toString().trim();

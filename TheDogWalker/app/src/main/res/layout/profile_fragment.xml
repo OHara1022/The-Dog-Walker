@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:hint="@string/scott_o_hara"
+            android:hint="@string/brittney_gault"
             android:textAlignment="center"
             android:textSize="20sp" />
 
@@ -179,7 +179,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_weight="0.5"
-            android:hint="@string/brittney"
+            android:hint="@string/scott"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -195,7 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_weight="0.5"
-            android:hint="@string/_561_215_6366"
+            android:hint="@string/_954_774_8533"
             android:textSize="18sp" />
 
     </LinearLayout>

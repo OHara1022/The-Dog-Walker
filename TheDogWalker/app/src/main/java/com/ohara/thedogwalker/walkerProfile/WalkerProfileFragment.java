@@ -1,12 +1,14 @@
 package com.ohara.thedogwalker.walkerProfile;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ohara.thedogwalker.R;
 import com.ohara.thedogwalker.dataModel.UserData;
+import com.ohara.thedogwalker.login.LoginActivity;
 
 
 public class WalkerProfileFragment extends Fragment {
@@ -53,6 +56,16 @@ public class WalkerProfileFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        Button signOut = (Button) getActivity().findViewById(R.id.signOutnBtn);
+
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                signOut();
+            }
+        });
 
         //get current user
         mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -116,6 +129,19 @@ public class WalkerProfileFragment extends Fragment {
                 }
             });
         }
+    }
+
+    //method to sign out current user
+    private void signOut() {
+
+        //firebase signout method
+        mAuth.signOut();
+        //dev
+        Log.i(TAG, "onClick: SIGNOUT");
+
+        //transition user back to login screen
+        Intent homeActivity = new Intent(getActivity(), LoginActivity.class);
+        startActivity(homeActivity);
     }
 
 }
