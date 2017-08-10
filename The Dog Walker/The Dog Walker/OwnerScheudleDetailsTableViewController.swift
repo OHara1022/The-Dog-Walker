@@ -95,9 +95,9 @@ class OwnerScheudleDetailsTableViewController: UITableViewController{
                     self.specialInsLBL.text = "None"
                 }
                 
-//                if self.selectedSchedule.checkOut == false{
-//                    self.applePayBTN.isHidden = true
-//                }
+                if self.selectedSchedule.checkOut == false{
+                    self.applePayBTN.isHidden = true
+                }
             }
             
         }, withCancel: nil)
